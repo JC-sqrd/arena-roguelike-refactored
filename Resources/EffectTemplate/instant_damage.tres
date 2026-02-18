@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="InstantEffectTemplate" format=3 uid="uid://ok4lu60iojxe"]
+
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="1_kqdm7"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="2_gu4ob"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="2_o43lj"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="3_5avht"]
+[ext_resource type="Script" uid="uid://biebgrl65lhdp" path="res://Scripts/StatModifiers/ValueProvider/Templates/ValueProviderTemplate.gd" id="4_b42oy"]
+
+[sub_resource type="Resource" id="Resource_fjyab"]
+script = ExtResource("4_b42oy")
+value = 10.0
+metadata/_custom_type_script = "uid://biebgrl65lhdp"
+
+[sub_resource type="Resource" id="Resource_ps3kn"]
+script = ExtResource("1_kqdm7")
+mode = -1
+stat_id = &"current_health"
+value_provider_template = SubResource("Resource_fjyab")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[resource]
+script = ExtResource("2_gu4ob")
+flat_mutator_templates = Array[ExtResource("1_kqdm7")]([SubResource("Resource_ps3kn")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"

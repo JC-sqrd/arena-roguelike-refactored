@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dkmv5cgdq0wh3"]
+
+[ext_resource type="Script" uid="uid://knv07avm0ire" path="res://Scripts/Controllers/EnemyController.gd" id="1_jxxdc"]
+[ext_resource type="Script" uid="uid://b61n76vobjag3" path="res://Scripts/Entity/Entity.gd" id="2_gsyxb"]
+[ext_resource type="Script" uid="uid://bwluoofyu0fhe" path="res://Scripts/Stat/Stats.gd" id="3_1gyln"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_gkus2"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="5_ldo6u"]
+[ext_resource type="Texture2D" uid="uid://ypp3n62tea25" path="res://Placeholders/Enemy_Front.png" id="6_ldo6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwb6"]
+size = Vector2(128, 128)
+
+[sub_resource type="Resource" id="Resource_thqdd"]
+script = ExtResource("5_ldo6u")
+name = "Max Health"
+stat_id = &"max_health"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_wq74i"]
+script = ExtResource("5_ldo6u")
+name = "Health"
+stat_id = &"current_health"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_x2erd"]
+script = ExtResource("4_gkus2")
+stat_templates = Array[ExtResource("5_ldo6u")]([SubResource("Resource_thqdd"), SubResource("Resource_wq74i")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
+
+[node name="NormalEnemy" type="Area2D" unique_id=298332268 node_paths=PackedStringArray("enemy_entity")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_jxxdc")
+enemy_entity = NodePath("Entity")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24793440]
+shape = SubResource("RectangleShape2D_nlwb6")
+
+[node name="Entity" type="Node" parent="." unique_id=1096073123 node_paths=PackedStringArray("stats")]
+script = ExtResource("2_gsyxb")
+stats = NodePath("Stats")
+metadata/_custom_type_script = "uid://b61n76vobjag3"
+
+[node name="Stats" type="Node" parent="Entity" unique_id=428239543]
+script = ExtResource("3_1gyln")
+stats_template = SubResource("Resource_x2erd")
+metadata/_custom_type_script = "uid://bwluoofyu0fhe"
+
+[node name="EnemyFront" type="Sprite2D" parent="." unique_id=63442275]
+texture_filter = 1
+scale = Vector2(1.3492064, 1.3492064)
+texture = ExtResource("6_ldo6u")

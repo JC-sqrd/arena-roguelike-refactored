@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bs7cobx06wp4e"]
+
+[ext_resource type="Texture2D" uid="uid://b1wtnoq43s4n5" path="res://Placeholders/Character_Front.png" id="1_m7dux"]
+[ext_resource type="Script" uid="uid://cnhcp1vabdb3x" path="res://Scripts/Controllers/PlayerController.gd" id="1_vvirn"]
+[ext_resource type="Script" uid="uid://c5iui7mxr8yrd" path="res://Scripts/Entity/PlayerEntity.gd" id="3_f4r5d"]
+[ext_resource type="Script" uid="uid://bwluoofyu0fhe" path="res://Scripts/Stat/Stats.gd" id="4_3gnwn"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_p8v2m"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="5_3gnwn"]
+[ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
+[ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
+[ext_resource type="Resource" uid="uid://dxoo241b5mlgn" path="res://Resources/WeaponData/AzureSword.tres" id="9_aysh2"]
+[ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
+[ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvirn"]
+size = Vector2(128, 128)
+
+[sub_resource type="Resource" id="Resource_72w0c"]
+script = ExtResource("5_3gnwn")
+name = "Move Speed"
+stat_id = &"move_speed"
+value = 300.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_f4r5d"]
+script = ExtResource("5_3gnwn")
+name = "Max Health"
+stat_id = &"max_health"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_aysh2"]
+script = ExtResource("5_3gnwn")
+name = "Health"
+stat_id = &"current_health"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_mpqp4"]
+script = ExtResource("5_3gnwn")
+name = "Melee Damage"
+stat_id = &"melee_damage"
+value = 50.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_kndpp"]
+script = ExtResource("4_p8v2m")
+stat_templates = Array[ExtResource("5_3gnwn")]([SubResource("Resource_72w0c"), SubResource("Resource_f4r5d"), SubResource("Resource_aysh2"), SubResource("Resource_mpqp4")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
+
+[sub_resource type="Resource" id="Resource_ushvb"]
+script = ExtResource("9_f4r5d")
+equipped_equipment = ExtResource("9_aysh2")
+metadata/_custom_type_script = "uid://dq1xwwwhdd61h"
+
+[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity")]
+script = ExtResource("1_vvirn")
+player_entity = NodePath("Entity")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
+texture_filter = 1
+position = Vector2(0, -4)
+scale = Vector2(4, 4)
+texture = ExtResource("1_m7dux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114440183]
+shape = SubResource("RectangleShape2D_vvirn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1000684807]
+
+[node name="Entity" type="Node" parent="." unique_id=1678313607 node_paths=PackedStringArray("equipment_manager", "stats")]
+script = ExtResource("3_f4r5d")
+equipment_manager = NodePath("EquipmentManager")
+stats = NodePath("Stats")
+metadata/_custom_type_script = "uid://b61n76vobjag3"
+
+[node name="Stats" type="Node" parent="Entity" unique_id=1698639298]
+script = ExtResource("4_3gnwn")
+stats_template = SubResource("Resource_kndpp")
+metadata/_custom_type_script = "uid://bwluoofyu0fhe"
+
+[node name="EquipmentManager" type="Node" parent="Entity" unique_id=1051752491 node_paths=PackedStringArray("weapon_hold_pos", "attack_input_listener")]
+script = ExtResource("7_72w0c")
+weapon_hold_pos = NodePath("../../weapon_hold_pos")
+equipped_weapon = ExtResource("8_kndpp")
+main_weapon_slot = SubResource("Resource_ushvb")
+attack_input_listener = NodePath("AttackInputListener")
+metadata/_custom_type_script = "uid://dlb4egg8f58tt"
+
+[node name="AttackInputListener" type="Node" parent="Entity/EquipmentManager" unique_id=973734706]
+script = ExtResource("10_ushvb")
+metadata/_custom_type_script = "uid://tkt8plpn1a48"
+
+[node name="weapon_hold_pos" type="Node2D" parent="." unique_id=500477201]
+position = Vector2(24, 41)

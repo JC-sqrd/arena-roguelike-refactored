@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://dxoo241b5mlgn"]
+
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="1_lwslu"]
+[ext_resource type="Script" uid="uid://dj8mvwrf8h50s" path="res://Scripts/Equipment/Weapon/AttackStrategy/MeleeAttackStrategy.gd" id="1_pavie"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="2_acrym"]
+[ext_resource type="Script" uid="uid://cje4onngvnlma" path="res://Scripts/Resources/MeleeWeapon.gd" id="2_pavie"]
+[ext_resource type="PackedScene" uid="uid://duiummoyew8wj" path="res://Scenes/Weapons/melee_azure_sword.tscn" id="4_d4et0"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_nhdrg"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="5_ptixl"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="6_ooftf"]
+[ext_resource type="Script" uid="uid://cc5brxeba87pf" path="res://Scripts/StatModifiers/ValueProvider/Templates/WeaponStatValueProviderTemplate.gd" id="7_pb2ke"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="8_tbdvt"]
+
+[sub_resource type="Resource" id="Resource_acrym"]
+script = ExtResource("2_acrym")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+value = 1.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_d4et0"]
+script = ExtResource("1_pavie")
+metadata/_custom_type_script = "uid://dj8mvwrf8h50s"
+
+[sub_resource type="Resource" id="Resource_i5eex"]
+script = ExtResource("2_acrym")
+name = "Attack Damage"
+stat_id = &"attack_damage"
+value = 25.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_x2uhy"]
+script = ExtResource("7_pb2ke")
+stat_id = &"attack_damage"
+metadata/_custom_type_script = "uid://cc5brxeba87pf"
+
+[sub_resource type="Resource" id="Resource_ig2c5"]
+script = ExtResource("4_nhdrg")
+mode = -1
+stat_id = &"current_health"
+value_provider_template = SubResource("Resource_x2uhy")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_hpnyo"]
+script = ExtResource("8_tbdvt")
+flat_mutator_templates = Array[ExtResource("4_nhdrg")]([SubResource("Resource_ig2c5")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[resource]
+script = ExtResource("2_pavie")
+attack_strategy = SubResource("Resource_d4et0")
+weapon_scene = ExtResource("4_d4et0")
+damage_stat = SubResource("Resource_i5eex")
+attack_speed_stat = SubResource("Resource_acrym")
+effect_templates = Array[ExtResource("1_lwslu")]([SubResource("Resource_hpnyo")])
+equipment_name = "Azure Sword"
+metadata/_custom_type_script = "uid://cje4onngvnlma"

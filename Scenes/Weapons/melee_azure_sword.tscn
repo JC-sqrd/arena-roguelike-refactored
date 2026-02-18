@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://duiummoyew8wj"]
+
+[ext_resource type="Texture2D" uid="uid://keldgl1f2kf2" path="res://Placeholders/Blue Sword.png" id="1_61ugl"]
+[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponNode.gd" id="1_kkbcb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkbcb"]
+size = Vector2(115.912445, 33.232025)
+
+[node name="MeleeAzureSword" type="Node2D" unique_id=1213163053 node_paths=PackedStringArray("melee_hitbox")]
+script = ExtResource("1_kkbcb")
+melee_hitbox = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=492510240]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=612972648]
+position = Vector2(53.256573, -52.776615)
+rotation = -0.78805804
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_kkbcb")
+
+[node name="BlueSword" type="Sprite2D" parent="Area2D" unique_id=1435089562]
+texture_filter = 1
+position = Vector2(26, -25)
+scale = Vector2(4, 4)
+texture = ExtResource("1_61ugl")

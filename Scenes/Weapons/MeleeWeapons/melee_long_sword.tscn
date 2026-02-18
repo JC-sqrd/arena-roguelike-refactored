@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://csb0tyujwqwpu"]
+
+[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponNode.gd" id="1_uoj76"]
+[ext_resource type="PackedScene" uid="uid://d2bcohk5k2kkk" path="res://Scenes/Weapons/HitBoxes/long_sword_hitbox.tscn" id="1_xom7d"]
+[ext_resource type="Texture2D" uid="uid://dvokk7ie1gd01" path="res://Placeholders/Longsword.png" id="3_pbwhp"]
+
+[node name="MeleeLongSword" type="Node2D" unique_id=1130768277 node_paths=PackedStringArray("melee_hitbox")]
+script = ExtResource("1_uoj76")
+melee_hitbox = NodePath("Longsword/LongSwordHitbox")
+
+[node name="Longsword" type="Sprite2D" parent="." unique_id=1026900999]
+texture_filter = 1
+position = Vector2(34, -38)
+scale = Vector2(2, 2)
+texture = ExtResource("3_pbwhp")
+
+[node name="LongSwordHitbox" parent="Longsword" unique_id=1762067442 instance=ExtResource("1_xom7d")]
+position = Vector2(3, 0)
+rotation = 0.77407265
+scale = Vector2(0.49999997, 0.49999997)
+
+[node name="CollisionShape2D" parent="Longsword/LongSwordHitbox" index="0" unique_id=480387755]
+position = Vector2(-0.18135452, -19.3601)
+
+[editable path="Longsword/LongSwordHitbox"]
