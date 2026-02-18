@@ -5,7 +5,3 @@ class_name ValueProviderTemplate extends Resource
 
 @abstract
 func build_value_provider(context : Dictionary[StringName, Variant]) -> ValueProvider
-
-
-#func build_value_provider(context : Dictionary[StringName, Variant]) -> ValueProvider:
-	#return ValueProvider.new(value, bonus_values)
