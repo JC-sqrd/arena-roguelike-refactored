@@ -5,88 +5,88 @@
 [ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_y7ryr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkbcb"]
-size = Vector2(115.912445, 33.232025)
+size = Vector2(120.95624, 242.00003)
 
 [sub_resource type="Animation" id="Animation_y7ryr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D:position")
+tracks/0/path = NodePath("Area2D/BlueSword:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-7, -26)]
+"values": [Vector2(-3, 7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D:rotation")
+tracks/1/path = NodePath("Area2D/BlueSword:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
 "update": 0,
 "values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_lmb0f"]
-length = 0.1
+length = 0.15
 step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D:position")
+tracks/0/path = NodePath("Area2D/BlueSword:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08068897, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-7, -38), Vector2(-7, -19), Vector2(-7, 38), Vector2(-7, 38)]
+"values": [Vector2(-3, 7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D:rotation")
+tracks/1/path = NodePath("Area2D/BlueSword:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08068897, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [-1.0930886, 0.7344769, 2.0480037, 2.5694144]
+"values": [0.0, 2.268928]
 }
 
 [sub_resource type="Animation" id="Animation_abf18"]
-length = 0.05
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D:position")
+tracks/0/path = NodePath("Area2D/BlueSword:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-7, 38), Vector2(-7, -26)]
+"values": [Vector2(-3, 7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D:rotation")
+tracks/1/path = NodePath("Area2D/BlueSword:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [2.5694144, 0.0]
+"values": [2.268928, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_dmhjj"]
@@ -95,26 +95,26 @@ step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D:position")
+tracks/0/path = NodePath("Area2D/BlueSword:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 2),
 "update": 0,
-"values": [Vector2(-7, -26), Vector2(-7, -38), Vector2(-7, -38)]
+"values": [Vector2(26, -25), Vector2(-13.000004, -67)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D:rotation")
+tracks/1/path = NodePath("Area2D/BlueSword:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 2),
 "update": 0,
-"values": [0.0, -0.9664466, -1.0930886]
+"values": [0.0, -1.083218]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lmb0f"]
@@ -131,22 +131,22 @@ melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=492510240]
-position = Vector2(-7, -26)
+position = Vector2(3, -7)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=612972648]
-position = Vector2(53.256573, -52.776615)
-rotation = -0.78805804
+position = Vector2(66.52189, 21.999998)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_kkbcb")
 
 [node name="BlueSword" type="Sprite2D" parent="Area2D" unique_id=1435089562]
 texture_filter = 1
-position = Vector2(26, -25)
+position = Vector2(-3, 7)
 scale = Vector2(4, 4)
 texture = ExtResource("1_61ugl")
+offset = Vector2(8, -8)
 
 [node name="MeleeAnimationPlayer" type="AnimationPlayer" parent="." unique_id=35372316]
 libraries/ = SubResource("AnimationLibrary_lmb0f")

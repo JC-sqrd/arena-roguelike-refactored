@@ -26,7 +26,7 @@ metadata/_custom_type_script = "uid://dj8mvwrf8h50s"
 script = ExtResource("2_acrym")
 name = "Attack Damage"
 stat_id = &"attack_damage"
-value = 25.0
+value = 100.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_ptixl"]

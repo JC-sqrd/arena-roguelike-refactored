@@ -17,6 +17,7 @@ var effect_context : Dictionary[StringName, Variant]
 
 var queries : Array[RID]
 
+var _input_held : bool = false
 
 func initialize():
 	attack_execute = attack_strategy.build_execute()
@@ -31,30 +32,40 @@ func initialize():
 	pass
 
 func start_attack():
-	print("START MELEE ATTACK!")
 	
-	var attack_context : MeleeAttackExecuteContext = MeleeAttackExecuteContext.new()
+	if !attack_execute.active:
+		var attack_context : MeleeAttackExecuteContext = MeleeAttackExecuteContext.new()
 	
-	attack_context.wielder_stats = wielder_stats
-	attack_context.attack_effects = effects
-	attack_context.effects_context = effect_context
-	attack_context.queries = queries
+		attack_context.wielder_stats = wielder_stats
+		attack_context.attack_effects = effects
+		attack_context.effects_context = effect_context
+		attack_context.queries = queries
 	
-	attack_execute.execute(attack_context)
+		attack_execute.execute(attack_context)
 	pass
+
+#func _process(delta: float) -> void:
+	#if listen_for_input:
+		#look_at(get_global_mouse_position())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !listen_for_input:
 		return
 		
-	if event is InputEventMouseButton and Input.is_action_just_pressed("attack"):
-		#print("START ATTACK INPUT!")
-		start_attack()
+	if event is InputEventMouseButton and Input.is_action_pressed("attack"):
+		_input_held = true
 		pass
+	
+	if event is InputEventMouseButton and Input.is_action_just_released("attack"):
+		_input_held = false
+	
+	if _input_held:
+		print("START ATTACK INPUT!")
+		start_attack()
+	
 	pass
 
 func _on_area_entered(area : Area2D):
-	print("AREA ENTERED MELEE HITBOX")
 	var area_rid : RID = area.get_rid()
 	if !queries.has(area_rid):
 		queries.append(area_rid)
@@ -62,7 +73,6 @@ func _on_area_entered(area : Area2D):
 	pass
 
 func _on_area_exited(area : Area2D):
-	print("AREA EXITED MELEE HITBOX")
 	var area_rid : RID = area.get_rid()
 	if queries.has(area_rid):
 		queries.erase(area_rid)

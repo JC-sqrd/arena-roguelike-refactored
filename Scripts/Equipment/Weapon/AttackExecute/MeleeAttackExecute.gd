@@ -20,7 +20,7 @@ func execute(context : AttackExecuteContext):
 	
 	melee_context = context as MeleeAttackExecuteContext
 	
-	melee_anim_player.play("windup")
+	melee_anim_player.play("attack")
 	active = true
 	pass
 
@@ -52,6 +52,15 @@ func _on_windup_anim_finished(anim : StringName):
 func _on_attack_anim_finished(anim : StringName):
 	if anim == "attack":
 		melee_anim_player.play("recovery")
+	
+		var queries: Array[Area2D] = melee_hitbox.get_overlapping_areas()
+		
+		for query in queries:
+			var rid : RID = query.get_rid()
+			for effect in context.attack_effects:
+				EffectServer.receive_effect(rid, effect, context.effects_context)
+			pass
+	
 	pass
 
 func _on_recovery_anim_finished(anim : StringName):
@@ -68,7 +77,6 @@ func _on_area_entered(area : Area2D):
 	successful_queries.append(rid)
 	print("MELEE ATTACK EXECUTED")
 	for effect in context.attack_effects:
-		
 		EffectServer.receive_effect(rid, effect, context.effects_context)
 	pass
 

@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://dxoo241b5mlgn" path="res://Resources/WeaponData/AzureSword.tres" id="9_aysh2"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
+[ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvirn"]
 size = Vector2(128, 128)
@@ -80,7 +81,7 @@ metadata/_custom_type_script = "uid://bwluoofyu0fhe"
 
 [node name="EquipmentManager" type="Node" parent="Entity" unique_id=1051752491 node_paths=PackedStringArray("weapon_hold_pos", "attack_input_listener")]
 script = ExtResource("7_72w0c")
-weapon_hold_pos = NodePath("../../weapon_hold_pos")
+weapon_hold_pos = NodePath("../../ActionPoint")
 equipped_weapon = ExtResource("8_kndpp")
 main_weapon_slot = SubResource("Resource_ushvb")
 attack_input_listener = NodePath("AttackInputListener")
@@ -90,5 +91,10 @@ metadata/_custom_type_script = "uid://dlb4egg8f58tt"
 script = ExtResource("10_ushvb")
 metadata/_custom_type_script = "uid://tkt8plpn1a48"
 
-[node name="weapon_hold_pos" type="Node2D" parent="." unique_id=500477201]
-position = Vector2(24, 41)
+[node name="PivotNode" type="Node2D" parent="." unique_id=110271164]
+position = Vector2(0, 29)
+
+[node name="ActionPoint" type="Node2D" parent="." unique_id=500477201 node_paths=PackedStringArray("pivot_node")]
+position = Vector2(21, 41)
+script = ExtResource("12_mpqp4")
+pivot_node = NodePath("../PivotNode")
