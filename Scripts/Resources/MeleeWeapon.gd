@@ -50,7 +50,6 @@ func unequip():
 
 func generate_effect_context(weapon_stats : Stats) -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant]
-	context["actor_stats"] = wielder_stats
 	context["wielder_stats"] = wielder_stats
 	context["weapon_stats"] = weapon_stats
 	return context
