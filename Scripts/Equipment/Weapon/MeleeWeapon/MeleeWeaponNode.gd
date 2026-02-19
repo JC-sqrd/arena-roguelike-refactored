@@ -2,6 +2,7 @@ class_name MeleeWeaponNode extends Node2D
 
 
 @export var melee_hitbox : Area2D
+@export var melee_animation_player : MeleeAnimationPlayer
 
 var attack_strategy : AttackStrategy
 var attack_execute : MeleeAttackExecute
@@ -16,16 +17,17 @@ var effect_context : Dictionary[StringName, Variant]
 
 var queries : Array[RID]
 
-func _ready() -> void:
-	
-	pass
 
 func initialize():
 	attack_execute = attack_strategy.build_execute()
 	add_child(attack_execute)
+	
 	listen_for_input = true
 	melee_hitbox.area_entered.connect(_on_area_entered)
 	melee_hitbox.area_exited.connect(_on_area_exited)
+	
+	attack_execute.set_melee_anim_player(melee_animation_player)
+	attack_execute.set_melee_hitbox(melee_hitbox)
 	pass
 
 func start_attack():
@@ -35,12 +37,10 @@ func start_attack():
 	
 	attack_context.wielder_stats = wielder_stats
 	attack_context.attack_effects = effects
-	attack_context.melee_hitbox = melee_hitbox
 	attack_context.effects_context = effect_context
 	attack_context.queries = queries
 	
 	attack_execute.execute(attack_context)
-	
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -16,7 +16,6 @@ func initialize(stats : Stats):
 	
 	attack_input_listener.initialize(stats)
 	
-	
 	equip_weapon(main_weapon_slot.equipped_equipment)
 	pass
 
