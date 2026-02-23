@@ -12,9 +12,10 @@ var _is_on_screen : bool = false
 var _curr_cell_coords : Vector2i = Vector2i.ZERO
 var _new_cell_coords : Vector2i = Vector2i.ZERO
 var _cell_update_threshold : int = 5
+var _id : int
 #Soft Collisions
-var _separation_radius : float = 30
-var _separation_force : float = 30
+var _separation_radius : float = 64
+var _separation_force : float = 10
 
 
 var _target : Node2D
@@ -31,10 +32,12 @@ var overlapped_areas : Array[Area2D]
 
 func _ready() -> void:
 	
+	_id = get_instance_id()
 	_update_offset = randi_range(0, 10)
 	_curr_cell_coords = _calculate_new_cell_coords()
 	
-	EnemyServer.register_enemy(_curr_cell_coords, self)
+	EnemyServer.register_enemy(_id, self)
+	EnemyServer.update_cell_coords(_curr_cell_coords, self)
 	
 	body_entered.connect(_on_body_entered)
 	
@@ -64,28 +67,36 @@ func _physics_process(delta: float) -> void:
 		_update_threshold = 10
 		monitoring = true
 	
-	#Update cell coordinates
-	if (Engine.get_frames_drawn() + _update_offset) % _cell_update_threshold == 0:
-		_new_cell_coords = _calculate_new_cell_coords()
-		if _new_cell_coords != _curr_cell_coords:
-			EnemyServer.move_to_cell(_curr_cell_coords, _new_cell_coords, self)
-			#EnemyServer.erase_key(_curr_cell_coords)
-			_curr_cell_coords = _new_cell_coords
-			pass
-		pass
-	
+	#
+	#update_cell_coords(delta)
+	#update_position(delta)
+	#
+	pass
+
+func update_position(delta : float):
 	#Update velocity and push vector
 	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
 		_dir_to_target = (_target.global_position - global_position).normalized()
 		_distance_to_target = (_target.global_position - global_position).length()
-		#velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-		velocity = _dir_to_target * move_speed_stat.get_value() * delta
+		velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+		#velocity = _dir_to_target * move_speed_stat.get_value() * delta
 		
 	if _distance_to_target <= target_distance_threshold:
 		velocity = Vector2.ZERO
 		pass
 		
 	global_position += velocity
+	pass
+
+func update_cell_coords(delta : float):
+	#Update cell coordinates
+	if (Engine.get_frames_drawn() + _update_offset) % _cell_update_threshold == 0:
+		_new_cell_coords = _calculate_new_cell_coords()
+		if _new_cell_coords != _curr_cell_coords:
+			EnemyServer.move_to_cell(_curr_cell_coords, _new_cell_coords, self)
+			_curr_cell_coords = _new_cell_coords
+			pass
+		pass
 	pass
 
 func _on_body_entered(body : Node2D):
@@ -129,4 +140,5 @@ func get_current_cell_coords() -> Vector2i:
 	return _curr_cell_coords
 
 func _exit_tree() -> void:
+	EnemyServer.free_enemy(_id)
 	EnemyServer.free_from_cell(_curr_cell_coords, self)
