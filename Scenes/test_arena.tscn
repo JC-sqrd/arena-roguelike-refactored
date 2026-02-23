@@ -169,8 +169,5 @@ tile_set = SubResource("TileSet_kjypg")
 [node name="NormalEnemy" parent="." unique_id=298332268 instance=ExtResource("4_y11aj")]
 position = Vector2(89, -45)
 
-[node name="NormalEnemy2" parent="." unique_id=1185761441 instance=ExtResource("4_y11aj")]
-position = Vector2(30, 80)
-
 [node name="GizmoSprite" type="Sprite2D" parent="." unique_id=1448045331]
 texture = SubResource("GradientTexture2D_0b76d")

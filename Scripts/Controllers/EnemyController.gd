@@ -8,6 +8,7 @@ class_name EnemyController extends Area2D
 var _update_offset : int
 var _update_threshold : int = 10
 var _is_on_screen : bool = false
+var _dist_to_screen : float = 0
 #Spatial Partitioning
 var _curr_cell_coords : Vector2i = Vector2i.ZERO
 var _new_cell_coords : Vector2i = Vector2i.ZERO
@@ -15,7 +16,7 @@ var _cell_update_threshold : int = 5
 var _id : int
 #Soft Collisions
 var _separation_radius : float = 64
-var _separation_force : float = 10
+var _separation_force : float = 40
 
 
 var _target : Node2D
@@ -60,12 +61,20 @@ func _on_health_depleted():
 func _physics_process(delta: float) -> void:
 	
 	_is_on_screen = get_viewport_rect().has_point(get_global_transform_with_canvas().origin)
+	
+	
 	if (_is_on_screen):
 		_update_threshold = 5
+		monitoring = true
+	elif (!_is_on_screen and _distance_to_target > 400):
+		_update_threshold = 30
+		monitoring = false
+	elif (!_is_on_screen and _distance_to_target > 800):
+		_update_threshold = 60
 		monitoring = false
 	else:
 		_update_threshold = 10
-		monitoring = true
+		monitoring = false
 	
 	#
 	#update_cell_coords(delta)
@@ -138,6 +147,16 @@ func _calculate_soft_collisions() -> Vector2:
 
 func get_current_cell_coords() -> Vector2i:
 	return _curr_cell_coords
+
+func get_dist_to_screen() -> float:
+	var view_rect : Rect2 = get_viewport_rect()
+	var screen_min : Vector2 = view_rect.position
+	var screen_max : Vector2 = view_rect.end
+	
+	var dx : float = max(screen_min.x - global_position.x, 0, global_position.x - screen_max.x)
+	var dy : float = max(screen_min.y - global_position.y, 0, global_position.y - screen_max.y)
+	
+	return dx+dy
 
 func _exit_tree() -> void:
 	EnemyServer.free_enemy(_id)
