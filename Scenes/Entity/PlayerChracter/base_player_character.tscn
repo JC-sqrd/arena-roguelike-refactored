@@ -125,12 +125,14 @@ script = ExtResource("12_mpqp4")
 pivot_node = NodePath("../Marker2D")
 
 [node name="GizmoSprite" type="Sprite2D" parent="ActionPoint" unique_id=1498703427]
+visible = false
 texture = SubResource("GradientTexture2D_1dleg")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1460318837]
 position = Vector2(0, 25)
 
 [node name="GizmoSprite" type="Sprite2D" parent="Marker2D" unique_id=1589447362]
+visible = false
 texture = SubResource("GradientTexture2D_pg8fo")
 
 [node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
@@ -140,5 +142,6 @@ pivot_node = NodePath("../Marker2D")
 metadata/_custom_type_script = "uid://dmq3shquqsewu"
 
 [node name="GizmoSprite" type="Sprite2D" parent="WeaponActionPoint" unique_id=1706121306]
+visible = false
 scale = Vector2(-1, 1)
 texture = SubResource("GradientTexture2D_8ud0v")
