@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
+[ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvirn"]
 size = Vector2(128, 128)
@@ -53,6 +54,33 @@ script = ExtResource("9_f4r5d")
 equipped_equipment = ExtResource("9_aysh2")
 metadata/_custom_type_script = "uid://dq1xwwwhdd61h"
 
+[sub_resource type="Gradient" id="Gradient_7xakc"]
+offsets = PackedFloat32Array(0.084337346, 0.12650603)
+colors = PackedColorArray(1, 0.33333334, 0.6784314, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1dleg"]
+gradient = SubResource("Gradient_7xakc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_xpoel"]
+offsets = PackedFloat32Array(0.084337346, 0.12650603)
+colors = PackedColorArray(1, 0.33333334, 0.6784314, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pg8fo"]
+gradient = SubResource("Gradient_xpoel")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_1dleg"]
+offsets = PackedFloat32Array(0.084337346, 0.12650603)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ud0v"]
+gradient = SubResource("Gradient_1dleg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity")]
 script = ExtResource("1_vvirn")
 player_entity = NodePath("Entity")
@@ -81,7 +109,7 @@ metadata/_custom_type_script = "uid://bwluoofyu0fhe"
 
 [node name="EquipmentManager" type="Node" parent="Entity" unique_id=1051752491 node_paths=PackedStringArray("weapon_hold_pos", "attack_input_listener")]
 script = ExtResource("7_72w0c")
-weapon_hold_pos = NodePath("../../ActionPoint")
+weapon_hold_pos = NodePath("../../WeaponActionPoint")
 equipped_weapon = ExtResource("8_kndpp")
 main_weapon_slot = SubResource("Resource_ushvb")
 attack_input_listener = NodePath("AttackInputListener")
@@ -91,10 +119,26 @@ metadata/_custom_type_script = "uid://dlb4egg8f58tt"
 script = ExtResource("10_ushvb")
 metadata/_custom_type_script = "uid://tkt8plpn1a48"
 
-[node name="PivotNode" type="Node2D" parent="." unique_id=110271164]
-position = Vector2(0, 29)
-
 [node name="ActionPoint" type="Node2D" parent="." unique_id=500477201 node_paths=PackedStringArray("pivot_node")]
-position = Vector2(21, 41)
+position = Vector2(32, 0)
 script = ExtResource("12_mpqp4")
-pivot_node = NodePath("../PivotNode")
+pivot_node = NodePath("../Marker2D")
+
+[node name="GizmoSprite" type="Sprite2D" parent="ActionPoint" unique_id=1498703427]
+texture = SubResource("GradientTexture2D_1dleg")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1460318837]
+position = Vector2(0, 25)
+
+[node name="GizmoSprite" type="Sprite2D" parent="Marker2D" unique_id=1589447362]
+texture = SubResource("GradientTexture2D_pg8fo")
+
+[node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
+position = Vector2(21, 41)
+script = ExtResource("13_7xakc")
+pivot_node = NodePath("../Marker2D")
+metadata/_custom_type_script = "uid://dmq3shquqsewu"
+
+[node name="GizmoSprite" type="Sprite2D" parent="WeaponActionPoint" unique_id=1706121306]
+scale = Vector2(-1, 1)
+texture = SubResource("GradientTexture2D_8ud0v")

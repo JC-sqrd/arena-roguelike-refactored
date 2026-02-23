@@ -44,9 +44,9 @@ func start_attack():
 		attack_execute.execute(attack_context)
 	pass
 
-#func _process(delta: float) -> void:
-	#if listen_for_input:
-		#look_at(get_global_mouse_position())
+func _process(delta: float) -> void:
+	if listen_for_input:
+		look_at(get_global_mouse_position())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !listen_for_input:

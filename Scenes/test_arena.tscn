@@ -147,6 +147,16 @@ tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_y11aj")
 sources/1 = SubResource("TileSetAtlasSource_0b76d")
 
+[sub_resource type="Gradient" id="Gradient_mpqp4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.12048193, 0.25903615)
+colors = PackedColorArray(0, 0.8745098, 0.29411766, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0b76d"]
+gradient = SubResource("Gradient_mpqp4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Node2D" type="Node2D" unique_id=2071446229]
 script = ExtResource("1_0b76d")
 
@@ -157,3 +167,6 @@ tile_set = SubResource("TileSet_kjypg")
 [node name="BasePlayerCharacter" parent="." unique_id=1699560143 instance=ExtResource("3_mjg4v")]
 
 [node name="NormalEnemy" parent="." unique_id=298332268 instance=ExtResource("4_y11aj")]
+
+[node name="GizmoSprite" type="Sprite2D" parent="." unique_id=1448045331]
+texture = SubResource("GradientTexture2D_0b76d")
