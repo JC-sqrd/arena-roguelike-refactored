@@ -7,6 +7,9 @@ var input_dir : Vector2
 
 var move_speed : float
 
+func _init() -> void:
+	PlayerServer.main_player = self
+
 func _ready():
 	player_entity.initalize(get_rid())
 	move_speed = player_entity.stats.get_stat("move_speed").get_value()

@@ -39,7 +39,7 @@ func set_melee_anim_player(melee_anim_player : MeleeAnimationPlayer):
 
 func set_melee_hitbox(hitbox : Area2D):
 	self.melee_hitbox = hitbox
-	melee_hitbox.area_entered.connect(_on_area_entered)
+	#melee_hitbox.area_entered.connect(_on_area_entered)
 	pass
 
 
@@ -69,16 +69,6 @@ func _on_recovery_anim_finished(anim : StringName):
 		pass
 	pass
 
-func _on_area_entered(area : Area2D):
-	print("MELEE ATTACK EXECUTE AREA ENTERED")
-	var rid : RID = area.get_rid()
-	if successful_queries.has(area.get_rid()) or !active:
-		return
-	successful_queries.append(rid)
-	print("MELEE ATTACK EXECUTED")
-	for effect in context.attack_effects:
-		EffectServer.receive_effect(rid, effect, context.effects_context)
-	pass
 
 func _on_area_exited(area : Area2D):
 	pass

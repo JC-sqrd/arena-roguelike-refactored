@@ -8,8 +8,6 @@ func _process(delta : float):
 	super(delta)
 	_relative_x = (mouse_pos - global_position)
 	_mouse_angle = rads_to_deg(_relative_x.angle())
-	#print("RELATIVE X: " + str(_relative_x))
-	print("MOUSE ANGLE: " + str(_mouse_angle))
 	
 	if _mouse_angle > 90 or _mouse_angle < -90:
 		scale.x = -1
