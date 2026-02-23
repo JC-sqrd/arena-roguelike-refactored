@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvirn"]
-size = Vector2(128, 128)
+size = Vector2(36, 96)
 
 [sub_resource type="Resource" id="Resource_72w0c"]
 script = ExtResource("5_3gnwn")
@@ -87,11 +87,12 @@ player_entity = NodePath("Entity")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
 texture_filter = 1
-position = Vector2(0, -4)
+position = Vector2(0, -68)
 scale = Vector2(4, 4)
 texture = ExtResource("1_m7dux")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114440183]
+position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_vvirn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1000684807]
@@ -120,7 +121,7 @@ script = ExtResource("10_ushvb")
 metadata/_custom_type_script = "uid://tkt8plpn1a48"
 
 [node name="ActionPoint" type="Node2D" parent="." unique_id=500477201 node_paths=PackedStringArray("pivot_node")]
-position = Vector2(32, 0)
+position = Vector2(32, -38)
 script = ExtResource("12_mpqp4")
 pivot_node = NodePath("../Marker2D")
 
@@ -129,14 +130,14 @@ visible = false
 texture = SubResource("GradientTexture2D_1dleg")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1460318837]
-position = Vector2(0, 25)
+position = Vector2(0, -37)
 
 [node name="GizmoSprite" type="Sprite2D" parent="Marker2D" unique_id=1589447362]
 visible = false
 texture = SubResource("GradientTexture2D_pg8fo")
 
 [node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
-position = Vector2(21, 41)
+position = Vector2(18, -22)
 script = ExtResource("13_7xakc")
 pivot_node = NodePath("../Marker2D")
 metadata/_custom_type_script = "uid://dmq3shquqsewu"
