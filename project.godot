@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 EffectServer="*uid://ugiw3mpg8vc8"
 PlayerServer="*uid://dakxhb8t2dqyp"
+EnemyServer="*uid://snbumne2firu"
 
 [file_customization]
 

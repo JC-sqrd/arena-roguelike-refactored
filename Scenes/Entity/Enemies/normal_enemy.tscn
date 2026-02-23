@@ -78,6 +78,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 [node name="NormalEnemy" type="Area2D" unique_id=298332268 node_paths=PackedStringArray("enemy_entity", "attack_controller")]
 collision_layer = 4
 collision_mask = 2
+input_pickable = false
 script = ExtResource("1_jxxdc")
 enemy_entity = NodePath("Entity")
 target_distance_threshold = 30.0
