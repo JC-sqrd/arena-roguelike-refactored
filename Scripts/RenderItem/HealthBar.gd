@@ -31,7 +31,7 @@ func initialize(health_manager : HealthManager, parent_node : Node2D):
 	percentage = current_health.get_value() / max_health.get_value()
 	_old_percentage = percentage
 	
-	draw_bar()
+	#adraw_bar()
 	pass
 
 func _process(delta: float) -> void:
@@ -82,6 +82,8 @@ func tween_drain_bar(value : float):
 	
 	RenderingServer.canvas_item_add_rect(canvas_item, Rect2(global_position, Vector2(rect_size.x * percentage, rect_size.y)), Color.SEA_GREEN, true)
 	
+	await get_tree().create_timer(5).timeout
+	RenderingServer.canvas_item_clear(canvas_item)
 	pass
 
 func _on_max_health_changed(max_health : Stat):

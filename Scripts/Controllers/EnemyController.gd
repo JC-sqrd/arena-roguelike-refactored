@@ -10,14 +10,16 @@ var _update_offset : int
 var _update_threshold : int = 10
 var _is_on_screen : bool = false
 var _dist_to_screen : float = 0
+var _initial_coll_mask : int 
+var _zero_coll_mask : int = 0
 #Spatial Partitioning
 var _curr_cell_coords : Vector2i = Vector2i.ZERO
 var _new_cell_coords : Vector2i = Vector2i.ZERO
 var _cell_update_threshold : int = 5
 var _id : int
 #Soft Collisions
-var _separation_radius : float = 64
-var _separation_force : float = 40
+var _separation_radius : float = 32
+var _separation_force : float = 30
 
 
 var _target : Node2D
@@ -34,6 +36,8 @@ var overlapped_bodies : Array[Node2D]
 var overlapped_areas : Array[Area2D]
 
 func _ready() -> void:
+	
+	_initial_coll_mask = collision_mask
 	
 	_id = get_instance_id()
 	_update_offset = randi_range(0, 10)
@@ -61,6 +65,7 @@ func _ready() -> void:
 
 
 func _on_health_depleted():
+	collision_mask = 0
 	velocity = Vector2.ZERO
 	active = false
 	await get_tree().create_timer(0.5).timeout
@@ -78,16 +83,19 @@ func _physics_process(delta: float) -> void:
 	if (_is_on_screen):
 		_update_threshold = 5
 		monitoring = true
+		collision_mask = _initial_coll_mask
 	elif (!_is_on_screen and _distance_to_target > 1200 and EnemyServer.get_active_enemies() > 800):
 		_update_threshold = 30
 		monitoring = false
+		collision_mask = _zero_coll_mask
 	elif (!_is_on_screen and _distance_to_target > 1500 and EnemyServer.get_active_enemies() > 800):
 		_update_threshold = 60
 		monitoring = false
+		collision_mask = _zero_coll_mask
 	else:
 		_update_threshold = 10
 		monitoring = false
-	
+		collision_mask = _zero_coll_mask
 	#
 	#update_cell_coords(delta)
 	#update_position(delta)
