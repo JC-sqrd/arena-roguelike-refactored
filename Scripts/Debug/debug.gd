@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 	ArenaServer.active_arena = self
 	
-	for i in range(1500):
+	for i in range(500):
 		var rand_pos : Vector2 = Vector2(randi_range(0, max_x), randi_range(0, max_y))
 		var enemy : EnemyController = NORMAL_ENEMY.instantiate() as EnemyController
 		enemy.global_position = rand_pos

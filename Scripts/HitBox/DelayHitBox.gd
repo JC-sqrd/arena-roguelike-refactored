@@ -10,8 +10,6 @@ func _ready() -> void:
 	
 	area_hits = get_overlapping_areas()
 	
-	print("HIT BOX HITS: " + str(area_hits))
-	
 	for hit in area_hits:
 		for effect in effects:
 			EffectServer.receive_effect(hit.get_rid(), effect, context)

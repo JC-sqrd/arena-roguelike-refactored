@@ -9,7 +9,7 @@ class_name MeleeWeapon extends Weapon
 @export_category("Attack Speed Stat")
 @export var attack_speed_stat : StatTemplate = StatTemplate.new()
 
-var melee_node : MeleeWeaponNode
+var melee_node : MeleeController
 
 
 func equip(context : EquipContext):
@@ -17,7 +17,7 @@ func equip(context : EquipContext):
 	wielder_stats = context.wielder_stats
 	
 	#Instantiate melee weapon node and set its attack strategy
-	melee_node = weapon_scene.instantiate() as MeleeWeaponNode
+	melee_node = weapon_scene.instantiate() as MeleeController
 	melee_node.attack_strategy = attack_strategy
 	
 	context.hold_anchor.add_child(melee_node)

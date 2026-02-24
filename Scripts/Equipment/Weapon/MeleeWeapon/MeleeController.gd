@@ -1,4 +1,4 @@
-class_name MeleeWeaponNode extends Node2D
+class_name MeleeController extends Node2D
 
 
 @export var melee_hitbox : Area2D

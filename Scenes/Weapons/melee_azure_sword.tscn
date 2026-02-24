@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://duiummoyew8wj"]
 
 [ext_resource type="Texture2D" uid="uid://keldgl1f2kf2" path="res://Placeholders/Blue Sword.png" id="1_61ugl"]
-[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponNode.gd" id="1_kkbcb"]
+[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeController.gd" id="1_kkbcb"]
 [ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_y7ryr"]
 
 [sub_resource type="Animation" id="Animation_y7ryr"]
