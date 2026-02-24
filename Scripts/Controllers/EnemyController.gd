@@ -3,6 +3,7 @@ class_name EnemyController extends Area2D
 @export var enemy_entity : Entity
 @export var target_distance_threshold : float = 125
 @export var attack_controller : EnemyAttackController
+@export var health_bar_renderer : HealthBar
 
 #Optimization
 var _update_offset : int
@@ -24,6 +25,7 @@ var _target : Node2D
 var _dir_to_target : Vector2 
 var _distance_to_target : float
 
+var active : bool = true
 
 var move_speed_stat : Stat
 var velocity : Vector2 = Vector2(0,0)
@@ -50,15 +52,25 @@ func _ready() -> void:
 	
 	attack_controller.initialize(enemy_entity.stats)
 	
+	health_bar_renderer.initialize(enemy_entity.health_manager, self)
+	
 	_target = PlayerServer.main_player
+	
+	
 	pass
 
 
 func _on_health_depleted():
+	velocity = Vector2.ZERO
+	active = false
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 	pass
 
 func _physics_process(delta: float) -> void:
+	
+	if !active : 
+		return
 	
 	_is_on_screen = get_viewport_rect().has_point(get_global_transform_with_canvas().origin)
 	
@@ -66,10 +78,10 @@ func _physics_process(delta: float) -> void:
 	if (_is_on_screen):
 		_update_threshold = 5
 		monitoring = true
-	elif (!_is_on_screen and _distance_to_target > 400):
+	elif (!_is_on_screen and _distance_to_target > 1200 and EnemyServer.get_active_enemies() > 800):
 		_update_threshold = 30
 		monitoring = false
-	elif (!_is_on_screen and _distance_to_target > 800):
+	elif (!_is_on_screen and _distance_to_target > 1500 and EnemyServer.get_active_enemies() > 800):
 		_update_threshold = 60
 		monitoring = false
 	else:
@@ -83,6 +95,8 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func update_position(delta : float):
+	if !active : 
+		return
 	#Update velocity and push vector
 	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
 		_dir_to_target = (_target.global_position - global_position).normalized()
@@ -98,6 +112,8 @@ func update_position(delta : float):
 	pass
 
 func update_cell_coords(delta : float):
+	if !active : 
+		return
 	#Update cell coordinates
 	if (Engine.get_frames_drawn() + _update_offset) % _cell_update_threshold == 0:
 		_new_cell_coords = _calculate_new_cell_coords()

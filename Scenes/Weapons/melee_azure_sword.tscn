@@ -44,8 +44,8 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_lmb0f"]
-length = 0.1
-step = 0.02
+length = 0.075
+step = 0.005
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,7 +65,7 @@ tracks/1/path = NodePath("Area2D/CollisionShape2D/BlueSword:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.075),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [0.0, 2.268928]
@@ -77,10 +77,10 @@ tracks/2/path = NodePath("Area2D/CollisionShape2D/BlueSword:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.045, 0.075),
+"transitions": PackedFloat32Array(2, -2, 0.5),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(4, 5), Vector2(4, 4)]
+"values": [Vector2(4, 4), Vector2(4, 9.185), Vector2(4, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_abf18"]
@@ -104,10 +104,22 @@ tracks/1/path = NodePath("Area2D/CollisionShape2D/BlueSword:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(0.5, 0.5),
+"times": PackedFloat32Array(0, 0.02, 0.15),
+"transitions": PackedFloat32Array(0.5, 1, 0.5),
 "update": 0,
-"values": [2.268928, 0.0]
+"values": [2.268928, 2.959242, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D/BlueSword:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(5, 2), Vector2(4, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_dmhjj"]
@@ -149,6 +161,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkbcb"]
 size = Vector2(120.95624, 242.00003)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7ryr"]
+size = Vector2(88, 186)
+
 [node name="MeleeAzureSword" type="Node2D" unique_id=1213163053 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player")]
 script = ExtResource("1_kkbcb")
 melee_hitbox = NodePath("Area2D")
@@ -175,3 +190,7 @@ position = Vector2(-58.521896, -16)
 scale = Vector2(4, 4)
 texture = ExtResource("1_61ugl")
 offset = Vector2(8, -8)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1854946083]
+position = Vector2(162, 13)
+shape = SubResource("RectangleShape2D_y7ryr")

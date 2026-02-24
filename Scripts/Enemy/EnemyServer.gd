@@ -61,6 +61,8 @@ func get_nearby_enemies(center_cell : Vector2i) -> Array[EnemyController]:
 			pass
 	return nearby_enemies
 
+func get_active_enemies() -> int:
+	return active_enemies.size()
 
 func free_enemy(id : int):
 	active_enemies.erase(id)

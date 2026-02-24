@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="11_218yx"]
 [ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="12_2upka"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="13_ytdn0"]
+[ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="15_ukqmv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwb6"]
 size = Vector2(128, 128)
@@ -75,7 +76,7 @@ script = ExtResource("13_ytdn0")
 flat_mutator_templates = Array[ExtResource("9_ukqmv")]([SubResource("Resource_t0f8w")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
-[node name="NormalEnemy" type="Area2D" unique_id=298332268 node_paths=PackedStringArray("enemy_entity", "attack_controller")]
+[node name="NormalEnemy" type="Area2D" unique_id=298332268 node_paths=PackedStringArray("enemy_entity", "attack_controller", "health_bar_renderer")]
 collision_layer = 4
 collision_mask = 2
 input_pickable = false
@@ -83,6 +84,7 @@ script = ExtResource("1_jxxdc")
 enemy_entity = NodePath("Entity")
 target_distance_threshold = 30.0
 attack_controller = NodePath("EnemyAttackController")
+health_bar_renderer = NodePath("HealthBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24793440]
 shape = SubResource("RectangleShape2D_nlwb6")
@@ -114,3 +116,8 @@ script = ExtResource("7_thqdd")
 metadata/_custom_type_script = "uid://d2m8vf2tidody"
 
 [node name="Timer" type="Timer" parent="EnemyAttackController" unique_id=860097410]
+
+[node name="HealthBar" type="Node" parent="." unique_id=1835499700]
+script = ExtResource("15_ukqmv")
+position_offset = Vector2(-50, -60)
+metadata/_custom_type_script = "uid://3qp0ggpyep3b"
