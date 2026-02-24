@@ -19,3 +19,6 @@ func create_canvas_item():
 func update_render():
 	
 	pass
+
+func update_position():
+	pass

@@ -62,6 +62,7 @@ func _exit_tree() -> void:
 	RenderingServer.free_rid(canvas_item)
 
 func _on_current_health_changed(current_health : Stat):
+	drawing = true
 	percentage = current_health.get_value() / max_health.get_value()
 	print("Update Health Bar")
 	tweened_update()
@@ -84,6 +85,7 @@ func tween_drain_bar(value : float):
 	
 	await get_tree().create_timer(5).timeout
 	RenderingServer.canvas_item_clear(canvas_item)
+	drawing = false
 	pass
 
 func _on_max_health_changed(max_health : Stat):
