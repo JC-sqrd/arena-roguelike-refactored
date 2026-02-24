@@ -38,7 +38,9 @@ func process_projectile(delta : float):
 	update_render()
 	
 	if _lifetime_counter >= lifetime:
-		free_projectile()
+		#free_projectile()
+		active = false
+		ProjectileServer.to_free(projectile_rid)
 		pass
 	
 	_lifetime_counter += delta
@@ -59,7 +61,9 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 	for effect in effects:
 		EffectServer.receive_effect(area_rid, effect, context)
 	
-	free_projectile()
+	active = false
+	ProjectileServer.to_free(projectile_rid)
+	#free_projectile()
 	pass
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
