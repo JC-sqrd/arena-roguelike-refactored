@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bhyjrjxakyds1"]
+
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_0x3aj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x3aj"]
+size = Vector2(521, 116)
+
+[node name="TestAbilityHitbox" type="Area2D" unique_id=1191424518]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_0x3aj")
+metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1942325966]
+position = Vector2(261, 0)
+shape = SubResource("RectangleShape2D_0x3aj")

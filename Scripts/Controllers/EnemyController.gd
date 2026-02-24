@@ -49,7 +49,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	
 	
-	enemy_entity.initalize(get_rid())
+	enemy_entity.initalize(get_rid(), self)
 	enemy_entity.health_manager.health_depleted.connect(_on_health_depleted)
 	
 	move_speed_stat = enemy_entity.stats.get_stat("move_speed")

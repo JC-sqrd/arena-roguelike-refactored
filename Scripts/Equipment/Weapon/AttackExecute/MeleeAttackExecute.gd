@@ -27,7 +27,6 @@ func execute(context : AttackExecuteContext):
 func finish_execute():
 	active = false
 	successful_queries.clear()
-	print("MELEE ATTACK FINISH EXECUTING")
 	pass
 
 func set_melee_anim_player(melee_anim_player : MeleeAnimationPlayer):

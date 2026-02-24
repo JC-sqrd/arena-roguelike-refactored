@@ -4,7 +4,7 @@ class_name PlayerEntity extends Entity
 
 
 
-func initalize(rid : RID):
-	super(rid)
+func initalize(rid : RID, node : Node2D):
+	super(rid, node)
 	equipment_manager.initialize(stats)
 	pass

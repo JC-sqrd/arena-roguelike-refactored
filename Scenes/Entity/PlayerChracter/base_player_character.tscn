@@ -13,9 +13,11 @@
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
+[ext_resource type="Script" uid="uid://b71v68teuxsft" path="res://Scripts/Ability/ActiveAbilityController.gd" id="14_1dleg"]
+[ext_resource type="Resource" uid="uid://bro2k6av54dhh" path="res://Resources/AbilityData/test_ability.tres" id="15_xpoel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvirn"]
-size = Vector2(36, 96)
+size = Vector2(32, 64)
 
 [sub_resource type="Resource" id="Resource_72w0c"]
 script = ExtResource("5_3gnwn")
@@ -81,19 +83,19 @@ gradient = SubResource("Gradient_1dleg")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity")]
+[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller")]
 collision_layer = 2
 script = ExtResource("1_vvirn")
 player_entity = NodePath("Entity")
+active_ability_controller = NodePath("ActiveAbilityController")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
 texture_filter = 1
-position = Vector2(0, -68)
-scale = Vector2(4, 4)
+position = Vector2(0, -48)
 texture = ExtResource("1_m7dux")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114440183]
-position = Vector2(0, -48)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_vvirn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1000684807]
@@ -138,7 +140,7 @@ visible = false
 texture = SubResource("GradientTexture2D_pg8fo")
 
 [node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
-position = Vector2(18, -22)
+position = Vector2(14, -17)
 script = ExtResource("13_7xakc")
 pivot_node = NodePath("../Marker2D")
 metadata/_custom_type_script = "uid://dmq3shquqsewu"
@@ -147,3 +149,8 @@ metadata/_custom_type_script = "uid://dmq3shquqsewu"
 visible = false
 scale = Vector2(-1, 1)
 texture = SubResource("GradientTexture2D_8ud0v")
+
+[node name="ActiveAbilityController" type="Node" parent="." unique_id=1341748458]
+script = ExtResource("14_1dleg")
+ability_1_data = ExtResource("15_xpoel")
+metadata/_custom_type_script = "uid://b71v68teuxsft"

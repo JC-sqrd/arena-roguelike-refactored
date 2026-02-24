@@ -60,7 +60,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		_input_held = false
 	
 	if _input_held:
-		print("START ATTACK INPUT!")
 		start_attack()
 	
 	pass

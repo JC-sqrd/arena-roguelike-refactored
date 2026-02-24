@@ -33,8 +33,6 @@ func activate (target_rid : RID):
 		printerr("Attack controller needs to be initialized before being activated.")
 		return
 	
-	
-	print("APPLY ENEMY ATTACK EFFECTS")
 	self._target_rid = target_rid
 	
 	apply_effects()

@@ -64,7 +64,6 @@ func _exit_tree() -> void:
 func _on_current_health_changed(current_health : Stat):
 	drawing = true
 	percentage = current_health.get_value() / max_health.get_value()
-	print("Update Health Bar")
 	tweened_update()
 	pass
 

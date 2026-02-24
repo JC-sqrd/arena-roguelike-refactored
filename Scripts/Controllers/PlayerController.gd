@@ -2,6 +2,7 @@ class_name PlayerController extends CharacterBody2D
 
 
 @export var player_entity : Entity
+@export var active_ability_controller : ActiveAbilityController
 
 var input_dir : Vector2
 
@@ -11,15 +12,10 @@ func _init() -> void:
 	PlayerServer.main_player = self
 
 func _ready():
-	player_entity.initalize(get_rid())
+	player_entity.initalize(get_rid(), self)
 	move_speed = player_entity.stats.get_stat("move_speed").get_value()
 	
-	await get_tree().create_timer(3).timeout
-	
-	var center_cell : Vector2i = Vector2i(floori(global_position.x / EnemyServer.tile_size.x ), floori(global_position.y / EnemyServer.tile_size.y))
-	var nearby_enemies : Array[EnemyController] = EnemyServer.get_nearby_enemies(center_cell)
-	print("CENTER CELL: " + str(center_cell))
-	print("NEARBY ENEMIES: " + str(nearby_enemies))
+	active_ability_controller.initialize(player_entity)
 	pass
 
 func _process(delta: float) -> void:

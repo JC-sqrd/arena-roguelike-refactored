@@ -11,11 +11,12 @@ var can_atack : bool = true
 var can_cast : bool = true
 
 var entity_rid : RID
+var entity_node : Node2D
 
-func initalize(rid : RID):
+func initalize(rid : RID, node : Node2D):
 	entity_rid = rid
+	entity_node = node
 	stats.initialize()
-	
 	
 	effect_listener = EffectListener.new(stats)
 	EffectServer.register_effect_listener(rid, effect_listener)
