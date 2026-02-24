@@ -1,17 +1,83 @@
 [gd_scene format=3 uid="uid://bhyjrjxakyds1"]
 
-[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_0x3aj"]
+[ext_resource type="Script" uid="uid://fkv1ury50md" path="res://Scripts/HitBox/DelayHitBox.gd" id="1_0x3aj"]
+[ext_resource type="Texture2D" uid="uid://pgykq5wfq8qi" path="res://Placeholders/TestAbilityAnim.png" id="2_e5bnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x3aj"]
-size = Vector2(521, 116)
+size = Vector2(520, 120)
 
-[node name="TestAbilityHitbox" type="Area2D" unique_id=1191424518]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q26yh"]
+atlas = ExtResource("2_e5bnh")
+region = Rect2(0, 0, 520, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8swc"]
+atlas = ExtResource("2_e5bnh")
+region = Rect2(520, 0, 520, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbkdh"]
+atlas = ExtResource("2_e5bnh")
+region = Rect2(1040, 0, 520, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w155j"]
+atlas = ExtResource("2_e5bnh")
+region = Rect2(1560, 0, 520, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lstvx"]
+atlas = ExtResource("2_e5bnh")
+region = Rect2(2080, 0, 520, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51eki"]
+atlas = ExtResource("2_e5bnh")
+region = Rect2(2600, 0, 520, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhdq8"]
+atlas = ExtResource("2_e5bnh")
+region = Rect2(3120, 0, 520, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvnif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q26yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8swc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbkdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w155j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lstvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51eki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhdq8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="TestAbilityHitbox" type="Area2D" unique_id=222783470]
 collision_layer = 0
 collision_mask = 0
 monitorable = false
 script = ExtResource("1_0x3aj")
-metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
+free_delay = 0.5
+metadata/_custom_type_script = "uid://fkv1ury50md"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1942325966]
 position = Vector2(261, 0)
 shape = SubResource("RectangleShape2D_0x3aj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=588237453]
+position = Vector2(261, 0)
+sprite_frames = SubResource("SpriteFrames_rvnif")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0

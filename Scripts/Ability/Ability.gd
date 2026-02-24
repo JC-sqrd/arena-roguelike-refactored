@@ -8,9 +8,11 @@ var ability_description : String
 var ability_details : String
 
 var caster : Entity
+var ability_context : Dictionary[StringName, Variant]
 
 func initialize(caster : Entity):
 	self.caster = caster
+	ability_context = generate_ability_context()
 	pass
 
 

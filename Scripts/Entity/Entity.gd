@@ -2,6 +2,7 @@ class_name Entity extends Node
 
 
 @export var stats : Stats
+@export var action_point : Node2D
 
 var effect_listener : EffectListener
 var health_manager : HealthManager

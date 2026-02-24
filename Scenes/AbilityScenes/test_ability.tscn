@@ -1,7 +1,34 @@
 [gd_scene format=3 uid="uid://btjgkjsrkyrln"]
 
 [ext_resource type="Script" uid="uid://pxydlhjsvd8e" path="res://Scripts/Ability/ActiveAbilities/test_ability.gd" id="1_u3jgn"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="2_ylwdr"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_6u20e"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="4_4jjfk"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="5_jwcsb"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="6_b86r7"]
+[ext_resource type="PackedScene" uid="uid://bhyjrjxakyds1" path="res://Scenes/Weapons/HitBoxes/test_ability_hitbox.tscn" id="7_6u20e"]
+
+[sub_resource type="Resource" id="Resource_qphct"]
+script = ExtResource("5_jwcsb")
+context_stats_id = &"caster_stats"
+stat_id = &"ability_damage"
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_c1e5n"]
+script = ExtResource("2_ylwdr")
+mode = -1
+stat_id = &"current_health"
+value_provider_template = SubResource("Resource_qphct")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_dumk5"]
+script = ExtResource("6_b86r7")
+flat_mutator_templates = Array[ExtResource("2_ylwdr")]([SubResource("Resource_c1e5n")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [node name="TestAbility" type="Node" unique_id=1721443211]
 script = ExtResource("1_u3jgn")
+damage_effect = SubResource("Resource_dumk5")
+hitbox_scene = ExtResource("7_6u20e")
+abiltiy_coll_mask = 4
 metadata/_custom_type_script = "uid://cjf15iuws7nka"
