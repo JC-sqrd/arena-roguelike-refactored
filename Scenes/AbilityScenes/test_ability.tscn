@@ -56,9 +56,8 @@ load_path = "res://.godot/imported/Arrow.png-ffbba5c26992416d86cebd5a56faa085.ct
 
 [sub_resource type="Resource" id="Resource_3h63f"]
 script = ExtResource("9_b86r7")
-speed = 300.0
+speed = 600.0
 projectile_shape = SubResource("Resource_og6o4")
-pierce = 5
 projectile_texture = SubResource("CompressedTexture2D_1yo06")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"

@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	for key in _keys:
 		if active_enemies.has(key):
 			var controller : EnemyController = active_enemies.get(key)
-			controller.update_cell_coords(delta)
+			#controller.update_cell_coords(delta)
 			controller.update_position(delta)
 	pass
 

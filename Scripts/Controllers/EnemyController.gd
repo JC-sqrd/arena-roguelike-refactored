@@ -44,7 +44,7 @@ func _ready() -> void:
 	_curr_cell_coords = _calculate_new_cell_coords()
 	
 	EnemyServer.register_enemy(_id, self)
-	EnemyServer.update_cell_coords(_curr_cell_coords, self)
+	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
 	
 	body_entered.connect(_on_body_entered)
 	
@@ -110,8 +110,8 @@ func update_position(delta : float):
 	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
 		_dir_to_target = (_target.global_position - global_position).normalized()
 		_distance_to_target = (_target.global_position - global_position).length()
-		velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-		#velocity = _dir_to_target * move_speed_stat.get_value() * delta
+		#velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+		velocity = _dir_to_target * move_speed_stat.get_value() * delta
 		
 	if _distance_to_target <= target_distance_threshold:
 		velocity = Vector2.ZERO

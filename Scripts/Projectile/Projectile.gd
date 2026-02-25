@@ -66,16 +66,17 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 		hit_log.erase(area_rid)
 		return
 		
+	if _pierce_count >= pierce:
+		active = false
+		ProjectileServer.to_free(projectile_rid)
+	
+	_pierce_count += 1
+	
 	for effect in effects:
 		EffectServer.receive_effect(area_rid, effect, context)
 	
 	hit_log.append(area_rid)
 	
-	if _pierce_count >= pierce:
-		active = false
-		ProjectileServer.to_free(projectile_rid)
-	
-	_pierce_count -= 1
 	pass
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
