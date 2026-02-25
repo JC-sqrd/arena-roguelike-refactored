@@ -70,6 +70,7 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 		active = false
 		ProjectileServer.to_free(projectile_rid)
 	
+	
 	_pierce_count += 1
 	
 	for effect in effects:
@@ -80,7 +81,6 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 	pass
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
-	
 	pass
 
 func free_projectile():

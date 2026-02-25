@@ -33,5 +33,7 @@ func _process(delta: float) -> void:
 
 func to_free(rid : RID):
 	free_queue.append(rid)
-	
+	PhysicsServer2D.area_set_collision_layer(rid, 0)
+	PhysicsServer2D.area_set_collision_mask(rid, 0)
+	PhysicsServer2D.area_set_monitorable(rid, false)
 	pass

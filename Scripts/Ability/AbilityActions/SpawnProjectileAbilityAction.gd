@@ -2,8 +2,17 @@ class_name SpawnProjectileAbilityAction extends AbilityAction
 
 
 @export var projectile_template : ProjectileTemplate
+##The effects that the projectile will apply to valid targets.
 @export var effects_template : Array[EffectTemplate]
 
+##Projectile is spawned looking at the global mouse position.
+@export var look_at_mouse : bool = true
+##Spawn the projectile at a specific angle, if look_at_mosue is set to true, this field does nothing.
+@export var projectile_angle : float = 0
+##Spawn the projectile moving towards the global mouse position
+@export var shoot_at_mosue : bool = true
+##Spawn the projectie moving at a specific direction, if shoot_at_mouse is set to true, this field does nothing.
+@export var projectile_direction : Vector2 
 var effects : Array[Effect]
 
 
@@ -19,11 +28,19 @@ func do(caster : Entity, ability : Ability):
 
 func spawn_projectile(caster : Entity, ability_context : Dictionary[StringName, Variant]):
 	var projectile : Projectile = projectile_template.build_projectile()
-	var mouse_pos : Vector2 = caster.entity_node.get_global_mouse_position() - caster.entity_node.global_position 
+	var mouse_pos : Vector2 = caster.entity_node.get_global_mouse_position() - caster.entity_node.global_position
 	projectile.effects = effects
 	projectile.context = ability_context
-	projectile.angle = mouse_pos.angle()
+	if look_at_mouse:
+		projectile.angle = mouse_pos.angle()
+		projectile.direction = mouse_pos.normalized()
+	else:
+		projectile.angle = projectile_angle
+	if shoot_at_mosue:
+		projectile.direction = mouse_pos.normalized()
+	else:
+		projectile.direction = projectile_direction
+	
 	projectile.texture_angle = projectile.angle
-	projectile.direction = mouse_pos.normalized()
 	SpawnProjectile.spawn_projectile(projectile, caster.action_point.global_position)
 	pass

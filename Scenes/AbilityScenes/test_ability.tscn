@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bhyjrjxakyds1" path="res://Scenes/Weapons/HitBoxes/test_ability_hitbox.tscn" id="7_6u20e"]
 [ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="8_jwcsb"]
 [ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="9_b86r7"]
-[ext_resource type="Texture2D" uid="uid://ccalkikpraw6o" path="res://Placeholders/Arrow.png" id="9_qphct"]
 [ext_resource type="Script" uid="uid://pa7e2iud41wh" path="res://Scripts/Ability/AbilityActions/SpawnProjectileAbilityAction.gd" id="11_qphct"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="12_c1e5n"]
 
@@ -18,13 +17,16 @@ script = ExtResource("8_jwcsb")
 radius = 64
 metadata/_custom_type_script = "uid://swufoypqyj1x"
 
-[sub_resource type="Resource" id="Resource_g4vhs"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g4vhs"]
+load_path = "res://.godot/imported/Arrow.png-ffbba5c26992416d86cebd5a56faa085.ctex"
+
+[sub_resource type="Resource" id="Resource_1yo06"]
 script = ExtResource("9_b86r7")
 speed = 300.0
 projectile_shape = SubResource("Resource_yycba")
-pierce = 5
+pierce = 20
 lifetime = 6.0
-projectile_texture = ExtResource("9_qphct")
+projectile_texture = SubResource("CompressedTexture2D_g4vhs")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"
 
@@ -48,7 +50,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [sub_resource type="Resource" id="Resource_og6o4"]
 script = ExtResource("8_jwcsb")
-radius = 64
+radius = 20
 metadata/_custom_type_script = "uid://swufoypqyj1x"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1yo06"]
@@ -56,34 +58,34 @@ load_path = "res://.godot/imported/Arrow.png-ffbba5c26992416d86cebd5a56faa085.ct
 
 [sub_resource type="Resource" id="Resource_3h63f"]
 script = ExtResource("9_b86r7")
-speed = 600.0
+speed = 800.0
 projectile_shape = SubResource("Resource_og6o4")
 projectile_texture = SubResource("CompressedTexture2D_1yo06")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"
 
-[sub_resource type="Resource" id="Resource_n3u2m"]
+[sub_resource type="Resource" id="Resource_g4vhs"]
 script = ExtResource("5_jwcsb")
 context_stats_id = &"caster_stats"
 stat_id = &"ability_damage"
 metadata/_custom_type_script = "uid://dydu23koa8oxk"
 
-[sub_resource type="Resource" id="Resource_2w6yc"]
+[sub_resource type="Resource" id="Resource_n3u2m"]
 script = ExtResource("2_ylwdr")
 mode = -1
 stat_id = &"current_health"
-value_provider_template = SubResource("Resource_n3u2m")
+value_provider_template = SubResource("Resource_g4vhs")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
-[sub_resource type="Resource" id="Resource_o6efp"]
+[sub_resource type="Resource" id="Resource_2w6yc"]
 script = ExtResource("6_b86r7")
-flat_mutator_templates = Array[ExtResource("2_ylwdr")]([SubResource("Resource_2w6yc")])
+flat_mutator_templates = Array[ExtResource("2_ylwdr")]([SubResource("Resource_n3u2m")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [node name="TestAbility" type="Node" unique_id=1721443211 node_paths=PackedStringArray("projectile_action")]
 script = ExtResource("1_u3jgn")
 projectile_action = NodePath("SpawnProjectileAbilityAction")
-projectile_template = SubResource("Resource_g4vhs")
+projectile_template = SubResource("Resource_1yo06")
 damage_effect = SubResource("Resource_dumk5")
 hitbox_scene = ExtResource("7_6u20e")
 abiltiy_coll_mask = 4
@@ -92,5 +94,5 @@ metadata/_custom_type_script = "uid://cjf15iuws7nka"
 [node name="SpawnProjectileAbilityAction" type="Node" parent="." unique_id=1815206290]
 script = ExtResource("11_qphct")
 projectile_template = SubResource("Resource_3h63f")
-effects_template = Array[ExtResource("12_c1e5n")]([SubResource("Resource_o6efp")])
+effects_template = Array[ExtResource("12_c1e5n")]([SubResource("Resource_2w6yc")])
 metadata/_custom_type_script = "uid://pa7e2iud41wh"

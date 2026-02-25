@@ -1,4 +1,4 @@
-class_name EnemyController extends Area2D
+class_name EnemyController extends Node2D
 
 @export var enemy_entity : Entity
 @export var target_distance_threshold : float = 125
@@ -33,12 +33,10 @@ var active : bool = true
 var move_speed_stat : Stat
 var velocity : Vector2 = Vector2(0,0)
 
-var overlapped_bodies : Array[Node2D]
+var overlapped_bodies : Array[RID]
 var overlapped_areas : Array[Area2D]
 
 func _ready() -> void:
-	
-	_initial_coll_mask = collision_mask
 	
 	_id = get_instance_id()
 	_update_offset = randi_range(0, 10)
@@ -47,11 +45,8 @@ func _ready() -> void:
 	EnemyServer.register_enemy(_id, self)
 	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
 	
-	area_controller.initialize(self)
+	area_controller.initialize()
 	area_controller.set_body_enter_callback(_on_body_entered)
-	
-	body_entered.connect(_on_body_entered)
-	
 	
 	#enemy_entity.initalize(get_rid(), self)
 	enemy_entity.initalize(area_controller.area.area_rid, self)
@@ -70,10 +65,10 @@ func _ready() -> void:
 
 
 func _on_health_depleted():
-	collision_mask = 0
 	velocity = Vector2.ZERO
 	active = false
 	await get_tree().create_timer(0.5).timeout
+	area_controller.active = false
 	EnemyServer.to_free(_id)
 	#queue_free()
 	pass
@@ -88,20 +83,20 @@ func _physics_process(delta: float) -> void:
 	
 	if (_is_on_screen):
 		_update_threshold = 5
-		monitoring = true
-		collision_mask = _initial_coll_mask
+		#monitoring = true
+		#collision_mask = _initial_coll_mask
 	elif (!_is_on_screen and _distance_to_target > 1200 and EnemyServer.get_active_enemies() > 800):
 		_update_threshold = 30
-		monitoring = false
-		collision_mask = _zero_coll_mask
+		#monitoring = false
+		#collision_mask = _zero_coll_mask
 	elif (!_is_on_screen and _distance_to_target > 1500 and EnemyServer.get_active_enemies() > 800):
 		_update_threshold = 60
-		monitoring = false
-		collision_mask = _zero_coll_mask
+		#monitoring = false
+		#collision_mask = _zero_coll_mask
 	else:
 		_update_threshold = 10
-		monitoring = false
-		collision_mask = _zero_coll_mask
+		#monitoring = false
+		#collision_mask = _zero_coll_mask
 	#
 	#update_cell_coords(delta)
 	#update_position(delta)
@@ -111,18 +106,19 @@ func _physics_process(delta: float) -> void:
 func update_position(delta : float):
 	if !active : 
 		return
-	#Update velocity and push vector
-	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
-		_dir_to_target = (_target.global_position - global_position).normalized()
-		_distance_to_target = (_target.global_position - global_position).length()
-		#velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-		velocity = _dir_to_target * move_speed_stat.get_value() * delta
-		
+	
+	global_position += velocity
+	
 	if _distance_to_target <= target_distance_threshold:
 		velocity = Vector2.ZERO
 		pass
 		
-	global_position += velocity
+	#Update velocity and push vector
+	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
+		_dir_to_target = (_target.global_position - global_position).normalized()
+		_distance_to_target = (_target.global_position - global_position).length()
+		velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+		#velocity = _dir_to_target * move_speed_stat.get_value() * delta
 	pass
 
 func update_cell_coords(delta : float):
@@ -144,7 +140,8 @@ func update_cell_coords(delta : float):
 	#pass
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
-	print("Body entered area")
+	overlapped_bodies.append(body_rid)
+	attack_controller.activate(body_rid)
 	pass
 
 func _on_body_exited(body : Node2D):

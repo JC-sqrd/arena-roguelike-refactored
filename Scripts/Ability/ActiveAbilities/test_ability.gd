@@ -10,6 +10,11 @@ extends ActiveAbility
 
 var hitbox : DelayHitbox
 
+func initialize(caster : Entity):
+	super(caster)
+	projectile_action.initialize(caster, self)
+	pass
+
 func start():
 	#hitbox = hitbox_scene.instantiate() as DelayHitbox
 	#hitbox.effects = [damage_effect.build_effect(ability_context)]
@@ -17,7 +22,6 @@ func start():
 	#hitbox.global_position = caster.action_point.global_position
 	#hitbox.collision_mask = abiltiy_coll_mask
 	#hitbox.initialize()
-	projectile_action.initialize(caster, self)
 	execute()
 	pass
 
@@ -27,6 +31,11 @@ func execute():
 	
 	for i in range(10):
 		
+		#projectile_action.shoot_at_mosue = false
+		#projectile_action.look_at_mouse = false
+		#var rand_dir : Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+		#projectile_action.projectile_angle = rand_dir.angle()
+		#projectile_action.projectile_direction = rand_dir.normalized()
 		projectile_action.do(caster, self)
 		
 		#var projectile : Projectile = projectile_template.build_projectile()
