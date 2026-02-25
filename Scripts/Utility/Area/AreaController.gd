@@ -45,5 +45,9 @@ func deactivate_area():
 	area.active = false
 	pass
 
+func free_area():
+	AreaServer.to_free(area.area_rid)
+	pass
+
 func _exit_tree() -> void:
 	AreaServer.to_free(area.area_rid)

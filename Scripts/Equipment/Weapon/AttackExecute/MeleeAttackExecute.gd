@@ -20,7 +20,7 @@ func execute(context : AttackExecuteContext):
 	
 	melee_context = context as MeleeAttackExecuteContext
 	
-	melee_anim_player.play("attack")
+	melee_anim_player.play("windup")
 	active = true
 	pass
 
@@ -45,6 +45,7 @@ func set_melee_hitbox(hitbox : Area2D):
 func _on_windup_anim_finished(anim : StringName):
 	if anim == "windup":
 		melee_anim_player.play("attack")
+		query_hitbox()
 		pass
 	pass
 
@@ -52,30 +53,7 @@ func _on_attack_anim_finished(anim : StringName):
 	if anim == "attack":
 		melee_anim_player.play("recovery")
 	
-		var space_state : = melee_hitbox.get_world_2d().direct_space_state
 		
-		
-		var hits : Dictionary[RID, bool]
-		
-		for child in melee_hitbox.get_children():
-			if child is CollisionShape2D:
-				var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
-				query.shape_rid = child.shape.get_rid()
-				query.transform = child.global_transform
-				query.collision_mask = melee_hitbox.collision_mask
-				query.collide_with_areas = true
-				
-				var results = space_state.intersect_shape(query)
-				
-				for result in results:
-					hits[result.rid] = true
-					pass
-				
-				pass
-		
-		for hit in hits.keys():
-			for effect in context.attack_effects:
-					EffectServer.receive_effect(hit, effect, context.effects_context)
 		
 		#var queries: Array[Area2D] = melee_hitbox.get_overlapping_areas()
 		#
@@ -87,10 +65,41 @@ func _on_attack_anim_finished(anim : StringName):
 	
 	pass
 
+
+
+
 func _on_recovery_anim_finished(anim : StringName):
 	if anim == "recovery":
 		finish_execute()
 		pass
+	pass
+
+
+func query_hitbox():
+	var space_state : = melee_hitbox.get_world_2d().direct_space_state
+		
+		
+	var hits : Dictionary[RID, bool]
+		
+	for child in melee_hitbox.get_children():
+		if child is CollisionShape2D:
+			var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
+			query.shape_rid = child.shape.get_rid()
+			query.transform = child.global_transform
+			query.collision_mask = melee_hitbox.collision_mask
+			query.collide_with_areas = true
+				
+			var results = space_state.intersect_shape(query)
+				
+			for result in results:
+				hits[result.rid] = true
+				pass
+				
+			pass
+		
+	for hit in hits.keys():
+		for effect in context.attack_effects:
+			EffectServer.receive_effect(hit, effect, context.effects_context)
 	pass
 
 

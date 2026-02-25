@@ -14,3 +14,29 @@ func _ready() -> void:
 func initialize():
 	active = true
 	pass
+
+func query_hitbox():
+	var space_state : = get_world_2d().direct_space_state
+		
+	var hits : Dictionary[RID, bool]
+	
+	for child in self.get_children():
+		if child is CollisionShape2D:
+			var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
+			query.shape_rid = child.shape.get_rid()
+			query.transform = child.global_transform
+			query.collision_mask = collision_mask
+			query.collide_with_areas = true
+				
+			var results = space_state.intersect_shape(query)
+				
+			for result in results:
+				hits[result.rid] = true
+				pass
+				
+			pass
+		
+	for hit in hits.keys():
+		for effect in effects:
+			EffectServer.receive_effect(hit, effect, context)
+	pass

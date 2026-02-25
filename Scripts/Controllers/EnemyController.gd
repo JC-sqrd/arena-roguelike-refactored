@@ -59,18 +59,18 @@ func _ready() -> void:
 	health_bar_renderer.initialize(enemy_entity.health_manager, self)
 	
 	_target = PlayerServer.main_player
-	
-	
 	pass
 
 
 func _on_health_depleted():
 	velocity = Vector2.ZERO
 	active = false
+	area_controller.free_area()
 	await get_tree().create_timer(0.5).timeout
 	area_controller.active = false
 	EnemyServer.to_free(_id)
 	#queue_free()
+	
 	pass
 
 func _physics_process(delta: float) -> void:

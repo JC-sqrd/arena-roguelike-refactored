@@ -1,18 +1,21 @@
 class_name DelayHitbox extends HitBox
 
-
-@export var free_delay : float = 1
+@export var free_at : float = 1
+@export var delay : float = 1
 var area_hits : Array[Area2D]
 
 func _ready() -> void:
+	get_tree().create_timer(free_at).timeout.connect(remove_hitbox)
+	await get_tree().create_timer(delay).timeout
 	
-	await get_tree().create_timer(free_delay).timeout
+	#area_hits = get_overlapping_areas()
 	
-	area_hits = get_overlapping_areas()
-	
-	for hit in area_hits:
-		for effect in effects:
-			EffectServer.receive_effect(hit.get_rid(), effect, context)
-	
+	query_hitbox()
+	#for hit in area_hits:
+		#for effect in effects:
+			#EffectServer.receive_effect(hit.get_rid(), effect, context)
+	pass
+
+func remove_hitbox():
 	queue_free()
 	pass

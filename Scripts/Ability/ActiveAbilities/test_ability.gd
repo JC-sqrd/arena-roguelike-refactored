@@ -16,27 +16,27 @@ func initialize(caster : Entity):
 	pass
 
 func start():
-	#hitbox = hitbox_scene.instantiate() as DelayHitbox
-	#hitbox.effects = [damage_effect.build_effect(ability_context)]
-	#hitbox.context = ability_context
-	#hitbox.global_position = caster.action_point.global_position
-	#hitbox.collision_mask = abiltiy_coll_mask
-	#hitbox.initialize()
+	hitbox = hitbox_scene.instantiate() as DelayHitbox
+	hitbox.effects = [damage_effect.build_effect(ability_context)]
+	hitbox.context = ability_context
+	hitbox.global_position = caster.action_point.global_position
+	hitbox.collision_mask = abiltiy_coll_mask
+	hitbox.initialize()
 	execute()
 	pass
 
 func execute():
-	#ArenaServer.active_arena.add_child(hitbox)
-	#hitbox.look_at(hitbox.get_global_mouse_position())
+	ArenaServer.active_arena.add_child(hitbox)
+	hitbox.look_at(hitbox.get_global_mouse_position())
 	
-	for i in range(10):
+	for i in range(0):
 		
 		#projectile_action.shoot_at_mosue = false
 		#projectile_action.look_at_mouse = false
 		#var rand_dir : Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 		#projectile_action.projectile_angle = rand_dir.angle()
 		#projectile_action.projectile_direction = rand_dir.normalized()
-		projectile_action.do(caster, self)
+		#projectile_action.do(caster, self)
 		
 		#var projectile : Projectile = projectile_template.build_projectile()
 		#var mouse_pos : Vector2 = caster.entity_node.get_global_mouse_position() - caster.entity_node.global_position 

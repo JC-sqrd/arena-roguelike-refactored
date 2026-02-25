@@ -36,4 +36,5 @@ func to_free(rid : RID):
 	PhysicsServer2D.area_set_collision_layer(rid, 0)
 	PhysicsServer2D.area_set_collision_mask(rid, 0)
 	PhysicsServer2D.area_set_monitorable(rid, false)
+	
 	pass
