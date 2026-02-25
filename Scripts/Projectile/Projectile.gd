@@ -26,10 +26,13 @@ var angle : float = 0
 var active : bool = true
 
 var _lifetime_counter : float = 0
+var _pierce_count : int = 0
 
 var movement : ProjectileMovement
 var effects : Array[Effect]
 var context : Dictionary[StringName, Variant]
+
+var hit_log : Array[RID]
 
 func process_projectile(delta : float):
 	
@@ -58,12 +61,21 @@ func draw_projectile():
 	pass
 
 func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, instance_aid : int, area_shape_idx : int, self_shape_idx : int):
+	
+	if hit_log.has(area_rid):
+		hit_log.erase(area_rid)
+		return
+		
 	for effect in effects:
 		EffectServer.receive_effect(area_rid, effect, context)
 	
-	active = false
-	ProjectileServer.to_free(projectile_rid)
-	#free_projectile()
+	hit_log.append(area_rid)
+	
+	if _pierce_count >= pierce:
+		active = false
+		ProjectileServer.to_free(projectile_rid)
+	
+	_pierce_count -= 1
 	pass
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):

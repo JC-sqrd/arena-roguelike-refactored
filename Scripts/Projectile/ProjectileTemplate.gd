@@ -18,6 +18,8 @@ func build_projectile() -> Projectile:
 	
 	projectile.lifetime = lifetime
 	
+	projectile.pierce = pierce
+	
 	projectile.speed = speed
 	
 	projectile.movement = ProjectileMovement.new()

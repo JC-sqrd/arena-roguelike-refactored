@@ -69,7 +69,8 @@ func _on_health_depleted():
 	velocity = Vector2.ZERO
 	active = false
 	await get_tree().create_timer(0.5).timeout
-	queue_free()
+	EnemyServer.to_free(_id)
+	#queue_free()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -183,5 +184,5 @@ func get_dist_to_screen() -> float:
 	return dx+dy
 
 func _exit_tree() -> void:
-	EnemyServer.free_enemy(_id)
+	EnemyServer.to_free(_id)
 	EnemyServer.free_from_cell(_curr_cell_coords, self)

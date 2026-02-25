@@ -7,12 +7,26 @@ var active_enemies : Dictionary[int, EnemyController]
 
 var active_cells : Dictionary[Vector2i, EnemyCellBucket]
 
+var free_queue : Array[int]
 
+var _keys : Array[int]
 
 func _physics_process(delta: float) -> void:
-	for enemy in active_enemies:
-		var controller = active_enemies.get(enemy)
-		if controller:
+	
+	for enemy in free_queue:
+		if active_enemies.has(enemy):
+			var controller : EnemyController = active_enemies.get(enemy)
+			controller.queue_free()
+			free_enemy(enemy)
+		free_queue.erase(enemy)
+		pass
+	
+	_keys.clear()
+	_keys = active_enemies.keys()
+	
+	for key in _keys:
+		if active_enemies.has(key):
+			var controller : EnemyController = active_enemies.get(key)
 			controller.update_cell_coords(delta)
 			controller.update_position(delta)
 	pass
@@ -67,3 +81,6 @@ func get_active_enemies() -> int:
 func free_enemy(id : int):
 	active_enemies.erase(id)
 	pass
+
+func to_free(id : int):
+	free_queue.append(id)
