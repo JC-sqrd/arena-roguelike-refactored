@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="12_2upka"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="13_ytdn0"]
 [ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="15_ukqmv"]
+[ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="16_l5mrb"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="17_2upka"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="17_218yx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ukqmv"]
 radius = 32.0
@@ -76,14 +79,30 @@ script = ExtResource("13_ytdn0")
 flat_mutator_templates = Array[ExtResource("9_ukqmv")]([SubResource("Resource_t0f8w")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
-[node name="NormalEnemy" type="Area2D" unique_id=298332268 node_paths=PackedStringArray("enemy_entity", "attack_controller", "health_bar_renderer")]
-collision_layer = 4
-collision_mask = 2
+[sub_resource type="Resource" id="Resource_ytdn0"]
+script = ExtResource("17_2upka")
+radius = 32.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_2upka"]
+script = ExtResource("17_218yx")
+monitorable = true
+area_shape = SubResource("Resource_ytdn0")
+area_coll_layer = 4
+area_coll_mask = 2
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[node name="NormalEnemy" type="Area2D" unique_id=298332268 node_paths=PackedStringArray("enemy_entity", "attack_controller", "area_controller", "health_bar_renderer")]
+collision_layer = 0
+collision_mask = 0
 input_pickable = false
+monitoring = false
+monitorable = false
 script = ExtResource("1_jxxdc")
 enemy_entity = NodePath("Entity")
 target_distance_threshold = 30.0
 attack_controller = NodePath("EnemyAttackController")
+area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
 
 [node name="EnemyFront" type="Sprite2D" parent="." unique_id=63442275]
@@ -93,6 +112,7 @@ texture = ExtResource("6_ldo6u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24793440]
 position = Vector2(0, 17)
 shape = SubResource("CircleShape2D_ukqmv")
+disabled = true
 
 [node name="Entity" type="Node" parent="." unique_id=1096073123 node_paths=PackedStringArray("stats")]
 script = ExtResource("2_gsyxb")
@@ -121,3 +141,8 @@ metadata/_custom_type_script = "uid://d2m8vf2tidody"
 script = ExtResource("15_ukqmv")
 position_offset = Vector2(-50, -60)
 metadata/_custom_type_script = "uid://3qp0ggpyep3b"
+
+[node name="AreaController" type="Node" parent="." unique_id=934294519]
+script = ExtResource("16_l5mrb")
+area_template = SubResource("Resource_2upka")
+metadata/_custom_type_script = "uid://btw2yykugf86t"

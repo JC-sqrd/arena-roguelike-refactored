@@ -23,6 +23,7 @@ EnemyServer="*uid://snbumne2firu"
 RenderServer="*uid://ceceg52yc7xpo"
 ArenaServer="*uid://dxyv02hjovlds"
 ProjectileServer="*uid://brx6yvm38g2rw"
+AreaServer="*uid://d3li0gsdbcc7h"
 
 [file_customization]
 

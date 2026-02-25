@@ -3,6 +3,7 @@ class_name EnemyController extends Area2D
 @export var enemy_entity : Entity
 @export var target_distance_threshold : float = 125
 @export var attack_controller : EnemyAttackController
+@export var area_controller : AreaController
 @export var health_bar_renderer : HealthBar
 
 #Optimization
@@ -46,10 +47,14 @@ func _ready() -> void:
 	EnemyServer.register_enemy(_id, self)
 	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
 	
+	area_controller.initialize(self)
+	area_controller.set_body_enter_callback(_on_body_entered)
+	
 	body_entered.connect(_on_body_entered)
 	
 	
-	enemy_entity.initalize(get_rid(), self)
+	#enemy_entity.initalize(get_rid(), self)
+	enemy_entity.initalize(area_controller.area.area_rid, self)
 	enemy_entity.health_manager.health_depleted.connect(_on_health_depleted)
 	
 	move_speed_stat = enemy_entity.stats.get_stat("move_speed")
@@ -133,9 +138,13 @@ func update_cell_coords(delta : float):
 		pass
 	pass
 
-func _on_body_entered(body : Node2D):
-	overlapped_bodies.append(body)
-	attack_controller.activate(body.get_rid())
+#func _on_body_entered(body : Node2D):
+	#overlapped_bodies.append(body)
+	#attack_controller.activate(body.get_rid())
+	#pass
+
+func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
+	print("Body entered area")
 	pass
 
 func _on_body_exited(body : Node2D):
@@ -182,6 +191,10 @@ func get_dist_to_screen() -> float:
 	var dy : float = max(screen_min.y - global_position.y, 0, global_position.y - screen_max.y)
 	
 	return dx+dy
+
+func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, instance_aid : int, area_shape_idx : int, self_shape_idx : int):
+	
+	pass
 
 func _exit_tree() -> void:
 	EnemyServer.to_free(_id)
