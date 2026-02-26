@@ -10,4 +10,6 @@ func build_effect(context : Dictionary[StringName, Variant]) -> Effect:
 	var modifiers : Array[StatModifier]
 	for template : StatModifierTemplate in modifier_templates:
 		modifiers.append(template.build_modifier(context))
-	return DurationalEffect.new(modifiers)
+	var effect : DurationalEffect = DurationalEffect.new(modifiers)
+	effect.tags = effect_tags
+	return 

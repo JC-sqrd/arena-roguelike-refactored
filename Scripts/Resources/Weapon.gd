@@ -3,6 +3,7 @@ class_name Weapon extends Equipment
 
 @export var effect_templates : Array[EffectTemplate]
 
+var wielder : Entity
 var wielder_stats : Stats
 
 var _weapon_stats : Stats

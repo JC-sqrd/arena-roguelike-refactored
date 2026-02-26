@@ -14,6 +14,7 @@ var melee_node : MeleeController
 
 func equip(context : EquipContext):
 	
+	wielder = context.wielder
 	wielder_stats = context.wielder_stats
 	
 	#Instantiate melee weapon node and set its attack strategy
@@ -50,6 +51,7 @@ func unequip():
 
 func generate_effect_context(weapon_stats : Stats) -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant]
+	context["source"] = wielder
 	context["wielder_stats"] = wielder_stats
 	context["weapon_stats"] = weapon_stats
 	return context

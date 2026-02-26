@@ -1,5 +1,13 @@
 class_name Stats extends Node
 
+enum DefinedStats {
+	current_health,
+	max_health, 
+	move_speed,
+	melee_damage,
+	ability_damage
+	}
+
 @export var stats_template : StatsTemplate
 @export var tags : Array[StringName]
 var stat_dict : Dictionary[StringName, Stat]

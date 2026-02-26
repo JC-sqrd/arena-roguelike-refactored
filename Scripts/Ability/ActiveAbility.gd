@@ -21,6 +21,7 @@ func end():
 
 func generate_ability_context() -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant] = {}
+	context["source"] = caster
 	context["caster"] = caster
 	context["caster_stats"] = caster.stats
 	return context

@@ -67,7 +67,6 @@ metadata/_custom_type_script = "uid://dydu23koa8oxk"
 [sub_resource type="Resource" id="Resource_t0f8w"]
 script = ExtResource("9_ukqmv")
 mode = -1
-stat_id = &"current_health"
 value_provider_template = SubResource("Resource_kfoqm")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 

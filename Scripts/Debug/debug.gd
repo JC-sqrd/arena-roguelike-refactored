@@ -9,13 +9,13 @@ func _ready() -> void:
 	var max_y : float =  - ((8000.0) / 2)
 	ArenaServer.active_arena = self
 	
-	for i in range(randi_range(200, 400)):
+	for i in range(randi_range(500, 1000)):
 		spawn_enemy()
-		if EnemyServer.active_enemies.size() >= 500:
+		if EnemyServer.active_enemies.size() >= 1500:
 			break
 		pass
 	
-	get_tree().create_timer(randi_range(30, 60)).timeout.connect(spawn_horde)
+	#get_tree().create_timer(randi_range(30, 60)).timeout.connect(spawn_horde)
 	pass
 
 
@@ -42,7 +42,7 @@ func spawn_enemy():
 func spawn_horde():
 	
 	for i in range(randi_range(50, 150)):
-		if EnemyServer.active_enemies.size() >= 500:
+		if EnemyServer.active_enemies.size() >= 1500:
 			break
 		spawn_enemy()
 		pass

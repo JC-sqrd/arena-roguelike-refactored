@@ -9,10 +9,12 @@ class_name EquipmentManager extends Node
 @export var main_weapon_slot : EquipSlot
 @export var attack_input_listener : AttackInputListener
 
+var wielder : Entity
 var stats : Stats
 
-func initialize(stats : Stats):
-	self.stats = stats
+func initialize(wielder : Entity):
+	self.stats = wielder.stats
+	self.wielder = wielder
 	
 	attack_input_listener.initialize(stats)
 	
@@ -23,6 +25,7 @@ func equip_weapon(equipment : Weapon):
 	var equip_context : EquipContext = EquipContext.new()
 	
 	equip_context.wielder_stats = stats
+	equip_context.wielder = wielder
 	equip_context.hold_anchor = weapon_hold_pos
 	
 	main_weapon_slot.equip(equipment, equip_context)

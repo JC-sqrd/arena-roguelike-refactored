@@ -6,6 +6,8 @@ var modifiers : Array[StatModifier]
 var applied_tags : Array[StringName]
 var block_tags : Array[StringName]
 
+var tags : Array[StringName]
+
 func apply_effect(stats : Stats, context : Dictionary = {}):
 	pass
 

@@ -91,6 +91,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(1.2665124, 1.2665124)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Area2D/CollisionShape2D/BlueSword:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_lmb0f"]
 length = 0.25000834
@@ -178,6 +190,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(1.2665124, 1.2665124), Vector2(1.8877977, 3.125005), Vector2(1.8877977, 3.125005), Vector2(0.8230717, 3.2260568)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Area2D/CollisionShape2D/BlueSword:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.08726612, 0.16547632, 0.25000834),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0.7058824, 1), Color(0, 1, 0.7058824, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_abf18"]

@@ -6,5 +6,5 @@ class_name PlayerEntity extends Entity
 
 func initalize(rid : RID, node : Node2D):
 	super(rid, node)
-	equipment_manager.initialize(stats)
+	equipment_manager.initialize(self)
 	pass
