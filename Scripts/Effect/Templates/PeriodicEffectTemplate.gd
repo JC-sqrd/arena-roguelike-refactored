@@ -10,5 +10,6 @@ func build_effect(context : Dictionary[StringName, Variant]) -> Effect:
 	for template : StatModifierTemplate in modifier_templates:
 		modifiers.append(template.build_modifier(context))
 	var effect : PeriodicEffect = PeriodicEffect.new(modifiers)
-	effect.tags = effect_tags
+	effect.effect_context = context
+	effect.effect_events = effect_event_templates
 	return 

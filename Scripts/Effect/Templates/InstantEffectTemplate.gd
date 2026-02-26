@@ -11,7 +11,8 @@ func build_effect(context : Dictionary[StringName, Variant]) -> Effect:
 	#for template : StatModifierTemplate in modifier_templates:
 	#	modifiers.append(template.build_modifier(context))
 	var instant_effect : InstantEffect = InstantEffect.new(mutators)
+	instant_effect.effect_context = context
 	instant_effect.applied_tags = applied_tags
 	instant_effect.block_tags = block_tags
-	instant_effect.tags = effect_tags
+	instant_effect.effect_events = effect_event_templates
 	return instant_effect

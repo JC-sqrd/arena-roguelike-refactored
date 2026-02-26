@@ -1,7 +1,12 @@
 extends Node
 
-var effect_listeners : Dictionary[RID, EffectListener]
+enum EffectEventTag {
+	none,
+	damage,
+	lifesteal
+}
 
+var effect_listeners : Dictionary[RID, EffectListener]
 
 
 func register_effect_listener(rid : RID, effect_listener : EffectListener):

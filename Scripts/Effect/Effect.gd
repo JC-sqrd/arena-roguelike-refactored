@@ -6,9 +6,11 @@ var modifiers : Array[StatModifier]
 var applied_tags : Array[StringName]
 var block_tags : Array[StringName]
 
-var tags : Array[StringName]
+var effect_events : Array[EffectEventTemplate]
 
-func apply_effect(stats : Stats, context : Dictionary = {}):
+var effect_context : Dictionary[StringName, Variant]
+
+func apply_effect(stats : Stats, context : Dictionary[StringName, Variant] = {}):
 	pass
 
 func add_modifier(modifier : StatModifier):

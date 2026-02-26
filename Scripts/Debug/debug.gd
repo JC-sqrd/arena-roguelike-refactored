@@ -2,18 +2,19 @@ extends Node2D
 
 const NORMAL_ENEMY = preload("uid://dkmv5cgdq0wh3")
 
-
-
 func _ready() -> void:
 	var max_x : float = - ((8000.0) /2)
 	var max_y : float =  - ((8000.0) / 2)
 	ArenaServer.active_arena = self
 	
-	for i in range(randi_range(500, 1000)):
-		spawn_enemy()
-		if EnemyServer.active_enemies.size() >= 1500:
-			break
-		pass
+	
+	spawn_enemy()
+	
+	#for i in range(randi_range(500, 1000)):
+		#spawn_enemy()
+		#if EnemyServer.active_enemies.size() >= 1500:
+			#break
+		#pass
 	
 	#get_tree().create_timer(randi_range(30, 60)).timeout.connect(spawn_horde)
 	pass
