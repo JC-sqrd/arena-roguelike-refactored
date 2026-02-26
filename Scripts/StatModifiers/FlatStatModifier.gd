@@ -11,7 +11,7 @@ func _init(stat_id : StringName, value_provider : ValueProvider, mode : Mode):
 	self.mode = mode
 	pass
 
-func apply_modifier(stat : Stat, context : Dictionary = {}):
+func apply_modifier(stat : Stat, context : Dictionary[StringName, Variant] = {}):
 	_value = value_provider.get_value(context)
 	stat.add(_value * mode)
 	pass

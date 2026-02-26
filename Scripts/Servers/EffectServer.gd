@@ -20,7 +20,9 @@ func free_rid(rid : RID):
 func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,Variant]):
 	var effect_listener : EffectListener = effect_listeners.get(rid)
 	if effect_listener:
-		effect_listener.receive_effect(effect, context)
+		effect_listener.receive_effect(effect)
+		for event_template in effect.effect_events:
+			event_template.build_effect_event(effect)
 		return
 	printerr("No registered effect listener for: " + str(rid))
 	return

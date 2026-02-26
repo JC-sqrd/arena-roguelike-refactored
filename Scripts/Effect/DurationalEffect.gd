@@ -8,7 +8,7 @@ func _init(modifiers : Array[StatModifier]):
 	self.modifiers = modifiers
 	pass
 
-func apply_effect(stats : Stats, context : Dictionary = {}):
+func apply_effect(stats : Stats):
 	for modifier in modifiers:
 		if stats.has(modifier.stat_id):
 			modifier.apply_modifier(stats.get_stat(modifier.stat_id))

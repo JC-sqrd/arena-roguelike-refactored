@@ -8,7 +8,7 @@ func _init(stat_id : StringName, value_provider : ValueProvider):
 	pass
 	
 
-func apply_modifier(stat : Stat, context : Dictionary = {}):
+func apply_modifier(stat : Stat, context : Dictionary[StringName, Variant] = {}):
 	_value = value_provider.get_value()
 	stat.add_multiplier(_value)
 	pass

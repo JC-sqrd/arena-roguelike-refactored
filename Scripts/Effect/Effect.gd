@@ -10,7 +10,7 @@ var effect_events : Array[EffectEventTemplate]
 
 var effect_context : Dictionary[StringName, Variant]
 
-func apply_effect(stats : Stats, context : Dictionary[StringName, Variant] = {}):
+func apply_effect(stats : Stats):
 	pass
 
 func add_modifier(modifier : StatModifier):
