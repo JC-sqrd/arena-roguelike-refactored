@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="StatsTemplate" format=3 uid="uid://cte3qnacw8jc"]
+
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="1_wpcxo"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="2_iuupi"]
+
+[sub_resource type="Resource" id="Resource_thqdd"]
+script = ExtResource("2_iuupi")
+name = "Max Health"
+stat_id = &"max_health"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_wq74i"]
+script = ExtResource("2_iuupi")
+name = "Health"
+stat_id = &"current_health"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_ldo6u"]
+script = ExtResource("2_iuupi")
+name = "Move Speed"
+stat_id = &"move_speed"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_p51cc"]
+script = ExtResource("2_iuupi")
+name = "Attack Damage"
+stat_id = &"attack_damage"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_ukqmv"]
+script = ExtResource("2_iuupi")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+value = 2.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[resource]
+script = ExtResource("1_wpcxo")
+stat_templates = Array[ExtResource("2_iuupi")]([SubResource("Resource_thqdd"), SubResource("Resource_wq74i"), SubResource("Resource_ldo6u"), SubResource("Resource_p51cc"), SubResource("Resource_ukqmv")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"

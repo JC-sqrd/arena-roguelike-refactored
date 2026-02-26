@@ -1,6 +1,5 @@
 class_name MultiplierStatModifier extends StatModifier
 
-var _value : float = 0
 
 func _init(stat_id : StringName, value_provider : ValueProvider):
 	self.stat_id = stat_id

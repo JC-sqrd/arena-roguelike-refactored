@@ -3,7 +3,6 @@ class_name FlatStatModifier extends StatModifier
 enum Mode {ADD = 1, SUBTRACT = -1}
 @export var mode : Mode = Mode.ADD
 
-var _value : float
 
 func _init(stat_id : StringName, value_provider : ValueProvider, mode : Mode):
 	self.stat_id = stat_id

@@ -89,7 +89,7 @@ func query_hitbox():
 			query.collision_mask = melee_hitbox.collision_mask
 			query.collide_with_areas = true
 				
-			var results = space_state.intersect_shape(query)
+			var results = space_state.intersect_shape(query, 500)
 				
 			for result in results:
 				hits[result.rid] = true

@@ -8,6 +8,5 @@ func build_effect_event(effect : Effect) -> DamageEffectEvent:
 			damage_event.damage_amount += mutator.get_value()
 			pass
 		pass
-	print("Damage Effect Event Total Damage: " + str(damage_event.damage_amount) )
 	return damage_event
 	

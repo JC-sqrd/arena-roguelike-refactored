@@ -19,7 +19,7 @@ func start():
 	hitbox = hitbox_scene.instantiate() as DelayHitbox
 	hitbox.effects = [damage_effect.build_effect(ability_context)]
 	hitbox.context = ability_context
-	hitbox.global_position = caster.action_point.global_position
+	hitbox.global_position = caster.action_point
 	hitbox.collision_mask = abiltiy_coll_mask
 	hitbox.initialize()
 	execute()

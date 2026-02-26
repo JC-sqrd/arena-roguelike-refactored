@@ -1,10 +1,10 @@
 class_name PlayerEntity extends Entity
 
-@export var equipment_manager : EquipmentManager
+
+var equipment_manager : EquipmentManager
 
 
-
-func initalize(rid : RID, node : Node2D):
-	super(rid, node)
+func initalize(rid : RID):
+	super(rid)
 	equipment_manager.initialize(self)
 	pass

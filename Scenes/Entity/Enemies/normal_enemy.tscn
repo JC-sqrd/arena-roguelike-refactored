@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://dkmv5cgdq0wh3"]
 
 [ext_resource type="Script" uid="uid://knv07avm0ire" path="res://Scripts/Controllers/EnemyController.gd" id="1_jxxdc"]
-[ext_resource type="Script" uid="uid://b61n76vobjag3" path="res://Scripts/Entity/Entity.gd" id="2_gsyxb"]
-[ext_resource type="Script" uid="uid://bwluoofyu0fhe" path="res://Scripts/Stat/Stats.gd" id="3_1gyln"]
-[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_gkus2"]
-[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="5_ldo6u"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="5_218yx"]
 [ext_resource type="Texture2D" uid="uid://ypp3n62tea25" path="res://Placeholders/Enemy_Front.png" id="6_ldo6u"]
 [ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="7_thqdd"]
 [ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="7_wq74i"]
@@ -15,48 +12,12 @@
 [ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="12_2upka"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="13_ytdn0"]
 [ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="15_ukqmv"]
+[ext_resource type="Script" uid="uid://mhvoa3j15n4q" path="res://Scripts/Entity/EntityNode.gd" id="16_2upka"]
 [ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="16_l5mrb"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="17_2upka"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="17_218yx"]
-
-[sub_resource type="Resource" id="Resource_thqdd"]
-script = ExtResource("5_ldo6u")
-name = "Max Health"
-stat_id = &"max_health"
-value = 100.0
-metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
-
-[sub_resource type="Resource" id="Resource_wq74i"]
-script = ExtResource("5_ldo6u")
-name = "Health"
-stat_id = &"current_health"
-metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
-
-[sub_resource type="Resource" id="Resource_ldo6u"]
-script = ExtResource("5_ldo6u")
-name = "Move Speed"
-stat_id = &"move_speed"
-value = 100.0
-metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
-
-[sub_resource type="Resource" id="Resource_p51cc"]
-script = ExtResource("5_ldo6u")
-name = "Attack Damage"
-stat_id = &"attack_damage"
-value = 10.0
-metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
-
-[sub_resource type="Resource" id="Resource_ukqmv"]
-script = ExtResource("5_ldo6u")
-name = "Attack Speed"
-stat_id = &"attack_speed"
-value = 2.0
-metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
-
-[sub_resource type="Resource" id="Resource_x2erd"]
-script = ExtResource("4_gkus2")
-stat_templates = Array[ExtResource("5_ldo6u")]([SubResource("Resource_thqdd"), SubResource("Resource_wq74i"), SubResource("Resource_ldo6u"), SubResource("Resource_p51cc"), SubResource("Resource_ukqmv")])
-metadata/_custom_type_script = "uid://cdquhx3qorgp1"
+[ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="17_ytdn0"]
+[ext_resource type="Resource" uid="uid://cte3qnacw8jc" path="res://Resources/normal_enemy_stats_template.tres" id="18_2upka"]
 
 [sub_resource type="Resource" id="Resource_kfoqm"]
 script = ExtResource("12_2upka")
@@ -90,7 +51,7 @@ metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
 [node name="NormalEnemy" type="Node2D" unique_id=1528450500 node_paths=PackedStringArray("enemy_entity", "attack_controller", "area_controller", "health_bar_renderer")]
 script = ExtResource("1_jxxdc")
-enemy_entity = NodePath("Entity")
+enemy_entity = NodePath("EntityNode")
 target_distance_threshold = 30.0
 attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
@@ -99,16 +60,6 @@ health_bar_renderer = NodePath("HealthBar")
 [node name="EnemyFront" type="Sprite2D" parent="." unique_id=63442275]
 texture_filter = 1
 texture = ExtResource("6_ldo6u")
-
-[node name="Entity" type="Node" parent="." unique_id=1096073123 node_paths=PackedStringArray("stats")]
-script = ExtResource("2_gsyxb")
-stats = NodePath("Stats")
-metadata/_custom_type_script = "uid://b61n76vobjag3"
-
-[node name="Stats" type="Node" parent="Entity" unique_id=428239543]
-script = ExtResource("3_1gyln")
-stats_template = SubResource("Resource_x2erd")
-metadata/_custom_type_script = "uid://bwluoofyu0fhe"
 
 [node name="EnemyAttackController" type="Node" parent="." unique_id=626775941 node_paths=PackedStringArray("attack_execute", "attack_timer")]
 script = ExtResource("7_wq74i")
@@ -133,3 +84,14 @@ position = Vector2(0, 15)
 script = ExtResource("16_l5mrb")
 area_template = SubResource("Resource_2upka")
 metadata/_custom_type_script = "uid://btw2yykugf86t"
+
+[node name="EntityNode" type="Node" parent="." unique_id=1630870483 node_paths=PackedStringArray("stats_node", "action_point")]
+script = ExtResource("16_2upka")
+stats_node = NodePath("StatsNode")
+action_point = NodePath("..")
+metadata/_custom_type_script = "uid://mhvoa3j15n4q"
+
+[node name="StatsNode" type="Node" parent="EntityNode" unique_id=2054592758]
+script = ExtResource("17_ytdn0")
+stats_template = ExtResource("18_2upka")
+metadata/_custom_type_script = "uid://chi8el32v5eh0"

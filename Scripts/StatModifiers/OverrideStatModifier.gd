@@ -1,6 +1,5 @@
 class_name OverrideStatModifier extends StatModifier
 
-var _value : float = 0
 var old_value : float = 0
 
 func _init(stat_id : StringName, value_provider : ValueProvider):

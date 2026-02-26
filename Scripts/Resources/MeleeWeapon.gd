@@ -24,7 +24,7 @@ func equip(context : EquipContext):
 	context.hold_anchor.add_child(melee_node)
 	
 	_weapon_stats = generate_weapon_stats() 
-	melee_node.add_child(_weapon_stats)
+	melee_node.melee_stats = _weapon_stats
 	
 	_weapon_stats.initialize()
 	

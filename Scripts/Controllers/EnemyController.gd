@@ -1,6 +1,6 @@
 class_name EnemyController extends Node2D
 
-@export var enemy_entity : Entity
+@export var enemy_entity : EntityNode
 @export var target_distance_threshold : float = 125
 @export var attack_controller : EnemyAttackController
 @export var area_controller : AreaController
@@ -49,14 +49,14 @@ func _ready() -> void:
 	area_controller.set_body_enter_callback(_on_body_entered)
 	
 	#enemy_entity.initalize(get_rid(), self)
-	enemy_entity.initalize(area_controller.area.area_rid, self)
-	enemy_entity.health_manager.health_depleted.connect(_on_health_depleted)
+	enemy_entity.initialize(area_controller.area.area_rid)
+	enemy_entity.entity.health_manager.health_depleted.connect(_on_health_depleted)
 	
-	move_speed_stat = enemy_entity.stats.get_stat("move_speed")
+	move_speed_stat = enemy_entity.entity.stats.get_stat("move_speed")
 	
-	attack_controller.initialize(enemy_entity.stats)
+	attack_controller.initialize(enemy_entity.entity.stats)
 	
-	health_bar_renderer.initialize(enemy_entity.health_manager, self)
+	health_bar_renderer.initialize(enemy_entity.entity.health_manager, self)
 	
 	_target = PlayerServer.main_player
 	pass

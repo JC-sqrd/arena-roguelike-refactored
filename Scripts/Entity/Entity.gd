@@ -1,8 +1,7 @@
-class_name Entity extends Node
+class_name Entity extends RefCounted
 
-
-@export var stats : Stats
-@export var action_point : Node2D
+var stats : Stats
+var action_point : Vector2
 
 var effect_listener : EffectListener
 var health_manager : HealthManager
@@ -14,9 +13,11 @@ var can_cast : bool = true
 var entity_rid : RID
 var entity_node : Node2D
 
-func initalize(rid : RID, node : Node2D):
+var global_position : Vector2
+
+func initalize(rid : RID):
 	entity_rid = rid
-	entity_node = node
+	#entity_node = node
 	stats.initialize()
 	
 	effect_listener = EffectListener.new(stats)

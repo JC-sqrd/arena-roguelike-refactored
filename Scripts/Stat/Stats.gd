@@ -1,4 +1,4 @@
-class_name Stats extends Node
+class_name Stats extends RefCounted
 
 enum DefinedStats {
 	current_health,

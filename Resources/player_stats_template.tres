@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="StatsTemplate" format=3 uid="uid://trpj7hg3rv0u"]
+
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="1_r4w27"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="2_8r4bj"]
+
+[sub_resource type="Resource" id="Resource_72w0c"]
+script = ExtResource("2_8r4bj")
+name = "Move Speed"
+stat_id = &"move_speed"
+value = 300.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_f4r5d"]
+script = ExtResource("2_8r4bj")
+name = "Max Health"
+stat_id = &"max_health"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_aysh2"]
+script = ExtResource("2_8r4bj")
+name = "Health"
+stat_id = &"current_health"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_mpqp4"]
+script = ExtResource("2_8r4bj")
+name = "Melee Damage"
+stat_id = &"melee_damage"
+value = 50.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_xpoel"]
+script = ExtResource("2_8r4bj")
+name = "Ability Damage"
+stat_id = &"ability_damage"
+value = 50.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[resource]
+script = ExtResource("1_r4w27")
+stat_templates = Array[ExtResource("2_8r4bj")]([SubResource("Resource_72w0c"), SubResource("Resource_f4r5d"), SubResource("Resource_aysh2"), SubResource("Resource_mpqp4"), SubResource("Resource_xpoel")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
