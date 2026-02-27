@@ -1,2 +1,2 @@
 @abstract
-class_name EffectEvent extends RefCounted
+class_name EffectEvent extends GameEvent
