@@ -15,6 +15,7 @@ func apply_effect(stats : Stats, context : Dictionary = {}):
 			pass
 		else:
 			continue
+	applied_effect.emit()
 	pass
 
 func add_modifier(modifier : StatModifier):

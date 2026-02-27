@@ -1,8 +1,8 @@
 @abstract
-class_name Equipment extends Resource
+class_name Item extends Resource
 
-@export var equipment_name : String
-@export var equipment_id : StringName
+@export var item_name : String
+@export var item_id : StringName
 
 @abstract
 func equip(context : EquipContext)

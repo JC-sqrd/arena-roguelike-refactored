@@ -20,7 +20,7 @@ func equip(context : EquipContext):
 	#Instantiate melee weapon node and set its attack strategy
 	melee_node = weapon_scene.instantiate() as MeleeController
 	melee_node.attack_strategy = attack_strategy
-	melee_node.weapon_id = equipment_id + "_" +str(melee_node.get_instance_id())
+	melee_node.weapon_id = item_id + "_" +str(melee_node.get_instance_id())
 	
 	context.hold_anchor.add_child(melee_node)
 	
@@ -53,6 +53,7 @@ func unequip():
 func generate_effect_context(weapon_stats : Stats) -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant]
 	context["source"] = wielder
+	context["source_stats"] = wielder_stats
 	context["wielder_stats"] = wielder_stats
 	context["weapon_stats"] = weapon_stats
 	return context

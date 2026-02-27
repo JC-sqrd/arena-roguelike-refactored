@@ -19,4 +19,5 @@ func apply_effect(stats : Stats):
 			pass
 		else:
 			continue
+	applied_effect.emit(self)
 	pass

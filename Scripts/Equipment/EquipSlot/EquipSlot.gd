@@ -1,16 +1,16 @@
 class_name EquipSlot extends Resource
 
-@export var equipped_equipment : Equipment
+@export var equipped_equipment : Item
 
 
-func equip(equipment : Equipment, context : EquipContext):
+func equip(equipment : Item, context : EquipContext):
 	equipped_equipment = equipment
-	print("EQUIPPED: " + equipment.equipment_name)
+	print("EQUIPPED: " + equipment.item_name)
 	equipment.equip(context)
 	pass
 
 
-func unequip() -> Equipment:
-	var temp : Equipment = equipped_equipment
+func unequip() -> Item:
+	var temp : Item = equipped_equipment
 	equipped_equipment = null
 	return temp

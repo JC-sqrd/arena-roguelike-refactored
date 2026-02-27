@@ -1,5 +1,5 @@
 @abstract
-class_name Weapon extends Equipment
+class_name Weapon extends Item
 
 @export var effect_templates : Array[EffectTemplate]
 

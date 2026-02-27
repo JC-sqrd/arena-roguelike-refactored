@@ -1,6 +1,6 @@
 class_name EquipmentManager extends Node
 
-@export var equipment_inventory : Array[Equipment]
+@export var equipment_inventory : Array[Item]
 @export var weapon_hold_pos : Node2D
 
 @export var equipped_weapon : Weapon

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bcurpg4x8dyab" path="res://Placeholders/TilePlaceholderDark.png" id="2_mjg4v"]
 [ext_resource type="PackedScene" uid="uid://bs7cobx06wp4e" path="res://Scenes/Entity/PlayerChracter/base_player_character.tscn" id="3_mjg4v"]
 [ext_resource type="PackedScene" uid="uid://dkmv5cgdq0wh3" path="res://Scenes/Entity/Enemies/normal_enemy.tscn" id="4_y11aj"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="6_qimqw"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="7_dhtwe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y11aj"]
 texture = ExtResource("1_34on7")
@@ -147,6 +149,45 @@ tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_y11aj")
 sources/1 = SubResource("TileSetAtlasSource_0b76d")
 
+[sub_resource type="Resource" id="Resource_1fft5"]
+script = ExtResource("7_dhtwe")
+name = "Max Health"
+stat_id = &"max_health"
+value = 10000.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_hq5rx"]
+script = ExtResource("7_dhtwe")
+name = "Health"
+stat_id = &"current_health"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_73tfi"]
+script = ExtResource("7_dhtwe")
+name = "Move Speed"
+stat_id = &"move_speed"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_v23vg"]
+script = ExtResource("7_dhtwe")
+name = "Attack Damage"
+stat_id = &"attack_damage"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_en7hp"]
+script = ExtResource("7_dhtwe")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+value = 2.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_74pca"]
+script = ExtResource("6_qimqw")
+stat_templates = Array[ExtResource("7_dhtwe")]([SubResource("Resource_1fft5"), SubResource("Resource_hq5rx"), SubResource("Resource_73tfi"), SubResource("Resource_v23vg"), SubResource("Resource_en7hp")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
+
 [sub_resource type="Gradient" id="Gradient_mpqp4"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0.12048193, 0.25903615)
@@ -169,5 +210,10 @@ tile_set = SubResource("TileSet_kjypg")
 [node name="NormalEnemy" parent="." unique_id=298332268 instance=ExtResource("4_y11aj")]
 position = Vector2(89, -45)
 
+[node name="StatsNode" parent="NormalEnemy/EntityNode" parent_id_path=PackedInt32Array(298332268, 1630870483) index="0" unique_id=2054592758]
+stats_template = SubResource("Resource_74pca")
+
 [node name="GizmoSprite" type="Sprite2D" parent="." unique_id=1448045331]
 texture = SubResource("GradientTexture2D_0b76d")
+
+[editable path="NormalEnemy"]

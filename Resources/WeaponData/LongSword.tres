@@ -30,5 +30,6 @@ attack_strategy = SubResource("Resource_ianbr")
 weapon_scene = ExtResource("9_rq6sq")
 damage_stat = SubResource("Resource_wpeiu")
 attack_speed_stat = SubResource("Resource_bhunn")
-equipment_name = "Long Sword"
+item_name = "Long Sword"
+item_id = &"long_sword"
 metadata/_custom_type_script = "uid://cje4onngvnlma"

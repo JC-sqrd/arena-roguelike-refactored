@@ -10,6 +10,8 @@ var effect_events : Array[EffectEventTemplate]
 
 var effect_context : Dictionary[StringName, Variant]
 
+signal applied_effect(effect : Effect)
+
 func apply_effect(stats : Stats):
 	pass
 
