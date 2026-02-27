@@ -5,7 +5,7 @@ var melee_hitbox : Area2D
 var melee_context : MeleeAttackExecuteContext
 var successful_queries : Array[RID]
 
-
+signal finished_executing()
 
 func initialize():
 	pass
@@ -27,6 +27,7 @@ func execute(context : AttackExecuteContext):
 func finish_execute():
 	active = false
 	successful_queries.clear()
+	finished_executing.emit()
 	pass
 
 func set_melee_anim_player(melee_anim_player : MeleeAnimationPlayer):

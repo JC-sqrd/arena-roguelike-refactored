@@ -24,10 +24,15 @@ func initialize():
 	
 	attack_execute.set_melee_anim_player(melee_animation_player)
 	attack_execute.set_melee_hitbox(melee_hitbox)
+	attack_execute.finished_executing.connect(_on_attack_finished_executing)
 	pass
 
 func start_attack():
-	
+	execute_attack()
+	attack_start.emit()
+	pass
+
+func execute_attack():
 	if !attack_execute.active:
 		var attack_context : MeleeAttackExecuteContext = MeleeAttackExecuteContext.new()
 	
@@ -37,6 +42,15 @@ func start_attack():
 		attack_context.queries = queries
 	
 		attack_execute.execute(attack_context)
+		attack_executed.emit()
+	pass
+
+func end_attack():
+	attack_end.emit()
+	pass
+
+func _on_attack_finished_executing():
+	end_attack()
 	pass
 
 func _process(delta: float) -> void:
