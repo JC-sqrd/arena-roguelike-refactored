@@ -1,4 +1,4 @@
-class_name MeleeController extends Node2D
+class_name MeleeController extends WeaponController
 
 
 @export var melee_hitbox : Area2D
@@ -7,12 +7,8 @@ class_name MeleeController extends Node2D
 var attack_strategy : AttackStrategy
 var attack_execute : MeleeAttackExecute
 
-var listen_for_input : bool = false
 var executing : bool = false
 
-var effects : Array[Effect]
-var wielder_stats : Stats
-var weapon_stats : Stats
 var effect_context : Dictionary[StringName, Variant]
 
 var melee_stats : Stats
@@ -25,8 +21,6 @@ func initialize():
 	add_child(attack_execute)
 	
 	listen_for_input = true
-	melee_hitbox.area_entered.connect(_on_area_entered)
-	melee_hitbox.area_exited.connect(_on_area_exited)
 	
 	attack_execute.set_melee_anim_player(melee_animation_player)
 	attack_execute.set_melee_hitbox(melee_hitbox)
@@ -62,18 +56,4 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if _input_held:
 		start_attack()
-	pass
-
-func _on_area_entered(area : Area2D):
-	var area_rid : RID = area.get_rid()
-	if !queries.has(area_rid):
-		queries.append(area_rid)
-		pass
-	pass
-
-func _on_area_exited(area : Area2D):
-	var area_rid : RID = area.get_rid()
-	if queries.has(area_rid):
-		queries.erase(area_rid)
-		pass
 	pass

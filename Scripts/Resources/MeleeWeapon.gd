@@ -20,6 +20,7 @@ func equip(context : EquipContext):
 	#Instantiate melee weapon node and set its attack strategy
 	melee_node = weapon_scene.instantiate() as MeleeController
 	melee_node.attack_strategy = attack_strategy
+	melee_node.weapon_id = equipment_id + "_" +str(melee_node.get_instance_id())
 	
 	context.hold_anchor.add_child(melee_node)
 	

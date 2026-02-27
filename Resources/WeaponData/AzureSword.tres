@@ -60,4 +60,5 @@ damage_stat = SubResource("Resource_i5eex")
 attack_speed_stat = SubResource("Resource_acrym")
 effect_templates = Array[ExtResource("1_lwslu")]([SubResource("Resource_hpnyo")])
 equipment_name = "Azure Sword"
+equipment_id = &"azure_sword"
 metadata/_custom_type_script = "uid://cje4onngvnlma"
