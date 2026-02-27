@@ -19,5 +19,11 @@ func add_modifier(modifier : StatModifier):
 func add_mutator(mutator : StatMutator):
 	pass
 
+func invoke_effect_events():
+	for event_template in effect_events:
+		event_template.build_effect_event(self)
+		pass
+	pass
+
 func _to_string() -> String:
 	return "Effect modifiers: " + str(modifiers) + " Effect mutators: " + str(mutators)

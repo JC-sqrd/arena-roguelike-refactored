@@ -62,7 +62,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if _input_held:
 		start_attack()
-	
 	pass
 
 func _on_area_entered(area : Area2D):

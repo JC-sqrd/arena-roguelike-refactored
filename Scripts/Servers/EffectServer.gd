@@ -21,8 +21,9 @@ func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,
 	var effect_listener : EffectListener = effect_listeners.get(rid)
 	if effect_listener:
 		effect_listener.receive_effect(effect)
-		for event_template in effect.effect_events:
-			event_template.build_effect_event(effect).invoke_event()
+		effect.invoke_effect_events()
+		#for event_template in effect.effect_events:
+			#event_template.build_effect_event(effect).invoke_event()
 		return
 	printerr("No registered effect listener for: " + str(rid))
 	return
