@@ -24,6 +24,7 @@ RenderServer="*uid://ceceg52yc7xpo"
 ArenaServer="*uid://dxyv02hjovlds"
 ProjectileServer="*uid://brx6yvm38g2rw"
 AreaServer="*uid://d3li0gsdbcc7h"
+EventServer="*uid://cn1ah3sysqs3u"
 
 [file_customization]
 
