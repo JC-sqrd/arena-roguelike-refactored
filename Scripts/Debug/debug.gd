@@ -10,13 +10,15 @@ func _ready() -> void:
 	
 	spawn_enemy()
 	
-	#for i in range(randi_range(500, 1000)):
-		#spawn_enemy()
-		#if EnemyServer.active_enemies.size() >= 1500:
-			#break
-		#pass
+	var spawn_amount : int = randi_range(500, 1000)
+	print_rich("[color=blue]SPAWN AMOUNT:[/color] " + str(spawn_amount))
+	for i in range(spawn_amount):
+		spawn_enemy()
+		if EnemyServer.active_enemies.size() >= 1000:
+			break
+		pass
 	
-	#get_tree().create_timer(randi_range(30, 60)).timeout.connect(spawn_horde)
+	get_tree().create_timer(randi_range(30, 60)).timeout.connect(spawn_horde)
 	pass
 
 

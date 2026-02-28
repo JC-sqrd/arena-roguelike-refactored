@@ -66,6 +66,7 @@ animations = [{
 [node name="TestAbilityHitbox" type="Area2D" unique_id=222783470]
 collision_layer = 0
 collision_mask = 0
+input_pickable = false
 monitorable = false
 script = ExtResource("1_0x3aj")
 free_at = 0.5

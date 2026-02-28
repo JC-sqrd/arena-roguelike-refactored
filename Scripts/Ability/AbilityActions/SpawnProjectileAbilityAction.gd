@@ -28,7 +28,7 @@ func do(caster : Entity, ability : Ability):
 
 func spawn_projectile(caster : Entity, ability_context : Dictionary[StringName, Variant]):
 	var projectile : Projectile = projectile_template.build_projectile()
-	var mouse_pos : Vector2 = ProjectileServer.get_global_mouse_position() - caster.entity_node.global_position
+	var mouse_pos : Vector2 = ProjectileServer.get_global_mouse_position() - caster.global_position
 	projectile.effects = effects
 	projectile.context = ability_context
 	if look_at_mouse:

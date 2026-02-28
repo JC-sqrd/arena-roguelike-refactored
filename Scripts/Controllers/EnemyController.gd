@@ -106,19 +106,19 @@ func _physics_process(delta: float) -> void:
 func update_position(delta : float):
 	if !active : 
 		return
-	
 	global_position += velocity
 	
 	if _distance_to_target <= target_distance_threshold:
 		velocity = Vector2.ZERO
 		pass
-		
-	#Update velocity and push vector
+	
 	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
 		_dir_to_target = (_target.global_position - global_position).normalized()
 		_distance_to_target = (_target.global_position - global_position).length()
-		velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+		#velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
 		#velocity = _dir_to_target * move_speed_stat.get_value() * delta
+		var steering : Vector2 = _seek_target(_target.global_position) + _arrival(_target.global_position, target_distance_threshold)
+		velocity = steering * delta
 	pass
 
 func update_cell_coords(delta : float):
@@ -134,10 +134,58 @@ func update_cell_coords(delta : float):
 		pass
 	pass
 
-#func _on_body_entered(body : Node2D):
-	#overlapped_bodies.append(body)
-	#attack_controller.activate(body.get_rid())
-	#pass
+func _seek_target(target_pos : Vector2) -> Vector2:
+	var desired_vel : Vector2 = (target_pos - global_position).normalized() * move_speed_stat.get_value()
+	
+	return desired_vel - velocity
+
+func _arrival(target_pos : Vector2, threshold_radius : float) -> Vector2:
+	var target_dir : Vector2 = (target_pos - global_position).normalized()
+	var dist_sq : float = global_position.distance_squared_to(target_pos)
+	var radius_sq : float = threshold_radius ** 2
+	var desired_velocity : Vector2 = target_dir * move_speed_stat.get_value()
+	
+	if dist_sq <= radius_sq:
+		desired_velocity *= (dist_sq / radius_sq)
+		pass
+	return desired_velocity
+
+func _apply_cohesion() -> Vector2:
+	var curr_cell : Vector2i = get_current_cell_coords()
+	var neightbors : Array[EnemyController] = EnemyServer.get_nearby_enemies(curr_cell)
+	
+	var average_position : Vector2 = Vector2.ZERO
+	for neighbor in neightbors:
+		if neighbor == self: continue
+		average_position += neighbor.global_position
+		pass
+	
+	if neightbors.size() > 0:
+		average_position = average_position / neightbors.size()
+		return _seek_target(average_position)
+	
+	return Vector2.ZERO
+
+func _apply_separation(separation_radius : float, separation_force : float) -> Vector2:
+	var push_vector : Vector2 = Vector2.ZERO
+	var curr_cell : Vector2i = get_current_cell_coords()
+	
+	var neighbors : Array[EnemyController] = EnemyServer.get_nearby_enemies(curr_cell)
+	
+	for neighbor in neighbors:
+		if neighbor == self:
+			continue
+		
+		var diff : Vector2 = global_position - neighbor.global_position
+		var dist : float = diff.length()
+		
+		if dist < separation_radius and dist > 0:
+			push_vector += (diff.normalized() / dist)
+			pass
+		
+		if neighbors.size() > 0:
+			push_vector /= neighbors.size()
+	return push_vector * separation_force
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
 	overlapped_bodies.append(body_rid)

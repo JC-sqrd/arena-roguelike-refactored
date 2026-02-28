@@ -34,6 +34,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				set_current_ability(ability_1)
 				pass
 			pass
+	
+	if event is InputEventKey:
+		if event.keycode == KEY_1 and event.pressed:
+			print_rich("[color=lime_green]Pressed 1 [/color]")
+			
+		elif event.keycode == KEY_2 and event.pressed:
+			print_rich("[color=deep_sky_blue]Pressed 2 [/color]")
 
 
 func set_current_ability(ability : ActiveAbility):
