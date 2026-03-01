@@ -25,6 +25,8 @@ ArenaServer="*uid://dxyv02hjovlds"
 ProjectileServer="*uid://brx6yvm38g2rw"
 AreaServer="*uid://d3li0gsdbcc7h"
 EventServer="*uid://cn1ah3sysqs3u"
+GameCanvas="*uid://b28kqfd66l4xv"
+GameServer="*uid://blho4k5fijajq"
 
 [file_customization]
 

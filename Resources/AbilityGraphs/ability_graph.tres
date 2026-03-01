@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AbilityGraph" format=3 uid="uid://6wbbtgql01yt"]
+
+[ext_resource type="Script" uid="uid://j0xukxc6ojgr" path="res://Scripts/AbilityGrid/AbilityGrid.gd" id="1_c04n5"]
+
+[resource]
+script = ExtResource("1_c04n5")
+metadata/_custom_type_script = "uid://j0xukxc6ojgr"

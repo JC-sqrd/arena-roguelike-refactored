@@ -1,0 +1,27 @@
+class_name AbilityGridSlotUI extends Control
+
+
+var grid_coord : Vector2i = Vector2i(0,0)
+
+
+signal slot_hovered(coord : Vector2i)
+signal slot_exited(coord : Vector2i)
+signal slot_clicked(coord : Vector2i)
+
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			slot_clicked.emit(grid_coord)
+			pass
+
+func _on_mouse_entered():
+	slot_hovered.emit(grid_coord)
+	pass
+
+func _on_mouse_exited():
+	slot_exited.emit(grid_coord)
+	pass

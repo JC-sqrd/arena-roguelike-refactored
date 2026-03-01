@@ -3,10 +3,10 @@ extends Node2D
 const NORMAL_ENEMY = preload("uid://dkmv5cgdq0wh3")
 
 func _ready() -> void:
+	
 	var max_x : float = - ((8000.0) /2)
 	var max_y : float =  - ((8000.0) / 2)
 	ArenaServer.active_arena = self
-	
 	
 	spawn_enemy()
 	

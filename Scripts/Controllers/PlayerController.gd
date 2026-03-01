@@ -3,6 +3,8 @@ class_name PlayerController extends CharacterBody2D
 
 @export var player_entity : PlayerEntityNode
 @export var active_ability_controller : ActiveAbilityController
+@export var ability_grid : AbilityGrid
+@export var ability_tile_inventory : AbilityTileInventory
 
 var input_dir : Vector2
 
@@ -15,7 +17,17 @@ func _ready():
 	player_entity.initialize(get_rid())
 	move_speed = player_entity.entity.stats.get_stat("move_speed").get_value()
 	
+	ability_tile_inventory = ability_tile_inventory.duplicate(true)
+	ability_tile_inventory.generate_grid()
+	
+	ability_tile_inventory.initialize()
+	
+	ability_grid = ability_grid.duplicate(true)
+	ability_grid.generate_grid()
+	
 	active_ability_controller.initialize(player_entity.entity)
+	
+	
 	pass
 
 func _process(delta: float) -> void:
