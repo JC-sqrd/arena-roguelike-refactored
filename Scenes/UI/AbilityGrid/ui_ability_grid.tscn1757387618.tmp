@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lf8p3afeubb1" path="res://Scenes/UI/AbilityGrid/AbilityTileInventoryUI/ability_tile_inventory_panel.tscn" id="3_feec0"]
 [ext_resource type="Script" uid="uid://fxe70e5ucsga" path="res://Scripts/AbilityGrid/UI/AbilityGraphUIFSM/AbilityGridUIFSM.gd" id="4_y4sfo"]
 
-[node name="UiAbilityGraph" type="Control" unique_id=1020187136 node_paths=PackedStringArray("ui_fsm")]
+[node name="UiAbilityGraph" type="Control" unique_id=1020187136]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,42 +14,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s7agp")
-ui_fsm = NodePath("AbilityGridUIFSM")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1017418631]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=711269844]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -268.0
-offset_top = -178.5
-offset_right = 268.0
-offset_bottom = 178.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DebugStateLabel" type="Label" parent="VBoxContainer" unique_id=446816886]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "CURRENT STATE"
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=711269844]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1118299904]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1118299904]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AbilityGridPanel" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1131529859 instance=ExtResource("2_c1r0r")]
+[node name="AbilityGridPanel" parent="MarginContainer/HBoxContainer" unique_id=1131529859 instance=ExtResource("2_c1r0r")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AbilityTileInventoryPanel" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=376456563 instance=ExtResource("3_feec0")]
+[node name="AbilityTileInventoryPanel" parent="MarginContainer/HBoxContainer" unique_id=376456563 instance=ExtResource("3_feec0")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -57,12 +46,11 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
-pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("2_jtagy")
 
-[node name="AbilityGridUIFSM" type="Node" parent="." unique_id=1118784499]
+[node name="AbilityGraphUIFSM" type="Node" parent="." unique_id=1118784499]
 script = ExtResource("4_y4sfo")
 metadata/_custom_type_script = "uid://fxe70e5ucsga"
 
-[editable path="VBoxContainer/MarginContainer/HBoxContainer/AbilityGridPanel"]
+[editable path="MarginContainer/HBoxContainer/AbilityGridPanel"]

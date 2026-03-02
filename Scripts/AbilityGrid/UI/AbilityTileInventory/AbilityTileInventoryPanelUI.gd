@@ -3,8 +3,11 @@ class_name AbilityTileInventoryPanelUI extends Node
 @onready var grid_container: GridContainer = %GridContainer
 @onready var texture_layer: Control = %TextureLayer
 
+var tile_rects : Dictionary[AbilityTile, AbilityTileTextureRect]
+
 const _SLOT = preload("uid://dirhqxxxcbmm1")
 const _TILE_RECT = preload("uid://ckttdtqqs6nu2")
+
 
 var slots : Dictionary[Vector2i, AbilityGridSlotUI]
 
@@ -20,14 +23,39 @@ func generate_grid_ui(inventory : AbilityTileInventory):
 		pass
 		
 	for tile in inventory.ability_tiles:
-		var tile_rect : AbilityTileTextureRect = _TILE_RECT.instantiate() as AbilityTileTextureRect
 		var grid_pos : Vector2i = inventory.ability_tiles.get(tile)
-		tile_rect.initialize(tile, grid_pos)
-		texture_layer.add_child(tile_rect)
+		add_tile_rect(tile, grid_pos)
 		pass
 	pass
 
+func get_tile_rect(tile : AbilityTile) -> AbilityTileTextureRect:
+	var tile_rect : AbilityTileTextureRect = tile_rects.get(tile)
+	if tile_rect != null:
+		return tile_rect
+	return null
 
+func pop_tile_rect(tile : AbilityTile) -> AbilityTileTextureRect:
+	var tile_rect : AbilityTileTextureRect = get_tile_rect(tile)
+	if tile_rect != null:
+		tile_rects.erase(tile)
+		texture_layer.remove_child(tile_rect)
+		return tile_rect
+	return null
+
+func add_tile_rect(tile : AbilityTile, grid_pos : Vector2i):
+	var tile_rect : AbilityTileTextureRect = _TILE_RECT.instantiate() as AbilityTileTextureRect
+	tile_rects[tile] = tile_rect
+	tile_rect.initialize(tile, grid_pos)
+	texture_layer.add_child(tile_rect)
+	pass
+
+func remove_tile_rect(tile : AbilityTile):
+	var tile_rect : AbilityTileTextureRect = tile_rects.get(tile)
+	if tile_rect != null:
+		tile_rects.erase(tile)
+		tile_rect.queue_free()
+		pass
+	pass
 
 func clear_grid_ui():
 	for child in grid_container.get_children():

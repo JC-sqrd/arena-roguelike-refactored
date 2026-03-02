@@ -25,6 +25,8 @@ func _ready():
 	ability_grid = ability_grid.duplicate(true)
 	ability_grid.generate_grid()
 	
+	ability_grid.initialize()
+	
 	active_ability_controller.initialize(player_entity.entity)
 	
 	

@@ -24,6 +24,9 @@
 [sub_resource type="Resource" id="Resource_l0a5t"]
 script = ExtResource("2_xpoel")
 size = Vector2i(3, 3)
+initial_ability_tiles = Dictionary[Vector2i, ExtResource("3_8ud0v")]({
+Vector2i(0, 0): ExtResource("4_v3i30")
+})
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
 
 [sub_resource type="Resource" id="Resource_8ud0v"]
