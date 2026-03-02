@@ -4,11 +4,13 @@ class_name PlayerController extends CharacterBody2D
 @export var player_entity : PlayerEntityNode
 @export var active_ability_controller : ActiveAbilityController
 @export var ability_grid : AbilityGrid
-@export var ability_tile_inventory : AbilityTileInventory
+@export var ability_tile_inventory : AbilityGrid
 
 var input_dir : Vector2
 
 var move_speed : float
+
+signal initialized_grids(ability_grid : AbilityGrid, ability_inventory : AbilityGrid)
 
 func _init() -> void:
 	PlayerServer.main_player = self
@@ -27,9 +29,9 @@ func _ready():
 	
 	ability_grid.initialize()
 	
+	initialized_grids.emit(ability_grid, ability_tile_inventory)
+	
 	active_ability_controller.initialize(player_entity.entity)
-	
-	
 	pass
 
 func _process(delta: float) -> void:

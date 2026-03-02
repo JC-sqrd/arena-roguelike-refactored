@@ -1,7 +1,5 @@
-class_name AbilityGrid extends Resource
+class_name AbilityGrid extends Grid
 
-
-@export var size : Vector2i = Vector2i(5,5)
 @export var initial_ability_tiles : Dictionary[Vector2i, AbilityTile]
 
 var grid_coords : Dictionary[Vector2i, AbilityGridSlot]
@@ -11,6 +9,10 @@ var ability_tiles : Dictionary[AbilityTile, Vector2i]
 var initialized : bool = false
 
 signal grid_changed()
+signal grid_generated()
+signal placed_tile(tile : AbilityTile, coord : Vector2i)
+signal removed_tile(tile : AbilityTile, coord : Vector2i)
+
 
 func initialize():
 	for coord in initial_ability_tiles:
@@ -29,6 +31,7 @@ func generate_grid():
 			grid_coords[grid_coord] = AbilityGridSlot.new()
 			pass
 		pass
+	grid_generated.emit()
 	initialized = true
 	pass
 
@@ -38,6 +41,22 @@ func get_tile_on_slot(slot_pos : Vector2i) -> AbilityTile:
 	if !slot:
 		return null 
 	return slot.occupied_by
+
+func can_place(ability_tile : AbilityTile, pos : Vector2i) -> bool:
+	
+	if !grid_coords.has(pos):
+		return false
+	
+	for offset in ability_tile.offsets:
+		var slot_offsset : Vector2i = pos + offset
+		if slot_offsset.x < 0 or slot_offsset.y < 0:
+			return false
+		elif slot_offsset.x >= size.x or slot_offsset.y >= size.y:
+			return false
+		elif grid_coords[slot_offsset].occupied:
+			return false
+		pass
+	return true
 
 func place_tile_on_slot(ability_tile : AbilityTile, grid_pos : Vector2i) -> bool:
 	if !grid_coords.has(grid_pos):
@@ -65,6 +84,7 @@ func place_tile_on_slot(ability_tile : AbilityTile, grid_pos : Vector2i) -> bool
 		pass
 	
 	ability_tiles[ability_tile] = grid_pos
+	placed_tile.emit(ability_tile, grid_pos)
 	return true
 
 func remove_tile_on_slot(grid_pos : Vector2i) -> AbilityTile:
@@ -76,8 +96,10 @@ func remove_tile_on_slot(grid_pos : Vector2i) -> AbilityTile:
 	if !ability_tile:
 		return null
 	
+	var tile_pos : Vector2i = ability_tiles.get(ability_tile)
+	
 	for offset in ability_tile.offsets:
-		var slot_offsset : Vector2i = grid_pos + offset
+		var slot_offsset : Vector2i = tile_pos + offset
 		var slot : AbilityGridSlot = grid_coords.get(slot_offsset)
 		occupied_slots.erase(slot_offsset)
 		slot.occupied = false
@@ -85,4 +107,29 @@ func remove_tile_on_slot(grid_pos : Vector2i) -> AbilityTile:
 		pass
 	
 	ability_tiles.erase(ability_tile)
+	removed_tile.emit(ability_tile, grid_pos)
+	return ability_tile
+
+func pop_tile_on_slot(slot_pos : Vector2i) -> AbilityTile:
+	if !grid_coords.has(slot_pos):
+		return null
+	
+	var ability_tile : AbilityTile = grid_coords[slot_pos].occupied_by
+	
+	if !ability_tile:
+		return null
+	
+	var tile_pos : Vector2i = ability_tiles.get(ability_tile)
+	
+	for offset in ability_tile.offsets:
+		var slot_offsset : Vector2i = tile_pos + offset
+		var slot : AbilityGridSlot = grid_coords.get(slot_offsset)
+		occupied_slots.erase(slot_offsset)
+		slot.occupied = false
+		slot.occupied_by = null
+		pass
+	
+	ability_tiles.erase(ability_tile)
+	
+	removed_tile.emit(ability_tile, tile_pos)
 	return ability_tile

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dpvsfunc5ynbi"]
 
-[ext_resource type="Script" uid="uid://bryxh3umdu5lg" path="res://Scripts/AbilityGrid/UI/AbilityGridUIPanel.gd" id="1_7tk8k"]
-[ext_resource type="PackedScene" uid="uid://dirhqxxxcbmm1" path="res://Scenes/UI/AbilityGrid/ui_ability_grid_slot.tscn" id="2_dwsjy"]
+[ext_resource type="Script" uid="uid://bryxh3umdu5lg" path="res://Scripts/AbilityGrid/UI/AbilityGridUI.gd" id="1_7tk8k"]
 
 [node name="AbilityGraphPanel" type="PanelContainer" unique_id=468543042]
 anchors_preset = 8
@@ -35,33 +34,6 @@ size_flags_vertical = 4
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
-
-[node name="UiAbilityGraphSlot" parent="MarginContainer/GridContainer" unique_id=285005208 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot2" parent="MarginContainer/GridContainer" unique_id=1314338513 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot3" parent="MarginContainer/GridContainer" unique_id=113335196 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot4" parent="MarginContainer/GridContainer" unique_id=830543648 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot5" parent="MarginContainer/GridContainer" unique_id=1325174797 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot6" parent="MarginContainer/GridContainer" unique_id=1583613052 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot7" parent="MarginContainer/GridContainer" unique_id=441210739 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot8" parent="MarginContainer/GridContainer" unique_id=214608234 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot9" parent="MarginContainer/GridContainer" unique_id=1163114605 instance=ExtResource("2_dwsjy")]
-layout_mode = 2
 
 [node name="TextureLayer" type="Control" parent="MarginContainer" unique_id=2058507175]
 unique_name_in_owner = true

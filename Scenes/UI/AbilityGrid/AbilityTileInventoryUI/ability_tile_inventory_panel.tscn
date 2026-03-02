@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://lf8p3afeubb1"]
 
-[ext_resource type="Script" uid="uid://c0k6v1rsm2grx" path="res://Scripts/AbilityGrid/UI/AbilityTileInventory/AbilityTileInventoryPanelUI.gd" id="1_atsvp"]
-[ext_resource type="PackedScene" uid="uid://dirhqxxxcbmm1" path="res://Scenes/UI/AbilityGrid/ui_ability_grid_slot.tscn" id="2_kgmqo"]
+[ext_resource type="Script" uid="uid://bryxh3umdu5lg" path="res://Scripts/AbilityGrid/UI/AbilityGridUI.gd" id="1_vs3nv"]
 
 [node name="AbilityTileInventoryPanel" type="PanelContainer" unique_id=1405067183]
 anchors_preset = 8
@@ -16,7 +15,7 @@ offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_atsvp")
+script = ExtResource("1_vs3nv")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1254306330]
 layout_mode = 2
@@ -35,81 +34,6 @@ size_flags_vertical = 4
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
-
-[node name="UiAbilityGraphSlot" parent="MarginContainer/GridContainer" unique_id=285005208 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot2" parent="MarginContainer/GridContainer" unique_id=875326376 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot3" parent="MarginContainer/GridContainer" unique_id=1103842000 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot4" parent="MarginContainer/GridContainer" unique_id=128236099 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot5" parent="MarginContainer/GridContainer" unique_id=1525692567 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot6" parent="MarginContainer/GridContainer" unique_id=1241213963 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot7" parent="MarginContainer/GridContainer" unique_id=1645614496 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot8" parent="MarginContainer/GridContainer" unique_id=203183789 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot9" parent="MarginContainer/GridContainer" unique_id=1489838122 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot10" parent="MarginContainer/GridContainer" unique_id=207689647 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot11" parent="MarginContainer/GridContainer" unique_id=1810728616 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot12" parent="MarginContainer/GridContainer" unique_id=987368373 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot13" parent="MarginContainer/GridContainer" unique_id=1673741767 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot14" parent="MarginContainer/GridContainer" unique_id=496095689 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot15" parent="MarginContainer/GridContainer" unique_id=2021419297 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot16" parent="MarginContainer/GridContainer" unique_id=1597752551 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot17" parent="MarginContainer/GridContainer" unique_id=19725548 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot18" parent="MarginContainer/GridContainer" unique_id=569161192 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot19" parent="MarginContainer/GridContainer" unique_id=1556836546 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot20" parent="MarginContainer/GridContainer" unique_id=666448451 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot21" parent="MarginContainer/GridContainer" unique_id=1442719064 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot22" parent="MarginContainer/GridContainer" unique_id=704857357 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot23" parent="MarginContainer/GridContainer" unique_id=40963717 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot24" parent="MarginContainer/GridContainer" unique_id=1013672904 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
-
-[node name="UiAbilityGraphSlot25" parent="MarginContainer/GridContainer" unique_id=1710995331 instance=ExtResource("2_kgmqo")]
-layout_mode = 2
 
 [node name="TextureLayer" type="Control" parent="MarginContainer" unique_id=1600960631]
 unique_name_in_owner = true

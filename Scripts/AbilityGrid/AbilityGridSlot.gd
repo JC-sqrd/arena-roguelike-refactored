@@ -1,9 +1,7 @@
-class_name AbilityGridSlot extends Resource
+class_name AbilityGridSlot extends GridSlot
 
-
-var occupied : bool = false
 var occupied_by : AbilityTile 
-var grid_pos : Vector2i
+
 
 func occupy(ability_tile : AbilityTile):
 	occupied_by = ability_tile
