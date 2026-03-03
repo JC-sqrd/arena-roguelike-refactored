@@ -24,6 +24,49 @@ func initialize():
 		pass
 	pass
 
+static func get_grid_size_from_grid_coords(coords : Array[Vector2i]):
+	var min_coord : Vector2i = coords[0]
+	var max_coord : Vector2i = coords[0]
+	
+	for coord in coords:
+		min_coord = Vector2i(min(min_coord.x, coord.x), min(min_coord.y, coord.y))
+		max_coord = Vector2i(max(max_coord.x, coord.x), max(max_coord.y, coord.y))
+		pass
+	
+	var width : float = ((max_coord.x - min_coord.x) + 1)
+	var height : float = ((max_coord.y - min_coord.y) + 1)
+	
+	return Vector2(width, height)
+
+static func get_grid_bounds_from_grid_coords(coords : Array[Vector2i]) -> Rect2:
+	var min_coord : Vector2i = coords[0]
+	var max_coord : Vector2i = coords[0]
+	
+	for coord in coords:
+		min_coord = Vector2i(min(min_coord.x, coord.x), min(min_coord.y, coord.y))
+		max_coord = Vector2i(max(max_coord.x, coord.x), max(max_coord.y, coord.y))
+		pass
+	
+	var width : float = ((max_coord.x - min_coord.x) + 1)
+	var height : float = ((max_coord.y - min_coord.y) + 1)
+	
+	return Rect2i(min_coord.x, min_coord.y, width, height)
+
+func get_locked_coords() -> Array[Vector2i]:
+	var directions : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
+	var locked_slots : Array[Vector2i]
+	
+	for coord in grid_coords:
+		for direction in directions:
+			var neighbor : Vector2i = coord + direction
+			if !grid_coords.has(neighbor):
+				locked_slots.append(neighbor)
+				pass
+			pass
+		pass
+	
+	return locked_slots
+
 func get_grid_size() -> Vector2:
 	var min_coord : Vector2i = grid_coords.keys()[0]
 	var max_coord : Vector2i = grid_coords.keys()[0]

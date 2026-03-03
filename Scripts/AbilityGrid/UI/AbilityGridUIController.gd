@@ -79,6 +79,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			#_held_tile.rotate_clockwise()
 			pass
 		pass
+	
+	if event is InputEventKey:
+		if event.keycode == KEY_I and event.pressed:
+			ability_grid_ui.show_locked_slots()
+			ability_grid_ui.get_parent().update_minimum_size()
+			pass 
 	pass
 
 func _process(delta: float) -> void:
@@ -121,8 +127,6 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 			_original_pos = Vector2i(-1,-1)
 			cursor_ui.clear()
 			return
-		pass
-		
 		pass
 	pass
 
