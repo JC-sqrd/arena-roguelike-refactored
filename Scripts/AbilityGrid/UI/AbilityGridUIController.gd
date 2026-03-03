@@ -4,8 +4,6 @@ class_name AbilityGridUIController extends Control
 @export var ability_inventory_ui : AbilityGridUI
 
 @onready var cursor_ui: CursorUI = %CursorUI
-
-@onready var debug_state_label: Label = %DebugStateLabel
  
 var player : PlayerController
 
@@ -83,9 +81,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		pass
 	pass
 
-func _gui_input(event: InputEvent) -> void:
+func _process(delta: float) -> void:
 	if visible:
 		cursor_ui.follow_mouse_pos(get_local_mouse_position())
+
+func _gui_input(event: InputEvent) -> void:
+	
 	pass
 
 func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : AbilityGrid):

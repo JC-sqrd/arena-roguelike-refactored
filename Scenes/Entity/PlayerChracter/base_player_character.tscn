@@ -4,14 +4,15 @@
 [ext_resource type="Script" uid="uid://cnhcp1vabdb3x" path="res://Scripts/Controllers/PlayerController.gd" id="1_vvirn"]
 [ext_resource type="Script" uid="uid://j0xukxc6ojgr" path="res://Scripts/AbilityGrid/AbilityGrid.gd" id="2_xpoel"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="3_8ud0v"]
-[ext_resource type="Resource" uid="uid://cql14jhbbb4y8" path="res://Resources/AbilityTiles/test_ability_tile.tres" id="4_v3i30"]
+[ext_resource type="Resource" uid="uid://cql14jhbbb4y8" path="res://Resources/AbilityTiles/flying_flail_tile.tres" id="4_v3i30"]
 [ext_resource type="Resource" uid="uid://trpj7hg3rv0u" path="res://Resources/player_stats_template.tres" id="5_1dleg"]
 [ext_resource type="Resource" uid="uid://x3f2d0tdwpmo" path="res://Resources/AbilityTiles/test_ability_tile_2.tres" id="5_l0a5t"]
-[ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/test_ability_tile_3.tres" id="6_nn7uc"]
+[ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/bloodied_katana_tile.tres" id="6_nn7uc"]
 [ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
-[ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/test_ability_tile_4.tres" id="7_nn7uc"]
+[ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/stone_tile.tres" id="7_nn7uc"]
 [ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
 [ext_resource type="Resource" uid="uid://chytlqglav3q1" path="res://Resources/AbilityTiles/test_ability_tile_5.tres" id="8_nqu6t"]
+[ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="9_62e6c"]
 [ext_resource type="Resource" uid="uid://dxoo241b5mlgn" path="res://Resources/WeaponData/AzureSword.tres" id="9_aysh2"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
@@ -35,6 +36,7 @@ script = ExtResource("2_xpoel")
 initial_ability_tiles = Dictionary[Vector2i, ExtResource("3_8ud0v")]({
 Vector2i(0, 0): ExtResource("4_v3i30"),
 Vector2i(0, 2): ExtResource("7_nn7uc"),
+Vector2i(2, 0): ExtResource("9_62e6c"),
 Vector2i(2, 3): ExtResource("8_nqu6t"),
 Vector2i(3, 1): ExtResource("5_l0a5t")
 })

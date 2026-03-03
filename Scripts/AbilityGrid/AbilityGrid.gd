@@ -24,6 +24,33 @@ func initialize():
 		pass
 	pass
 
+func get_grid_size() -> Vector2:
+	var min_coord : Vector2i = grid_coords.keys()[0]
+	var max_coord : Vector2i = grid_coords.keys()[0]
+	for coord in grid_coords:
+		min_coord = Vector2i(min(min_coord.x, coord.x), min(min_coord.y, coord.y))
+		max_coord = Vector2i(max(max_coord.x, coord.x), max(max_coord.y, coord.y))
+		pass
+	
+	var width : float = ((max_coord.x - min_coord.x) + 1)
+	var height : float = ((max_coord.y - min_coord.y) + 1)
+	
+	return Vector2(width, height)
+
+func get_grid_bounds() -> Rect2:
+	var min_coord : Vector2i = grid_coords.keys()[0]
+	var max_coord : Vector2i = grid_coords.keys()[0]
+	for coord in grid_coords:
+		min_coord = Vector2i(min(min_coord.x, coord.x), min(min_coord.y, coord.y))
+		max_coord = Vector2i(max(max_coord.x, coord.x), max(max_coord.y, coord.y))
+		pass
+	
+	var width : float = ((max_coord.x - min_coord.x) + 1)
+	var height : float = ((max_coord.y - min_coord.y) + 1)
+	
+	return Rect2i(min_coord.x, min_coord.y, width, height)
+
+
 func generate_grid():
 	for y in range(size.y):
 		for x in range(size.x):

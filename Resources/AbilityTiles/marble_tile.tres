@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityTile" format=3 uid="uid://cn7dwcibuuyoa"]
+
+[ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_xty0x"]
+[ext_resource type="Texture2D" uid="uid://t5ul0geah7ea" path="res://Placeholders/Marble.png" id="2_lmkpg"]
+
+[resource]
+script = ExtResource("1_xty0x")
+name = "Marble"
+texture = ExtResource("2_lmkpg")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
