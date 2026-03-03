@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityTile" format=3 uid="uid://cmr23ojdtdqfd"]
 
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_0aqai"]
-[ext_resource type="Texture2D" uid="uid://dhkj6c4whg5h1" path="res://Placeholders/AbilityTile_Placeholder_1.png" id="2_clkrm"]
+[ext_resource type="Texture2D" uid="uid://dhhne6mmf8cva" path="res://Placeholders/Bloody Samurai.png" id="2_clkrm"]
 
 [resource]
 script = ExtResource("1_0aqai")

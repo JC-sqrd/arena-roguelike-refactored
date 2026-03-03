@@ -14,6 +14,7 @@ var _held_tile : AbilityTile = null
 var _source_grid : AbilityGrid = null
 var _original_grid : AbilityGrid
 var _original_pos : Vector2i
+var _original_rotation_idx : int = 0
 
 signal clicked_void()
 
@@ -64,9 +65,23 @@ func open_ui():
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_TAB and event.pressed:
-			print("OPEN ABILITY GRID UI")
+			if !visible:
+				print("OPEN ABILITY GRID UI")
+			if visible:
+				print("CLOSE ABILITY GRID UI")
+				if _held_tile != null:
+					pass
 			open_ui()
+	
+	if event is InputEventKey and _held_tile != null:
+		if event.keycode == KEY_R and event.pressed:
+			#WIP : TILE ROTATION
+			#print("ROTATE TILE")
+			#cursor_ui.rotate_children_clockwise()
+			#_held_tile.rotate_clockwise()
 			pass
+		pass
+	pass
 
 func _gui_input(event: InputEvent) -> void:
 	if visible:
@@ -74,25 +89,39 @@ func _gui_input(event: InputEvent) -> void:
 	pass
 
 func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : AbilityGrid):
-	print(str(ability_inventory_ui._ability_grid.get_instance_id()) +" | "+ str(ability_grid.get_instance_id()))
+	#Pickup
 	if _held_tile == null:
 		var tile : AbilityTile = ability_grid.get_tile_on_slot(slot_pos)
 		if tile != null:
 			var tile_rect : AbilityTileTextureRect = _hovered_ui.pop_tile_rect(tile)
+			tile_rect.position = Vector2.ZERO - tile_rect.get_root_offset_position(tile_rect.ability_tile.offsets)#tile_rect.calculate_pos_relative_to_grid(tile, Vector2i(0,0))
 			cursor_ui.add_child(tile_rect)
-			ability_grid.remove_tile_on_slot(slot_pos)
 			_held_tile = tile
 			_original_grid = ability_grid
-			_original_pos = slot_pos
+			_original_pos = ability_grid.ability_tiles.get(tile)
+			_original_rotation_idx = tile.rotation_index
+			ability_grid.remove_tile_on_slot(slot_pos)
 			return
-		pass
-		
+	#Place
 	if _held_tile != null:
 		if ability_grid.place_tile_on_slot(_held_tile, slot_pos):
 			_held_tile = null
 			_original_grid = null
 			_original_pos = Vector2i(-1,-1)
 			cursor_ui.clear()
+			return
+		#Rollback Placement
+		else:
+			print("ROLLBACK PLACEMENT: " + str(_original_pos))
+			_held_tile.set_rotation_to(_original_rotation_idx)
+			_original_grid.place_tile_on_slot(_held_tile, _original_pos)
+			_held_tile = null
+			_original_grid = null
+			_original_pos = Vector2i(-1,-1)
+			cursor_ui.clear()
+			return
+		pass
+		
 		pass
 	pass
 

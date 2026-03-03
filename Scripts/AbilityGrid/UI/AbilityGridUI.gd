@@ -1,5 +1,6 @@
 class_name AbilityGridUI extends GridUI
 
+const slot_size : int = 64
 
 @onready var grid_container: GridContainer = %GridContainer
 @onready var texture_layer: Control = %TextureLayer
@@ -104,14 +105,13 @@ func _on_mouse_clicked_slot(coord : Vector2i):
 	pass
 
 func _on_grid_placed_tile(tile : AbilityTile, pos : Vector2i):
-	print("PLACE UI TILE")
 	add_tile_rect(tile, pos)
 	pass
 
 func _on_grid_removed_tile(tile : AbilityTile, pos : Vector2i):
-	print("REMOVE UI TILE")
 	if tile_rects.has(tile):
 		var tile_rect : AbilityTileTextureRect = tile_rects.get(tile)
+		tile_rect.slot_size = slot_size
 		tile_rects.erase(tile)
 		tile_rect.queue_free()
 	pass

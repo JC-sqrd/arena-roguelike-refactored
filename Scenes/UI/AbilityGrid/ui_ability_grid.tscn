@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="2_jtagy"]
 [ext_resource type="PackedScene" uid="uid://lf8p3afeubb1" path="res://Scenes/UI/AbilityGrid/AbilityTileInventoryUI/ability_tile_inventory_panel.tscn" id="3_feec0"]
 [ext_resource type="Script" uid="uid://fxe70e5ucsga" path="res://Scripts/AbilityGrid/UI/AbilityGraphUIFSM/AbilityGridUIFSM.gd" id="4_y4sfo"]
+[ext_resource type="PackedScene" uid="uid://ckttdtqqs6nu2" path="res://Scenes/UI/AbilityGrid/ability_grid_tile_texture_rect.tscn" id="5_egaih"]
+[ext_resource type="Texture2D" uid="uid://bj8u82lfs2ug" path="res://Placeholders/AbilityTile_Placeholder_4.png" id="6_tppxw"]
 
 [node name="UiAbilityGraph" type="Control" unique_id=1020187136 node_paths=PackedStringArray("ability_grid_ui", "ability_inventory_ui")]
 layout_mode = 3
@@ -61,6 +63,13 @@ anchors_preset = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("2_jtagy")
+
+[node name="AbilityGridTileTextureRect" parent="CursorUI" unique_id=975741992 instance=ExtResource("5_egaih")]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 128.0
+pivot_offset = Vector2(92, 92)
+texture = ExtResource("6_tppxw")
 
 [node name="AbilityGridUIFSM" type="Node" parent="." unique_id=1118784499]
 script = ExtResource("4_y4sfo")

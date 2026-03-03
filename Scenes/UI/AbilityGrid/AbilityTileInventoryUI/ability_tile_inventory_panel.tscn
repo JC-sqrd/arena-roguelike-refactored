@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://lf8p3afeubb1"]
 
 [ext_resource type="Script" uid="uid://bryxh3umdu5lg" path="res://Scripts/AbilityGrid/UI/AbilityGridUI.gd" id="1_vs3nv"]
+[ext_resource type="PackedScene" uid="uid://dirhqxxxcbmm1" path="res://Scenes/UI/AbilityGrid/ui_ability_grid_slot.tscn" id="2_lgpr0"]
+[ext_resource type="PackedScene" uid="uid://ckttdtqqs6nu2" path="res://Scenes/UI/AbilityGrid/ability_grid_tile_texture_rect.tscn" id="3_n36ip"]
+[ext_resource type="Texture2D" uid="uid://bj8u82lfs2ug" path="res://Placeholders/AbilityTile_Placeholder_4.png" id="4_lgpr0"]
 
 [node name="AbilityTileInventoryPanel" type="PanelContainer" unique_id=1405067183]
 anchors_preset = 8
@@ -35,7 +38,91 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
 
+[node name="UiAbilityGraphSlot" parent="MarginContainer/GridContainer" unique_id=285005208 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot2" parent="MarginContainer/GridContainer" unique_id=1984918234 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot3" parent="MarginContainer/GridContainer" unique_id=1921192793 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot4" parent="MarginContainer/GridContainer" unique_id=1613594330 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot5" parent="MarginContainer/GridContainer" unique_id=1807966487 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot6" parent="MarginContainer/GridContainer" unique_id=225579833 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot7" parent="MarginContainer/GridContainer" unique_id=430293888 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot8" parent="MarginContainer/GridContainer" unique_id=1672638371 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot9" parent="MarginContainer/GridContainer" unique_id=170978286 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot10" parent="MarginContainer/GridContainer" unique_id=1307127792 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot11" parent="MarginContainer/GridContainer" unique_id=409649391 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot12" parent="MarginContainer/GridContainer" unique_id=211854365 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot13" parent="MarginContainer/GridContainer" unique_id=808266412 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot14" parent="MarginContainer/GridContainer" unique_id=1411641729 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot15" parent="MarginContainer/GridContainer" unique_id=919454699 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot16" parent="MarginContainer/GridContainer" unique_id=1709004387 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot17" parent="MarginContainer/GridContainer" unique_id=836469788 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot18" parent="MarginContainer/GridContainer" unique_id=397952738 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot19" parent="MarginContainer/GridContainer" unique_id=288187262 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot20" parent="MarginContainer/GridContainer" unique_id=2061523120 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot21" parent="MarginContainer/GridContainer" unique_id=1755886395 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot22" parent="MarginContainer/GridContainer" unique_id=292058527 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot23" parent="MarginContainer/GridContainer" unique_id=1343153040 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot24" parent="MarginContainer/GridContainer" unique_id=4632940 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
+[node name="UiAbilityGraphSlot25" parent="MarginContainer/GridContainer" unique_id=2022237814 instance=ExtResource("2_lgpr0")]
+layout_mode = 2
+
 [node name="TextureLayer" type="Control" parent="MarginContainer" unique_id=1600960631]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
+
+[node name="AbilityGridTileTextureRect" parent="MarginContainer/TextureLayer" unique_id=975741992 instance=ExtResource("3_n36ip")]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 128.0
+rotation = 1.5707964
+texture = ExtResource("4_lgpr0")
+expand_mode = 0

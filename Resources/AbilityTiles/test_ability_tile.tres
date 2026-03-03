@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityTile" format=3 uid="uid://cql14jhbbb4y8"]
 
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_w86t4"]
-[ext_resource type="Texture2D" uid="uid://lyj22bpg80ig" path="res://Placeholders/AbilityTile_Placeholder_2.png" id="2_2r6od"]
+[ext_resource type="Texture2D" uid="uid://du38m6x6gyg5b" path="res://Placeholders/Flying Flail.png" id="2_2r6od"]
 
 [resource]
 script = ExtResource("1_w86t4")
