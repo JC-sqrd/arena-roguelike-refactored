@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c4drsbj203frb"]
+
+[ext_resource type="Script" uid="uid://cgxn3ud02qyvj" path="res://Scripts/Ability/ActiveAbilities/stone_ability.gd" id="1_7ovj7"]
+[ext_resource type="Script" uid="uid://pa7e2iud41wh" path="res://Scripts/Ability/AbilityActions/SpawnProjectileAbilityAction.gd" id="2_63xve"]
+[ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="3_rwf4k"]
+[ext_resource type="Texture2D" uid="uid://cgojeu3tewaq4" path="res://Placeholders/Rock.png" id="4_pcdpl"]
+[ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="5_pre82"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="6_c1mr6"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="7_hrdxd"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="8_hrdxd"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="8_pyasb"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="9_oh0hp"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="10_url1l"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="11_8jaon"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="12_dw4je"]
+
+[sub_resource type="Resource" id="Resource_5tmqg"]
+script = ExtResource("3_rwf4k")
+radius = 12
+metadata/_custom_type_script = "uid://swufoypqyj1x"
+
+[sub_resource type="Resource" id="Resource_6uudq"]
+script = ExtResource("5_pre82")
+speed = 300.0
+projectile_shape = SubResource("Resource_5tmqg")
+lifetime = 6.0
+projectile_texture = ExtResource("4_pcdpl")
+projectile_coll_mask = 4
+metadata/_custom_type_script = "uid://ck45nau7el76p"
+
+[sub_resource type="Resource" id="Resource_pyasb"]
+script = ExtResource("8_hrdxd")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_mbe4x"]
+script = ExtResource("11_8jaon")
+value = 50.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_5b8ej"]
+script = ExtResource("8_pyasb")
+mode = -1
+value_provider_template = SubResource("Resource_mbe4x")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_vuu02"]
+script = ExtResource("12_dw4je")
+flat_mutator_templates = Array[ExtResource("8_pyasb")]([SubResource("Resource_5b8ej")])
+effect_event_templates = Array[ExtResource("7_hrdxd")]([SubResource("Resource_pyasb")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="StoneAbility" type="Node" unique_id=1736765668]
+script = ExtResource("1_7ovj7")
+metadata/_custom_type_script = "uid://cjf15iuws7nka"
+
+[node name="SpawnProjectileAbilityAction" type="Node" parent="." unique_id=1940304430]
+unique_name_in_owner = true
+script = ExtResource("2_63xve")
+projectile_template = SubResource("Resource_6uudq")
+effects_template = Array[ExtResource("6_c1mr6")]([SubResource("Resource_vuu02")])
+metadata/_custom_type_script = "uid://pa7e2iud41wh"

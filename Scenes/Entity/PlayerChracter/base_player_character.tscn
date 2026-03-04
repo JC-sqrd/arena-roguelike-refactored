@@ -4,15 +4,11 @@
 [ext_resource type="Script" uid="uid://cnhcp1vabdb3x" path="res://Scripts/Controllers/PlayerController.gd" id="1_vvirn"]
 [ext_resource type="Script" uid="uid://j0xukxc6ojgr" path="res://Scripts/AbilityGrid/AbilityGrid.gd" id="2_xpoel"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="3_8ud0v"]
-[ext_resource type="Resource" uid="uid://cql14jhbbb4y8" path="res://Resources/AbilityTiles/flying_flail_tile.tres" id="4_v3i30"]
+[ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/stone_tile.tres" id="4_v3i30"]
 [ext_resource type="Resource" uid="uid://trpj7hg3rv0u" path="res://Resources/player_stats_template.tres" id="5_1dleg"]
-[ext_resource type="Resource" uid="uid://x3f2d0tdwpmo" path="res://Resources/AbilityTiles/test_ability_tile_2.tres" id="5_l0a5t"]
-[ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/bloodied_katana_tile.tres" id="6_nn7uc"]
+[ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/bloodied_katana_tile.tres" id="5_l0a5t"]
 [ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
-[ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/stone_tile.tres" id="7_nn7uc"]
 [ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
-[ext_resource type="Resource" uid="uid://chytlqglav3q1" path="res://Resources/AbilityTiles/test_ability_tile_5.tres" id="8_nqu6t"]
-[ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="9_62e6c"]
 [ext_resource type="Resource" uid="uid://dxoo241b5mlgn" path="res://Resources/WeaponData/AzureSword.tres" id="9_aysh2"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
@@ -21,24 +17,64 @@
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
 [ext_resource type="Script" uid="uid://b71v68teuxsft" path="res://Scripts/Ability/ActiveAbilityController.gd" id="14_1dleg"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="14_xpoel"]
-[ext_resource type="Resource" uid="uid://bro2k6av54dhh" path="res://Resources/AbilityData/test_ability.tres" id="15_xpoel"]
+[ext_resource type="Resource" uid="uid://bro2k6av54dhh" path="res://Resources/AbilityData/test_ability_data.tres" id="15_xpoel"]
+[ext_resource type="Script" uid="uid://dqdesfdfx12xh" path="res://Scripts/Ability/GridAbilityControllerManager.gd" id="23_uj7x4"]
 
 [sub_resource type="Resource" id="Resource_l0a5t"]
 script = ExtResource("2_xpoel")
-initial_ability_tiles = Dictionary[Vector2i, ExtResource("3_8ud0v")]({
-Vector2i(0, 0): ExtResource("6_nn7uc")
-})
 size = Vector2i(3, 3)
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hfmdo"]
+load_path = "res://.godot/imported/Flying Flail.png-3cac6c9b400eb1e774f4964a2ac7d524.ctex"
+
+[sub_resource type="Resource" id="Resource_weqa2"]
+script = ExtResource("3_8ud0v")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(0, 1)])
+name = "Flying Flail"
+texture = SubResource("CompressedTexture2D_hfmdo")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rjymu"]
+load_path = "res://.godot/imported/Marble.png-c634a7cd710926baf95131925295e9bb.ctex"
+
+[sub_resource type="Resource" id="Resource_fvnwg"]
+resource_local_to_scene = true
+script = ExtResource("3_8ud0v")
+name = "Marble"
+texture = SubResource("CompressedTexture2D_rjymu")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_skjfb"]
+load_path = "res://.godot/imported/AbilityTile_Placeholder_5.png-522f2388b59eb5c2102d04f495722595.ctex"
+
+[sub_resource type="Resource" id="Resource_ufrmk"]
+script = ExtResource("3_8ud0v")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+name = "Test Ability 5"
+texture = SubResource("CompressedTexture2D_skjfb")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gc566"]
+load_path = "res://.godot/imported/AbilityTile_Placeholder_4.png-cbb3fc3de6f2eb4dc212048cf2886721.ctex"
+
+[sub_resource type="Resource" id="Resource_22ndi"]
+script = ExtResource("3_8ud0v")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, -1)])
+name = "Test Ability 2"
+texture = SubResource("CompressedTexture2D_gc566")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
 [sub_resource type="Resource" id="Resource_8ud0v"]
 script = ExtResource("2_xpoel")
 initial_ability_tiles = Dictionary[Vector2i, ExtResource("3_8ud0v")]({
-Vector2i(0, 0): ExtResource("4_v3i30"),
-Vector2i(0, 2): ExtResource("7_nn7uc"),
-Vector2i(2, 0): ExtResource("9_62e6c"),
-Vector2i(2, 3): ExtResource("8_nqu6t"),
-Vector2i(3, 1): ExtResource("5_l0a5t")
+Vector2i(0, 0): SubResource("Resource_weqa2"),
+Vector2i(0, 2): ExtResource("4_v3i30"),
+Vector2i(0, 3): ExtResource("5_l0a5t"),
+Vector2i(2, 0): SubResource("Resource_fvnwg"),
+Vector2i(2, 3): SubResource("Resource_ufrmk"),
+Vector2i(3, 1): SubResource("Resource_22ndi"),
+Vector2i(4, 0): ExtResource("4_v3i30")
 })
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
 
@@ -77,11 +113,12 @@ gradient = SubResource("Gradient_1dleg")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller")]
+[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller", "grid_ability_controller_manager")]
 collision_layer = 2
 script = ExtResource("1_vvirn")
 player_entity = NodePath("PlayerEntityNode")
 active_ability_controller = NodePath("ActiveAbilityController")
+grid_ability_controller_manager = NodePath("GridAbilityControllerManager")
 ability_grid = SubResource("Resource_l0a5t")
 ability_tile_inventory = SubResource("Resource_8ud0v")
 
@@ -151,3 +188,7 @@ texture = SubResource("GradientTexture2D_8ud0v")
 script = ExtResource("14_1dleg")
 ability_1_data = ExtResource("15_xpoel")
 metadata/_custom_type_script = "uid://b71v68teuxsft"
+
+[node name="GridAbilityControllerManager" type="Node" parent="." unique_id=103877313]
+script = ExtResource("23_uj7x4")
+metadata/_custom_type_script = "uid://dqdesfdfx12xh"

@@ -4,7 +4,7 @@ class_name AbilityTile extends Resource
 @export var offsets : Array[Vector2i] = [Vector2i(0,0)]
 @export var name : String
 @export var texture : Texture2D
-@export var ability_scene : PackedScene
+@export var ability_controller_scene : PackedScene
 var rotation_index : int = 0 : 
 	set(value):
 		rotation_index = value % 4
@@ -31,3 +31,9 @@ func set_rotation_to(target_idx : int):
 	for i in turns_needed:
 		rotate_clockwise()
 	pass
+
+
+func build_ability_controller() -> GridAbilityController:
+	var controller : GridAbilityController = ability_controller_scene.instantiate() as GridAbilityController
+	return controller
+	

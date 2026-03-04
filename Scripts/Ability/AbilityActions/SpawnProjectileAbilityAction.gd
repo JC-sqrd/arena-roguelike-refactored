@@ -16,19 +16,19 @@ class_name SpawnProjectileAbilityAction extends AbilityAction
 var effects : Array[Effect]
 
 
-func initialize(caster : Entity, ability : Ability):
+func initialize(caster : Entity, context : Dictionary[StringName, Variant]):
 	for template in effects_template:
-		effects.append(template.build_effect(ability.ability_context))
+		effects.append(template.build_effect(context))
 
-func do(caster : Entity, ability : Ability):
+func do(caster : Entity, context : Dictionary[StringName, Variant]):
 	self.caster = caster
 	
-	spawn_projectile(caster, ability.ability_context)
+	spawn_projectile(caster, context)
 	pass
 
 func spawn_projectile(caster : Entity, ability_context : Dictionary[StringName, Variant]):
 	var projectile : Projectile = projectile_template.build_projectile()
-	var mouse_pos : Vector2 = ProjectileServer.get_global_mouse_position() - caster.entity_node.global_position
+	var mouse_pos : Vector2 = ProjectileServer.get_global_mouse_position() - caster.global_position
 	projectile.effects = effects
 	projectile.context = ability_context
 	if look_at_mouse:

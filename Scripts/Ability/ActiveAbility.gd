@@ -4,6 +4,8 @@ class_name ActiveAbility extends Ability
 var resource_stat_id : StringName = "mana"
 var required_amount : float = 10
 
+
+
 signal ability_finished(abiltiy : ActiveAbility)
 
 

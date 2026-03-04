@@ -10,6 +10,9 @@ var ability_details : String
 var caster : Entity
 var ability_context : Dictionary[StringName, Variant]
 
+var cooldown : float = 0
+var curr_cooldown : float = 0
+
 func initialize(caster : Entity):
 	self.caster = caster
 	ability_context = generate_ability_context()

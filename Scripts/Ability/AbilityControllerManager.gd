@@ -1,0 +1,2 @@
+@abstract
+class_name AbilityControllerManager extends Node

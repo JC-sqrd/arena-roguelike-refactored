@@ -12,7 +12,7 @@ var hitbox : DelayHitbox
 
 func initialize(caster : Entity):
 	super(caster)
-	projectile_action.initialize(caster, self)
+	projectile_action.initialize(caster, ability_context)
 	pass
 
 func start():
@@ -36,7 +36,7 @@ func execute():
 		#var rand_dir : Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 		#projectile_action.projectile_angle = rand_dir.angle()
 		#projectile_action.projectile_direction = rand_dir.normalized()
-		#projectile_action.do(caster, self)
+		#projectile_action.do(caster, ability_context)
 		
 		#var projectile : Projectile = projectile_template.build_projectile()
 		#var mouse_pos : Vector2 = caster.entity_node.get_global_mouse_position() - caster.entity_node.global_position 

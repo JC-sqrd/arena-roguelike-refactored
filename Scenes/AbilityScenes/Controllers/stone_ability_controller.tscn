@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cfttnkrwve3ct"]
+
+[ext_resource type="Script" uid="uid://dgq04rlap36uo" path="res://Scripts/Ability/Controllers/stone_ability_controller.gd" id="1_4tggj"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="2_6c3l1"]
+[ext_resource type="Resource" uid="uid://6d4ongim2f6n" path="res://Resources/AbilityData/stone_ability_data.tres" id="2_47jjt"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="3_0oi36"]
+[ext_resource type="Script" uid="uid://pa7e2iud41wh" path="res://Scripts/Ability/AbilityActions/SpawnProjectileAbilityAction.gd" id="3_k4vhd"]
+[ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="4_0jiis"]
+[ext_resource type="Texture2D" uid="uid://cgojeu3tewaq4" path="res://Placeholders/Rock.png" id="5_ai62m"]
+[ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="5_hgb5k"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="6_1oj8p"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="7_ai62m"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="8_oiblg"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="9_6c3l1"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="10_0oi36"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="11_ba4gs"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="12_10yn3"]
+
+[sub_resource type="Resource" id="Resource_ba4gs"]
+script = ExtResource("2_6c3l1")
+radius = 20.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_10yn3"]
+script = ExtResource("3_0oi36")
+area_shape = SubResource("Resource_ba4gs")
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[sub_resource type="Resource" id="Resource_0jiis"]
+script = ExtResource("4_0jiis")
+metadata/_custom_type_script = "uid://swufoypqyj1x"
+
+[sub_resource type="Resource" id="Resource_hgb5k"]
+script = ExtResource("5_hgb5k")
+speed = 350.0
+projectile_shape = SubResource("Resource_0jiis")
+projectile_texture = ExtResource("5_ai62m")
+projectile_coll_mask = 4
+metadata/_custom_type_script = "uid://ck45nau7el76p"
+
+[sub_resource type="Resource" id="Resource_ai62m"]
+script = ExtResource("11_ba4gs")
+value = 50.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_oiblg"]
+script = ExtResource("8_oiblg")
+mode = -1
+value_provider_template = SubResource("Resource_ai62m")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_6c3l1"]
+script = ExtResource("12_10yn3")
+flat_mutator_templates = Array[ExtResource("8_oiblg")]([SubResource("Resource_oiblg")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="StoneAbilityController" type="Node" unique_id=2117380493 node_paths=PackedStringArray("spawn_projectile_action")]
+script = ExtResource("1_4tggj")
+area_template = SubResource("Resource_10yn3")
+stone_ability = ExtResource("2_47jjt")
+spawn_projectile_action = NodePath("SpawnProjectileAbilityAction")
+
+[node name="SpawnProjectileAbilityAction" type="Node" parent="." unique_id=788689940]
+script = ExtResource("3_k4vhd")
+projectile_template = SubResource("Resource_hgb5k")
+effects_template = Array[ExtResource("6_1oj8p")]([SubResource("Resource_6c3l1")])
+metadata/_custom_type_script = "uid://pa7e2iud41wh"

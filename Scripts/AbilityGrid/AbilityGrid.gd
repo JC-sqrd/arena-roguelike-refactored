@@ -16,8 +16,9 @@ signal removed_tile(tile : AbilityTile, coord : Vector2i)
 
 func initialize():
 	for coord in initial_ability_tiles:
-		var tile : AbilityTile = initial_ability_tiles.get(coord)
-		if place_tile_on_slot(initial_ability_tiles[coord], coord):
+		var temp_tile : AbilityTile = initial_ability_tiles.get(coord)
+		var tile : AbilityTile = temp_tile.duplicate(true)
+		if place_tile_on_slot(tile, coord):
 			print("PLACE " + tile.name + " ON Position: " + str(coord))
 		else:
 			print("CANNOT PLACE " + tile.name + " ON Position: " + str(coord))
@@ -51,6 +52,13 @@ static func get_grid_bounds_from_grid_coords(coords : Array[Vector2i]) -> Rect2:
 	var height : float = ((max_coord.y - min_coord.y) + 1)
 	
 	return Rect2i(min_coord.x, min_coord.y, width, height)
+
+func add_coord(coord : Vector2i) -> bool:
+	if !grid_coords.has(coord):
+		grid_coords[coord] = AbilityGridSlot.new()
+		grid_changed.emit()
+		return true
+	return false
 
 func get_locked_coords() -> Array[Vector2i]:
 	var directions : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]

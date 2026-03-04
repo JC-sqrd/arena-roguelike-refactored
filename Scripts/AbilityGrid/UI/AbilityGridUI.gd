@@ -22,6 +22,7 @@ var _original_grid_position : Vector2
 var _original_tex_layer_position : Vector2
 
 signal slot_clicked(slot_pos : Vector2i, grid : AbilityGrid)
+signal locked_slot_clicked(slot_pos : Vector2i, grid : AbilityGrid)
 
 func generate_grid_ui(ability_grid : AbilityGrid):
 	clear_grid_ui()
@@ -104,6 +105,20 @@ func show_locked_slots():
 	custom_minimum_size = size
 	(get_parent() as Control).queue_sort()
 	
+	
+	for coord in locked_coords:
+		var slot : AbilityGridSlotUI = _SLOT.instantiate() as AbilityGridSlotUI
+		slot.grid_coord = coord
+		slots[coord] = slot
+		
+		
+		var slot_pos : Vector2 = coord * slot_size
+		slot.position = slot_pos
+		locked_grid.add_child(slot)
+		
+		slot.slot_hovered.connect(_on_mouse_hovered_slot)
+		slot.slot_exited.connect(_on_mouse_exited_slot)
+		slot.slot_clicked.connect(_on_mouse_clicked_slot)
 	
 	print("GRID POS: " + str(grid_layer.position))
 	

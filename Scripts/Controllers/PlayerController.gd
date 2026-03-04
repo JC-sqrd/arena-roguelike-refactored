@@ -3,6 +3,7 @@ class_name PlayerController extends CharacterBody2D
 
 @export var player_entity : PlayerEntityNode
 @export var active_ability_controller : ActiveAbilityController
+@export var grid_ability_controller_manager : GridAbilityControllerManager
 @export var ability_grid : AbilityGrid
 @export var ability_tile_inventory : AbilityGrid
 
@@ -25,7 +26,11 @@ func _ready():
 	ability_tile_inventory.initialize()
 	
 	ability_grid = ability_grid.duplicate(true)
+	
 	ability_grid.generate_grid()
+	
+	grid_ability_controller_manager.initialize(player_entity.entity, ability_grid)
+	
 	
 	ability_grid.initialize()
 	
