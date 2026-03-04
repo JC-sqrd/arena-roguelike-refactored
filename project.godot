@@ -27,6 +27,7 @@ AreaServer="*uid://d3li0gsdbcc7h"
 EventServer="*uid://cn1ah3sysqs3u"
 GameCanvas="*uid://b28kqfd66l4xv"
 GameServer="*uid://blho4k5fijajq"
+EntityServer="*uid://dp414ybgurr0c"
 
 [file_customization]
 

@@ -1,8 +1,10 @@
 class_name HitBox extends Area2D
 
 
+@export var anim_player : AnimationPlayer
 var effects : Array[Effect]
 var context : Dictionary[StringName, Variant]
+
 
 var active : bool = false
 
@@ -16,6 +18,7 @@ func initialize():
 	pass
 
 func query_hitbox():
+	
 	var space_state : = get_world_2d().direct_space_state
 		
 	var hits : Dictionary[RID, bool]

@@ -14,6 +14,8 @@ var _space : RID
 var coll_layer : int = 0
 var coll_mask : int = 0
 
+var xForm : Transform2D
+
 func update_position(delta : float):
 	if !active:
 		return
@@ -21,7 +23,7 @@ func update_position(delta : float):
 	if parent_node != null:
 		global_position = parent_node.global_position
 	
-	var xForm : Transform2D = Transform2D(angle, global_position)
+	xForm = Transform2D(angle, global_position)
 	#print("AREA GLOBAL POS: " + str(global_position))
 	PhysicsServer2D.area_set_transform(area_rid, xForm)
 	pass
@@ -33,6 +35,14 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
 	
+	pass
+
+func set_area_enter_callback(callable : Callable):
+	PhysicsServer2D.area_set_area_monitor_callback(area_rid, callable)
+	pass
+
+func set_body_enter_callback(callable : Callable):
+	PhysicsServer2D.area_set_monitor_callback(area_rid, callable)
 	pass
 
 func free_area():

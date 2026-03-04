@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://casq1sr6w85ns"]
+
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_nil05"]
+[ext_resource type="Texture2D" uid="uid://dlkut2nahr23g" path="res://Placeholders/Bloody Strike.png" id="2_p3wta"]
+[ext_resource type="Texture2D" uid="uid://dhhne6mmf8cva" path="res://Placeholders/Bloody Samurai.png" id="2_rkqpm"]
+[ext_resource type="Script" uid="uid://ca58jl55wrple" path="res://Scripts/AnimationPlayer/HitBoxAnimationPlayer.gd" id="4_xqloo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nil05"]
+size = Vector2(320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqloo"]
+atlas = ExtResource("2_p3wta")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt8ed"]
+atlas = ExtResource("2_p3wta")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0vgv"]
+atlas = ExtResource("2_p3wta")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj8ot"]
+atlas = ExtResource("2_p3wta")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwvta"]
+atlas = ExtResource("2_p3wta")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nl4k"]
+atlas = ExtResource("2_p3wta")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i5dk"]
+atlas = ExtResource("2_p3wta")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vc2ih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqloo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt8ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0vgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj8ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwvta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nl4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i5dk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_xqloo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vt8ed"]
+resource_name = "bloody_strike"
+length = 0.6666667
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.4166667, 0.5, 0.5833334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d0vgv"]
+_data = {
+&"RESET": SubResource("Animation_xqloo"),
+&"bloody_strike": SubResource("Animation_vt8ed")
+}
+
+[node name="BloodiedKatanaHitbox" type="Area2D" unique_id=923428415 node_paths=PackedStringArray("anim_player")]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_nil05")
+anim_player = NodePath("HitboxAnimationPlayer")
+metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=169566997]
+position = Vector2(160, 0)
+shape = SubResource("RectangleShape2D_nil05")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=664254647]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("2_rkqpm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=453992831]
+position = Vector2(160, 0)
+sprite_frames = SubResource("SpriteFrames_vc2ih")
+
+[node name="HitboxAnimationPlayer" type="AnimationPlayer" parent="." unique_id=363592951]
+libraries/ = SubResource("AnimationLibrary_d0vgv")
+script = ExtResource("4_xqloo")
+metadata/_custom_type_script = "uid://ca58jl55wrple"

@@ -37,6 +37,8 @@ func _ready():
 	initialized_grids.emit(ability_grid, ability_tile_inventory)
 	
 	active_ability_controller.initialize(player_entity.entity)
+	
+	EntityServer.register_entity(player_entity.entity.entity_rid, player_entity.entity)
 	pass
 
 func _process(delta: float) -> void:
@@ -55,4 +57,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
+	pass
+
+func _exit_tree() -> void:
+	EntityServer.to_free(player_entity.entity.entity_rid)
 	pass

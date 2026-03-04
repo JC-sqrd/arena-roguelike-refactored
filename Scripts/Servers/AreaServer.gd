@@ -7,11 +7,16 @@ var free_queue : Array[RID]
 
 var _keys : Array[RID]
 
+static func set_area_position(area : Area, position : Vector2):
+	area.xForm = Transform2D(area.angle, position)
+	#print("AREA GLOBAL POS: " + str(global_position))
+	PhysicsServer2D.area_set_transform(area.area_rid, area.xForm)
+	pass
+
 func register_area(rid : RID, area : Area):
 	active_areas[rid] = area
 	area.active = true
 	pass
-
 
 func _process(delta: float) -> void:	
 	_keys = active_areas.keys()

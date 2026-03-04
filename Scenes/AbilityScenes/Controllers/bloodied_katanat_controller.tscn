@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b1k2qgud53n82"]
+
+[ext_resource type="Script" uid="uid://b6a3i1yycy42k" path="res://Scripts/Ability/Controllers/bloodied_katana_ability_controller.gd" id="1_nb8g1"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="2_pm1jp"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="3_l76o2"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="4_sk2hw"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="5_y4ue7"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="6_yscoq"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="7_1n8jr"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="8_0smng"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="9_5q8o8"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_l28qd"]
+
+[sub_resource type="Resource" id="Resource_fr0ks"]
+script = ExtResource("2_pm1jp")
+radius = 320.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_ypd4y"]
+script = ExtResource("3_l76o2")
+area_shape = SubResource("Resource_fr0ks")
+area_coll_mask = 4
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[sub_resource type="Resource" id="Resource_il2mb"]
+script = ExtResource("9_5q8o8")
+value = 100.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_3dvco"]
+script = ExtResource("6_yscoq")
+mode = -1
+value_provider_template = SubResource("Resource_il2mb")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_5gmol"]
+script = ExtResource("10_l28qd")
+flat_mutator_templates = Array[ExtResource("6_yscoq")]([SubResource("Resource_3dvco")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="BloodiedKatanatController" type="Node" unique_id=1961732915]
+script = ExtResource("1_nb8g1")
+area_template = SubResource("Resource_ypd4y")
+collision_mask_layer = 4
+effect_templates = Array[ExtResource("4_sk2hw")]([SubResource("Resource_5gmol")])
+metadata/_custom_type_script = "uid://ck2lns8ywy84t"

@@ -59,6 +59,8 @@ func _ready() -> void:
 	health_bar_renderer.initialize(enemy_entity.entity.health_manager, self)
 	
 	_target = PlayerServer.main_player
+	
+	EntityServer.register_entity(enemy_entity.entity.entity_rid, enemy_entity.entity)
 	pass
 
 
@@ -108,6 +110,7 @@ func update_position(delta : float):
 		return
 	
 	global_position += velocity
+	enemy_entity.entity.global_position = global_position
 	
 	if _distance_to_target <= target_distance_threshold:
 		velocity = Vector2.ZERO
@@ -195,4 +198,5 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 
 func _exit_tree() -> void:
 	EnemyServer.to_free(_id)
+	EntityServer.to_free(enemy_entity.entity.entity_rid)
 	EnemyServer.free_from_cell(_curr_cell_coords, self)
