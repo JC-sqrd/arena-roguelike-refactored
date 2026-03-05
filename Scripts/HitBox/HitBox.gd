@@ -7,6 +7,7 @@ var context : Dictionary[StringName, Variant]
 
 
 var active : bool = false
+var hit_log : Array[RID]
 
 func _ready() -> void:
 	monitorable = false
@@ -17,11 +18,11 @@ func initialize():
 	active = true
 	pass
 
-func query_hitbox():
+func query_hitbox(log_hit : bool = false):
 	
 	var space_state : = get_world_2d().direct_space_state
 		
-	var hits : Dictionary[RID, bool]
+	var hits : Array[RID]
 	
 	for child in self.get_children():
 		if child is CollisionShape2D:
@@ -34,12 +35,15 @@ func query_hitbox():
 			var results = space_state.intersect_shape(query, 500)
 				
 			for result in results:
-				hits[result.rid] = true
+				hits.append(result.rid)
+				if log_hit:
+					hit_log.append(result.rid)
+					pass
 				pass
 				
 			pass
 		
-	for hit in hits.keys():
+	for hit in hits:
 		for effect in effects:
 			EffectServer.receive_effect(hit, effect, context)
 	pass
