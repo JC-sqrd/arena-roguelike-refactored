@@ -103,6 +103,7 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 			var tile_rect : AbilityTileTextureRect = _hovered_ui.pop_tile_rect(tile)
 			tile_rect.position = Vector2.ZERO - tile_rect.get_root_offset_position(tile_rect.ability_tile.offsets)#tile_rect.calculate_pos_relative_to_grid(tile, Vector2i(0,0))
 			cursor_ui.add_child(tile_rect)
+			tile.adjacent_tiles.clear()
 			_held_tile = tile
 			_original_grid = ability_grid
 			_original_pos = ability_grid.ability_tiles.get(tile)
@@ -112,8 +113,10 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 	#Place
 	if _held_tile != null:
 		if ability_grid.place_tile_on_slot(_held_tile, slot_pos):
-			var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = ability_grid.get_adjacent_tiles_from_adjacent_points(_held_tile)
-			print("ADJACENT TILES: " + str(adjacent_tiles))
+			_held_tile.adjacent_tiles = ability_grid.get_adjacent_tiles_from_adjacent_points(_held_tile)
+			var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = ability_grid.get_adjacent_tiles(_held_tile)
+			_update_adjacent_tiles(adjacent_tiles, ability_grid)
+			print("ADJACENT TILES: " + str(_held_tile.adjacent_tiles))
 			_held_tile = null
 			_original_grid = null
 			_original_pos = Vector2i(-1,-1)
@@ -122,6 +125,9 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 		#Rollback Placement
 		else:
 			print("ROLLBACK PLACEMENT: " + str(_original_pos))
+			_held_tile.adjacent_tiles = ability_grid.get_adjacent_tiles_from_adjacent_points(_held_tile)
+			var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = ability_grid.get_adjacent_tiles(_held_tile)
+			_update_adjacent_tiles(adjacent_tiles, ability_grid)
 			_held_tile.set_rotation_to(_original_rotation_idx)
 			_original_grid.place_tile_on_slot(_held_tile, _original_pos)
 			_held_tile = null
@@ -132,6 +138,13 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 		pass
 	pass
 
+
+func _update_adjacent_tiles(tiles : Dictionary[Vector2i, AbilityTile], grid : AbilityGrid):
+	for tile in tiles:
+		var abiltiy_tile : AbilityTile = tiles[tile]
+		abiltiy_tile.adjacent_tiles = grid.get_adjacent_tiles_from_adjacent_points(abiltiy_tile)
+		pass
+	pass
 
 func _on_ability_grid_ui_mouse_entered():
 	print("HOVERED ABILITY GRID UI")
