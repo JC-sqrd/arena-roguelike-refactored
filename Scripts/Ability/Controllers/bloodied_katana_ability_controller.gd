@@ -16,17 +16,16 @@ var targets : Array[RID]
 var curr_cd : float = 0
 
 var _curr_target : Entity
-var _curr_dist_sqrd : float #Squared distance
+var _curr_dist_sqrd : float 
 var _dist_threshold : float = 120
 var _follow_speed : float = 10
-var _relative_x : Vector2
-var _target_angle : float = 0
 var _queue_hit : bool = false
 
 var _curr_anim_length : float = 0
 var _curr_anim_pos : float = 0
 var _action_time : float = 0
 
+var _tween : Tween
 
 func _on_grid_ability_controller_initialize():
 	hitbox = BLOODIED_KATANA_HITBOX.instantiate() as HitBox
@@ -36,17 +35,10 @@ func _on_grid_ability_controller_initialize():
 	
 	area = area_template.build_area()
 	area.set_area_enter_callback(_area_callback)
-	print("BUILT AREA FROM TEMPLATE")
 	get_tree().root.add_child(hitbox)
 	hitbox.effects = effects
 	hitbox.collision_mask = collision_mask_layer
 	hitbox.global_position = caster.global_position
-	#hitbox.anim_player.animation_finished.connect(_on_hitbox_anim_finished)
-	pass
-
-func _on_hitbox_anim_finished(anim_name : StringName):
-	if anim_name == "bloody_strike":
-		hitbox.query_hitbox()
 	pass
 
 func _process(delta: float) -> void:
@@ -67,7 +59,10 @@ func _process(delta: float) -> void:
 		
 		if targets.size() > 0:
 			_curr_target = EntityServer.active_entities[targets[0]]
-			hitbox.look_at(_curr_target.global_position)
+			_tween = create_tween()
+			_tween.bind_node(hitbox)
+			_tween.tween_property(hitbox, "rotation", Vector2.RIGHT.angle_to(_curr_target.global_position - hitbox.global_position), 0.1)
+			#hitbox.look_at(_curr_target.global_position)
 		
 		hitbox.anim_player.play("bloody_strike")
 		_curr_anim_length = hitbox.anim_player.current_animation_length
@@ -77,7 +72,6 @@ func _process(delta: float) -> void:
 	
 	if hitbox.anim_player.is_playing() and _queue_hit:
 		_curr_anim_pos = hitbox.anim_player.current_animation_position
-		print("ANIM POS: " + str(_curr_anim_pos))
 		if _curr_anim_pos >= _action_time:
 			start_ability()
 			_queue_hit = false
@@ -87,6 +81,10 @@ func _process(delta: float) -> void:
 	
 	#hitbox.rotation = lerp(hitbox.rotation, 0.0, delta * 20)
 	AreaServer.set_area_position(area, caster.global_position)
+
+func _look_at_target():
+	hitbox.look_at(_curr_target.global_position)
+	pass
 
 func start_ability():
 	hitbox.query_hitbox()
@@ -122,7 +120,7 @@ func _area_callback(status : int, area_rid : RID, instance_id : int, area_shape_
 		if targets.has(area_rid):
 			targets.erase(area_rid)
 			if targets.size() == 0:
-				hitbox.look_at(hitbox.global_position + Vector2.RIGHT)
+				#hitbox.look_at(hitbox.global_position + Vector2.RIGHT)
 				pass
 	pass
 

@@ -6,11 +6,22 @@ extends GridAbilityController
 
 var ability : ActiveAbility
 
+
 @export var cooldown : float = 1
 var curr_cd : float = 0
 
+var projectilie_count : int = 1
+var _bonus_projectile_count : int = 0
+var _timer : Timer 
+
 func _on_grid_ability_controller_initialize():
 	spawn_projectile_action.initialize(caster, controller_context)
+	var projectile_count_stat : Stat = caster.stats.get_stat("projectile_count")
+	if projectile_count_stat != null:
+		_bonus_projectile_count = int(projectile_count_stat.get_value())
+		pass
+	_timer = Timer.new()
+	add_child(_timer)
 	print("CONTROLLER FINISHED INITIALIZING")
 	pass
 
@@ -19,8 +30,22 @@ func start_ability():
 	pass
 
 func throw_stone():
-	print("THROW STONE!")
-	spawn_projectile_action.do(caster, controller_context)
+	var dir : Vector2 = (ProjectileServer.get_global_mouse_position() - caster.global_position).normalized()
+	var angle : float  = 0
+	var min_angle : float = 0 
+	var max_angle : float = 0
+	for i in (projectilie_count + _bonus_projectile_count):
+		angle = dir.angle()#Vector2.RIGHT.angle_to(dir) / (i + 1)
+		
+		dir = dir.rotated(angle / ((i + 1)))
+		spawn_projectile_action.look_at_mouse = false
+		spawn_projectile_action.shoot_at_mosue = false
+		spawn_projectile_action.projectile_angle = angle
+		spawn_projectile_action.projectile_direction = dir
+		spawn_projectile_action.do(caster, controller_context)
+		
+		#_timer.start(0.05)
+		#await _timer.timeout
 	pass
 
 func _process(delta: float) -> void:

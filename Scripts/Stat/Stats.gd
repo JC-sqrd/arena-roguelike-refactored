@@ -6,7 +6,8 @@ enum DefinedStats {
 	move_speed,
 	melee_damage,
 	ability_damage,
-	lethality
+	lethality,
+	projectile_count
 	}
 
 @export var stats_template : StatsTemplate

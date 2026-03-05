@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_dwvvx"]
 [ext_resource type="PackedScene" uid="uid://b1k2qgud53n82" path="res://Scenes/AbilityScenes/Controllers/bloodied_katanat_controller.tscn" id="1_nc5c6"]
-[ext_resource type="Texture2D" uid="uid://dhhne6mmf8cva" path="res://Placeholders/Bloody Samurai.png" id="2_nc5c6"]
+[ext_resource type="Texture2D" uid="uid://ceeabpqv8kv8r" path="res://Placeholders/Bloody Samurai Tile.png" id="3_nc5c6"]
 
 [resource]
 script = ExtResource("1_dwvvx")
 offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 name = "Bloodied Katana"
-texture = ExtResource("2_nc5c6")
+texture = ExtResource("3_nc5c6")
 ability_controller_scene = ExtResource("1_nc5c6")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
