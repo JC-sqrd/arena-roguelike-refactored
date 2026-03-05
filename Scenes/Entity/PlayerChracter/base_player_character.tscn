@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/stone_tile.tres" id="4_v3i30"]
 [ext_resource type="Resource" uid="uid://trpj7hg3rv0u" path="res://Resources/player_stats_template.tres" id="5_1dleg"]
 [ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/bloodied_katana_tile.tres" id="5_l0a5t"]
+[ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="6_nn7uc"]
 [ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
 [ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
 [ext_resource type="Resource" uid="uid://dxoo241b5mlgn" path="res://Resources/WeaponData/AzureSword.tres" id="9_aysh2"]
@@ -35,16 +36,6 @@ name = "Flying Flail"
 texture = SubResource("CompressedTexture2D_hfmdo")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rjymu"]
-load_path = "res://.godot/imported/Marble.png-c634a7cd710926baf95131925295e9bb.ctex"
-
-[sub_resource type="Resource" id="Resource_fvnwg"]
-resource_local_to_scene = true
-script = ExtResource("3_8ud0v")
-name = "Marble"
-texture = SubResource("CompressedTexture2D_rjymu")
-metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_skjfb"]
 load_path = "res://.godot/imported/AbilityTile_Placeholder_5.png-522f2388b59eb5c2102d04f495722595.ctex"
 
@@ -71,7 +62,7 @@ initial_ability_tiles = Dictionary[Vector2i, ExtResource("3_8ud0v")]({
 Vector2i(0, 0): SubResource("Resource_weqa2"),
 Vector2i(0, 2): ExtResource("4_v3i30"),
 Vector2i(0, 3): ExtResource("5_l0a5t"),
-Vector2i(2, 0): SubResource("Resource_fvnwg"),
+Vector2i(2, 0): ExtResource("6_nn7uc"),
 Vector2i(2, 3): SubResource("Resource_ufrmk"),
 Vector2i(3, 1): SubResource("Resource_22ndi"),
 Vector2i(4, 0): ExtResource("4_v3i30")

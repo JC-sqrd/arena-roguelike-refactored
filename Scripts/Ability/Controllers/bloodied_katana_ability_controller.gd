@@ -12,7 +12,7 @@ var effects : Array[Effect]
 var targets : Array[RID]
 
 
-@export var cooldown : float = 1
+@export var cooldown : float = 0
 var curr_cd : float = 0
 
 var _curr_target : Entity
@@ -79,13 +79,18 @@ func _process(delta: float) -> void:
 		_curr_anim_pos = hitbox.anim_player.current_animation_position
 		print("ANIM POS: " + str(_curr_anim_pos))
 		if _curr_anim_pos >= _action_time:
-			hitbox.query_hitbox()
+			start_ability()
 			_queue_hit = false
 			pass
 		pass
 	
+	
 	#hitbox.rotation = lerp(hitbox.rotation, 0.0, delta * 20)
 	AreaServer.set_area_position(area, caster.global_position)
+
+func start_ability():
+	hitbox.query_hitbox()
+	pass
 
 func _physics_process(delta: float) -> void:
 	if !active:
@@ -96,23 +101,8 @@ func _physics_process(delta: float) -> void:
 	#hitbox.global_position = caster.global_position
 	
 	_curr_dist_sqrd = hitbox.global_position.distance_squared_to(caster.global_position)
-	
-	#print("DISTANCE SQRD: " + str(_curr_dist_sqrd) + " DISTANCE THRESHOLD: " + str(_dist_threshold**2))
-	
-	#print(str(targets))
-	
-	
-	
-		#_relative_x = (_curr_target.global_position - hitbox.global_position)
-		#_target_angle = rads_to_deg(_relative_x.angle())
-		#
-		#if _target_angle > 90 or _target_angle < -90:
-			#hitbox.scale.x = -1
-			#pass
-		#else:
-			#hitbox.scale.x = 1
-		#pass
 	pass
+	
 #1. an integer status: either AREA_BODY_ADDED or AREA_BODY_REMOVED depending on whether the other area's shape entered or exited the area,
 #
 #2. an RID area_rid: the RID of the other area that entered or exited the area,
@@ -127,22 +117,13 @@ func _area_callback(status : int, area_rid : RID, instance_id : int, area_shape_
 	#Area Entered
 	if status == 0:
 		targets.append(area_rid)
-		targets.sort_custom(
-			func(a, b):
-				var dist_a : float = EntityServer.active_entities[a].global_position.distance_squared_to(hitbox.global_position)
-				var dist_b : float = EntityServer.active_entities[b].global_position.distance_squared_to(hitbox.global_position)
-				return dist_a < dist_b
-		)
 		pass
 	else:
 		if targets.has(area_rid):
 			targets.erase(area_rid)
-			targets.sort_custom(
-				func(a, b):
-					var dist_a : float = EntityServer.active_entities[a].global_position.distance_squared_to(hitbox.global_position)
-					var dist_b : float = EntityServer.active_entities[b].global_position.distance_squared_to(hitbox.global_position)
-					return dist_a < dist_b
-			)
+			if targets.size() == 0:
+				hitbox.look_at(hitbox.global_position + Vector2.RIGHT)
+				pass
 	pass
 
 func _exit_tree() -> void:

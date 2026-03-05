@@ -112,6 +112,8 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 	#Place
 	if _held_tile != null:
 		if ability_grid.place_tile_on_slot(_held_tile, slot_pos):
+			var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = ability_grid.get_adjacent_tiles_from_adjacent_points(_held_tile)
+			print("ADJACENT TILES: " + str(adjacent_tiles))
 			_held_tile = null
 			_original_grid = null
 			_original_pos = Vector2i(-1,-1)

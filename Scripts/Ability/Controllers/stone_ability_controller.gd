@@ -12,6 +12,9 @@ var curr_cd : float = 0
 func _on_grid_ability_controller_initialize():
 	spawn_projectile_action.initialize(caster, controller_context)
 	print("CONTROLLER FINISHED INITIALIZING")
+	pass
+
+func start_ability():
 	throw_stone()
 	pass
 
@@ -27,5 +30,5 @@ func _process(delta: float) -> void:
 	curr_cd += delta
 	if curr_cd >= cooldown:
 		curr_cd = 0
-		throw_stone()
+		start_ability()
 	pass

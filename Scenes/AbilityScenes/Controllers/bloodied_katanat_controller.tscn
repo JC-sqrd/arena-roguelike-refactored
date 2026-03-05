@@ -43,4 +43,5 @@ script = ExtResource("1_nb8g1")
 area_template = SubResource("Resource_ypd4y")
 collision_mask_layer = 4
 effect_templates = Array[ExtResource("4_sk2hw")]([SubResource("Resource_5gmol")])
+cooldown = 1.0
 metadata/_custom_type_script = "uid://ck2lns8ywy84t"

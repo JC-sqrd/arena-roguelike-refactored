@@ -12,9 +12,16 @@ func initialize(caster : PlayerEntity):
 	_on_grid_ability_controller_initialize()
 	pass
 
+func start_ability():
+	_on_start_ability()
+	pass
+
+func _on_start_ability():
+	pass
 
 func _on_grid_ability_controller_initialize():
 	pass
+
 
 func generate_controller_context() -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant] = {}

@@ -10,13 +10,13 @@ func _ready() -> void:
 	
 	spawn_enemy()
 	
-	for i in range(randi_range(500, 700)):
-		spawn_enemy()
-		if EnemyServer.active_enemies.size() >= 1500:
-			break
-		pass
-	
-	get_tree().create_timer(randi_range(30, 60)).timeout.connect(spawn_horde)
+	#for i in range(randi_range(500, 700)):
+		#spawn_enemy()
+		#if EnemyServer.active_enemies.size() >= 1500:
+			#break
+		#pass
+	#
+	#get_tree().create_timer(randi_range(30, 60)).timeout.connect(spawn_horde)
 	pass
 
 

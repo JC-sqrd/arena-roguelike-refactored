@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://5g7g6yfq5e3n"]
+
+[ext_resource type="Script" uid="uid://y20jtnbuq7he" path="res://Scripts/Ability/Controllers/marble_controller.gd" id="1_o15qi"]
+
+[node name="MarbleController" type="Node" unique_id=410668855]
+script = ExtResource("1_o15qi")

@@ -211,3 +211,49 @@ func pop_tile_on_slot(slot_pos : Vector2i) -> AbilityTile:
 	
 	removed_tile.emit(ability_tile, tile_pos)
 	return ability_tile
+
+
+func get_adjacent_tiles(tile : AbilityTile) -> Dictionary[Vector2i, AbilityTile]:
+	if !ability_tiles.has(tile):
+		return {}
+	
+	var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = {}
+	
+	var tile_pos : Vector2i = ability_tiles.get(tile)
+	
+	var directions : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
+	
+	for offset in tile.offsets:
+		var slot_offsset : Vector2i = tile_pos + offset
+		var slot : AbilityGridSlot = grid_coords.get(slot_offsset)
+		for direction in directions:
+			var neighbor : Vector2i = slot_offsset + direction
+			var neighbor_slot : AbilityGridSlot = grid_coords.get(neighbor)
+			if neighbor_slot != null:
+				if neighbor_slot.occupied_by == tile:
+					continue
+				elif neighbor_slot.occupied_by != null:
+					adjacent_tiles[neighbor] = (neighbor_slot.occupied_by)
+				pass
+			pass
+	return adjacent_tiles
+
+func get_adjacent_tiles_from_adjacent_points(tile : AbilityTile) -> Dictionary[Vector2i, AbilityTile]: 
+	if !ability_tiles.has(tile):
+		return {}
+	
+	var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = {}
+	
+	var tile_pos : Vector2i = ability_tiles.get(tile)
+	
+	var directions : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
+	
+	for point in tile.adjacent_points:
+		var slot_offsset : Vector2i = tile_pos + point
+		var slot : AbilityGridSlot = grid_coords.get(slot_offsset)
+		if slot != null:
+			if slot.occupied_by != null and slot.occupied_by != tile:
+				adjacent_tiles[slot_offsset] = slot.occupied_by
+		pass
+	pass
+	return adjacent_tiles
