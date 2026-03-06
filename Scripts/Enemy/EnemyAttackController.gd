@@ -1,6 +1,5 @@
 class_name EnemyAttackController extends Node
 
-@export var attack_execute : AttackExecute
 @export var attack_timer : Timer
 
 @export var effects_template : Array[EffectTemplate]

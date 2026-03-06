@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://sy60xpo0pa1x"]
+
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_s3ql6"]
+[ext_resource type="Texture2D" uid="uid://wdbbtb4quyq3" path="res://Placeholders/SpikedBat.png" id="2_as76a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3ql6"]
+size = Vector2(128, 160)
+
+[node name="SpikedBatHitbox" type="Area2D" unique_id=2027962174]
+script = ExtResource("1_s3ql6")
+metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=362093196]
+position = Vector2(64, 0)
+shape = SubResource("RectangleShape2D_s3ql6")
+
+[node name="SpikedBat" type="Sprite2D" parent="." unique_id=1068795387]
+position = Vector2(-1, 4)
+texture = ExtResource("2_as76a")

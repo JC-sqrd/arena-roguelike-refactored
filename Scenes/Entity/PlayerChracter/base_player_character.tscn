@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/bloodied_katana_tile.tres" id="5_l0a5t"]
 [ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="6_nn7uc"]
 [ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
+[ext_resource type="Resource" uid="uid://b3mshjv3l6cf" path="res://Resources/AbilityTiles/spiked_bat_tile.tres" id="7_nqu6t"]
 [ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
 [ext_resource type="Resource" uid="uid://dxoo241b5mlgn" path="res://Resources/WeaponData/AzureSword.tres" id="9_aysh2"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
@@ -65,7 +66,8 @@ Vector2i(0, 3): ExtResource("5_l0a5t"),
 Vector2i(2, 0): ExtResource("6_nn7uc"),
 Vector2i(2, 3): SubResource("Resource_ufrmk"),
 Vector2i(3, 1): SubResource("Resource_22ndi"),
-Vector2i(4, 0): ExtResource("4_v3i30")
+Vector2i(4, 0): ExtResource("4_v3i30"),
+Vector2i(4, 3): ExtResource("7_nqu6t")
 })
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
 

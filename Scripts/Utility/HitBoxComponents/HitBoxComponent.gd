@@ -1,0 +1,1 @@
+class_name HitboxComponent extends RefCounted

@@ -1,6 +1,7 @@
 extends Node2D
 
 const NORMAL_ENEMY = preload("uid://dkmv5cgdq0wh3")
+const SMALL_ENEMY = preload("uid://b00aqxyistgiy")
 
 func _ready() -> void:
 	
@@ -33,7 +34,7 @@ func spawn_enemy():
 	var max_y : float =  - ((8000.0) / 2)
 
 	#var rand_pos : Vector2 = Vector2(randf_range(0, max_x), randf_range(0, max_y))
-	var enemy : EnemyController = NORMAL_ENEMY.instantiate() as EnemyController
+	var enemy : EnemyController = SMALL_ENEMY.instantiate() as EnemyController
 	enemy.global_position = camera_pos + spawn_offset#rand_pos
 	add_child(enemy)
 	
