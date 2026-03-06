@@ -28,14 +28,19 @@ func do(caster : Entity, context : Dictionary[StringName, Variant]):
 
 func spawn_projectile(caster : Entity, ability_context : Dictionary[StringName, Variant]):
 	var projectile : Projectile = projectile_template.build_projectile()
-	var mouse_pos : Vector2 = ProjectileServer.get_global_mouse_position() - caster.global_position
+	var mouse_pos : Vector2 = ProjectileServer.get_global_mouse_position() - caster.action_point
 	projectile.effects = effects
 	projectile.context = ability_context
+	
 	if look_at_mouse:
-		projectile.angle = mouse_pos.angle()
+		var mouse_angle : float = mouse_pos.angle()
+		projectile.angle = mouse_angle
+		projectile.texture_angle = mouse_angle
 		projectile.direction = mouse_pos.normalized()
 	else:
 		projectile.angle = projectile_angle
+		projectile.texture_angle = projectile_angle
+		
 	if shoot_at_mosue:
 		projectile.direction = mouse_pos.normalized()
 	else:

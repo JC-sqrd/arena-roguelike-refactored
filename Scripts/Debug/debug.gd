@@ -31,7 +31,7 @@ func spawn_enemy():
 	
 	var max_x : float = - ((8000.0) /2)
 	var max_y : float =  - ((8000.0) / 2)
-	
+
 	#var rand_pos : Vector2 = Vector2(randf_range(0, max_x), randf_range(0, max_y))
 	var enemy : EnemyController = NORMAL_ENEMY.instantiate() as EnemyController
 	enemy.global_position = camera_pos + spawn_offset#rand_pos

@@ -6,12 +6,19 @@ var _keys : Array[RID]
 
 var free_queue : Array[RID]
 
+var debug : bool = false
+
+func _ready() -> void:
+	z_index = 100
+
 func regiser_projectile(rid : RID, projectile : Projectile):
 	active_projectiles[rid] = projectile
 	pass
 
 
 func _physics_process(delta: float) -> void:
+	queue_redraw()
+	
 	if active_projectiles.size() == 0:
 		return
 	
@@ -41,3 +48,9 @@ func to_free(rid : RID):
 
 func free_projectile(rid : RID):
 	active_projectiles.erase(rid)
+
+func _draw() -> void:
+	if debug:
+		draw_line(global_position, get_global_mouse_position(), Color.CRIMSON, 1)
+		draw_circle(get_global_mouse_position(), 4, Color.RED, true, 2)
+	pass

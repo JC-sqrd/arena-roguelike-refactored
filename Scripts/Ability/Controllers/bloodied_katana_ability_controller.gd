@@ -44,7 +44,10 @@ func _on_grid_ability_controller_initialize():
 func _process(delta: float) -> void:
 	if !active:
 		return
-		
+	
+	if targets.size() == 0:
+		return
+	
 	curr_cd += delta
 	if curr_cd >= cooldown:
 		
@@ -119,9 +122,9 @@ func _area_callback(status : int, area_rid : RID, instance_id : int, area_shape_
 	else:
 		if targets.has(area_rid):
 			targets.erase(area_rid)
-			if targets.size() == 0:
-				#hitbox.look_at(hitbox.global_position + Vector2.RIGHT)
-				pass
+		if targets.size() == 0:
+			hitbox.look_at(hitbox.global_position + Vector2.RIGHT)
+			pass
 	pass
 
 func _exit_tree() -> void:

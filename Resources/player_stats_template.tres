@@ -48,7 +48,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("2_8r4bj")
 name = "Projectile Count"
 stat_id = &"projectile_count"
-value = 50.0
+value = 100.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [resource]

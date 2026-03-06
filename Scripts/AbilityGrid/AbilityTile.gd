@@ -9,6 +9,8 @@ class_name AbilityTile extends Resource
 
 var adjacent_tiles : Dictionary[Vector2i, AbilityTile]
 
+var _active_controller : GridAbilityController
+
 var rotation_index : int = 0 : 
 	set(value):
 		rotation_index = value % 4
@@ -45,7 +47,11 @@ func set_rotation_to(target_idx : int):
 	pass
 
 
+func get_active_controller() -> GridAbilityController:
+	return _active_controller
+
 func build_ability_controller() -> GridAbilityController:
 	var controller : GridAbilityController = ability_controller_scene.instantiate() as GridAbilityController
+	_active_controller = controller
 	return controller
 	

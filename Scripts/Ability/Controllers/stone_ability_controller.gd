@@ -30,20 +30,18 @@ func start_ability():
 	pass
 
 func throw_stone():
-	var dir : Vector2 = (ProjectileServer.get_global_mouse_position() - caster.global_position).normalized()
-	var angle : float  = 0
-	var min_angle : float = 0 
-	var max_angle : float = 0
-	for i in (projectilie_count + _bonus_projectile_count):
-		angle = dir.angle()#Vector2.RIGHT.angle_to(dir) / (i + 1)
-		
-		dir = dir.rotated(angle / ((i + 1)))
+	var total_projectiles : int = projectilie_count + _bonus_projectile_count
+	var degree_of_separation : float = 10
+	var angle : float = 0
+	for i in (total_projectiles):
+		var dir : Vector2 = (ProjectileServer.get_global_mouse_position() - caster.action_point).normalized()
+		angle = dir.angle()
+		dir = Vector2.RIGHT.rotated(angle + deg_to_rad(i * degree_of_separation))
 		spawn_projectile_action.look_at_mouse = false
 		spawn_projectile_action.shoot_at_mosue = false
 		spawn_projectile_action.projectile_angle = angle
 		spawn_projectile_action.projectile_direction = dir
 		spawn_projectile_action.do(caster, controller_context)
-		
 		#_timer.start(0.05)
 		#await _timer.timeout
 	pass
