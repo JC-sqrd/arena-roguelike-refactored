@@ -103,7 +103,7 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 			var tile_rect : AbilityTileTextureRect = _hovered_ui.pop_tile_rect(tile)
 			tile_rect.position = Vector2.ZERO - tile_rect.get_root_offset_position(tile_rect.ability_tile.offsets)#tile_rect.calculate_pos_relative_to_grid(tile, Vector2i(0,0))
 			cursor_ui.add_child(tile_rect)
-			tile.adjacent_tiles.clear()
+			tile.update_adjacent_tiles({})
 			_held_tile = tile
 			_original_grid = ability_grid
 			_original_pos = ability_grid.ability_tiles.get(tile)
@@ -141,8 +141,8 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 
 func _update_adjacent_tiles(tiles : Dictionary[Vector2i, AbilityTile], grid : AbilityGrid):
 	for tile in tiles:
-		var abiltiy_tile : AbilityTile = tiles[tile]
-		abiltiy_tile.adjacent_tiles = grid.get_adjacent_tiles_from_adjacent_points(abiltiy_tile)
+		var ability_tile : AbilityTile = tiles[tile]
+		ability_tile.update_adjacent_tiles(grid.get_adjacent_tiles_from_adjacent_points(ability_tile))
 		pass
 	pass
 

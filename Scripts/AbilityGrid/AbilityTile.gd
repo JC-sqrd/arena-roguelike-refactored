@@ -16,6 +16,7 @@ var rotation_index : int = 0 :
 		rotation_index = value % 4
 
 signal rotated(tile : AbilityTile, rotation_degrees : float)
+signal adjacent_tiles_updated(adjacent_tiles :  Dictionary[Vector2i, AbilityTile])
 
 func rotate_clockwise():
 	var rotated_offsets : Array[Vector2i]
@@ -35,6 +36,23 @@ func rotate_clockwise():
 	offsets = rotated_offsets
 	
 	rotated.emit(self, rotation_index * 90)
+	pass
+
+func update_adjacent_tiles(new_adjacent_tiles : Dictionary[Vector2i, AbilityTile]):
+	adjacent_tiles = new_adjacent_tiles
+	
+	if _active_controller != null:
+		_active_controller.adjacent_controllers.clear()
+		var adjacent_controllers : Array[GridAbilityController]
+		for tile in adjacent_tiles:
+			var ability_tile : AbilityTile = adjacent_tiles.get(tile)
+			var adjacent_controller : GridAbilityController = ability_tile.get_active_controller()
+			
+			if adjacent_controller != null:
+				adjacent_controllers.append(adjacent_controller)
+		
+		_active_controller.update_adjacent_controllers(adjacent_controllers)
+	adjacent_tiles_updated.emit(adjacent_tiles)
 	pass
 
 func set_rotation_to(target_idx : int):

@@ -5,6 +5,8 @@ var controllers : Dictionary[AbilityTile, GridAbilityController]
 var ability_grid : AbilityGrid
 var caster : Entity
 
+
+
 func initialize(caster : Entity, ability_grid : AbilityGrid):
 	self.caster = caster
 	self.ability_grid = ability_grid
@@ -26,8 +28,10 @@ func add_controller(tile : AbilityTile, ability_controller : GridAbilityControll
 func _on_grid_changed():
 	pass
 
+
+
 func _on_placed_tile(tile : AbilityTile, coord : Vector2i):
-	var controller : GridAbilityController = tile.ability_controller_scene.instantiate() as GridAbilityController
+	var controller : GridAbilityController = tile.build_ability_controller()
 	controllers[tile] = controller
 	add_child(controller)
 	controller.initialize(caster)

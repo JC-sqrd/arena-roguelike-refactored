@@ -22,7 +22,6 @@ func _on_grid_ability_controller_initialize():
 		pass
 	_timer = Timer.new()
 	add_child(_timer)
-	print("CONTROLLER FINISHED INITIALIZING")
 	pass
 
 func start_ability():

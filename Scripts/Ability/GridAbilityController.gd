@@ -4,6 +4,9 @@ class_name GridAbilityController extends AbilityController
 var caster : Entity
 var active : bool = false
 var controller_context : Dictionary[StringName, Variant]
+var adjacent_controllers : Array[GridAbilityController]
+
+signal adjacent_contollers_updated(controllers : Array[GridAbilityController])
 
 func initialize(caster : PlayerEntity):
 	self.caster = caster
@@ -20,6 +23,11 @@ func _on_start_ability():
 	pass
 
 func _on_grid_ability_controller_initialize():
+	pass
+
+func update_adjacent_controllers(new_adjacent_controllers : Array[GridAbilityController]):
+	adjacent_controllers = new_adjacent_controllers
+	adjacent_contollers_updated.emit(new_adjacent_controllers)
 	pass
 
 
