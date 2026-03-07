@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmv5cgdq0wh3" path="res://Scenes/Entity/Enemies/normal_enemy.tscn" id="4_y11aj"]
 [ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="6_qimqw"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="7_dhtwe"]
+[ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_spawner.tscn" id="10_hq5rx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y11aj"]
 texture = ExtResource("1_34on7")
@@ -221,5 +222,8 @@ stats_template = SubResource("Resource_74pca")
 
 [node name="GizmoSprite" type="Sprite2D" parent="." unique_id=1448045331]
 texture = SubResource("GradientTexture2D_0b76d")
+
+[node name="EnemySpawner" parent="." unique_id=1873571421 instance=ExtResource("10_hq5rx")]
+position = Vector2(-337, -128)
 
 [editable path="NormalEnemy"]

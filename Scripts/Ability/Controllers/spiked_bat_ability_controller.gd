@@ -20,6 +20,7 @@ func _on_grid_ability_controller_initialize():
 		pass
 	
 	area = area_template.build_area()
+	area.owner = self
 	get_tree().root.add_child(hitbox)
 	hitbox.effects = effects
 	hitbox.collision_mask = collision_mask_layer

@@ -305,7 +305,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkbcb"]
-size = Vector2(120.95624, 242.00003)
+size = Vector2(120, 242)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7ryr"]
 size = Vector2(88, 186)
@@ -349,5 +349,5 @@ texture = ExtResource("1_61ugl")
 offset = Vector2(8, -8)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1854946083]
-position = Vector2(162, 13)
+position = Vector2(162, 22)
 shape = SubResource("RectangleShape2D_y7ryr")

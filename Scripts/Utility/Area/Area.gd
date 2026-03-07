@@ -13,11 +13,15 @@ var active : bool = true
 var _space : RID
 var coll_layer : int = 0
 var coll_mask : int = 0
-
+var owner : Node 
 var xForm : Transform2D
+var is_static : bool = false
 
 func update_position(delta : float):
 	if !active:
+		return
+	
+	if is_static:
 		return
 	
 	if parent_node != null:
@@ -29,7 +33,7 @@ func update_position(delta : float):
 	pass
 
 
-func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, instance_aid : int, area_shape_idx : int, self_shape_idx : int):
+func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, instance_id : int, area_shape_idx : int, self_shape_idx : int):
 	
 	pass
 

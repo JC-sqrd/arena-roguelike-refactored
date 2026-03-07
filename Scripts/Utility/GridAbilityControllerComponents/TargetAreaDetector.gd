@@ -21,7 +21,6 @@ func _area_callback(status : int, area_rid : RID, instance_id : int, area_shape_
 	if status == 0:
 		targets.append(area_rid)
 		target_entered.emit(area_rid)
-		print("AREA ENTERED")
 		pass
 	else:
 		if targets.has(area_rid):

@@ -1,6 +1,7 @@
 class_name AreaController extends Node2D
 
 @export var area_template : AreaTemplate
+@export var parent_node : Node2D
 
 var active : bool = false
 
@@ -12,9 +13,15 @@ func _process(delta: float) -> void:
 
 func initialize():
 	area = area_template.build_area()
-	area.parent_node = self
+	area.owner = self
+	#area.parent_node = self
 	AreaServer.register_area(area.area_rid, area)
 	active = true
+	pass
+
+func _physics_process(delta: float) -> void:
+	if active:
+		AreaServer.set_area_position(area, global_position)
 	pass
 
 func set_area_enter_callback(callable : Callable):

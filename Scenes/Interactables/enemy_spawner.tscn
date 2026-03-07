@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dvp134exe010y"]
+
+[ext_resource type="Script" uid="uid://tshu46mt1lf3" path="res://Scripts/Interactable/Interactable.gd" id="1_lf4df"]
+[ext_resource type="Script" uid="uid://djuykm7jsyf2p" path="res://Scripts/Interactable/EnemySpawner/EnemySpawner.gd" id="1_vmsas"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="2_ckt2a"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="3_nwip1"]
+[ext_resource type="Texture2D" uid="uid://dhkj6c4whg5h1" path="res://Placeholders/AbilityTile_Placeholder_1.png" id="4_nwip1"]
+
+[sub_resource type="Resource" id="Resource_vmsas"]
+script = ExtResource("2_ckt2a")
+radius = 32.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_3fjd7"]
+script = ExtResource("3_nwip1")
+monitorable = true
+area_shape = SubResource("Resource_vmsas")
+is_static = true
+area_coll_layer = 1
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[node name="EnemySpawner" type="Node2D" unique_id=1873571421 node_paths=PackedStringArray("interactable")]
+script = ExtResource("1_vmsas")
+interactable = NodePath("Interactable")
+
+[node name="Interactable" type="Node" parent="." unique_id=1733061659 node_paths=PackedStringArray("parent_node")]
+script = ExtResource("1_lf4df")
+parent_node = NodePath("..")
+area_template = SubResource("Resource_3fjd7")
+metadata/_custom_type_script = "uid://tshu46mt1lf3"
+
+[node name="AbilityTilePlaceholder1" type="Sprite2D" parent="." unique_id=232141568]
+texture_filter = 1
+position = Vector2(0, -64)
+texture = ExtResource("4_nwip1")

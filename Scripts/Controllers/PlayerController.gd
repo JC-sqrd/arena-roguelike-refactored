@@ -6,6 +6,7 @@ class_name PlayerController extends CharacterBody2D
 @export var grid_ability_controller_manager : GridAbilityControllerManager
 @export var ability_grid : AbilityGrid
 @export var ability_tile_inventory : AbilityGrid
+@export var interactable_detector : InteractableDetector
 
 var input_dir : Vector2
 
@@ -37,6 +38,8 @@ func _ready():
 	initialized_grids.emit(ability_grid, ability_tile_inventory)
 	
 	active_ability_controller.initialize(player_entity.entity)
+	
+	interactable_detector.initialize(player_entity.entity, self)
 	
 	EntityServer.register_entity(player_entity.entity.entity_rid, player_entity.entity)
 	pass

@@ -20,7 +20,10 @@
 [ext_resource type="Script" uid="uid://b71v68teuxsft" path="res://Scripts/Ability/ActiveAbilityController.gd" id="14_1dleg"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="14_xpoel"]
 [ext_resource type="Resource" uid="uid://bro2k6av54dhh" path="res://Resources/AbilityData/test_ability_data.tres" id="15_xpoel"]
+[ext_resource type="Script" uid="uid://bc6u0xacwhuly" path="res://Scripts/Interactable/InteractableDetector.gd" id="22_62e6c"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="23_5pv1g"]
 [ext_resource type="Script" uid="uid://dqdesfdfx12xh" path="res://Scripts/Ability/GridAbilityControllerManager.gd" id="23_uj7x4"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="24_c44xl"]
 
 [sub_resource type="Resource" id="Resource_l0a5t"]
 script = ExtResource("2_xpoel")
@@ -106,7 +109,18 @@ gradient = SubResource("Gradient_1dleg")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller", "grid_ability_controller_manager")]
+[sub_resource type="Resource" id="Resource_jq2g3"]
+script = ExtResource("23_5pv1g")
+radius = 64.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_b2ade"]
+script = ExtResource("24_c44xl")
+area_shape = SubResource("Resource_jq2g3")
+area_coll_mask = 1
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller", "grid_ability_controller_manager", "interactable_detector")]
 collision_layer = 2
 script = ExtResource("1_vvirn")
 player_entity = NodePath("PlayerEntityNode")
@@ -114,6 +128,7 @@ active_ability_controller = NodePath("ActiveAbilityController")
 grid_ability_controller_manager = NodePath("GridAbilityControllerManager")
 ability_grid = SubResource("Resource_l0a5t")
 ability_tile_inventory = SubResource("Resource_8ud0v")
+interactable_detector = NodePath("InteractableDetector")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
 z_index = 1
@@ -187,3 +202,8 @@ metadata/_custom_type_script = "uid://b71v68teuxsft"
 [node name="GridAbilityControllerManager" type="Node" parent="." unique_id=103877313]
 script = ExtResource("23_uj7x4")
 metadata/_custom_type_script = "uid://dqdesfdfx12xh"
+
+[node name="InteractableDetector" type="Node" parent="." unique_id=1743802063]
+script = ExtResource("22_62e6c")
+detector_area_template = SubResource("Resource_b2ade")
+metadata/_custom_type_script = "uid://bc6u0xacwhuly"

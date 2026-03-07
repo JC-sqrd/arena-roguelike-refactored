@@ -1,15 +1,16 @@
 extends Node2D
 
-
 var active_areas : Dictionary[RID, Area]
+var area_to_node : Dictionary[Area, Node]
 
 var free_queue : Array[RID]
 
 var _keys : Array[RID]
 
+
 static func set_area_position(area : Area, position : Vector2):
-	area.xForm = Transform2D(area.angle, position)
-	#print("AREA GLOBAL POS: " + str(global_position))
+	area.global_position = position
+	area.xForm = Transform2D(area.angle, area.global_position)
 	PhysicsServer2D.area_set_transform(area.area_rid, area.xForm)
 	pass
 
@@ -18,7 +19,7 @@ func register_area(rid : RID, area : Area):
 	area.active = true
 	pass
 
-func _process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	_keys = active_areas.keys()
 	
 	for key in _keys:
@@ -41,5 +42,4 @@ func to_free(rid : RID):
 	PhysicsServer2D.area_set_collision_layer(rid, 0)
 	PhysicsServer2D.area_set_collision_mask(rid, 0)
 	PhysicsServer2D.area_set_monitorable(rid, false)
-	
 	pass

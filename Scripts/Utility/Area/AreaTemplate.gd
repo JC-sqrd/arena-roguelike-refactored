@@ -4,6 +4,7 @@ class_name AreaTemplate extends Resource
 @export var monitorable : bool = false
 @export var area_shape : AreaShape
 
+@export var is_static : bool = false
 @export_flags_2d_physics var area_coll_layer : int = 0
 @export_flags_2d_physics var area_coll_mask : int = 0
 
@@ -34,6 +35,8 @@ func build_area() -> Area:
 	PhysicsServer2D.area_set_collision_layer(area.area_rid, area_coll_layer)
 	
 	PhysicsServer2D.area_set_collision_mask(area.area_rid, area_coll_mask)
+	
+	area.is_static = is_static
 	
 	area.coll_layer = area_coll_layer
 	
