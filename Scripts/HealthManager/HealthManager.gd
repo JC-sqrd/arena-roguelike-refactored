@@ -3,7 +3,7 @@ class_name HealthManager extends RefCounted
 var max_health : Stat
 var current_health : Stat
 
-signal health_depleted()
+signal health_depleted(context : Dictionary[StringName, Variant])
 
 func initialize(stats : Stats):
 	self.max_health = stats.get_stat("max_health")
@@ -12,9 +12,9 @@ func initialize(stats : Stats):
 	self.current_health.value_changed.connect(_on_current_health_value_changed)
 	pass
 
-func _on_current_health_value_changed(current_health_stat : Stat):
+func _on_current_health_value_changed(current_health_stat : Stat, context : Dictionary[StringName, Variant]):
 	if current_health_stat.get_value() <= 0:
-		health_depleted.emit()
+		health_depleted.emit(context)
 	pass
 
 func add_health(value : float):

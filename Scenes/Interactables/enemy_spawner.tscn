@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 [node name="EnemySpawner" type="Node2D" unique_id=1873571421 node_paths=PackedStringArray("interactable")]
 script = ExtResource("1_vmsas")
 interactable = NodePath("Interactable")
+cooldown = 10.0
 
 [node name="Interactable" type="Node" parent="." unique_id=1733061659 node_paths=PackedStringArray("parent_node")]
 script = ExtResource("1_lf4df")

@@ -11,13 +11,13 @@
 [ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
 [ext_resource type="Resource" uid="uid://b3mshjv3l6cf" path="res://Resources/AbilityTiles/spiked_bat_tile.tres" id="7_nqu6t"]
 [ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
-[ext_resource type="Resource" uid="uid://dxoo241b5mlgn" path="res://Resources/WeaponData/AzureSword.tres" id="9_aysh2"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 [ext_resource type="Script" uid="uid://c27363khv4g3j" path="res://Scripts/Entity/PlayerEntityNode.gd" id="13_1dleg"]
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
 [ext_resource type="Script" uid="uid://b71v68teuxsft" path="res://Scripts/Ability/ActiveAbilityController.gd" id="14_1dleg"]
+[ext_resource type="Resource" uid="uid://bflrqwxd7bi6m" path="res://Resources/WeaponData/BaseballBat.tres" id="14_5pv1g"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="14_xpoel"]
 [ext_resource type="Resource" uid="uid://bro2k6av54dhh" path="res://Resources/AbilityData/test_ability_data.tres" id="15_xpoel"]
 [ext_resource type="Script" uid="uid://bc6u0xacwhuly" path="res://Scripts/Interactable/InteractableDetector.gd" id="22_62e6c"]
@@ -27,6 +27,7 @@
 
 [sub_resource type="Resource" id="Resource_l0a5t"]
 script = ExtResource("2_xpoel")
+unlocked_slots = Array[Vector2i]([Vector2i(-1, 0)])
 size = Vector2i(3, 3)
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
 
@@ -79,7 +80,7 @@ size = Vector2(32, 64)
 
 [sub_resource type="Resource" id="Resource_ushvb"]
 script = ExtResource("9_f4r5d")
-equipped_equipment = ExtResource("9_aysh2")
+equipped_equipment = ExtResource("14_5pv1g")
 metadata/_custom_type_script = "uid://dq1xwwwhdd61h"
 
 [sub_resource type="Gradient" id="Gradient_7xakc"]

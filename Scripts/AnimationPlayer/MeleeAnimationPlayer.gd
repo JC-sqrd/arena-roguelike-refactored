@@ -9,6 +9,10 @@ func _init():
 		anim_lib = AnimationLibrary.new()
 		add_animation_library("", anim_lib)
 	
+	if not anim_lib.has_animation("RESET"):
+		var reset_anim : Animation = Animation.new()
+		anim_lib.add_animation("RESET", reset_anim)
+		pass
 	if not anim_lib.has_animation("windup"):
 		var windup_anim : Animation = Animation.new()
 		anim_lib.add_animation("windup", windup_anim)

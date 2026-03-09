@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_6u20e"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="4_4jjfk"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_c1e5n"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="5_dumk5"]
 [ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="5_jwcsb"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="6_b86r7"]
 [ext_resource type="PackedScene" uid="uid://bhyjrjxakyds1" path="res://Scenes/Weapons/HitBoxes/test_ability_hitbox.tscn" id="7_6u20e"]
@@ -31,6 +32,10 @@ projectile_texture = SubResource("CompressedTexture2D_g4vhs")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"
 
+[sub_resource type="Resource" id="Resource_o6efp"]
+script = ExtResource("5_dumk5")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
 [sub_resource type="Resource" id="Resource_qphct"]
 script = ExtResource("5_jwcsb")
 context_stats_id = &"caster_stats"
@@ -46,6 +51,7 @@ metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 [sub_resource type="Resource" id="Resource_dumk5"]
 script = ExtResource("6_b86r7")
 flat_mutator_templates = Array[ExtResource("2_ylwdr")]([SubResource("Resource_c1e5n")])
+effect_event_templates = Array[ExtResource("4_c1e5n")]([SubResource("Resource_o6efp")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [sub_resource type="Resource" id="Resource_og6o4"]

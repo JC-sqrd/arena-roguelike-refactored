@@ -52,7 +52,6 @@ func _generate_grid_ui_contents(ability_grid : AbilityGrid):
 		slot.grid_coord = coord
 		slots[coord] = slot
 		
-		
 		var slot_pos : Vector2 = coord * slot_size
 		slot.position = slot_pos
 		grid_layer.add_child(slot)

@@ -125,6 +125,7 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 		#Rollback Placement
 		else:
 			print("ROLLBACK PLACEMENT: " + str(_original_pos))
+			print(ability_grid.grid_coords[slot_pos].grid_pos)
 			_held_tile.adjacent_tiles = ability_grid.get_adjacent_tiles_from_adjacent_points(_held_tile)
 			var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = ability_grid.get_adjacent_tiles(_held_tile)
 			_update_adjacent_tiles(adjacent_tiles, ability_grid)

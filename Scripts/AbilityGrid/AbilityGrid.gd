@@ -1,5 +1,6 @@
 class_name AbilityGrid extends Grid
 
+@export var unlocked_slots : Array[Vector2i]
 @export var initial_ability_tiles : Dictionary[Vector2i, AbilityTile]
 
 var grid_coords : Dictionary[Vector2i, AbilityGridSlot]
@@ -106,9 +107,20 @@ func generate_grid():
 	for y in range(size.y):
 		for x in range(size.x):
 			var grid_coord : Vector2i = Vector2i(x, y)
-			grid_coords[grid_coord] = AbilityGridSlot.new()
+			var slot : AbilityGridSlot = AbilityGridSlot.new()
+			slot.grid_pos = grid_coord
+			grid_coords[grid_coord] = slot
 			pass
 		pass
+	
+	for slot in unlocked_slots:
+		if !grid_coords.has(slot):
+			var grid_slot : AbilityGridSlot = AbilityGridSlot.new()
+			grid_slot.grid_pos = slot
+			grid_coords[slot] = grid_slot
+			pass
+		pass
+	
 	grid_generated.emit()
 	initialized = true
 	pass
@@ -144,9 +156,7 @@ func place_tile_on_slot(ability_tile : AbilityTile, grid_pos : Vector2i) -> bool
 	
 	for offset in ability_tile.offsets:
 		var slot_offsset : Vector2i = grid_pos + offset
-		if slot_offsset.x < 0 or slot_offsset.y < 0:
-			return false
-		elif slot_offsset.x >= size.x or slot_offsset.y >= size.y:
+		if !grid_coords.has(slot_offsset):
 			return false
 		elif grid_coords[slot_offsset].occupied:
 			return false

@@ -65,7 +65,7 @@ func _exit_tree() -> void:
 	RenderingServer.canvas_item_clear(canvas_item)
 	RenderingServer.free_rid(canvas_item)
 
-func _on_current_health_changed(current_health : Stat):
+func _on_current_health_changed(current_health : Stat, context : Dictionary[StringName, Variant]):
 	drawing = true
 	tweened_update()
 	pass
@@ -105,6 +105,6 @@ func _on_health_depleted():
 	drawing = false
 	pass
 
-func _on_max_health_changed(max_health : Stat):
+func _on_max_health_changed(max_health : Stat, context : Dictionary[StringName, Variant]):
 	
 	pass

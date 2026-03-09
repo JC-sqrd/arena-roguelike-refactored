@@ -1,20 +1,33 @@
 class_name EnemySpawner extends Node
 
 @export var interactable : Interactable
+@export var cooldown : float = 60
+
+var can_spawn : bool = true
 
 const SMALL_ENEMY = preload("uid://b00aqxyistgiy")
+
+var _cooldown_counter : float = 0
+
 
 func _ready() -> void:
 	interactable.interacted.connect(_on_interacted)
 	pass
 
 func _on_interacted():
-	for i in range(randi_range(50, 200)):
-		if EnemyServer.active_enemies.size() >= 1500:
-			break
-		spawn_enemy()
-		pass
-	queue_free()
+	if can_spawn:
+		can_spawn = false
+		for i in range(randi_range(200, 400)):
+			if EnemyServer.active_enemies.size() >= 1500:
+				break
+			spawn_enemy()
+			pass
+	get_tree().create_timer(cooldown).timeout.connect(_on_cooldown_end)
+	#queue_free()dd
+	pass
+
+func _on_cooldown_end():
+	can_spawn = true
 	pass
 
 func spawn_enemy():

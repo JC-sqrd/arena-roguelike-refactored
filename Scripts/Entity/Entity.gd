@@ -15,6 +15,8 @@ var entity_node : Node2D
 
 var global_position : Vector2
 
+signal died(context : Dictionary[StringName, Variant])
+
 func initalize(rid : RID):
 	entity_rid = rid
 	#entity_node = node

@@ -3,4 +3,4 @@ class_name FlatValueProviderTemplate extends ValueProviderTemplate
 @export var value : float = 0
 
 func build_value_provider(context : Dictionary[StringName, Variant]) -> ValueProvider:
-	return FlatValueProvider.new(value, bonus_values)
+	return FlatValueProvider.new(value, bonus_values, multipliers, adders)

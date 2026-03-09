@@ -10,9 +10,9 @@ class_name EnemyController extends Node2D
 var _update_offset : int
 var _update_threshold : int = 10
 var _is_on_screen : bool = false
-var _dist_to_screen : float = 0
-var _initial_coll_mask : int 
-var _zero_coll_mask : int = 0
+#var _dist_to_screen : float = 0
+#var _initial_coll_mask : int 
+#var _zero_coll_mask : int = 0
 #Spatial Partitioning
 var _curr_cell_coords : Vector2i = Vector2i.ZERO
 var _new_cell_coords : Vector2i = Vector2i.ZERO
@@ -21,7 +21,6 @@ var _id : int
 #Soft Collisions
 var _separation_radius : float = 32
 var _separation_force : float = 30
-
 
 var _target : Node2D
 
@@ -35,6 +34,7 @@ var velocity : Vector2 = Vector2(0,0)
 
 var overlapped_bodies : Array[RID]
 var overlapped_areas : Array[Area2D]
+
 
 func _ready() -> void:
 	
@@ -64,12 +64,13 @@ func _ready() -> void:
 	pass
 
 
-func _on_health_depleted():
+func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	velocity = Vector2.ZERO
 	active = false
 	area_controller.free_area()
+	enemy_entity.entity.died.emit(context)
 	await get_tree().create_timer(0.5).timeout
-	area_controller.active = false
+	area_controller.active = false 
 	EnemyServer.to_free(_id)
 	#queue_free()
 	

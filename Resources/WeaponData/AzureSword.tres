@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://dj8mvwrf8h50s" path="res://Scripts/Equipment/Weapon/AttackStrategy/MeleeAttackStrategy.gd" id="1_pavie"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="2_acrym"]
 [ext_resource type="Script" uid="uid://cje4onngvnlma" path="res://Scripts/Resources/MeleeWeapon.gd" id="2_pavie"]
-[ext_resource type="PackedScene" uid="uid://duiummoyew8wj" path="res://Scenes/Weapons/melee_azure_sword.tscn" id="4_d4et0"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_nhdrg"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_ooftf"]
 [ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="5_pb2ke"]
@@ -15,6 +14,7 @@
 [ext_resource type="Script" uid="uid://d3wf26754h30k" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/CritBonusValue.gd" id="9_pb2ke"]
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="10_tbdvt"]
 [ext_resource type="Script" uid="uid://dou0wul2vu5jy" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/ContextStatBonusValue.gd" id="10_x2uhy"]
+[ext_resource type="PackedScene" uid="uid://duiummoyew8wj" path="res://Scenes/Weapons/MeleeWeapons/melee_azure_sword.tscn" id="15_x2uhy"]
 
 [sub_resource type="Resource" id="Resource_acrym"]
 script = ExtResource("2_acrym")
@@ -76,7 +76,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 [resource]
 script = ExtResource("2_pavie")
 attack_strategy = SubResource("Resource_d4et0")
-weapon_scene = ExtResource("4_d4et0")
+weapon_scene = ExtResource("15_x2uhy")
 damage_stat = SubResource("Resource_i5eex")
 attack_speed_stat = SubResource("Resource_acrym")
 effect_templates = Array[ExtResource("1_lwslu")]([SubResource("Resource_hpnyo")])

@@ -32,3 +32,7 @@ func _on_grid_ability_controller_initialize():
 
 func _physics_process(delta: float) -> void:
 	c_float_around_target.float_around_target(caster.global_position, delta)
+
+func _exit_tree() -> void:
+	hitbox.queue_free()
+	pass

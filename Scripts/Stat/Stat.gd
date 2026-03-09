@@ -14,7 +14,7 @@ var modifiers : Array[StatModifier]
 var _is_dirty : bool = false
 var _base : float = 0
 
-signal value_changed(stat : Stat)
+signal value_changed(stat : Stat, context : Dictionary[StringName, Variant])
 
 func _init(stat_id : StringName, stat_value : float, name : String = "Stat", bonus_value : float = 0, multiplier : float = 1):
 	self.name = name
@@ -25,9 +25,9 @@ func _init(stat_id : StringName, stat_value : float, name : String = "Stat", bon
 	self._base = stat_value
 	pass
 
-func add(value : float):
+func add(value : float, context : Dictionary[StringName, Variant] = {}):
 	self.value += value
-	value_changed.emit(self)
+	value_changed.emit(self, context)
 	pass
 
 func set_value(value : float):

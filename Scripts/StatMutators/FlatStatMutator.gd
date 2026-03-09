@@ -20,5 +20,5 @@ func _init(stat_id : StringName, value_provider : ValueProvider, required_contex
 
 func apply_mutator(stat : Stat, context : Dictionary[StringName, Variant] = {}):
 	_value = value_provider.get_value(context)
-	stat.add(_value * mode)
+	stat.add(_value * mode, context)
 	pass

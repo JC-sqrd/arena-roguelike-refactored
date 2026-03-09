@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://bflrqwxd7bi6m"]
+
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="1_blpvi"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="1_qo6pl"]
+[ext_resource type="Script" uid="uid://cje4onngvnlma" path="res://Scripts/Resources/MeleeWeapon.gd" id="2_swjqy"]
+[ext_resource type="Script" uid="uid://dj8mvwrf8h50s" path="res://Scripts/Equipment/Weapon/AttackStrategy/MeleeAttackStrategy.gd" id="2_wawsb"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_wvaiv"]
+[ext_resource type="PackedScene" uid="uid://bwglurqwi8rne" path="res://Scenes/Weapons/BaseballBat/melee_baseball_bat.tscn" id="5_0u7oo"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="5_2sylx"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="6_2q537"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="7_77wov"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="8_2q537"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="8_urw0e"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="9_j2au2"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_6kp3p"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="10_77wov"]
+
+[sub_resource type="Resource" id="Resource_gbpjn"]
+script = ExtResource("1_qo6pl")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+value = 1.2
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_ciktv"]
+script = ExtResource("2_wawsb")
+metadata/_custom_type_script = "uid://dj8mvwrf8h50s"
+
+[sub_resource type="Resource" id="Resource_yj3mi"]
+script = ExtResource("1_qo6pl")
+name = "Attack Damage"
+stat_id = &"attack_damage"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_5qrbt"]
+script = ExtResource("5_2sylx")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_nvme3"]
+script = ExtResource("9_j2au2")
+context_stats_id = &"weapon_stats"
+stat_id = &"attack_damage"
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_eon2p"]
+script = ExtResource("6_2q537")
+mode = -1
+value_provider_template = SubResource("Resource_nvme3")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_i7i4b"]
+script = ExtResource("10_6kp3p")
+flat_mutator_templates = Array[ExtResource("6_2q537")]([SubResource("Resource_eon2p")])
+effect_event_templates = Array[ExtResource("4_wvaiv")]([SubResource("Resource_5qrbt")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[resource]
+script = ExtResource("2_swjqy")
+attack_strategy = SubResource("Resource_ciktv")
+weapon_scene = ExtResource("5_0u7oo")
+damage_stat = SubResource("Resource_yj3mi")
+attack_speed_stat = SubResource("Resource_gbpjn")
+effect_templates = Array[ExtResource("1_blpvi")]([SubResource("Resource_i7i4b")])
+metadata/_custom_type_script = "uid://cje4onngvnlma"
