@@ -11,8 +11,6 @@ var hit_log : Array[RID]
 
 func _ready() -> void:
 	monitorable = false
-	collision_layer = 0
-	collision_mask = 0
 
 func initialize():
 	active = true
@@ -21,8 +19,12 @@ func initialize():
 func query_hitbox(log_hit : bool = false):
 	
 	var space_state : = get_world_2d().direct_space_state
-		
+	
 	var hits : Array[RID]
+	
+	var new_hits : Array[RID]
+	
+	var results : Array[Dictionary]
 	
 	for child in self.get_children():
 		if child is CollisionShape2D:
@@ -32,18 +34,30 @@ func query_hitbox(log_hit : bool = false):
 			query.collision_mask = collision_mask
 			query.collide_with_areas = true
 				
-			var results = space_state.intersect_shape(query, 500)
+			results = space_state.intersect_shape(query, 500)
 				
 			for result in results:
-				hits.append(result.rid)
+				var result_rid : RID = result.rid
+				hits.append(result_rid)
+				
+				if !hit_log.has(result_rid):
+					new_hits.append(result_rid)
+				
 				if log_hit:
-					hit_log.append(result.rid)
+					hit_log.append(result_rid)
 					pass
 				pass
-				
 			pass
+	
+	for hit in hit_log:
+		if !hits.has(hit):
+			hit_log.erase(hit)
+			pass
+		pass
+	
+	#print("HITBOX QUERIED: " + str(hits))
 		
-	for hit in hits:
+	for hit in new_hits:
 		for effect in effects:
 			EffectServer.receive_effect(hit, effect, context)
 	pass

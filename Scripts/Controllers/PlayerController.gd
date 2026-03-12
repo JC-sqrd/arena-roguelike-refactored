@@ -42,6 +42,16 @@ func _ready():
 	interactable_detector.initialize(player_entity.entity, self)
 	
 	EntityServer.register_entity(player_entity.entity.entity_rid, player_entity.entity)
+	
+	EventServer.entity_died.connect(
+		func(entity: Entity, context : Dictionary[StringName, Variant]):
+			if entity != player_entity.entity:
+				var exp : Stat = player_entity.entity.stats.get_stat("exp")
+				exp.add(10, context)
+				print("PLAYER KILLED AN ENTITY. CURRENT EXP: " + str(exp.get_value()))
+				pass
+			pass
+	)
 	pass
 
 func _process(delta: float) -> void:

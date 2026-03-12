@@ -25,7 +25,6 @@ func _ready() -> void:
 			ability_inventory_ui.generate_grid_ui(ability_inventory)
 			pass
 	)
-	
 	#player.ready.connect(
 		#func():
 			#ability_grid_ui.generate_grid_ui(player.ability_grid)
@@ -74,9 +73,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and _held_tile != null:
 		if event.keycode == KEY_R and event.pressed:
 			#WIP : TILE ROTATION
-			#print("ROTATE TILE")
-			#cursor_ui.rotate_children_clockwise()
-			#_held_tile.rotate_clockwise()
 			pass
 		pass
 	
@@ -138,7 +134,6 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 			return
 		pass
 	pass
-
 
 func _update_adjacent_tiles(tiles : Dictionary[Vector2i, AbilityTile], grid : AbilityGrid):
 	for tile in tiles:

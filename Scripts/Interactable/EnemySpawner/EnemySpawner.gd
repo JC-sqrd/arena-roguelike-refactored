@@ -17,7 +17,7 @@ func _ready() -> void:
 func _on_interacted():
 	if can_spawn:
 		can_spawn = false
-		for i in range(randi_range(200, 400)):
+		for i in range(randi_range(500, 1000)):
 			if EnemyServer.active_enemies.size() >= 1500:
 				break
 			spawn_enemy()

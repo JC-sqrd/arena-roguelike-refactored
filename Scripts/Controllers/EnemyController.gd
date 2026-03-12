@@ -69,6 +69,7 @@ func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	active = false
 	area_controller.free_area()
 	enemy_entity.entity.died.emit(context)
+	EventServer.entity_died.emit(enemy_entity.entity, context)
 	await get_tree().create_timer(0.5).timeout
 	area_controller.active = false 
 	EnemyServer.to_free(_id)
