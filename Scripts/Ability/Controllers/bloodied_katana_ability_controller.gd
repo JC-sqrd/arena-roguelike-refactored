@@ -35,7 +35,7 @@ var c_hit_at_action_time : HitAtAnimActionTime
 var c_cooldown : AbilityCooldown
 var c_target_detector : TargetAreaDetector
 
-func _on_grid_ability_controller_initialize():
+func _on_initialized():
 	hitbox = BLOODIED_KATANA_HITBOX.instantiate() as HitBox
 	for template in effect_templates:
 		effects.append(template.build_effect(controller_context))

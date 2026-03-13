@@ -2,7 +2,7 @@ class_name PlayerController extends CharacterBody2D
 
 
 @export var player_entity : PlayerEntityNode
-@export var active_ability_controller : ActiveAbilityController
+@export var active_ability_controller_manager : ActiveAbilityControllerManager
 @export var grid_ability_controller_manager : GridAbilityControllerManager
 @export var ability_grid : AbilityGrid
 @export var ability_tile_inventory : AbilityGrid
@@ -36,7 +36,8 @@ func _ready():
 	
 	initialized_grids.emit(ability_grid, ability_tile_inventory)
 	
-	active_ability_controller.initialize(player_entity.entity)
+	active_ability_controller_manager.initialize(player_entity.entity)
+	#active_ability_controller.initialize(player_entity.entity)
 	
 	interactable_detector.initialize(player_entity.entity, self)
 	

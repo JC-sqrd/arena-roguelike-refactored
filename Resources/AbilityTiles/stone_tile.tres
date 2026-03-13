@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityTile" format=3 uid="uid://bgacakxiqyl74"]
 
-[ext_resource type="PackedScene" uid="uid://cfttnkrwve3ct" path="res://Scenes/AbilityScenes/Controllers/stone_ability_controller.tscn" id="1_nvudn"]
+[ext_resource type="PackedScene" uid="uid://cfttnkrwve3ct" path="res://Scenes/AbilityScenes/GridAbilityControllers/stone_ability_controller.tscn" id="1_nvudn"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_ubu1h"]
 [ext_resource type="Texture2D" uid="uid://bak65y0dao0i0" path="res://Sprites/Rock/Rock Tile.png" id="3_nvudn"]
 

@@ -2,6 +2,7 @@
 class_name Weapon extends Item
 
 @export var effect_templates : Array[EffectTemplate]
+@export var ability_controllers_scene : Array[PackedScene]
 
 var wielder : Entity
 var wielder_stats : Stats

@@ -11,13 +11,14 @@ class_name ActiveAbilityData extends AbilityData
 #@export_multiline() var ability_description : String
 #@export_multiline() var ability_details : String
 
-func build_abiltiy() -> ActiveAbility:
-	var ability : ActiveAbility = ability_scene.instantiate()
-	ability.ability_name = ability_name
-	ability.ability_id = ability_id
-	ability.ability_icon = ability_icon
-	ability.ability_description = ability_description
-	ability.ability_details = ability_details
-	ability.resource_stat_id = resource_stat_id
-	ability.required_amount = required_amount
-	return ability
+func build_abiltiy_controller() -> AbilityController:
+	var ability_controller : ActiveAbilityController = ability_scene.instantiate() as ActiveAbilityController
+	#ability.ability_name = ability_name
+	#ability.ability_id = ability_id
+	#ability.ability_icon = ability_icon
+	#ability.ability_description = ability_description
+	#ability.ability_details = ability_details
+	#ability.resource_stat_id = resource_stat_id
+	#ability.required_amount = required_amount
+	active_controller = ability_controller
+	return ability_controller

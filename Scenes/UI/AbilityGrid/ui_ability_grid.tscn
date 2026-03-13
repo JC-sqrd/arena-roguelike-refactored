@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lf8p3afeubb1" path="res://Scenes/UI/AbilityGrid/AbilityTileInventoryUI/ability_tile_inventory_panel.tscn" id="3_feec0"]
 [ext_resource type="Script" uid="uid://fxe70e5ucsga" path="res://Scripts/AbilityGrid/UI/AbilityGraphUIFSM/AbilityGridUIFSM.gd" id="4_y4sfo"]
 
-[node name="UiAbilityGraph" type="Control" unique_id=1020187136 node_paths=PackedStringArray("ability_grid_ui", "ability_inventory_ui")]
+[node name="UiAbilityGrid" type="Control" unique_id=1020187136 node_paths=PackedStringArray("ability_grid_ui", "ability_inventory_ui")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

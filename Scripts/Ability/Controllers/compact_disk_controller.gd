@@ -22,7 +22,7 @@ var orbit_angle : float = 0
 
 var start : bool = false
 
-func _on_grid_ability_controller_initialize():
+func _on_initialized():
 	#cd_hitbox = COMPACT_DISK_HITBOX.instantiate()
 	#get_tree().root.add_child(cd_hitbox)
 	for template in effect_templates:
@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 		
 		orbit_angle = fposmod(orbit_angle, (2 * PI))
 		
-		orbit_offset = caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * orbit_distance) 
+		orbit_offset = (Vector2.UP * 32) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * orbit_distance) 
 		
 		cd_hitbox.query_hitbox(true)
 		

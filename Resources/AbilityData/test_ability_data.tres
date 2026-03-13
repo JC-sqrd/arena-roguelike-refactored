@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_07sea"]
 [ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_81mw2"]
-[ext_resource type="PackedScene" uid="uid://btjgkjsrkyrln" path="res://Scenes/AbilityScenes/test_ability.tscn" id="2_buujr"]
+[ext_resource type="PackedScene" uid="uid://btjgkjsrkyrln" path="res://Scenes/AbilityScenes/test_ability_controller.tscn" id="2_04bai"]
 
 [resource]
 script = ExtResource("1_81mw2")
-ability_scene = ExtResource("2_buujr")
+ability_scene = ExtResource("2_04bai")
 ability_name = "Test Ability"
+ability_id = &"test_ability"
 ability_icon = ExtResource("1_07sea")
+ability_details = "Ability used for debugging."
 metadata/_custom_type_script = "uid://dixh3jk1fs5ag"

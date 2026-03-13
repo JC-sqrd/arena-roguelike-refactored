@@ -13,7 +13,7 @@ var effects : Array[Effect]
 
 var c_float_around_target : FloatAroundTarget
 
-func _on_grid_ability_controller_initialize():
+func _on_initialized():
 	hitbox = SPIKED_BAT_HITBOX.instantiate() as HitBox
 	for template in effect_templates:
 		effects.append(template.build_effect(controller_context))

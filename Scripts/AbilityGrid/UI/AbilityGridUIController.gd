@@ -132,7 +132,6 @@ func _on_ability_grid_ui_slot_clicked(slot_pos : Vector2i, ability_grid : Abilit
 			_original_pos = Vector2i(-1,-1)
 			cursor_ui.clear()
 			return
-		pass
 	pass
 
 func _update_adjacent_tiles(tiles : Dictionary[Vector2i, AbilityTile], grid : AbilityGrid):

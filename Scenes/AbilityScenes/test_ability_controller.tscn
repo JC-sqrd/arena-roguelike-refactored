@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://btjgkjsrkyrln"]
+
+[ext_resource type="Script" uid="uid://pxydlhjsvd8e" path="res://Scripts/Ability/ActiveAbilities/test_ability.gd" id="1_jgkao"]
+[ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="2_iio1y"]
+[ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="3_veerq"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_rpyqb"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="5_f2ojk"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="6_mrkv7"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="7_p3q36"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="8_hs3di"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="9_lrr0l"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="10_8cs6i"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="11_bn0ej"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="12_iockv"]
+[ext_resource type="PackedScene" uid="uid://bhyjrjxakyds1" path="res://Scenes/Weapons/HitBoxes/test_ability_hitbox.tscn" id="13_7s3xy"]
+[ext_resource type="Script" uid="uid://pa7e2iud41wh" path="res://Scripts/Ability/AbilityActions/SpawnProjectileAbilityAction.gd" id="14_ewt6o"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="15_y7eo6"]
+
+[sub_resource type="Resource" id="Resource_yycba"]
+script = ExtResource("2_iio1y")
+radius = 64
+metadata/_custom_type_script = "uid://swufoypqyj1x"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g4vhs"]
+load_path = "res://.godot/imported/Arrow.png-ffbba5c26992416d86cebd5a56faa085.ctex"
+
+[sub_resource type="Resource" id="Resource_1yo06"]
+script = ExtResource("3_veerq")
+speed = 300.0
+projectile_shape = SubResource("Resource_yycba")
+pierce = 20
+lifetime = 6.0
+projectile_texture = SubResource("CompressedTexture2D_g4vhs")
+projectile_coll_mask = 4
+metadata/_custom_type_script = "uid://ck45nau7el76p"
+
+[sub_resource type="Resource" id="Resource_o6efp"]
+script = ExtResource("5_f2ojk")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_qphct"]
+script = ExtResource("11_bn0ej")
+context_stats_id = &"caster_stats"
+stat_id = &"ability_damage"
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_c1e5n"]
+script = ExtResource("6_mrkv7")
+mode = -1
+value_provider_template = SubResource("Resource_qphct")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_dumk5"]
+script = ExtResource("12_iockv")
+flat_mutator_templates = Array[ExtResource("6_mrkv7")]([SubResource("Resource_c1e5n")])
+effect_event_templates = Array[ExtResource("4_rpyqb")]([SubResource("Resource_o6efp")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="Resource" id="Resource_og6o4"]
+script = ExtResource("2_iio1y")
+radius = 20
+metadata/_custom_type_script = "uid://swufoypqyj1x"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1yo06"]
+load_path = "res://.godot/imported/Arrow.png-ffbba5c26992416d86cebd5a56faa085.ctex"
+
+[sub_resource type="Resource" id="Resource_3h63f"]
+script = ExtResource("3_veerq")
+speed = 800.0
+projectile_shape = SubResource("Resource_og6o4")
+projectile_texture = SubResource("CompressedTexture2D_1yo06")
+projectile_coll_mask = 4
+metadata/_custom_type_script = "uid://ck45nau7el76p"
+
+[sub_resource type="Resource" id="Resource_g4vhs"]
+script = ExtResource("11_bn0ej")
+context_stats_id = &"caster_stats"
+stat_id = &"ability_damage"
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_n3u2m"]
+script = ExtResource("6_mrkv7")
+mode = -1
+value_provider_template = SubResource("Resource_g4vhs")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_2w6yc"]
+script = ExtResource("12_iockv")
+flat_mutator_templates = Array[ExtResource("6_mrkv7")]([SubResource("Resource_n3u2m")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="TestAbilityController" type="Node" unique_id=1721443211 node_paths=PackedStringArray("projectile_action")]
+script = ExtResource("1_jgkao")
+projectile_action = NodePath("SpawnProjectileAbilityAction")
+projectile_template = SubResource("Resource_1yo06")
+damage_effect = SubResource("Resource_dumk5")
+hitbox_scene = ExtResource("13_7s3xy")
+abiltiy_coll_mask = 4
+metadata/_custom_type_script = "uid://cjf15iuws7nka"
+
+[node name="SpawnProjectileAbilityAction" type="Node" parent="." unique_id=1815206290]
+script = ExtResource("14_ewt6o")
+projectile_template = SubResource("Resource_3h63f")
+effects_template = Array[ExtResource("15_y7eo6")]([SubResource("Resource_2w6yc")])
+metadata/_custom_type_script = "uid://pa7e2iud41wh"

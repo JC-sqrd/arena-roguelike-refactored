@@ -10,5 +10,10 @@ class_name AbilityData extends Resource
 @export_multiline() var ability_details : String
 
 
-func build_abiltiy() -> Ability:
+var active_controller : AbilityController
+
+func build_abiltiy_controller() -> AbilityController:
 	return null
+
+func get_active_ability_controller() -> AbilityController:
+	return active_controller

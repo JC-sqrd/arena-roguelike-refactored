@@ -14,7 +14,7 @@ var projectilie_count : int = 1
 var _bonus_projectile_count : int = 0
 var _timer : Timer 
 
-func _on_grid_ability_controller_initialize():
+func _on_initialized():
 	spawn_projectile_action.initialize(caster, controller_context)
 	var projectile_count_stat : Stat = caster.stats.get_stat("projectile_count")
 	if projectile_count_stat != null:

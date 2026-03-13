@@ -1,11 +1,9 @@
 [gd_resource type="Resource" script_class="ActiveAbilityData" format=3 uid="uid://6d4ongim2f6n"]
 
-[ext_resource type="PackedScene" uid="uid://c4drsbj203frb" path="res://Scenes/AbilityScenes/stone_ability.tscn" id="1_5r54a"]
 [ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="2_ehxoh"]
 
 [resource]
 script = ExtResource("2_ehxoh")
-ability_scene = ExtResource("1_5r54a")
 ability_name = "Stone Throw"
 ability_id = &"stone_throw"
 ability_details = "Throw a stone, dealing damage."

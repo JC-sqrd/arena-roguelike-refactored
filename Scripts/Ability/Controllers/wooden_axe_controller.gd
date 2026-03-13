@@ -12,7 +12,7 @@ var effects : Array[Effect]
 var hit_threshold : int = 5
 var _hit_counter : int = 0
 
-func _on_grid_ability_controller_initialize():
+func _on_initialized():
 	
 	for template in effect_templates:
 		effects.append(template.build_effect(controller_context))

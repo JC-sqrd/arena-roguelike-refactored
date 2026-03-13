@@ -11,20 +11,19 @@
 [ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
 [ext_resource type="Resource" uid="uid://b3mshjv3l6cf" path="res://Resources/AbilityTiles/spiked_bat_tile.tres" id="7_nqu6t"]
 [ext_resource type="Resource" uid="uid://bwt0luahnpv5f" path="res://Resources/AbilityTiles/compact_disk_tile.tres" id="8_c44xl"]
-[ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
 [ext_resource type="Resource" uid="uid://1xn2obo8pow1" path="res://Resources/AbilityTiles/wooden_axe_tile.tres" id="9_jq2g3"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 [ext_resource type="Script" uid="uid://c27363khv4g3j" path="res://Scripts/Entity/PlayerEntityNode.gd" id="13_1dleg"]
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
-[ext_resource type="Script" uid="uid://b71v68teuxsft" path="res://Scripts/Ability/ActiveAbilityController.gd" id="14_1dleg"]
 [ext_resource type="Resource" uid="uid://bflrqwxd7bi6m" path="res://Resources/WeaponData/BaseballBat.tres" id="14_5pv1g"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="14_xpoel"]
 [ext_resource type="Resource" uid="uid://bro2k6av54dhh" path="res://Resources/AbilityData/test_ability_data.tres" id="15_xpoel"]
 [ext_resource type="Script" uid="uid://bc6u0xacwhuly" path="res://Scripts/Interactable/InteractableDetector.gd" id="22_62e6c"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="23_5pv1g"]
 [ext_resource type="Script" uid="uid://dqdesfdfx12xh" path="res://Scripts/Ability/GridAbilityControllerManager.gd" id="23_uj7x4"]
+[ext_resource type="Script" uid="uid://dhhynaisfxsr3" path="res://Scripts/Ability/ActiveAbilityControllerManager.gd" id="24_5pv1g"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="24_c44xl"]
 
 [sub_resource type="Resource" id="Resource_l0a5t"]
@@ -113,11 +112,11 @@ area_shape = SubResource("Resource_jq2g3")
 area_coll_mask = 1
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
-[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller", "grid_ability_controller_manager", "interactable_detector")]
+[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller_manager", "grid_ability_controller_manager", "interactable_detector")]
 collision_layer = 2
 script = ExtResource("1_vvirn")
 player_entity = NodePath("PlayerEntityNode")
-active_ability_controller = NodePath("ActiveAbilityController")
+active_ability_controller_manager = NodePath("ActiveAbilityControllerManager")
 grid_ability_controller_manager = NodePath("GridAbilityControllerManager")
 ability_grid = SubResource("Resource_l0a5t")
 ability_tile_inventory = SubResource("Resource_8ud0v")
@@ -136,9 +135,8 @@ shape = SubResource("RectangleShape2D_vvirn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1000684807]
 
-[node name="PlayerEntityNode" type="Node" parent="." unique_id=724430319 node_paths=PackedStringArray("equipment_manager", "stats_node", "action_point", "equipment_manager")]
+[node name="PlayerEntityNode" type="Node" parent="." unique_id=724430319 node_paths=PackedStringArray("stats_node", "action_point", "equipment_manager")]
 script = ExtResource("13_1dleg")
-equipment_manager = NodePath("../EquipmentManager")
 stats_node = NodePath("../StatsNode")
 action_point = NodePath("../ActionPoint")
 equipment_manager = NodePath("../EquipmentManager")
@@ -152,7 +150,6 @@ metadata/_custom_type_script = "uid://chi8el32v5eh0"
 [node name="EquipmentManager" type="Node" parent="." unique_id=1051752491 node_paths=PackedStringArray("weapon_hold_pos", "attack_input_listener")]
 script = ExtResource("7_72w0c")
 weapon_hold_pos = NodePath("../WeaponActionPoint")
-equipped_weapon = ExtResource("8_kndpp")
 main_weapon_slot = SubResource("Resource_ushvb")
 attack_input_listener = NodePath("AttackInputListener")
 metadata/_custom_type_script = "uid://dlb4egg8f58tt"
@@ -188,11 +185,6 @@ visible = false
 scale = Vector2(-1, 1)
 texture = SubResource("GradientTexture2D_8ud0v")
 
-[node name="ActiveAbilityController" type="Node" parent="." unique_id=1341748458]
-script = ExtResource("14_1dleg")
-ability_1_data = ExtResource("15_xpoel")
-metadata/_custom_type_script = "uid://b71v68teuxsft"
-
 [node name="GridAbilityControllerManager" type="Node" parent="." unique_id=103877313]
 script = ExtResource("23_uj7x4")
 metadata/_custom_type_script = "uid://dqdesfdfx12xh"
@@ -201,3 +193,8 @@ metadata/_custom_type_script = "uid://dqdesfdfx12xh"
 script = ExtResource("22_62e6c")
 detector_area_template = SubResource("Resource_b2ade")
 metadata/_custom_type_script = "uid://bc6u0xacwhuly"
+
+[node name="ActiveAbilityControllerManager" type="Node" parent="." unique_id=910106214]
+script = ExtResource("24_5pv1g")
+ability_one = ExtResource("15_xpoel")
+metadata/_custom_type_script = "uid://dhhynaisfxsr3"

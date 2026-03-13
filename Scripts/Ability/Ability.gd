@@ -16,8 +16,11 @@ var curr_cooldown : float = 0
 func initialize(caster : Entity):
 	self.caster = caster
 	ability_context = generate_ability_context()
+	_on_initialized()
 	pass
 
+func _on_initialized():
+	pass
 
 func enter_cooldown():
 	pass
