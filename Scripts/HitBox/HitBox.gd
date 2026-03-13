@@ -16,7 +16,7 @@ func initialize():
 	active = true
 	pass
 
-func query_hitbox(log_hit : bool = false):
+func query_hitbox(log_hit : bool = false) -> Array[RID]:
 	
 	var space_state : = get_world_2d().direct_space_state
 	
@@ -60,4 +60,5 @@ func query_hitbox(log_hit : bool = false):
 	for hit in new_hits:
 		for effect in effects:
 			EffectServer.receive_effect(hit, effect, context)
-	pass
+	
+	return hits

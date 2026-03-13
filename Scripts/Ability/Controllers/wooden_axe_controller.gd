@@ -18,17 +18,17 @@ func _on_initialized():
 		effects.append(template.build_effect(controller_context))
 		pass
 	
-	caster.equipment_manager.weapon_equipped.connect(_on_weapon_equipped)
+	EventServer.weapon_hit.connect(_on_weapon_hit)
 	
-	var active_controller : WeaponController
-	active_controller = caster.equipment_manager.equipped_weapon.get_active_controller()
-	if active_controller != null:
-		weapon_controller = active_controller
-		weapon_controller.weapon_hit.connect(_on_weapon_hit)
-		pass
+	#caster.equipment_manager.weapon_equipped.connect(_on_weapon_equipped)
+	
+	#var active_controller : WeaponController
+	#active_controller = caster.equipment_manager.equipped_weapon.get_active_controller()
+	#if active_controller != null:
+		#weapon_controller = active_controller
+		#weapon_controller.weapon_hit.connect(_on_weapon_hit)
+		#pass
 	pass
-
-
 
 func _on_weapon_equipped(weapon : Weapon):
 	weapon_controller = weapon.get_active_controller()
@@ -39,7 +39,10 @@ func _on_weapon_unequipped(weapon : Weapon):
 	active = false
 	pass
 
-func _on_weapon_hit(hits : Array[RID]):
+func _on_weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant]):
+	if context.source != caster:
+		return
+	
 	print("WEAPON HIT!")
 	
 	_hit_counter += 1

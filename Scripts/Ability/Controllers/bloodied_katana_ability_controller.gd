@@ -91,7 +91,8 @@ func _process(delta: float) -> void:
 
 
 func start_ability():
-	hitbox.query_hitbox()
+	var hits : Array[RID] = hitbox.query_hitbox() 
+	EventServer.weapon_hit.emit(hits, controller_context)
 	pass
 
 func _physics_process(delta: float) -> void:

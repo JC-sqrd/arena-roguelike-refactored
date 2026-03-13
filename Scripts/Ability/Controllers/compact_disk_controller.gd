@@ -17,7 +17,7 @@ var _curr_dur : float = 0
 var _curr_cd : float = 0
 var orbit_center : Vector2
 var orbit_offset : Vector2
-var orbit_distance : float = 120
+var orbit_distance : float = 200
 var orbit_angle : float = 0
 
 var start : bool = false
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 		
 		_curr_dur += delta
 		
-		orbit_angle += (2 * delta)
+		orbit_angle += (5 * delta)
 		
 		orbit_angle = fposmod(orbit_angle, (2 * PI))
 		

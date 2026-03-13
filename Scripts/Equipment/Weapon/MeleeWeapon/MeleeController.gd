@@ -76,4 +76,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_hit(hits : Array[RID]):
 	weapon_hit.emit(hits)
+	EventServer.weapon_hit.emit(hits, effect_context)
 	pass

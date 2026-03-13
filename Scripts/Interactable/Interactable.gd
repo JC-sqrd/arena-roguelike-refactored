@@ -19,7 +19,6 @@ func _ready() -> void:
 	pass
 
 func interact(interactor : Entity):
-	print("INTERACTABLE INTERACTED!")
 	interacted.emit()
 	pass
 

@@ -1,6 +1,7 @@
-class_name EnemySpawner extends Node
+class_name EnemySpawner extends Node2D
 
 @export var interactable : Interactable
+@export var spawn_director : EnemySpawnerDirector
 @export var cooldown : float = 60
 
 var can_spawn : bool = true
@@ -8,7 +9,6 @@ var can_spawn : bool = true
 const SMALL_ENEMY = preload("uid://b00aqxyistgiy")
 
 var _cooldown_counter : float = 0
-
 
 func _ready() -> void:
 	interactable.interacted.connect(_on_interacted)
