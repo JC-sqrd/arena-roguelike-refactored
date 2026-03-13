@@ -35,7 +35,6 @@ var velocity : Vector2 = Vector2(0,0)
 var overlapped_bodies : Array[RID]
 var overlapped_areas : Array[Area2D]
 
-
 func _ready() -> void:
 	
 	_id = get_instance_id()

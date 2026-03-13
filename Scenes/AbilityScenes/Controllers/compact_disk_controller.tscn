@@ -4,27 +4,40 @@
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="2_o6k3f"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="3_vq7gb"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_gwdak"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="4_vq7gb"]
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="5_ugsme"]
 [ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="6_j2rg0"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="7_7jx44"]
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="8_7mltf"]
-[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="9_v8eoi"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="9_o6k3f"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_542q3"]
 
-[sub_resource type="Resource" id="Resource_efgio"]
-script = ExtResource("9_v8eoi")
-value = 500.0
-metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+[sub_resource type="Resource" id="Resource_gwdak"]
+script = ExtResource("4_vq7gb")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_o6k3f"]
+script = ExtResource("8_7mltf")
+value = -0.5
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_vq7gb"]
+script = ExtResource("9_o6k3f")
+context_stats_id = &"caster_stats"
+stat_id = &"lethality"
+multipliers = Array[ExtResource("8_7mltf")]([SubResource("Resource_o6k3f")])
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
 
 [sub_resource type="Resource" id="Resource_6ptj6"]
 script = ExtResource("4_gwdak")
 mode = -1
-value_provider_template = SubResource("Resource_efgio")
+value_provider_template = SubResource("Resource_vq7gb")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_tf65g"]
 script = ExtResource("10_542q3")
 flat_mutator_templates = Array[ExtResource("4_gwdak")]([SubResource("Resource_6ptj6")])
+effect_event_templates = Array[ExtResource("3_vq7gb")]([SubResource("Resource_gwdak")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [node name="CompactDiskController" type="Node" unique_id=824935280]

@@ -1,6 +1,5 @@
 class_name PlayerEntityNode extends EntityNode
 
-@export var equipment_manager : EquipmentManager
 
 func initialize(rid : RID):
 	entity = PlayerEntity.new()

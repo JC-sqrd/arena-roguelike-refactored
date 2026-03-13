@@ -10,6 +10,8 @@ var _weapon_stats : Stats
 var _weapon_context : Dictionary[StringName, Variant]
 var _weapon_effects : Array[Effect]
 
+var active_controller : WeaponController
+
 signal equipped()
 signal unequipped()
 
@@ -27,3 +29,6 @@ func generate_weapon_stats() -> Stats
 
 @abstract
 func generate_effects(context : Dictionary[StringName, Variant])-> Array[Effect]
+
+func get_active_controller() -> WeaponController:
+	return active_controller

@@ -9,7 +9,7 @@ class_name MeleeWeapon extends Weapon
 @export_category("Attack Speed Stat")
 @export var attack_speed_stat : StatTemplate = StatTemplate.new()
 
-var melee_node : MeleeController
+var melee_controller : MeleeController
 
 
 func equip(context : EquipContext):
@@ -18,14 +18,14 @@ func equip(context : EquipContext):
 	wielder_stats = context.wielder_stats
 	
 	#Instantiate melee weapon node and set its attack strategy
-	melee_node = weapon_scene.instantiate() as MeleeController
-	melee_node.attack_strategy = attack_strategy
-	melee_node.weapon_id = item_id + "_" +str(melee_node.get_instance_id())
+	melee_controller = weapon_scene.instantiate() as MeleeController
+	melee_controller.attack_strategy = attack_strategy
+	melee_controller.weapon_id = item_id + "_" +str(melee_controller.get_instance_id())
 	
-	context.hold_anchor.add_child(melee_node)
+	context.hold_anchor.add_child(melee_controller)
 	
 	_weapon_stats = generate_weapon_stats() 
-	melee_node.melee_stats = _weapon_stats
+	melee_controller.melee_stats = _weapon_stats
 	
 	_weapon_stats.initialize()
 	
@@ -33,20 +33,22 @@ func equip(context : EquipContext):
 	
 	_weapon_effects = generate_effects(_weapon_context)
 	
-	melee_node.wielder_stats = wielder_stats
-	melee_node.weapon_stats = _weapon_stats
-	melee_node.effects = _weapon_effects
-	melee_node.effect_context = _weapon_context
+	melee_controller.wielder_stats = wielder_stats
+	melee_controller.weapon_stats = _weapon_stats
+	melee_controller.effects = _weapon_effects
+	melee_controller.effect_context = _weapon_context
 	
-	melee_node.initialize()
+	melee_controller.initialize()
 	
+	active_controller = melee_controller
 	equipped.emit()
 	pass
 
 
 func unequip():
 	wielder_stats = null
-	melee_node.queue_free()
+	active_controller = null
+	melee_controller.queue_free()
 	unequipped.emit()
 	pass
 

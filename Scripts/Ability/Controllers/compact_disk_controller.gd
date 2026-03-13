@@ -80,11 +80,6 @@ func start_ability():
 	cd_hitbox.effects = effects
 	get_tree().root.add_child(cd_hitbox)
 	orbiting = true
-	print("ORBIT EFFECTS: " + str(cd_hitbox.effects))
-	pass
-
-func _on_area_exit_hitbox(area : Area2D):
-	
 	pass
 
 func _exit_tree() -> void:

@@ -32,7 +32,6 @@ func _ready():
 	
 	grid_ability_controller_manager.initialize(player_entity.entity, ability_grid)
 	
-	
 	ability_grid.initialize()
 	
 	initialized_grids.emit(ability_grid, ability_tile_inventory)

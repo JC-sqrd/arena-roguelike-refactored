@@ -5,6 +5,7 @@ var melee_hitbox : Area2D
 var melee_context : MeleeAttackExecuteContext
 var successful_queries : Array[RID]
 
+signal hit(hits : Array[RID])
 signal finished_executing()
 
 func initialize():
@@ -53,21 +54,7 @@ func _on_windup_anim_finished(anim : StringName):
 func _on_attack_anim_finished(anim : StringName):
 	if anim == "attack":
 		melee_anim_player.play("recovery")
-	
-		
-		
-		#var queries: Array[Area2D] = melee_hitbox.get_overlapping_areas()
-		#
-		#for query in queries:
-			#var rid : RID = query.get_rid()
-			#for effect in context.attack_effects:
-				#EffectServer.receive_effect(rid, effect, context.effects_context)
-			#pass
-	
 	pass
-
-
-
 
 func _on_recovery_anim_finished(anim : StringName):
 	if anim == "recovery":
@@ -75,13 +62,11 @@ func _on_recovery_anim_finished(anim : StringName):
 		pass
 	pass
 
-
 func query_hitbox():
 	var space_state : = melee_hitbox.get_world_2d().direct_space_state
-		
-		
-	var hits : Dictionary[RID, bool]
-		
+	
+	var hits : Array[RID]
+	
 	for child in melee_hitbox.get_children():
 		if child is CollisionShape2D:
 			var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
@@ -93,16 +78,14 @@ func query_hitbox():
 			var results = space_state.intersect_shape(query, 500)
 				
 			for result in results:
-				hits[result.rid] = true
+				hits.append(result.rid)
 				pass
-				
 			pass
-		
-	for hit in hits.keys():
-		for effect in context.attack_effects:
-			EffectServer.receive_effect(hit, effect, context.effects_context)
-	pass
-
-
-func _on_area_exited(area : Area2D):
+	
+	
+	if hits.size() > 0:
+		for hit in hits:
+			for effect in context.attack_effects:
+				EffectServer.receive_effect(hit, effect, context.effects_context)
+		hit.emit(hits)
 	pass

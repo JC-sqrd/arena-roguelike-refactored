@@ -5,6 +5,7 @@ var action_point : Vector2
 
 var effect_listener : EffectListener
 var health_manager : HealthManager
+var equipment_manager : EquipmentManager
 
 var can_move : bool = true
 var can_atack : bool = true
@@ -27,6 +28,10 @@ func initalize(rid : RID):
 	
 	health_manager = HealthManager.new()
 	health_manager.initialize(stats)
+	
+	if equipment_manager != null:
+		equipment_manager.initialize(self)
+	
 	pass
 
 

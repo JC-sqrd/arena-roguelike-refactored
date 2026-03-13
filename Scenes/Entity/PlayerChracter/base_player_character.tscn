@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://bwt0luahnpv5f" path="res://Resources/AbilityTiles/compact_disk_tile.tres" id="8_c44xl"]
 [ext_resource type="Resource" uid="uid://bxm23tmll4aau" path="res://Resources/WeaponData/LongSword.tres" id="8_kndpp"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
+[ext_resource type="Resource" uid="uid://1xn2obo8pow1" path="res://Resources/AbilityTiles/wooden_axe_tile.tres" id="9_jq2g3"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 [ext_resource type="Script" uid="uid://c27363khv4g3j" path="res://Scripts/Entity/PlayerEntityNode.gd" id="13_1dleg"]
@@ -41,16 +42,6 @@ name = "Flying Flail"
 texture = SubResource("CompressedTexture2D_hfmdo")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_skjfb"]
-load_path = "res://.godot/imported/AbilityTile_Placeholder_5.png-522f2388b59eb5c2102d04f495722595.ctex"
-
-[sub_resource type="Resource" id="Resource_ufrmk"]
-script = ExtResource("3_8ud0v")
-offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
-name = "Test Ability 5"
-texture = SubResource("CompressedTexture2D_skjfb")
-metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gc566"]
 load_path = "res://.godot/imported/AbilityTile_Placeholder_4.png-cbb3fc3de6f2eb4dc212048cf2886721.ctex"
 
@@ -68,8 +59,8 @@ Vector2i(0, 0): SubResource("Resource_weqa2"),
 Vector2i(0, 2): ExtResource("4_v3i30"),
 Vector2i(0, 3): ExtResource("5_l0a5t"),
 Vector2i(1, 2): ExtResource("8_c44xl"),
+Vector2i(1, 3): ExtResource("9_jq2g3"),
 Vector2i(2, 0): ExtResource("6_nn7uc"),
-Vector2i(2, 3): SubResource("Resource_ufrmk"),
 Vector2i(3, 1): SubResource("Resource_22ndi"),
 Vector2i(4, 0): ExtResource("4_v3i30"),
 Vector2i(4, 3): ExtResource("7_nqu6t")
@@ -145,11 +136,12 @@ shape = SubResource("RectangleShape2D_vvirn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1000684807]
 
-[node name="PlayerEntityNode" type="Node" parent="." unique_id=724430319 node_paths=PackedStringArray("equipment_manager", "stats_node", "action_point")]
+[node name="PlayerEntityNode" type="Node" parent="." unique_id=724430319 node_paths=PackedStringArray("equipment_manager", "stats_node", "action_point", "equipment_manager")]
 script = ExtResource("13_1dleg")
 equipment_manager = NodePath("../EquipmentManager")
 stats_node = NodePath("../StatsNode")
 action_point = NodePath("../ActionPoint")
+equipment_manager = NodePath("../EquipmentManager")
 metadata/_custom_type_script = "uid://c27363khv4g3j"
 
 [node name="StatsNode" type="Node" parent="." unique_id=1493747959]

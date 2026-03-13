@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cgxn3ud02qyvj" path="res://Scripts/Ability/ActiveAbilities/stone_ability.gd" id="1_7ovj7"]
 [ext_resource type="Script" uid="uid://pa7e2iud41wh" path="res://Scripts/Ability/AbilityActions/SpawnProjectileAbilityAction.gd" id="2_63xve"]
 [ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="3_rwf4k"]
-[ext_resource type="Texture2D" uid="uid://cgojeu3tewaq4" path="res://Placeholders/Rock.png" id="4_pcdpl"]
+[ext_resource type="Texture2D" uid="uid://0gqkfipwchig" path="res://Sprites/Rock/Rock.png" id="4_oh0hp"]
 [ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="5_pre82"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="6_c1mr6"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="7_hrdxd"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="9_oh0hp"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="10_url1l"]
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="11_8jaon"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="11_url1l"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="12_dw4je"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="13_8jaon"]
 
 [sub_resource type="Resource" id="Resource_5tmqg"]
 script = ExtResource("3_rwf4k")
@@ -24,7 +26,7 @@ script = ExtResource("5_pre82")
 speed = 300.0
 projectile_shape = SubResource("Resource_5tmqg")
 lifetime = 6.0
-projectile_texture = ExtResource("4_pcdpl")
+projectile_texture = ExtResource("4_oh0hp")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"
 

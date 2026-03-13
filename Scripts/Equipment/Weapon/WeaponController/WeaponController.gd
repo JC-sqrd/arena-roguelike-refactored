@@ -10,7 +10,7 @@ signal attack_start()
 signal attack_executed()
 signal attack_end()
 
-
+signal weapon_hit(hits : Array[RID])
 
 func initialize():
 	pass

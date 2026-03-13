@@ -16,8 +16,10 @@ var queries : Array[RID]
 
 var _input_held : bool = false
 
+
 func initialize():
 	attack_execute = attack_strategy.build_execute()
+	attack_execute.hit.connect(_on_hit)
 	add_child(attack_execute)
 	
 	listen_for_input = true
@@ -70,4 +72,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if _input_held:
 		start_attack()
+	pass
+
+func _on_hit(hits : Array[RID]):
+	weapon_hit.emit(hits)
 	pass

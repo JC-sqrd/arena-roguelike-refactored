@@ -3,7 +3,7 @@ class_name EquipmentManager extends Node
 @export var equipment_inventory : Array[Item]
 @export var weapon_hold_pos : Node2D
 
-@export var equipped_weapon : Weapon
+var equipped_weapon : Weapon
 
 @export_category("Main Weapon Slot")
 @export var main_weapon_slot : EquipSlot
@@ -11,6 +11,9 @@ class_name EquipmentManager extends Node
 
 var wielder : Entity
 var stats : Stats
+
+signal weapon_equipped(weapon : Weapon)
+signal weapon_unequipped(weapon : Weapon)
 
 func initialize(wielder : Entity):
 	self.stats = wielder.stats
@@ -28,5 +31,13 @@ func equip_weapon(equipment : Weapon):
 	equip_context.wielder = wielder
 	equip_context.hold_anchor = weapon_hold_pos
 	
+	equipped_weapon = equipment
 	main_weapon_slot.equip(equipment, equip_context)
+	weapon_equipped.emit(equipment)
+	pass
+
+func unequip_weapon():
+	var weapon : Weapon = main_weapon_slot.unequip()
+	equipped_weapon = null
+	weapon_unequipped.emit(weapon)
 	pass
