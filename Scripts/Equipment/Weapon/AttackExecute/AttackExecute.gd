@@ -2,13 +2,13 @@
 class_name AttackExecute extends Node
 
 var active : bool = false
-var context : AttackExecuteContext
+var context : Dictionary[StringName, Variant]
 
 @abstract
 func initialize()
 
 @abstract
-func execute(context : AttackExecuteContext)
+func execute(context : Dictionary[StringName, Variant])
 
 @abstract
 func finish_execute()

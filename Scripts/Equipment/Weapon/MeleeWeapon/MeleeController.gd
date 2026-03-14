@@ -16,8 +16,8 @@ var queries : Array[RID]
 
 var _input_held : bool = false
 
-
-func initialize():
+func _on_initialized():
+	
 	attack_execute = attack_strategy.build_execute()
 	attack_execute.hit.connect(_on_hit)
 	add_child(attack_execute)
@@ -36,7 +36,7 @@ func start_attack():
 
 func execute_attack():
 	if !attack_execute.active:
-		var attack_context : MeleeAttackExecuteContext = MeleeAttackExecuteContext.new()
+		var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 	
 		attack_context.wielder_stats = wielder_stats
 		attack_context.attack_effects = effects

@@ -2,7 +2,7 @@ class_name MeleeAttackExecute extends AttackExecute
 
 var melee_anim_player : MeleeAnimationPlayer
 var melee_hitbox : Area2D
-var melee_context : MeleeAttackExecuteContext
+var melee_context : Dictionary[StringName, Variant]
 var successful_queries : Array[RID]
 
 signal hit(hits : Array[RID])
@@ -12,14 +12,14 @@ func initialize():
 	pass
 
 
-func execute(context : AttackExecuteContext):
+func execute(context : Dictionary[StringName, Variant]):
 	if (melee_anim_player and melee_hitbox) == null:
 		printerr("Melee Execute not initialized(MeleeAnimationPlayer and MeleeHitbox needed)")
 		return
 	
 	self.context = context
 	
-	melee_context = context as MeleeAttackExecuteContext
+	melee_context = context
 	
 	melee_anim_player.play("windup")
 	active = true

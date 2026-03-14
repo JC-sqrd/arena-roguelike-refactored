@@ -33,4 +33,5 @@ func generate_controller_context() -> Dictionary[StringName, Variant]:
 	context["source"] = caster
 	context["caster"] = caster
 	context["caster_stats"] = caster.stats
+	context["controller"] = self
 	return context

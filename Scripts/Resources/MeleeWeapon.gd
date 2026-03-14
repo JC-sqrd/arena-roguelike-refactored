@@ -38,7 +38,7 @@ func equip(context : EquipContext):
 	melee_controller.effects = _weapon_effects
 	melee_controller.effect_context = _weapon_context
 	
-	melee_controller.initialize()
+	melee_controller.initialize(wielder)
 	
 	active_controller = melee_controller
 	equipped.emit()
