@@ -21,7 +21,7 @@ func execute(context : Dictionary[StringName, Variant]):
 	
 	melee_context = context
 	
-	melee_anim_player.speed_scale = context.anim_speed
+	melee_anim_player.speed_scale = maxf(1, context.anim_speed) 
 	melee_anim_player.play("windup")
 	active = true
 	pass

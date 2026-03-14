@@ -3,6 +3,7 @@ class_name Interactable extends Node
 
 @export var parent_node : Node2D
 @export var area_template : AreaTemplate
+@export var enabled : bool = true
 
 
 var area : Area
@@ -19,7 +20,8 @@ func _ready() -> void:
 	pass
 
 func interact(interactor : Entity):
-	interacted.emit()
+	if enabled:
+		interacted.emit()
 	pass
 
 
