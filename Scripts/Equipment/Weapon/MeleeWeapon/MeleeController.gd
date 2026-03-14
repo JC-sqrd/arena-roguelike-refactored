@@ -27,11 +27,15 @@ func _on_initialized():
 	attack_execute.set_melee_anim_player(melee_animation_player)
 	attack_execute.set_melee_hitbox(melee_hitbox)
 	attack_execute.finished_executing.connect(_on_attack_finished_executing)
+	
+	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
 	pass
 
 func start_attack():
-	execute_attack()
-	attack_start.emit()
+	if !on_cooldown:
+		execute_attack()
+		attack_start.emit()
+		on_cooldown = true
 	pass
 
 func execute_attack():
@@ -42,7 +46,9 @@ func execute_attack():
 		attack_context.attack_effects = effects
 		attack_context.effects_context = effect_context
 		attack_context.queries = queries
-	
+		attack_context.weapon_stats = weapon_stats
+		attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
+		
 		attack_execute.execute(attack_context)
 		attack_executed.emit()
 	pass
@@ -58,6 +64,13 @@ func _on_attack_finished_executing():
 func _process(delta: float) -> void:
 	if listen_for_input:
 		look_at(get_global_mouse_position())
+	
+	if on_cooldown:
+		_curr_cooldown += delta
+	
+	if _curr_cooldown >= _cooldown:
+		on_cooldown = false
+		_curr_cooldown = 0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !listen_for_input:

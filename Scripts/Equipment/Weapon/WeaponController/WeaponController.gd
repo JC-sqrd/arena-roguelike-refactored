@@ -7,6 +7,9 @@ var weapon_stats : Stats
 var listen_for_input : bool = false
 var effects : Array[Effect]
 var controller_context : Dictionary[StringName, Variant]
+var on_cooldown : bool = false
+var _cooldown : float = 0
+var _curr_cooldown : float = 0
 
 signal attack_start()
 signal attack_executed()
