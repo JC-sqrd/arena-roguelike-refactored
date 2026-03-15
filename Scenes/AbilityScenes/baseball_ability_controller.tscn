@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://1r355muwhgb1"]
+
+[ext_resource type="Script" uid="uid://ccy3m337bek8u" path="res://Scripts/Ability/ActiveAbilityControllers/baseball_ability_controller.gd" id="1_3ndal"]
+
+[node name="BaseballAbilityController" type="Node" unique_id=1650779237]
+script = ExtResource("1_3ndal")
+metadata/_custom_type_script = "uid://b71v68teuxsft"

@@ -22,7 +22,6 @@ func initialize(caster : Entity):
 	var ability_one_controller : ActiveAbilityController = ability_one.build_abiltiy_controller()
 	add_controller(ability_one_controller)
 	controllers[ability_one] = ability_one_controller
-	
 	pass
 
 
@@ -38,8 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("active_ability_1"):
 		var controller : ActiveAbilityController = controllers.get(ability_one)
-		controller.start()
-		#controllers[ability_one].start()
+		controller.start_ability()
 		pass
 	
 	pass

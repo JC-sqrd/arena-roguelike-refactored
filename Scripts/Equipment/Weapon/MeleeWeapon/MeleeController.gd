@@ -1,8 +1,10 @@
 class_name MeleeController extends WeaponController
 
 
-@export var melee_hitbox : Area2D
+@export var melee_hitbox : HitBox
 @export var melee_animation_player : MeleeAnimationPlayer
+
+var action_time_ratio : float = 0
 
 var attack_strategy : AttackStrategy
 var attack_execute : MeleeAttackExecute
@@ -48,6 +50,10 @@ func execute_attack():
 		attack_context.queries = queries
 		attack_context.weapon_stats = weapon_stats
 		attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
+		attack_context.action_time_ratio = action_time_ratio
+		
+		melee_hitbox.effects = effects
+		melee_hitbox.context = effect_context
 		
 		attack_execute.execute(attack_context)
 		attack_executed.emit()

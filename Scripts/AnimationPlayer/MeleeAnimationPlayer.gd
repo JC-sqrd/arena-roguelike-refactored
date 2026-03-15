@@ -13,16 +13,16 @@ func _init():
 		var reset_anim : Animation = Animation.new()
 		anim_lib.add_animation("RESET", reset_anim)
 		pass
-	if not anim_lib.has_animation("windup"):
-		var windup_anim : Animation = Animation.new()
-		anim_lib.add_animation("windup", windup_anim)
-		pass
+	#if not anim_lib.has_animation("windup"):
+		#var windup_anim : Animation = Animation.new()
+		#anim_lib.add_animation("windup", windup_anim)
+		#pass
 	if not anim_lib.has_animation("attack"):
 		var anim : Animation = Animation.new()
 		anim_lib.add_animation("attack", anim)
 		pass
-	if not anim_lib.has_animation("recovery"):
-		var anim : Animation = Animation.new()
-		anim_lib.add_animation("recovery", anim)
-		pass
+	#if not anim_lib.has_animation("recovery"):
+		#var anim : Animation = Animation.new()
+		#anim_lib.add_animation("recovery", anim)
+		#pass
 	pass

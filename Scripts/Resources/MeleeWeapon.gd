@@ -8,6 +8,8 @@ class_name MeleeWeapon extends Weapon
 @export var damage_stat : StatTemplate = StatTemplate.new()
 @export_category("Attack Speed Stat")
 @export var attack_speed_stat : StatTemplate = StatTemplate.new()
+@export_category("Weapon Animation")
+@export var action_time_ratio : float = 0 
 
 var melee_controller : MeleeController
 
@@ -37,6 +39,7 @@ func equip(context : EquipContext):
 	melee_controller.weapon_stats = _weapon_stats
 	melee_controller.effects = _weapon_effects
 	melee_controller.effect_context = _weapon_context
+	melee_controller.action_time_ratio = action_time_ratio
 	
 	melee_controller.initialize(wielder)
 	

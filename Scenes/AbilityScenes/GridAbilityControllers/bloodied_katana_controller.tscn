@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1k2qgud53n82"]
 
-[ext_resource type="Script" uid="uid://b6a3i1yycy42k" path="res://Scripts/Ability/Controllers/bloodied_katana_ability_controller.gd" id="1_h7vwn"]
+[ext_resource type="Script" uid="uid://b6a3i1yycy42k" path="res://Scripts/Ability/GridAbilityControllers/bloodied_katana_ability_controller.gd" id="1_h7vwn"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="2_fk6hh"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="3_1m6lh"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="4_67m6f"]

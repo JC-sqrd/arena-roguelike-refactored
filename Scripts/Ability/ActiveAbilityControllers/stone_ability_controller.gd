@@ -8,7 +8,7 @@ func initialize(caster : Entity):
 	spawn_projectile_ability_action.initialize(caster, ability_context)
 	pass
 
-func start():
+func start_ability():
 	execute()
 	pass
 

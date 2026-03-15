@@ -56,9 +56,10 @@ func query_hitbox(log_hit : bool = false) -> Array[RID]:
 		pass
 	
 	#print("HITBOX QUERIED: " + str(hits))
-		
+	
 	for hit in new_hits:
 		for effect in effects:
 			EffectServer.receive_effect(hit, effect, context)
+			EventServer.effect_hit.emit(hit, effect, context)
 	
 	return hits

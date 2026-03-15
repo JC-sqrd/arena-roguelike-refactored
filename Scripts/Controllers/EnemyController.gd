@@ -6,6 +6,10 @@ class_name EnemyController extends Node2D
 @export var area_controller : AreaController
 @export var health_bar_renderer : HealthBar
 
+@export var _components : Array[Node]
+
+var components : Dictionary[StringName, Variant]
+
 #Optimization
 var _update_offset : int
 var _update_threshold : int = 10
@@ -58,6 +62,14 @@ func _ready() -> void:
 	health_bar_renderer.initialize(enemy_entity.entity.health_manager, self)
 	
 	_target = PlayerServer.main_player
+	
+	for component in _components:
+		if component.has_method("get_component_name"):
+			components[component.get_component_name()] = component
+			if component.has_method("initialize"):
+				component.initialize(area_controller.area.area_rid)
+				pass
+		pass
 	
 	EntityServer.register_entity(enemy_entity.entity.entity_rid, enemy_entity.entity)
 	pass

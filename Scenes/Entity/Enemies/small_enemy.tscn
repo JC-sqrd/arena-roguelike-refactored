@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="6_pe4y6"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="7_6imbo"]
 [ext_resource type="Texture2D" uid="uid://db5ucthehewug" path="res://Placeholders/Tiny Enemy.png" id="11_8a2hg"]
+[ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="12_58hsy"]
+[ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="13_ixvhf"]
 
 [sub_resource type="Resource" id="Resource_58hsy"]
 script = ExtResource("5_8a2hg")
@@ -35,7 +37,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("5_8a2hg")
 name = "Move Speed"
 stat_id = &"move_speed"
-value = 100.0
+value = 150.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_feok4"]
@@ -55,13 +57,38 @@ area_coll_layer = 4
 area_coll_mask = 2
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
-[node name="SmallEnemy" type="Node2D" unique_id=1231003198 node_paths=PackedStringArray("enemy_entity", "attack_controller", "area_controller", "health_bar_renderer")]
+[sub_resource type="Gradient" id="Gradient_ixvhf"]
+offsets = PackedFloat32Array(0, 0.26153848, 0.5692308)
+colors = PackedColorArray(1, 0.7372549, 0.21568628, 1, 1, 0.7372549, 0.21568628, 1, 1, 0.3529412, 0.22745098, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_feok4"]
+gradient = SubResource("Gradient_ixvhf")
+
+[sub_resource type="Curve" id="Curve_ixvhf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.013380352, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_feok4"]
+curve = SubResource("Curve_ixvhf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j38lc"]
+particle_flag_disable_z = true
+angle_min = -337.69998
+angle_max = 302.30002
+radial_velocity_min = 199.99997
+radial_velocity_max = 299.99997
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_feok4")
+color_ramp = SubResource("GradientTexture1D_feok4")
+
+[node name="SmallEnemy" type="Node2D" unique_id=1231003198 node_paths=PackedStringArray("enemy_entity", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
 script = ExtResource("1_te1ps")
 enemy_entity = NodePath("EntityNode")
-target_distance_threshold = 100.0
+target_distance_threshold = 40.0
 attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
+_components = [NodePath("GPUParticles2D")]
 metadata/_custom_type_script = "uid://knv07avm0ire"
 
 [node name="EntityNode" type="Node" parent="." unique_id=1786571583 node_paths=PackedStringArray("stats_node", "action_point")]
@@ -97,3 +124,15 @@ metadata/_custom_type_script = "uid://btw2yykugf86t"
 texture_filter = 1
 position = Vector2(0, -47)
 texture = ExtResource("11_8a2hg")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=414331185]
+texture_filter = 1
+emitting = false
+texture = ExtResource("12_58hsy")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_j38lc")
+script = ExtResource("13_ixvhf")
+metadata/_custom_type_script = "uid://hq3w2lovo02u"

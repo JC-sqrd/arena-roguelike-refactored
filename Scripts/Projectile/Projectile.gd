@@ -75,6 +75,7 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 	
 	for effect in effects:
 		EffectServer.receive_effect(area_rid, effect, context)
+		EventServer.effect_hit.emit(area_rid, effect, context)
 	
 	hit_log.append(area_rid)
 	

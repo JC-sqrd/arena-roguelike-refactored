@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btjgkjsrkyrln"]
 
-[ext_resource type="Script" uid="uid://pxydlhjsvd8e" path="res://Scripts/Ability/ActiveAbilities/test_ability.gd" id="1_jgkao"]
+[ext_resource type="Script" uid="uid://pxydlhjsvd8e" path="res://Scripts/Ability/ActiveAbilityControllers/test_ability_controller.gd" id="1_jgkao"]
 [ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="2_iio1y"]
 [ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="3_veerq"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_rpyqb"]

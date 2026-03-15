@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwglurqwi8rne"]
 
 [ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeController.gd" id="1_j2mn8"]
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="2_3uf61"]
 [ext_resource type="Texture2D" uid="uid://d0w2eo1lksn3k" path="res://Scenes/Weapons/BaseballBat/BaseballBat.png" id="2_6t2eq"]
 [ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_7fm84"]
 [ext_resource type="Texture2D" uid="uid://c7go5ftt2kf04" path="res://Scenes/Weapons/BaseballBat/BaseballSwingAnim.png" id="4_nwev4"]
@@ -59,7 +60,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_nwev4"]
-length = 0.50000834
+length = 0.75000834
 step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -68,10 +69,10 @@ tracks/0/path = NodePath("BaseballBat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.24899836, 0.25, 0.33333334, 0.41666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.083341666, 0.16666667, 0.25, 0.33333334, 0.41566503, 0.4166667, 0.5, 0.5833333, 0.6666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(37, -57), Vector2(107, 17), Vector2(55.999996, 67.000015), Vector2(25.999996, 67.00001), Vector2(26, 70.295), Vector2(17, 75), Vector2(17.000002, 77.000015)]
+"values": [Vector2(12.000002, -64), Vector2(-11, -64), Vector2(37, -57), Vector2(107, 17), Vector2(55.999996, 67.000015), Vector2(25.999996, 67.00001), Vector2(26, 70.295), Vector2(17, 75), Vector2(17.000002, 77.000015), Vector2(87, 19), Vector2(-11, -64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -80,10 +81,10 @@ tracks/1/path = NodePath("BaseballBat:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.083341666, 0.16666667, 0.25, 0.33333334, 0.4166667, 0.5, 0.5833333, 0.6666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0.40268338, 1.5466652, 2.4676075, 3.1146162, 3.221637, 3.2196453]
+"values": [0.1810695, -0.22473097, 0.40268338, 1.5466652, 2.4676075, 3.1146162, 3.221637, 3.2196453, 2.0465431, -0.22473097]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -92,10 +93,10 @@ tracks/2/path = NodePath("BaseballBat:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.083341666, 0.16666667, 0.25, 0.33333334, 0.4166667, 0.5, 0.5833333, 0.6666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(1, 1), Vector2(1, 1.4875817), Vector2(1, 1.0879388), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1.4875817), Vector2(1, 1.0879388), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -104,10 +105,10 @@ tracks/3/path = NodePath("AnimatedSprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666, 0.50000834),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.4166667, 0.5, 0.5833333, 0.6663661, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [6, 6, 0, 1, 2, 3, 4, 5, 6, 6]
 }
 
 [sub_resource type="Animation" id="Animation_3uf61"]
@@ -261,11 +262,14 @@ melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
 metadata/_custom_type_script = "uid://c5mbvnyf1mbqm"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1301403962]
+[node name="Area2D" type="Area2D" parent="." unique_id=1772335603 node_paths=PackedStringArray("anim_player")]
 position = Vector2(100, 0)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
+script = ExtResource("2_3uf61")
+anim_player = NodePath("../MeleeAnimationPlayer")
+metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=439411281]
 shape = SubResource("RectangleShape2D_gc1v0")

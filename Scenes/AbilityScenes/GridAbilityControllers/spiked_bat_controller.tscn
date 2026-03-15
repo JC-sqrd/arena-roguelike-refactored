@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://15bd618tqoje"]
 
-[ext_resource type="Script" uid="uid://ctjlb4inhjx0e" path="res://Scripts/Ability/Controllers/spiked_bat_ability_controller.gd" id="1_bb5ap"]
+[ext_resource type="Script" uid="uid://ctjlb4inhjx0e" path="res://Scripts/Ability/GridAbilityControllers/spiked_bat_ability_controller.gd" id="1_bb5ap"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="2_7rc5t"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="3_afr31"]
 

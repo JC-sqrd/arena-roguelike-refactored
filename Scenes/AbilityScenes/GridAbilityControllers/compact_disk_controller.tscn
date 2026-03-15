@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://buan0kvyaori2"]
 
-[ext_resource type="Script" uid="uid://da5is3ql2021w" path="res://Scripts/Ability/Controllers/compact_disk_controller.gd" id="1_fiqe0"]
+[ext_resource type="Script" uid="uid://da5is3ql2021w" path="res://Scripts/Ability/GridAbilityControllers/compact_disk_controller.gd" id="1_fiqe0"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="2_o6k3f"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="3_vq7gb"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_gwdak"]

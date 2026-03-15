@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://bflrqwxd7bi6m"]
 
+[ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_77wov"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="1_blpvi"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="1_qo6pl"]
 [ext_resource type="Script" uid="uid://cje4onngvnlma" path="res://Scripts/Resources/MeleeWeapon.gd" id="2_swjqy"]
+[ext_resource type="Resource" uid="uid://c6hxwxl50lod1" path="res://Resources/AbilityData/baseball_ability.tres" id="2_urw0e"]
 [ext_resource type="Script" uid="uid://dj8mvwrf8h50s" path="res://Scripts/Equipment/Weapon/AttackStrategy/MeleeAttackStrategy.gd" id="2_wawsb"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_wvaiv"]
 [ext_resource type="PackedScene" uid="uid://bwglurqwi8rne" path="res://Scenes/Weapons/BaseballBat/melee_baseball_bat.tscn" id="5_0u7oo"]
@@ -61,5 +63,7 @@ attack_strategy = SubResource("Resource_ciktv")
 weapon_scene = ExtResource("5_0u7oo")
 damage_stat = SubResource("Resource_yj3mi")
 attack_speed_stat = SubResource("Resource_gbpjn")
+action_time_ratio = 0.3
 effect_templates = Array[ExtResource("1_blpvi")]([SubResource("Resource_i7i4b")])
+abilities = Array[ExtResource("1_77wov")]([ExtResource("2_urw0e")])
 metadata/_custom_type_script = "uid://cje4onngvnlma"

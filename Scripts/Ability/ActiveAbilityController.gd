@@ -15,7 +15,7 @@ func initialize(caster : Entity):
 func _on_initialized():
 	pass
 
-func start():
+func start_ability():
 	execute()
 	pass
 

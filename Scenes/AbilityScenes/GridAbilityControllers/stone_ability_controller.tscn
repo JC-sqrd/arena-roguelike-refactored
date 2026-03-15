@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfttnkrwve3ct"]
 
-[ext_resource type="Script" uid="uid://dgq04rlap36uo" path="res://Scripts/Ability/Controllers/stone_ability_controller.gd" id="1_4tggj"]
+[ext_resource type="Script" uid="uid://dgq04rlap36uo" path="res://Scripts/Ability/GridAbilityControllers/stone_ability_controller.gd" id="1_4tggj"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="2_6c3l1"]
 [ext_resource type="Resource" uid="uid://6d4ongim2f6n" path="res://Resources/AbilityData/stone_ability_data.tres" id="2_47jjt"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="3_0oi36"]

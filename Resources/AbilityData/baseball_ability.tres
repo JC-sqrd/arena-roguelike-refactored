@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ActiveAbilityData" format=3 uid="uid://c6hxwxl50lod1"]
+
+[ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_nu3j0"]
+[ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_u8qcb"]
+[ext_resource type="PackedScene" uid="uid://1r355muwhgb1" path="res://Scenes/AbilityScenes/baseball_ability_controller.tscn" id="2_4tqdq"]
+
+[resource]
+script = ExtResource("1_nu3j0")
+ability_scene = ExtResource("2_4tqdq")
+ability_name = "Ball Strike"
+ability_id = &"ball_strike"
+ability_icon = ExtResource("1_u8qcb")
+metadata/_custom_type_script = "uid://dixh3jk1fs5ag"

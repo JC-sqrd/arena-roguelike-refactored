@@ -14,7 +14,7 @@ func _on_initialized():
 	projectile_action.initialize(caster, controller_context)
 	pass
 
-func start():
+func start_ability():
 	hitbox = hitbox_scene.instantiate() as DelayHitbox
 	hitbox.effects = [damage_effect.build_effect(controller_context)]
 	hitbox.context = controller_context
