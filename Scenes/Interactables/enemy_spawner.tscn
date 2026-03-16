@@ -20,8 +20,9 @@ metadata/_custom_type_script = "uid://8eg0pmyahc6u"
 [sub_resource type="Resource" id="Resource_6f1dk"]
 script = ExtResource("2_15e5t")
 wave_spawns = Array[ExtResource("3_15e5t")]([SubResource("Resource_781r6")])
-wave_budget = 500.0
-budget_gain = 200.0
+wave_budget = 800.0
+budget_gain = 400.0
+wave_duration = 30.0
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
 
 [sub_resource type="Resource" id="Resource_vmsas"]

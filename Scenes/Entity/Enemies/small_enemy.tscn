@@ -18,7 +18,7 @@
 script = ExtResource("5_8a2hg")
 name = "Max Health"
 stat_id = &"max_health"
-value = 20.0
+value = 10.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_ixvhf"]
