@@ -5,7 +5,6 @@ var entity_rid : RID
 func initialize(rid : RID):
 	entity_rid = rid
 	EventServer.effect_hit.connect(_on_effect_hit)
-	print("HIT PARTICLE COMPONENT INITIALIZED")
 	pass
 
 

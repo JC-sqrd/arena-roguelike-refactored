@@ -85,7 +85,6 @@ func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	area_controller.active = false 
 	EnemyServer.to_free(_id)
 	#queue_free()
-	
 	pass
 
 func _physics_process(delta: float) -> void:
