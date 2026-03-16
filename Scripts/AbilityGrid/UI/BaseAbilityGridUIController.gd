@@ -76,6 +76,7 @@ func _rollback_placement():
 	_original_grid.place_tile_on_slot(_held_tile, _original_pos)
 	_held_tile.update_adjacent_tiles(_original_grid.get_adjacent_tiles_from_adjacent_points(_held_tile))
 	_update_adjacent_tiles(_original_grid.get_adjacent_tiles(_held_tile), _original_grid)
+	_clear_helt_state()
 	pass
 
 func _clear_helt_state():

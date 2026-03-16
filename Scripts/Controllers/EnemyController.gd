@@ -132,8 +132,8 @@ func update_position(delta : float):
 	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
 		_dir_to_target = (_target.global_position - global_position).normalized()
 		_distance_to_target = (_target.global_position - global_position).length()
-		velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-		#velocity = _dir_to_target * move_speed_stat.get_value() * delta
+		#velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+		velocity = _dir_to_target * move_speed_stat.get_value() * delta
 	pass
 
 func update_cell_coords(delta : float):

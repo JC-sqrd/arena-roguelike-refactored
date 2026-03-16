@@ -37,16 +37,18 @@ func _on_wave_timeout():
 
 func spawn_wave():
 	
+	print("ACTIVE ENEMIES: " + str(EnemyServer.active_enemies.size()))
+	
 	while _curr_wave_data.curr_budget > 0:
 		
 		var pick : EnemyWaveSpawn = weighted_pick(_curr_wave_data.wave_spawns)
 		
+		if EnemyServer.active_enemies.size() >= 1000:
+			return
+		
 		if _curr_wave_data.curr_budget >= pick.spawn_cost:
 			_curr_wave_data.curr_budget -= pick.spawn_cost
 			var enemy : EnemyController = pick.instantiate_enemy()
-			var arena_size : Vector2 = (ArenaServer.active_arena.main_tilemap_layer.get_used_rect().size) * ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size 
-			var arena_rect_pos : Vector2 = (ArenaServer.active_arena.main_tilemap_layer.get_used_rect().position * ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size)
-			var rand_pos : Vector2 = Vector2(randf_range(arena_rect_pos.x, arena_rect_pos.x + (arena_size.x)), randf_range(arena_rect_pos.y, arena_rect_pos.y + (arena_size.y)))
 			var tile_size : Vector2i = ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size
 			var used_cells : Array[Vector2i] = ArenaServer.active_arena.main_tilemap_layer.get_used_cells()
 			var rand_cell : Vector2i = used_cells[randi_range(0, used_cells.size()-1)] 
