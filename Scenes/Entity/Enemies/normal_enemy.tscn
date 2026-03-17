@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="17_218yx"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="17_ytdn0"]
 [ext_resource type="Resource" uid="uid://cte3qnacw8jc" path="res://Resources/normal_enemy_stats_template.tres" id="18_2upka"]
+[ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="20_kfoqm"]
 
 [sub_resource type="Resource" id="Resource_kfoqm"]
 script = ExtResource("12_2upka")
@@ -50,9 +51,10 @@ area_coll_layer = 4
 area_coll_mask = 2
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
-[node name="NormalEnemy" type="Node2D" unique_id=1528450500 node_paths=PackedStringArray("enemy_entity", "attack_controller", "area_controller", "health_bar_renderer")]
+[node name="NormalEnemy" type="Node2D" unique_id=1528450500 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer")]
 script = ExtResource("1_jxxdc")
 enemy_entity = NodePath("EntityNode")
+enemy_movement = NodePath("FollowTarget")
 target_distance_threshold = 30.0
 attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
@@ -92,3 +94,7 @@ metadata/_custom_type_script = "uid://mhvoa3j15n4q"
 script = ExtResource("17_ytdn0")
 stats_template = ExtResource("18_2upka")
 metadata/_custom_type_script = "uid://chi8el32v5eh0"
+
+[node name="FollowTarget" type="Node" parent="." unique_id=149703252]
+script = ExtResource("20_kfoqm")
+metadata/_custom_type_script = "uid://c0ba4ih2p3yws"

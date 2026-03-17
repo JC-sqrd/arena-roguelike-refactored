@@ -1,6 +1,7 @@
 class_name EnemyController extends Node2D
 
 @export var enemy_entity : EntityNode
+@export var enemy_movement : EnemyMovement
 @export var target_distance_threshold : float = 125
 @export var attack_controller : EnemyAttackController
 @export var area_controller : AreaController
@@ -53,6 +54,8 @@ func _ready() -> void:
 	enemy_entity.initialize(area_controller.area.area_rid)
 	enemy_entity.entity.health_manager.health_depleted.connect(_on_health_depleted)
 	
+	enemy_movement.initialize(enemy_entity.entity, self)
+	
 	move_speed_stat = enemy_entity.entity.stats.get_stat("move_speed")
 	
 	attack_controller.initialize(enemy_entity.entity.stats)
@@ -81,8 +84,8 @@ func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	area_controller.free_area()
 	enemy_entity.entity.died.emit(context)
 	EventServer.entity_died.emit(enemy_entity.entity, context)
-	await get_tree().create_timer(0.5).timeout
 	active = false
+	await get_tree().create_timer(0.5).timeout
 	area_controller.active = false 
 	EnemyServer.to_free(_id)
 	#queue_free()
@@ -119,22 +122,29 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func update_position(delta : float):
+	global_position = enemy_entity.entity.global_position
+	
 	if !active : 
 		return
 	
-	enemy_entity.entity.global_position += velocity 
-	global_position = enemy_entity.entity.global_position
+	enemy_entity.entity.global_position = enemy_movement.update_position(delta) 
 	
-	if _distance_to_target <= target_distance_threshold:
-		velocity = Vector2.ZERO
-		pass
-		
-	#Update velocity and push vector
-	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
-		_dir_to_target = (_target.global_position - global_position).normalized()
-		_distance_to_target = (_target.global_position - global_position).length()
-		#velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-		velocity = _dir_to_target * move_speed_stat.get_value() * delta
+	#if !active : 
+		#return
+	#
+	#enemy_entity.entity.global_position += velocity 
+	#global_position = enemy_entity.entity.global_position
+	#
+	#if _distance_to_target <= target_distance_threshold:
+		#velocity = Vector2.ZERO
+		#pass
+		#
+	##Update velocity and push vector
+	#if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
+		#_dir_to_target = (_target.global_position - global_position).normalized()
+		#_distance_to_target = (_target.global_position - global_position).length()
+		##velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+		#velocity = _dir_to_target * move_speed_stat.get_value() * delta
 	pass
 
 func update_cell_coords(delta : float):
