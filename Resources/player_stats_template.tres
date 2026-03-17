@@ -64,7 +64,14 @@ name = "Exp"
 stat_id = &"exp"
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
+[sub_resource type="Resource" id="Resource_7agys"]
+script = ExtResource("2_8r4bj")
+name = "Knockback"
+stat_id = &"knockback"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
 [resource]
 script = ExtResource("1_r4w27")
-stat_templates = Array[ExtResource("2_8r4bj")]([SubResource("Resource_72w0c"), SubResource("Resource_f4r5d"), SubResource("Resource_aysh2"), SubResource("Resource_mpqp4"), SubResource("Resource_xpoel"), SubResource("Resource_r4w27"), SubResource("Resource_8r4bj"), SubResource("Resource_ljqrd"), SubResource("Resource_4altn")])
+stat_templates = Array[ExtResource("2_8r4bj")]([SubResource("Resource_72w0c"), SubResource("Resource_f4r5d"), SubResource("Resource_aysh2"), SubResource("Resource_mpqp4"), SubResource("Resource_xpoel"), SubResource("Resource_r4w27"), SubResource("Resource_8r4bj"), SubResource("Resource_ljqrd"), SubResource("Resource_4altn"), SubResource("Resource_7agys")])
 metadata/_custom_type_script = "uid://cdquhx3qorgp1"
