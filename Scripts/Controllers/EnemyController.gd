@@ -39,14 +39,12 @@ var velocity : Vector2 = Vector2(0,0)
 var overlapped_bodies : Array[RID]
 var overlapped_areas : Array[Area2D]
 
+
 func _ready() -> void:
 	
 	_id = get_instance_id()
 	_update_offset = randi_range(0, 10)
 	_curr_cell_coords = _calculate_new_cell_coords()
-	
-	EnemyServer.register_enemy(_id, self)
-	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
 	
 	area_controller.initialize()
 	area_controller.set_body_enter_callback(_on_body_entered)
@@ -71,17 +69,20 @@ func _ready() -> void:
 				pass
 		pass
 	
+	EnemyServer.register_enemy(_id, self)
+	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
+	enemy_entity.entity.global_position = global_position
 	EntityServer.register_entity(enemy_entity.entity.entity_rid, enemy_entity.entity)
 	pass
 
 
 func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	velocity = Vector2.ZERO
-	active = false
 	area_controller.free_area()
 	enemy_entity.entity.died.emit(context)
 	EventServer.entity_died.emit(enemy_entity.entity, context)
 	await get_tree().create_timer(0.5).timeout
+	active = false
 	area_controller.active = false 
 	EnemyServer.to_free(_id)
 	#queue_free()
@@ -121,8 +122,8 @@ func update_position(delta : float):
 	if !active : 
 		return
 	
-	global_position += velocity
-	enemy_entity.entity.global_position = global_position
+	enemy_entity.entity.global_position += velocity 
+	global_position = enemy_entity.entity.global_position
 	
 	if _distance_to_target <= target_distance_threshold:
 		velocity = Vector2.ZERO

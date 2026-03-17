@@ -23,7 +23,8 @@ func add_mutator(mutator : StatMutator):
 
 func invoke_effect_events():
 	for event_template in effect_events:
-		event_template.build_effect_event(self)
+		var effect_event : EffectEvent = event_template.build_effect_event(self)
+		effect_event.invoke_event(effect_context)
 		pass
 	pass
 

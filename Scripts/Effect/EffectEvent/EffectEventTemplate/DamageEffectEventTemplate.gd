@@ -9,7 +9,4 @@ func build_effect_event(effect : Effect) -> DamageEffectEvent:
 			damage_event.damage_amount += mutator.get_value()
 			pass
 		pass
-	var source : Variant = effect.effect_context.get("source")
-	print("DAMAGE SOURCE: " + str(source))
-	print("DAMAGE AMOUNT: " + str(damage_event.damage_amount))
 	return damage_event

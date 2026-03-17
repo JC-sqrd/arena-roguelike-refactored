@@ -28,6 +28,7 @@ EventServer="*uid://cn1ah3sysqs3u"
 GameCanvas="*uid://b28kqfd66l4xv"
 GameServer="*uid://blho4k5fijajq"
 EntityServer="*uid://dp414ybgurr0c"
+KnockbackServer="*uid://cesy7fytmnbv"
 
 [file_customization]
 

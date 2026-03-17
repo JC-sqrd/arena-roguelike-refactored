@@ -175,7 +175,7 @@ visible = false
 texture = SubResource("GradientTexture2D_pg8fo")
 
 [node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
-position = Vector2(14, -17)
+position = Vector2(0, -28)
 script = ExtResource("13_7xakc")
 pivot_node = NodePath("../Marker2D")
 metadata/_custom_type_script = "uid://dmq3shquqsewu"
