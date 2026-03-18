@@ -7,7 +7,11 @@ signal wave_end()
 var _total_wave_weight : float = 0
 var _curr_wave_data :  EnemyWaveData
 
+var _leftover_budget : float = 0
+
 var wave_enemies : Array[EnemyController]
+
+var cost_dict : Dictionary[EnemyController, float]
 
 func start_wave(wave_data : EnemyWaveData):
 	
@@ -24,15 +28,19 @@ func start_wave(wave_data : EnemyWaveData):
 
 func _on_wave_timeout():
 	print("SPAWN WAVE: " + str(_curr_wave_data.current_wave_time))
-	spawn_wave()
 	_curr_wave_data.current_wave_time -= 1
-	_curr_wave_data.curr_budget += _curr_wave_data.budget_gain
+	var _leftover_spread : float = (_leftover_budget / _curr_wave_data.wave_duration)
+	var budget_gain : float = (_curr_wave_data.budget_gain + _leftover_spread) 
+	_curr_wave_data.curr_budget += budget_gain
+	spawn_wave()
 	
 	if _curr_wave_data.current_wave_time <= 0:
+		_leftover_budget = calculate_leftover_budget()
 		_curr_wave_data.curr_budget = 0
 		free_wave_enemies()
 		wave_timer.stop()
 		wave_end.emit()
+	
 	pass
 
 func spawn_wave():
@@ -44,18 +52,25 @@ func spawn_wave():
 		var pick : EnemyWaveSpawn = weighted_pick(_curr_wave_data.wave_spawns)
 		
 		if EnemyServer.active_enemies.size() >= 1000:
-			return
+			break
 		
-		if _curr_wave_data.curr_budget >= pick.spawn_cost:
+		var min_cost : float = get_min_spawn_cost(_curr_wave_data.wave_spawns)
+		
+		if _curr_wave_data.curr_budget < min_cost:
+			break
+		elif _curr_wave_data.curr_budget >= pick.spawn_cost:
 			_curr_wave_data.curr_budget -= pick.spawn_cost
 			var enemy : EnemyController = pick.instantiate_enemy()
 			var tile_size : Vector2i = ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size
 			var used_cells : Array[Vector2i] = ArenaServer.active_arena.main_tilemap_layer.get_used_cells()
 			var rand_cell : Vector2i = used_cells[randi_range(0, used_cells.size()-1)] 
 			var rand_offset : Vector2i = Vector2i(randi_range(0, tile_size.x), randi_range(0, tile_size.y))
+			cost_dict[enemy] = pick.spawn_cost
 			enemy.global_position = (rand_cell * tile_size) + rand_offset #rand_pos
 			wave_enemies.append(enemy)
 			ArenaServer.active_arena.add_child(enemy)
+		else:
+			break
 		pass
 	pass
 
@@ -72,8 +87,11 @@ func weighted_pick(spawns : Array[EnemyWaveSpawn]) -> EnemyWaveSpawn:
 			return spawn
 	return null
 
-func get_min_spawn_cost() -> float:
-	return 0
+func get_min_spawn_cost(spawns : Array[EnemyWaveSpawn]) -> float:
+	var min : float = spawns[0].spawn_cost
+	for spawn in spawns:
+		min = min(min, spawn.spawn_cost)
+	return min
 
 func calculate_wave_weight(wave_data : EnemyWaveData) -> float:
 	var total_weight : float = 0 
@@ -81,6 +99,16 @@ func calculate_wave_weight(wave_data : EnemyWaveData) -> float:
 		total_weight += spawn.weight
 	return total_weight
 
+
+func calculate_leftover_budget() -> float:
+	var leftover_cost : float = 0
+	for enemy in wave_enemies:
+		if enemy == null:
+			continue
+		elif cost_dict.has(enemy):
+			leftover_cost += cost_dict[enemy]
+	cost_dict.clear()
+	return leftover_cost
 
 func free_wave_enemies():
 	for enemy in wave_enemies:
