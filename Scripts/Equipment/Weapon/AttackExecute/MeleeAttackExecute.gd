@@ -46,7 +46,9 @@ func _process(delta: float) -> void:
 			_curr_anim_pos = melee_anim_player.current_animation_position
 			_action_time = _curr_anim_length * action_time_ratio
 			if _curr_anim_pos >= _action_time:
-				melee_hitbox.query_hitbox()
+				var hits : Array[RID]
+				melee_hitbox.query_hitbox(false, hits)
+				EventServer.weapon_hit.emit(hits, melee_context)
 				#query_hitbox()
 				active_hit = false
 			pass

@@ -51,6 +51,6 @@ func free_projectile(rid : RID):
 
 func _draw() -> void:
 	if debug:
-		draw_line(global_position, get_global_mouse_position(), Color.CRIMSON, 1)
+		draw_line(Vector2.ZERO, get_global_mouse_position(), Color.CRIMSON, 1)
 		draw_circle(get_global_mouse_position(), 4, Color.RED, true, 2)
 	pass

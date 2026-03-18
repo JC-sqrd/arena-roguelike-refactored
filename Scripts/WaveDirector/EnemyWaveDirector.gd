@@ -27,6 +27,10 @@ func start_wave(wave_data : EnemyWaveData):
 	pass
 
 func _on_wave_timeout():
+	
+	var arena_center : = ArenaServer.active_arena.main_tilemap_layer.get_used_rect().get_center() *  ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size 
+	print("ARENA CENTER: " + str(arena_center))
+	
 	print("SPAWN WAVE: " + str(_curr_wave_data.current_wave_time))
 	_curr_wave_data.current_wave_time -= 1
 	var _leftover_spread : float = (_leftover_budget / _curr_wave_data.wave_duration)
@@ -40,7 +44,6 @@ func _on_wave_timeout():
 		free_wave_enemies()
 		wave_timer.stop()
 		wave_end.emit()
-	
 	pass
 
 func spawn_wave():
