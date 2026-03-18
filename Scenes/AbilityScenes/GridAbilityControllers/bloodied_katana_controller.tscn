@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://dou0wul2vu5jy"
 
 [sub_resource type="Resource" id="Resource_sirmo"]
 script = ExtResource("10_1cxe1")
-value = 10.0
+value = 2.0
 bonus_values = Array[ExtResource("8_pnljr")]([SubResource("Resource_ebcqr")])
 metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
 

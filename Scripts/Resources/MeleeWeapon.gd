@@ -11,7 +11,7 @@ class_name MeleeWeapon extends Weapon
 @export_category("Weapon Animation")
 @export var action_time_ratio : float = 0 
 
-var melee_controller : MeleeController
+var melee_controller : MeleeWeaponController
 
 
 func equip(context : EquipContext):
@@ -20,7 +20,7 @@ func equip(context : EquipContext):
 	wielder_stats = context.wielder_stats
 	
 	#Instantiate melee weapon node and set its attack strategy
-	melee_controller = weapon_scene.instantiate() as MeleeController
+	melee_controller = weapon_scene.instantiate() as MeleeWeaponController
 	melee_controller.attack_strategy = attack_strategy
 	melee_controller.weapon_id = item_id + "_" +str(melee_controller.get_instance_id())
 	

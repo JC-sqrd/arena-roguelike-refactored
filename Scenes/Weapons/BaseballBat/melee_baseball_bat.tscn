@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bwglurqwi8rne"]
 
-[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeController.gd" id="1_j2mn8"]
+[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponController.gd" id="1_j2mn8"]
 [ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="2_3uf61"]
 [ext_resource type="Texture2D" uid="uid://d0w2eo1lksn3k" path="res://Scenes/Weapons/BaseballBat/BaseballBat.png" id="2_6t2eq"]
 [ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_7fm84"]
 [ext_resource type="Texture2D" uid="uid://c7go5ftt2kf04" path="res://Scenes/Weapons/BaseballBat/BaseballSwingAnim.png" id="4_nwev4"]
+[ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_b5em5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc1v0"]
 size = Vector2(200, 242)
@@ -256,10 +257,11 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="MeleeBaseballBat" type="Node2D" unique_id=161408375 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player")]
+[node name="MeleeBaseballBat" type="Node2D" unique_id=161408375 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player", "attack_execute")]
 script = ExtResource("1_j2mn8")
 melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
+attack_execute = NodePath("MeleeAttackExecute")
 metadata/_custom_type_script = "uid://c5mbvnyf1mbqm"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1772335603 node_paths=PackedStringArray("anim_player")]
@@ -287,3 +289,7 @@ frame = 6
 [node name="BaseballBat" type="Sprite2D" parent="." unique_id=321679982]
 texture_filter = 1
 texture = ExtResource("2_6t2eq")
+
+[node name="MeleeAttackExecute" type="Node" parent="." unique_id=1900437744]
+script = ExtResource("6_b5em5")
+metadata/_custom_type_script = "uid://d2m8vf2tidody"

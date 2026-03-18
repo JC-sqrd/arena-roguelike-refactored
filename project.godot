@@ -30,6 +30,17 @@ GameServer="*uid://blho4k5fijajq"
 EntityServer="*uid://dp414ybgurr0c"
 KnockbackServer="*uid://cesy7fytmnbv"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=320
+window/size/mode=4
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
+
 [file_customization]
 
 folder_colors={

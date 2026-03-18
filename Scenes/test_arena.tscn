@@ -149,7 +149,7 @@ texture_region_size = Vector2i(128, 128)
 7:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_kjypg"]
-tile_size = Vector2i(128, 128)
+tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_y11aj")
 sources/1 = SubResource("TileSetAtlasSource_0b76d")
 
@@ -170,7 +170,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("7_dhtwe")
 name = "Move Speed"
 stat_id = &"move_speed"
-value = 100.0
+value = 1.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_v23vg"]

@@ -1,13 +1,12 @@
-class_name MeleeController extends WeaponController
+class_name ProjectileWeaponController extends WeaponController
 
 
-@export var melee_hitbox : HitBox
 @export var melee_animation_player : MeleeAnimationPlayer
 
 var action_time_ratio : float = 0
 
+@export var attack_execute : MeleeAttackExecute
 var attack_strategy : AttackStrategy
-var attack_execute : MeleeAttackExecute
 
 var executing : bool = false
 
@@ -20,9 +19,7 @@ var _input_held : bool = false
 
 func _on_initialized():
 	
-	attack_execute = attack_strategy.build_execute()
 	attack_execute.hit.connect(_on_hit)
-	add_child(attack_execute)
 	
 	listen_for_input = true
 	

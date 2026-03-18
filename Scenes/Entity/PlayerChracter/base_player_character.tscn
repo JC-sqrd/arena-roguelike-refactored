@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bs7cobx06wp4e"]
 
-[ext_resource type="Texture2D" uid="uid://b1wtnoq43s4n5" path="res://Placeholders/Character_Front.png" id="1_m7dux"]
 [ext_resource type="Script" uid="uid://cnhcp1vabdb3x" path="res://Scripts/Controllers/PlayerController.gd" id="1_vvirn"]
 [ext_resource type="Script" uid="uid://j0xukxc6ojgr" path="res://Scripts/AbilityGrid/AbilityGrid.gd" id="2_xpoel"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="3_8ud0v"]
@@ -13,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://bwt0luahnpv5f" path="res://Resources/AbilityTiles/compact_disk_tile.tres" id="8_c44xl"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
 [ext_resource type="Resource" uid="uid://1xn2obo8pow1" path="res://Resources/AbilityTiles/wooden_axe_tile.tres" id="9_jq2g3"]
+[ext_resource type="Texture2D" uid="uid://c0q5q5u87nhq2" path="res://Placeholders/PlaceholderPlayer.png" id="10_c44xl"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 [ext_resource type="Script" uid="uid://c27363khv4g3j" path="res://Scripts/Entity/PlayerEntityNode.gd" id="13_1dleg"]
@@ -67,21 +67,7 @@ Vector2i(4, 3): ExtResource("7_nqu6t")
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvirn"]
-size = Vector2(32, 64)
-
-[sub_resource type="Resource" id="Resource_ushvb"]
-script = ExtResource("9_f4r5d")
-equipped_equipment = ExtResource("15_c44xl")
-metadata/_custom_type_script = "uid://dq1xwwwhdd61h"
-
-[sub_resource type="Gradient" id="Gradient_7xakc"]
-offsets = PackedFloat32Array(0.084337346, 0.12650603)
-colors = PackedColorArray(1, 0.33333334, 0.6784314, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1dleg"]
-gradient = SubResource("Gradient_7xakc")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+size = Vector2(10, 16.5)
 
 [sub_resource type="Gradient" id="Gradient_xpoel"]
 offsets = PackedFloat32Array(0.084337346, 0.12650603)
@@ -89,6 +75,15 @@ colors = PackedColorArray(1, 0.33333334, 0.6784314, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pg8fo"]
 gradient = SubResource("Gradient_xpoel")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_7xakc"]
+offsets = PackedFloat32Array(0.084337346, 0.12650603)
+colors = PackedColorArray(1, 0.33333334, 0.6784314, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1dleg"]
+gradient = SubResource("Gradient_7xakc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -100,6 +95,11 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_1dleg")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_ushvb"]
+script = ExtResource("9_f4r5d")
+equipped_equipment = ExtResource("15_c44xl")
+metadata/_custom_type_script = "uid://dq1xwwwhdd61h"
 
 [sub_resource type="Resource" id="Resource_jq2g3"]
 script = ExtResource("23_5pv1g")
@@ -122,18 +122,42 @@ ability_grid = SubResource("Resource_l0a5t")
 ability_tile_inventory = SubResource("Resource_8ud0v")
 interactable_detector = NodePath("InteractableDetector")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114440183]
+position = Vector2(0, -8.25)
+shape = SubResource("RectangleShape2D_vvirn")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
 z_index = 1
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(0, -48)
-texture = ExtResource("1_m7dux")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114440183]
 position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_vvirn")
+texture = ExtResource("10_c44xl")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1000684807]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1460318837]
+position = Vector2(0, -8)
+
+[node name="GizmoSprite" type="Sprite2D" parent="Marker2D" unique_id=1589447362]
+texture = SubResource("GradientTexture2D_pg8fo")
+
+[node name="ActionPoint" type="Node2D" parent="." unique_id=500477201 node_paths=PackedStringArray("pivot_node")]
+position = Vector2(7, -7)
+script = ExtResource("12_mpqp4")
+pivot_node = NodePath("../Marker2D")
+
+[node name="GizmoSprite" type="Sprite2D" parent="ActionPoint" unique_id=1498703427]
+visible = false
+texture = SubResource("GradientTexture2D_1dleg")
+
+[node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
+script = ExtResource("13_7xakc")
+pivot_node = NodePath("../Marker2D")
+metadata/_custom_type_script = "uid://dmq3shquqsewu"
+
+[node name="GizmoSprite" type="Sprite2D" parent="WeaponActionPoint" unique_id=1706121306]
+scale = Vector2(-1, 1)
+texture = SubResource("GradientTexture2D_8ud0v")
 
 [node name="PlayerEntityNode" type="Node" parent="." unique_id=724430319 node_paths=PackedStringArray("stats_node", "action_point", "equipment_manager")]
 script = ExtResource("13_1dleg")
@@ -157,33 +181,6 @@ metadata/_custom_type_script = "uid://dlb4egg8f58tt"
 [node name="AttackInputListener" type="Node" parent="EquipmentManager" unique_id=973734706]
 script = ExtResource("10_ushvb")
 metadata/_custom_type_script = "uid://tkt8plpn1a48"
-
-[node name="ActionPoint" type="Node2D" parent="." unique_id=500477201 node_paths=PackedStringArray("pivot_node")]
-position = Vector2(32, -38)
-script = ExtResource("12_mpqp4")
-pivot_node = NodePath("../Marker2D")
-
-[node name="GizmoSprite" type="Sprite2D" parent="ActionPoint" unique_id=1498703427]
-visible = false
-texture = SubResource("GradientTexture2D_1dleg")
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1460318837]
-position = Vector2(0, -37)
-
-[node name="GizmoSprite" type="Sprite2D" parent="Marker2D" unique_id=1589447362]
-visible = false
-texture = SubResource("GradientTexture2D_pg8fo")
-
-[node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
-position = Vector2(0, -28)
-script = ExtResource("13_7xakc")
-pivot_node = NodePath("../Marker2D")
-metadata/_custom_type_script = "uid://dmq3shquqsewu"
-
-[node name="GizmoSprite" type="Sprite2D" parent="WeaponActionPoint" unique_id=1706121306]
-visible = false
-scale = Vector2(-1, 1)
-texture = SubResource("GradientTexture2D_8ud0v")
 
 [node name="GridAbilityControllerManager" type="Node" parent="." unique_id=103877313]
 script = ExtResource("23_uj7x4")

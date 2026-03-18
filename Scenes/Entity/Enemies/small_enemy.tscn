@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="5_xfl3c"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="6_pe4y6"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="7_6imbo"]
-[ext_resource type="Texture2D" uid="uid://db5ucthehewug" path="res://Placeholders/Tiny Enemy.png" id="11_8a2hg"]
+[ext_resource type="Texture2D" uid="uid://pkhk732uf3ej" path="res://Sprites/Enemies/Small Enemy/Tiny Enemy.png" id="11_feok4"]
 [ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="12_58hsy"]
 [ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="13_ixvhf"]
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="14_feok4"]
@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("5_8a2hg")
 name = "Move Speed"
 stat_id = &"move_speed"
-value = 150.0
+value = 20.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_feok4"]
@@ -113,7 +113,9 @@ metadata/_custom_type_script = "uid://b8uxde3hb1dy"
 
 [node name="HealthBar" type="Node" parent="." unique_id=935544066]
 script = ExtResource("4_rnlce")
-position_offset = Vector2(-50, -60)
+position_offset = Vector2(-16, -22)
+width = 32.0
+height = 1.0
 metadata/_custom_type_script = "uid://3qp0ggpyep3b"
 
 [node name="AreaController" type="Node2D" parent="." unique_id=12357011]
@@ -124,8 +126,8 @@ metadata/_custom_type_script = "uid://btw2yykugf86t"
 
 [node name="SmallEnemyFront" type="Sprite2D" parent="." unique_id=1398099840]
 texture_filter = 1
-position = Vector2(0, -47)
-texture = ExtResource("11_8a2hg")
+position = Vector2(0, -32)
+texture = ExtResource("11_feok4")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=414331185]
 texture_filter = 1

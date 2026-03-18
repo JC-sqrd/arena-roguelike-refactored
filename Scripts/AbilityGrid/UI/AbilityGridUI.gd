@@ -1,6 +1,6 @@
 class_name AbilityGridUI extends GridUI
 
-const slot_size : int = 64
+const slot_size : int = 32
 
 @onready var texture_layer: Control = %TextureLayer
 @onready var grid_layer: Control = %GridLayer
