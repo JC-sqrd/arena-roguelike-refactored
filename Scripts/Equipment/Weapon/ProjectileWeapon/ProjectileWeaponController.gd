@@ -1,12 +1,12 @@
 class_name ProjectileWeaponController extends WeaponController
 
 
-@export var melee_animation_player : MeleeAnimationPlayer
+@export var projectile_animation_player : ProjectileAnimationPlayer
+@export var action_point : Node2D
+
+var projectile_template : ProjectileTemplate
 
 var action_time_ratio : float = 0
-
-@export var attack_execute : MeleeAttackExecute
-var attack_strategy : AttackStrategy
 
 var executing : bool = false
 
@@ -19,13 +19,7 @@ var _input_held : bool = false
 
 func _on_initialized():
 	
-	attack_execute.hit.connect(_on_hit)
-	
 	listen_for_input = true
-	
-	attack_execute.set_melee_anim_player(melee_animation_player)
-	attack_execute.set_melee_hitbox(melee_hitbox)
-	attack_execute.finished_executing.connect(_on_attack_finished_executing)
 	
 	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
 	pass
@@ -38,22 +32,26 @@ func start_attack():
 	pass
 
 func execute_attack():
-	if !attack_execute.active:
-		var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
+	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
+		
+	attack_context.wielder_stats = wielder_stats
+	attack_context.attack_effects = effects
+	attack_context.effects_context = effect_context
+	attack_context.queries = queries
+	attack_context.weapon_stats = weapon_stats
+	attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
+	attack_context.action_time_ratio = action_time_ratio
 	
-		attack_context.wielder_stats = wielder_stats
-		attack_context.attack_effects = effects
-		attack_context.effects_context = effect_context
-		attack_context.queries = queries
-		attack_context.weapon_stats = weapon_stats
-		attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
-		attack_context.action_time_ratio = action_time_ratio
-		
-		melee_hitbox.effects = effects
-		melee_hitbox.context = effect_context
-		
-		attack_execute.execute(attack_context)
-		attack_executed.emit()
+	attack_executed.emit()
+	
+	var projectile : Projectile = projectile_template.build_projectile()
+	projectile.direction = (get_global_mouse_position() - global_position).normalized()
+	projectile.angle = projectile.direction.angle()
+	projectile.texture_angle = projectile.direction.angle()
+	projectile.effects = effects
+	projectile.context = effect_context
+	SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
+	
 	pass
 
 func end_attack():
@@ -78,16 +76,6 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if !listen_for_input:
 		return
-		
-	if event is InputEventMouseButton and Input.is_action_pressed("attack"):
-		_input_held = true
-		pass
-	
-	if event is InputEventMouseButton and Input.is_action_just_released("attack"):
-		_input_held = false
-	
-	if _input_held:
-		start_attack()
 	pass
 
 func _on_hit(hits : Array[RID]):

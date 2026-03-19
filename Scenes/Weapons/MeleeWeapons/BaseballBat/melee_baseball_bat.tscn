@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bwglurqwi8rne"]
 
-[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponController.gd" id="1_j2mn8"]
-[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="2_3uf61"]
-[ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_7fm84"]
-[ext_resource type="Texture2D" uid="uid://ca3nj52dmx51p" path="res://Sprites/Weapons/Baseball Bat/BaseballSwingAnim.png" id="4_b5em5"]
-[ext_resource type="Texture2D" uid="uid://mw8i7r013rnk" path="res://Sprites/Weapons/Baseball Bat/BaseballBat.png" id="5_b5em5"]
-[ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_b5em5"]
+[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponController.gd" id="1_7lgl7"]
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="2_x2mww"]
+[ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_tnldk"]
+[ext_resource type="Texture2D" uid="uid://ca3nj52dmx51p" path="res://Sprites/Weapons/Baseball Bat/BaseballSwingAnim.png" id="4_4ok8m"]
+[ext_resource type="Texture2D" uid="uid://mw8i7r013rnk" path="res://Sprites/Weapons/Baseball Bat/BaseballBat.png" id="5_am676"]
+[ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_iinfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc1v0"]
 size = Vector2(64, 104)
@@ -201,23 +201,23 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udy7s"]
-atlas = ExtResource("4_b5em5")
+atlas = ExtResource("4_4ok8m")
 region = Rect2(0, 0, 64, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqr8m"]
-atlas = ExtResource("4_b5em5")
+atlas = ExtResource("4_4ok8m")
 region = Rect2(64, 0, 64, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b75uj"]
-atlas = ExtResource("4_b5em5")
+atlas = ExtResource("4_4ok8m")
 region = Rect2(128, 0, 64, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npqbx"]
-atlas = ExtResource("4_b5em5")
+atlas = ExtResource("4_4ok8m")
 region = Rect2(192, 0, 64, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4sf1p"]
-atlas = ExtResource("4_b5em5")
+atlas = ExtResource("4_4ok8m")
 region = Rect2(256, 0, 64, 104)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eif37"]
@@ -244,7 +244,7 @@ animations = [{
 }]
 
 [node name="MeleeBaseballBat" type="Node2D" unique_id=161408375 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player", "attack_execute")]
-script = ExtResource("1_j2mn8")
+script = ExtResource("1_7lgl7")
 melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
 attack_execute = NodePath("MeleeAttackExecute")
@@ -255,7 +255,7 @@ position = Vector2(100, 0)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
-script = ExtResource("2_3uf61")
+script = ExtResource("2_x2mww")
 anim_player = NodePath("../MeleeAnimationPlayer")
 metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
 
@@ -265,18 +265,19 @@ shape = SubResource("RectangleShape2D_gc1v0")
 
 [node name="MeleeAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1959667652]
 libraries/ = SubResource("AnimationLibrary_udy7s")
-script = ExtResource("3_7fm84")
+script = ExtResource("3_tnldk")
 metadata/_custom_type_script = "uid://ble50ri3t2w38"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099332199]
+texture_filter = 1
 position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_eif37")
 
 [node name="BaseballBat" type="Sprite2D" parent="." unique_id=321679982]
 texture_filter = 1
-texture = ExtResource("5_b5em5")
+texture = ExtResource("5_am676")
 offset = Vector2(0, -28)
 
 [node name="MeleeAttackExecute" type="Node" parent="." unique_id=1900437744]
-script = ExtResource("6_b5em5")
+script = ExtResource("6_iinfb")
 metadata/_custom_type_script = "uid://d2m8vf2tidody"

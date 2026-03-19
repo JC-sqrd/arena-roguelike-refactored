@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://vwlisr7budn7"]
+
+[ext_resource type="Script" uid="uid://caa13wedfq6w6" path="res://Scripts/Equipment/Weapon/ProjectileWeapon/ProjectileWeaponController.gd" id="1_fogxi"]
+[ext_resource type="Texture2D" uid="uid://b23too2bmxc0h" path="res://Sprites/Weapons/Uzi/Uzi.png" id="2_4j7am"]
+[ext_resource type="Script" uid="uid://4pdjveo6qn8t" path="res://Scripts/AnimationPlayer/ProjectileAnimationPlayer.gd" id="6_jklx7"]
+
+[node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("projectile_animation_player", "action_point")]
+script = ExtResource("1_fogxi")
+projectile_animation_player = NodePath("ProjectileAnimationPlayer")
+action_point = NodePath("Marker2D")
+metadata/_custom_type_script = "uid://caa13wedfq6w6"
+
+[node name="Uzi" type="Sprite2D" parent="." unique_id=2121141959]
+texture_filter = 1
+position = Vector2(3, -5)
+texture = ExtResource("2_4j7am")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1838202139]
+position = Vector2(14, -5)
+
+[node name="ProjectileAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1716762883]
+script = ExtResource("6_jklx7")
+metadata/_custom_type_script = "uid://4pdjveo6qn8t"

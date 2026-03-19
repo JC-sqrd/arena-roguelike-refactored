@@ -57,7 +57,15 @@ func unequip_weapon():
 	weapon_unequipped.emit(weapon)
 	pass
 
+func _process(delta: float) -> void:
+	process_input()
+
 func _unhandled_input(event: InputEvent) -> void:
+	#process_input()
+	#if _input_held:
+	pass
+
+func process_input():
 	if Input.is_action_just_pressed("attack"):
 		weapon_1_controller.visible = true
 		weapon_2_controller.visible = false
@@ -96,9 +104,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if weapon_1_controller != null:
 			weapon_1_controller.start_attack()
 		pass
-	#if _input_held:
-	
-	
 	pass
 
 func on_weapon_unequipped(weapon : Weapon):

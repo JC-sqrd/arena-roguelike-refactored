@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0w2eo1lksn3k"
-path="res://.godot/imported/BaseballBat.png-74be26a709ee22a33492f6a172b8c36b.ctex"
+uid="uid://b23too2bmxc0h"
+path="res://.godot/imported/Uzi.png-1e580ff8a3be91e90633edbedf399f48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Weapons/BaseballBat/BaseballBat.png"
-dest_files=["res://.godot/imported/BaseballBat.png-74be26a709ee22a33492f6a172b8c36b.ctex"]
+source_file="res://Sprites/Weapons/Uzi/Uzi.png"
+dest_files=["res://.godot/imported/Uzi.png-1e580ff8a3be91e90633edbedf399f48.ctex"]
 
 [params]
 

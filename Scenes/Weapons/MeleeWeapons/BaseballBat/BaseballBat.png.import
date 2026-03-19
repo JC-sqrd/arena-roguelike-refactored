@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7go5ftt2kf04"
-path="res://.godot/imported/BaseballSwingAnim.png-9b83b3a60aaea3ab92e8e9533a5c94d8.ctex"
+uid="uid://d0w2eo1lksn3k"
+path="res://.godot/imported/BaseballBat.png-4faa0c4df6c9d08811699b1236348224.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Weapons/BaseballBat/BaseballSwingAnim.png"
-dest_files=["res://.godot/imported/BaseballSwingAnim.png-9b83b3a60aaea3ab92e8e9533a5c94d8.ctex"]
+source_file="res://Scenes/Weapons/MeleeWeapons/BaseballBat/BaseballBat.png"
+dest_files=["res://.godot/imported/BaseballBat.png-4faa0c4df6c9d08811699b1236348224.ctex"]
 
 [params]
 

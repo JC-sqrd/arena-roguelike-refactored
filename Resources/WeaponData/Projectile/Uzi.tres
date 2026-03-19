@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://bsw31yagq8jay"]
+
+[ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_0t4sr"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="2_jpwde"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="2_m5255"]
+[ext_resource type="Script" uid="uid://cvps4oja0ggr3" path="res://Scripts/Resources/ProjectileWeapon.gd" id="3_m5255"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_aq1cs"]
+[ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="4_pyv20"]
+[ext_resource type="Texture2D" uid="uid://bp0fimggsu26v" path="res://Sprites/Weapons/Uzi/Uzi Bullet.png" id="5_03p31"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="5_5jxvv"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="5_5tn57"]
+[ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="5_holls"]
+[ext_resource type="PackedScene" uid="uid://vwlisr7budn7" path="res://Scenes/Weapons/Uzi/uzi_weapon_controller.tscn" id="5_ysrop"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="6_j36k2"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="7_5jxvv"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="8_lxb88"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="9_lxb88"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="9_om0yy"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="10_b7r71"]
+[ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="10_om0yy"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="11_fx3rg"]
+
+[sub_resource type="Resource" id="Resource_m5255"]
+script = ExtResource("2_m5255")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_pyv20"]
+script = ExtResource("2_m5255")
+name = "Weapon Damage"
+stat_id = &"weapon_damage"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_b7r71"]
+script = ExtResource("5_5jxvv")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_fx3rg"]
+script = ExtResource("9_lxb88")
+value = 50.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_4v6ep"]
+script = ExtResource("10_om0yy")
+magnitude = SubResource("Resource_fx3rg")
+metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
+
+[sub_resource type="Resource" id="Resource_0dke7"]
+script = ExtResource("10_b7r71")
+context_stats_id = &"weapon_stats"
+stat_id = &"weapon_damage"
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_q1qjq"]
+script = ExtResource("5_5tn57")
+mode = -1
+value_provider_template = SubResource("Resource_0dke7")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_q8oit"]
+script = ExtResource("11_fx3rg")
+flat_mutator_templates = Array[ExtResource("5_5tn57")]([SubResource("Resource_q1qjq")])
+effect_event_templates = Array[ExtResource("4_aq1cs")]([SubResource("Resource_b7r71"), SubResource("Resource_4v6ep")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="Resource" id="Resource_03p31"]
+script = ExtResource("4_pyv20")
+radius = 2
+metadata/_custom_type_script = "uid://swufoypqyj1x"
+
+[sub_resource type="Resource" id="Resource_20e3m"]
+script = ExtResource("5_holls")
+speed = 600.0
+projectile_shape = SubResource("Resource_03p31")
+pierce = 2
+lifetime = 0.2
+projectile_texture = ExtResource("5_03p31")
+projectile_coll_mask = 4
+metadata/_custom_type_script = "uid://ck45nau7el76p"
+
+[resource]
+script = ExtResource("3_m5255")
+weapon_scene = ExtResource("5_ysrop")
+projectile_template = SubResource("Resource_20e3m")
+damage_stat = SubResource("Resource_pyv20")
+attack_speed_stat = SubResource("Resource_m5255")
+action_time_ratio = 0.2
+effect_templates = Array[ExtResource("2_jpwde")]([SubResource("Resource_q8oit")])
+metadata/_custom_type_script = "uid://cvps4oja0ggr3"

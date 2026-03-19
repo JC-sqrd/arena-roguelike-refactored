@@ -33,8 +33,8 @@ metadata/_custom_type_script = "uid://dj8mvwrf8h50s"
 
 [sub_resource type="Resource" id="Resource_i5eex"]
 script = ExtResource("2_acrym")
-name = "Attack Damage"
-stat_id = &"attack_damage"
+name = "Weapon Damage"
+stat_id = &"weapon_damage"
 value = 20.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
@@ -79,7 +79,7 @@ metadata/_custom_type_script = "uid://d3wf26754h30k"
 [sub_resource type="Resource" id="Resource_ptixl"]
 script = ExtResource("7_nhdrg")
 context_stats_id = &"weapon_stats"
-stat_id = &"attack_damage"
+stat_id = &"weapon_damage"
 bonus_values = Array[ExtResource("6_ooftf")]([SubResource("Resource_x2uhy")])
 
 [sub_resource type="Resource" id="Resource_ig2c5"]

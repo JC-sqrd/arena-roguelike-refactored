@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://c6hxwxl50lod1" path="res://Resources/AbilityData/baseball_ability.tres" id="2_urw0e"]
 [ext_resource type="Script" uid="uid://dj8mvwrf8h50s" path="res://Scripts/Equipment/Weapon/AttackStrategy/MeleeAttackStrategy.gd" id="2_wawsb"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="4_wvaiv"]
-[ext_resource type="PackedScene" uid="uid://bwglurqwi8rne" path="res://Scenes/Weapons/BaseballBat/melee_baseball_bat.tscn" id="5_0u7oo"]
 [ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="5_2sylx"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="6_2q537"]
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="7_77wov"]
@@ -19,6 +18,7 @@
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="10_77wov"]
 [ext_resource type="Script" uid="uid://dou0wul2vu5jy" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/ContextStatBonusValue.gd" id="11_5qrbt"]
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="12_nvme3"]
+[ext_resource type="PackedScene" uid="uid://bwglurqwi8rne" path="res://Scenes/Weapons/MeleeWeapons/BaseballBat/melee_baseball_bat.tscn" id="19_5qrbt"]
 
 [sub_resource type="Resource" id="Resource_gbpjn"]
 script = ExtResource("1_qo6pl")
@@ -33,8 +33,8 @@ metadata/_custom_type_script = "uid://dj8mvwrf8h50s"
 
 [sub_resource type="Resource" id="Resource_yj3mi"]
 script = ExtResource("1_qo6pl")
-name = "Attack Damage"
-stat_id = &"attack_damage"
+name = "Weapon Damage"
+stat_id = &"weapon_damage"
 value = 10.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
@@ -62,7 +62,7 @@ metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
 [sub_resource type="Resource" id="Resource_nvme3"]
 script = ExtResource("9_j2au2")
 context_stats_id = &"weapon_stats"
-stat_id = &"attack_damage"
+stat_id = &"weapon_damage"
 metadata/_custom_type_script = "uid://dydu23koa8oxk"
 
 [sub_resource type="Resource" id="Resource_eon2p"]
@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 [resource]
 script = ExtResource("2_swjqy")
 attack_strategy = SubResource("Resource_ciktv")
-weapon_scene = ExtResource("5_0u7oo")
+weapon_scene = ExtResource("19_5qrbt")
 damage_stat = SubResource("Resource_yj3mi")
 attack_speed_stat = SubResource("Resource_gbpjn")
 action_time_ratio = 0.45
