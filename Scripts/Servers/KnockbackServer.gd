@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			continue
 		
 		#Apply knockback
-		target.apply_knockback(instance.force)
+		target.apply_knockback(instance.force * delta)
 		
 		#Apply knockback decay
 		instance.force *= instance.decay

@@ -35,6 +35,7 @@ func initialize(wielder : Entity):
 	if second_weapon_slot != null and second_weapon_slot.equipped_equipment != null:
 		equip_weapon(second_weapon_slot.equipped_equipment)
 		weapon_2_controller = (second_weapon_slot.equipped_equipment as Weapon).get_active_controller()
+		weapon_2_controller.visible = false
 		pass
 	pass
 
@@ -57,6 +58,14 @@ func unequip_weapon():
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("attack"):
+		weapon_1_controller.visible = true
+		weapon_2_controller.visible = false
+	elif Input.is_action_just_pressed("attack2"):
+		weapon_1_controller.visible = false
+		weapon_2_controller.visible = true
+		pass
+	
 	if Input.is_action_pressed("attack"):
 		print("WEAPON 1 ATTACK")
 		weapon_1_input_held = true

@@ -50,7 +50,7 @@ metadata/_custom_type_script = "uid://dou0wul2vu5jy"
 
 [sub_resource type="Resource" id="Resource_5t1er"]
 script = ExtResource("12_nvme3")
-value = 20.0
+value = 100.0
 bonus_values = Array[ExtResource("8_urw0e")]([SubResource("Resource_vt2md")])
 metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
 
@@ -83,7 +83,7 @@ attack_strategy = SubResource("Resource_ciktv")
 weapon_scene = ExtResource("5_0u7oo")
 damage_stat = SubResource("Resource_yj3mi")
 attack_speed_stat = SubResource("Resource_gbpjn")
-action_time_ratio = 0.3
+action_time_ratio = 0.45
 effect_templates = Array[ExtResource("1_blpvi")]([SubResource("Resource_i7i4b")])
 abilities = Array[ExtResource("1_77wov")]([ExtResource("2_urw0e")])
 metadata/_custom_type_script = "uid://cje4onngvnlma"

@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("5_8a2hg")
 name = "Move Speed"
 stat_id = &"move_speed"
-value = 20.0
+value = 100.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_feok4"]

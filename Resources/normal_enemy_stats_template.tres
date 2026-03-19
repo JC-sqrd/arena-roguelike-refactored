@@ -16,13 +16,6 @@ name = "Health"
 stat_id = &"current_health"
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
-[sub_resource type="Resource" id="Resource_ldo6u"]
-script = ExtResource("2_iuupi")
-name = "Move Speed"
-stat_id = &"move_speed"
-value = 20.0
-metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
-
 [sub_resource type="Resource" id="Resource_p51cc"]
 script = ExtResource("2_iuupi")
 name = "Attack Damage"
@@ -37,7 +30,14 @@ stat_id = &"attack_speed"
 value = 2.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
+[sub_resource type="Resource" id="Resource_ldo6u"]
+script = ExtResource("2_iuupi")
+name = "Move Speed"
+stat_id = &"move_speed"
+value = 80.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
 [resource]
 script = ExtResource("1_wpcxo")
-stat_templates = Array[ExtResource("2_iuupi")]([SubResource("Resource_thqdd"), SubResource("Resource_wq74i"), SubResource("Resource_ldo6u"), SubResource("Resource_p51cc"), SubResource("Resource_ukqmv")])
+stat_templates = Array[ExtResource("2_iuupi")]([SubResource("Resource_thqdd"), SubResource("Resource_wq74i"), SubResource("Resource_p51cc"), SubResource("Resource_ukqmv"), SubResource("Resource_ldo6u")])
 metadata/_custom_type_script = "uid://cdquhx3qorgp1"

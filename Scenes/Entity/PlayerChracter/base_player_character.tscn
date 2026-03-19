@@ -162,6 +162,7 @@ pivot_node = NodePath("../Marker2D")
 metadata/_custom_type_script = "uid://dmq3shquqsewu"
 
 [node name="GizmoSprite" type="Sprite2D" parent="WeaponActionPoint" unique_id=1706121306]
+visible = false
 scale = Vector2(-1, 1)
 texture = SubResource("GradientTexture2D_8ud0v")
 
