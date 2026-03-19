@@ -77,18 +77,18 @@ func _process(delta: float) -> void:
 		_curr_cooldown = 0
 
 func _unhandled_input(event: InputEvent) -> void:
-	if !listen_for_input:
-		return
-		
-	if event is InputEventMouseButton and Input.is_action_pressed("attack"):
-		_input_held = true
-		pass
-	
-	if event is InputEventMouseButton and Input.is_action_just_released("attack"):
-		_input_held = false
-	
-	if _input_held:
-		start_attack()
+	#if !listen_for_input:
+		#return
+		#
+	#if event is InputEventMouseButton and Input.is_action_pressed("attack"):
+		#_input_held = true
+		#pass
+	#
+	#if event is InputEventMouseButton and Input.is_action_just_released("attack"):
+		#_input_held = false
+	#
+	#if _input_held:
+		#start_attack()
 	pass
 
 func _on_hit(hits : Array[RID]):
