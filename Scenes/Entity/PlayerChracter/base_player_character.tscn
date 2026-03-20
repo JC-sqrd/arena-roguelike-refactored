@@ -128,16 +128,15 @@ ability_grid = SubResource("Resource_l0a5t")
 ability_tile_inventory = SubResource("Resource_8ud0v")
 interactable_detector = NodePath("InteractableDetector")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114440183]
-position = Vector2(0, -8.25)
-shape = SubResource("RectangleShape2D_vvirn")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
-z_index = 1
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("10_c44xl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114440183]
+position = Vector2(0, -8.25)
+shape = SubResource("RectangleShape2D_vvirn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1000684807]
 
@@ -145,6 +144,7 @@ texture = ExtResource("10_c44xl")
 position = Vector2(0, -8)
 
 [node name="GizmoSprite" type="Sprite2D" parent="Marker2D" unique_id=1589447362]
+visible = false
 texture = SubResource("GradientTexture2D_pg8fo")
 
 [node name="ActionPoint" type="Node2D" parent="." unique_id=500477201 node_paths=PackedStringArray("pivot_node")]
@@ -157,6 +157,7 @@ visible = false
 texture = SubResource("GradientTexture2D_1dleg")
 
 [node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
+y_sort_enabled = true
 script = ExtResource("13_7xakc")
 pivot_node = NodePath("../Marker2D")
 metadata/_custom_type_script = "uid://dmq3shquqsewu"

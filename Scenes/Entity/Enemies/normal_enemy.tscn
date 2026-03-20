@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dkmv5cgdq0wh3"]
 
 [ext_resource type="Script" uid="uid://knv07avm0ire" path="res://Scripts/Controllers/EnemyController.gd" id="1_jxxdc"]
+[ext_resource type="Script" uid="uid://hguha3wmbmsl" path="res://Scripts/GameEvent/EventListener/OnDeathListener/OnDeathEventListener.gd" id="2_7wydm"]
 [ext_resource type="Texture2D" uid="uid://k77b4li0v6vy" path="res://Sprites/Enemies/NormalEnemy/NormalEnemy.png" id="2_kfoqm"]
+[ext_resource type="Script" uid="uid://jj452ixveqqd" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantStatOnDeathListener.gd" id="3_p6avx"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="5_218yx"]
 [ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="7_wq74i"]
 [ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="8_kfoqm"]
@@ -20,6 +22,12 @@
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="17_ytdn0"]
 [ext_resource type="Resource" uid="uid://cte3qnacw8jc" path="res://Resources/normal_enemy_stats_template.tres" id="18_2upka"]
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="20_kfoqm"]
+
+[sub_resource type="Resource" id="Resource_fmc6w"]
+script = ExtResource("3_p6avx")
+stat_id = &"exp"
+grant_value = 10.0
+metadata/_custom_type_script = "uid://jj452ixveqqd"
 
 [sub_resource type="Resource" id="Resource_t0f8w"]
 script = ExtResource("11_kfoqm")
@@ -57,6 +65,7 @@ target_distance_threshold = 30.0
 attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
+death_listeners = Array[ExtResource("2_7wydm")]([SubResource("Resource_fmc6w")])
 
 [node name="EnemyFront" type="Sprite2D" parent="." unique_id=63442275]
 texture_filter = 1

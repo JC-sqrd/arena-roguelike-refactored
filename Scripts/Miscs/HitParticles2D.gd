@@ -12,7 +12,6 @@ func _on_effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName,
 	if rid == entity_rid:
 		emitting = true
 		var source_pos : Vector2 = context.source.global_position
-		
 		pass
 	pass
 

@@ -70,8 +70,8 @@ func spawn_wave():
 			var rand_offset : Vector2i = Vector2i(randi_range(0, tile_size.x), randi_range(0, tile_size.y))
 			cost_dict[enemy] = pick.spawn_cost
 			enemy.global_position = (rand_cell * tile_size) + rand_offset #rand_pos
-			wave_enemies.append(enemy)
 			ArenaServer.active_arena.add_child(enemy)
+			wave_enemies.append(enemy)
 		else:
 			break
 		pass

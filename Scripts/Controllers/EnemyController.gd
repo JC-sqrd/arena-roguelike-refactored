@@ -6,6 +6,9 @@ class_name EnemyController extends Node2D
 @export var attack_controller : EnemyAttackController
 @export var area_controller : AreaController
 @export var health_bar_renderer : HealthBar
+@export var death_listeners : Array[OnDeathEventListener]
+
+var unique_death_listeners : Array[OnDeathEventListener]
 
 @export var _components : Array[Node]
 
@@ -72,9 +75,18 @@ func _ready() -> void:
 				pass
 		pass
 	
+	
+	for listener in death_listeners:
+		unique_death_listeners.append(listener.duplicate(true))
+		pass
+	
+	for listener in unique_death_listeners:
+		listener.initialize(enemy_entity.entity)
+		pass
+	
 	EnemyServer.register_enemy(_id, self)
-	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
 	enemy_entity.entity.global_position = global_position
+	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
 	EntityServer.register_entity(enemy_entity.entity.entity_rid, enemy_entity.entity)
 	pass
 
@@ -83,7 +95,7 @@ func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	velocity = Vector2.ZERO
 	area_controller.free_area()
 	enemy_entity.entity.died.emit(context)
-	EventServer.entity_died.emit(enemy_entity.entity, context)
+	EventServer.entity_died.emit(EntityDeathEvent.new(enemy_entity.entity, context))
 	active = false
 	await get_tree().create_timer(0.5).timeout
 	area_controller.active = false 

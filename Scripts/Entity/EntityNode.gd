@@ -8,11 +8,12 @@ var entity : Entity
 var initialized : bool = false
 
 func initialize(rid : RID):
-	entity = Entity.new()
-	entity.equipment_manager = equipment_manager
-	entity.stats = stats_node.build_stats()
-	entity.initalize(rid)
-	initialized = true
+	if entity == null:
+		entity = Entity.new()
+		entity.equipment_manager = equipment_manager
+		entity.stats = stats_node.build_stats()
+		entity.initalize(rid)
+		initialized = true
 	pass
 
 func _process(delta: float) -> void:

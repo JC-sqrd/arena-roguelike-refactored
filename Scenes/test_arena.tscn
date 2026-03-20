@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="6_qimqw"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="7_dhtwe"]
 [ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_spawner.tscn" id="10_hq5rx"]
+[ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="12_v23vg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y11aj"]
 texture = ExtResource("1_34on7")
@@ -157,7 +158,7 @@ sources/1 = SubResource("TileSetAtlasSource_0b76d")
 script = ExtResource("7_dhtwe")
 name = "Max Health"
 stat_id = &"max_health"
-value = 10000.0
+value = 10.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_hq5rx"]
@@ -224,6 +225,12 @@ position = Vector2(89, -45)
 [node name="StatsNode" parent="NormalEnemy/EntityNode" parent_id_path=PackedInt32Array(298332268, 1630870483) index="0" unique_id=2054592758]
 stats_template = SubResource("Resource_74pca")
 
+[node name="NormalEnemy2" parent="." unique_id=1528450500 instance=ExtResource("4_y11aj")]
+position = Vector2(89, -45)
+
+[node name="StatsNode" parent="NormalEnemy2/EntityNode" parent_id_path=PackedInt32Array(1528450500, 1630870483) index="0" unique_id=2054592758]
+stats_template = SubResource("Resource_74pca")
+
 [node name="GizmoSprite" type="Sprite2D" parent="." unique_id=1448045331]
 texture = SubResource("GradientTexture2D_0b76d")
 
@@ -233,4 +240,8 @@ position = Vector2(-337, -128)
 [node name="Node2D" type="Node2D" parent="." unique_id=571414428]
 script = ExtResource("1_0b76d")
 
+[node name="SmallEnemy" parent="." unique_id=1231003198 instance=ExtResource("12_v23vg")]
+position = Vector2(143, 20)
+
 [editable path="NormalEnemy"]
+[editable path="NormalEnemy2"]

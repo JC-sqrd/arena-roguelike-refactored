@@ -90,7 +90,6 @@ metadata/_custom_type_script = "uid://swufoypqyj1x"
 script = ExtResource("5_holls")
 speed = 600.0
 projectile_shape = SubResource("Resource_03p31")
-pierce = 2
 lifetime = 0.2
 projectile_texture = ExtResource("5_03p31")
 projectile_coll_mask = 4
