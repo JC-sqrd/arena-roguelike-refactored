@@ -8,29 +8,23 @@
 [ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="6_6ensb"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="7_o2o3k"]
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="8_rmrfc"]
-[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="9_yrt4i"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="9_5ovw1"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_212qt"]
 
-[sub_resource type="Resource" id="Resource_32teu"]
-script = ExtResource("8_rmrfc")
-metadata/_custom_type_script = "uid://whdynsblqt1m"
+[sub_resource type="Resource" id="Resource_y2ndf"]
+script = ExtResource("9_5ovw1")
+value = 10.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
 
-[sub_resource type="Resource" id="Resource_osgjm"]
-script = ExtResource("9_yrt4i")
-context_stats_id = &"caster_stats"
-stat_id = &"lethality"
-multipliers = Array[ExtResource("8_rmrfc")]([SubResource("Resource_32teu")])
-metadata/_custom_type_script = "uid://dydu23koa8oxk"
-
-[sub_resource type="Resource" id="Resource_f3uab"]
+[sub_resource type="Resource" id="Resource_4v7oj"]
 script = ExtResource("4_ea47o")
 mode = -1
-value_provider_template = SubResource("Resource_osgjm")
+value_provider_template = SubResource("Resource_y2ndf")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_xxcsq"]
 script = ExtResource("10_212qt")
-flat_mutator_templates = Array[ExtResource("4_ea47o")]([SubResource("Resource_f3uab")])
+flat_mutator_template = SubResource("Resource_4v7oj")
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [node name="WoodenAxeController" type="Node" unique_id=2101773394]

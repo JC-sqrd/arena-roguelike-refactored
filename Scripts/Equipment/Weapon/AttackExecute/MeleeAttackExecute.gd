@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 				#melee_hitbox.query_hitbox(false, hits)
 				send_effects_to_hits(hits)
 				if hits.size() > 0:
-					EventServer.weapon_hit.emit(hits, melee_context)
+					EventServer.weapon_hit.emit(hits, melee_hitbox.effects, melee_context)
 				#query_hitbox()
 				active_hit = false
 			pass

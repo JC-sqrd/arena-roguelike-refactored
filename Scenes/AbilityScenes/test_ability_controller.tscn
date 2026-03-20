@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="8_hs3di"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="9_lrr0l"]
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="10_8cs6i"]
-[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="11_bn0ej"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="12_iio1y"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="12_iockv"]
 [ext_resource type="PackedScene" uid="uid://bhyjrjxakyds1" path="res://Scenes/Weapons/HitBoxes/test_ability_hitbox.tscn" id="13_7s3xy"]
 [ext_resource type="Script" uid="uid://pa7e2iud41wh" path="res://Scripts/Ability/AbilityActions/SpawnProjectileAbilityAction.gd" id="14_ewt6o"]
@@ -44,21 +44,20 @@ script = ExtResource("6_iio1y")
 magnitude = 15.0
 metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
 
-[sub_resource type="Resource" id="Resource_qphct"]
-script = ExtResource("11_bn0ej")
-context_stats_id = &"caster_stats"
-stat_id = &"ability_damage"
-metadata/_custom_type_script = "uid://dydu23koa8oxk"
+[sub_resource type="Resource" id="Resource_f2ojk"]
+script = ExtResource("12_iio1y")
+value = 50.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
 
-[sub_resource type="Resource" id="Resource_c1e5n"]
+[sub_resource type="Resource" id="Resource_rpyqb"]
 script = ExtResource("6_mrkv7")
 mode = -1
-value_provider_template = SubResource("Resource_qphct")
+value_provider_template = SubResource("Resource_f2ojk")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_dumk5"]
 script = ExtResource("12_iockv")
-flat_mutator_templates = Array[ExtResource("6_mrkv7")]([SubResource("Resource_c1e5n")])
+flat_mutator_template = SubResource("Resource_rpyqb")
 effect_event_templates = Array[ExtResource("4_rpyqb")]([SubResource("Resource_o6efp"), SubResource("Resource_veerq")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
@@ -78,21 +77,20 @@ projectile_texture = SubResource("CompressedTexture2D_1yo06")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"
 
-[sub_resource type="Resource" id="Resource_g4vhs"]
-script = ExtResource("11_bn0ej")
-context_stats_id = &"caster_stats"
-stat_id = &"ability_damage"
-metadata/_custom_type_script = "uid://dydu23koa8oxk"
+[sub_resource type="Resource" id="Resource_iio1y"]
+script = ExtResource("12_iio1y")
+value = 10.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
 
-[sub_resource type="Resource" id="Resource_n3u2m"]
+[sub_resource type="Resource" id="Resource_mrkv7"]
 script = ExtResource("6_mrkv7")
 mode = -1
-value_provider_template = SubResource("Resource_g4vhs")
+value_provider_template = SubResource("Resource_iio1y")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_2w6yc"]
 script = ExtResource("12_iockv")
-flat_mutator_templates = Array[ExtResource("6_mrkv7")]([SubResource("Resource_n3u2m")])
+flat_mutator_template = SubResource("Resource_mrkv7")
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [node name="TestAbilityController" type="Node" unique_id=1721443211 node_paths=PackedStringArray("projectile_action")]

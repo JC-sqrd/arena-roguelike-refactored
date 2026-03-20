@@ -39,20 +39,33 @@ func _on_weapon_unequipped(weapon : Weapon):
 	active = false
 	pass
 
-func _on_weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant]):
+func _on_weapon_hit(hits : Array[RID], effects : Array[Effect],context : Dictionary[StringName, Variant]):
 	if context.source != caster:
 		return
-	var weapon_stats : Stats = context.weapon_stats
-	var weapon_damage : Stat = weapon_stats.get_stat("weapon_damage")
-	var value_provider : FlatValueProvider = FlatValueProvider.new(weapon_damage.get_value() * 0.8)
-	var flat_mutator : FlatStatMutator = FlatStatMutator.new("current_health", value_provider, [])
-	var instant_effect : InstantEffect = InstantEffect.new([flat_mutator])
-	flat_mutator.mode = flat_mutator.Mode.SUBTRACT
-	instant_effect.effect_context = context
 	
+	var value_mult : ValueMultiplier = ValueMultiplier.new(0.8)
+	
+	var hit_effects : Array[Effect]# = [instant_effect]
+	var effect_value : float = 0
+	
+	for effect in effects:
+		if effect.effect_id == "damage_effect":
+			var damage_effect : Effect = effect
+			effect_value = damage_effect.mutator.value_provider.get_value(damage_effect.effect_context)
+			break
+		pass
+	
+	var value_provider : FlatValueProvider = FlatValueProvider.new(effect_value * 0.8)
+	var mutator : FlatStatMutator = FlatStatMutator.new("current_health", value_provider, [])
+	var instant_effect : InstantEffect = InstantEffect.new(mutator, "damage_effect")
+	
+	instant_effect.effect_context = context
+	instant_effect.effect_events.append(DamageEffectEventTemplate.new())
+	mutator.mode = mutator.Mode.SUBTRACT
+	
+	hit_effects = [instant_effect]
 	_hit_counter += 1
 	
-	var hit_effects : Array[Effect] = [instant_effect]
 	
 	if _hit_counter >= hit_threshold:
 		hitbox = TEST_ABILITY_HITBOX.instantiate() as DelayHitbox

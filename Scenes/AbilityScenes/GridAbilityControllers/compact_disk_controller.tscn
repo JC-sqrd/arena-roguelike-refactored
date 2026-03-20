@@ -22,27 +22,27 @@ script = ExtResource("5_y66oo")
 magnitude = 5.0
 metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
 
-[sub_resource type="Resource" id="Resource_o6k3f"]
+[sub_resource type="Resource" id="Resource_y66oo"]
 script = ExtResource("8_7mltf")
 value = -0.5
 metadata/_custom_type_script = "uid://whdynsblqt1m"
 
-[sub_resource type="Resource" id="Resource_vq7gb"]
+[sub_resource type="Resource" id="Resource_nraqg"]
 script = ExtResource("9_o6k3f")
 context_stats_id = &"caster_stats"
 stat_id = &"lethality"
-multipliers = Array[ExtResource("8_7mltf")]([SubResource("Resource_o6k3f")])
+multipliers = Array[ExtResource("8_7mltf")]([SubResource("Resource_y66oo")])
 metadata/_custom_type_script = "uid://dydu23koa8oxk"
 
-[sub_resource type="Resource" id="Resource_6ptj6"]
+[sub_resource type="Resource" id="Resource_m2pjm"]
 script = ExtResource("4_gwdak")
 mode = -1
-value_provider_template = SubResource("Resource_vq7gb")
+value_provider_template = SubResource("Resource_nraqg")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_tf65g"]
 script = ExtResource("10_542q3")
-flat_mutator_templates = Array[ExtResource("4_gwdak")]([SubResource("Resource_6ptj6")])
+flat_mutator_template = SubResource("Resource_m2pjm")
 effect_event_templates = Array[ExtResource("3_vq7gb")]([SubResource("Resource_gwdak"), SubResource("Resource_166ni")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 

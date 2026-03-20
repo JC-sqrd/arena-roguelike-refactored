@@ -1,5 +1,6 @@
 class_name SpawnProjectileAbilityAction extends AbilityAction
 
+var ability_context : Dictionary[StringName, Variant]
 
 @export var projectile_template : ProjectileTemplate
 ##The effects that the projectile will apply to valid targets.
@@ -17,6 +18,7 @@ var effects : Array[Effect]
 
 
 func initialize(caster : Entity, context : Dictionary[StringName, Variant]):
+	ability_context = context
 	for template in effects_template:
 		effects.append(template.build_effect(context))
 
@@ -31,6 +33,7 @@ func spawn_projectile(caster : Entity, ability_context : Dictionary[StringName, 
 	var mouse_pos : Vector2 = ProjectileServer.get_global_mouse_position() - caster.action_point
 	projectile.effects = effects
 	projectile.context = ability_context
+	projectile.projectile_hit.connect(_on_projectile_hit)
 	
 	if look_at_mouse:
 		var mouse_angle : float = mouse_pos.angle()
@@ -48,4 +51,9 @@ func spawn_projectile(caster : Entity, ability_context : Dictionary[StringName, 
 	
 	projectile.texture_angle = projectile.angle
 	SpawnProjectile.spawn_projectile(projectile, caster.action_point)
+	pass
+
+func _on_projectile_hit(hit : RID):
+	for effect in effects:
+		EffectServer.receive_effect(hit, effect, ability_context)
 	pass

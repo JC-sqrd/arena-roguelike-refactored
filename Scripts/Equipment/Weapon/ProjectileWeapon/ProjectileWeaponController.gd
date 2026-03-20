@@ -91,5 +91,5 @@ func _on_hit(hits : Array[RID]):
 func _on_projectile_hit(hit : RID):
 	var hits : Array[RID] = [hit]
 	send_effects_to_hits(hits)
-	EventServer.weapon_hit.emit(hits, effect_context)
+	EventServer.weapon_hit.emit(hits, effects, effect_context)
 	pass

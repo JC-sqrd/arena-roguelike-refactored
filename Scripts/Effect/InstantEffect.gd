@@ -1,7 +1,8 @@
 class_name InstantEffect extends Effect
 
-func _init(mutators : Array[StatMutator] = []):
-	self.mutators = mutators
+func _init(mutator : StatMutator, effect_id : StringName = "instant_effect"):
+	self.effect_id = effect_id
+	self.mutator = mutator
 	pass
 
 func apply_effect(stats : Stats):
@@ -13,11 +14,9 @@ func apply_effect(stats : Stats):
 		stats.add_tag(applied_tag)
 		pass
 	
-	for mutator in mutators:
-		if stats.has(mutator.stat_id):
-			mutator.apply_mutator(stats.get_stat(mutator.stat_id), effect_context)
-			pass
-		else:
-			continue
+	if stats.has(mutator.stat_id):
+		mutator.apply_mutator(stats.get_stat(mutator.stat_id), effect_context)
+		pass
+	
 	applied_effect.emit(self)
 	pass

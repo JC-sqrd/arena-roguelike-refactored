@@ -1,10 +1,11 @@
 @abstract
 class_name Effect extends RefCounted
 
-var mutators : Array[StatMutator]
-var modifiers : Array[StatModifier]
+var mutator : StatMutator
+var modifier : StatModifier
 var applied_tags : Array[StringName]
 var block_tags : Array[StringName]
+var effect_id : StringName
 
 var effect_events : Array[EffectEventTemplate]
 
@@ -29,4 +30,4 @@ func invoke_effect_events():
 	pass
 
 func _to_string() -> String:
-	return "Effect modifiers: " + str(modifiers) + " Effect mutators: " + str(mutators)
+	return "Effect modifier: " + str(modifier) + " Effect mutators: " + str(mutator)

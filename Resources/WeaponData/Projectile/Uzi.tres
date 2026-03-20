@@ -54,29 +54,30 @@ script = ExtResource("9_om0yy")
 value = -0.9
 metadata/_custom_type_script = "uid://whdynsblqt1m"
 
-[sub_resource type="Resource" id="Resource_lkj7d"]
+[sub_resource type="Resource" id="Resource_0dke7"]
 script = ExtResource("13_lxb88")
 context_stats = &"wielder_stats"
 stat_id = &"lethality"
 multipliers = Array[ExtResource("9_om0yy")]([SubResource("Resource_om0yy")])
 metadata/_custom_type_script = "uid://dou0wul2vu5jy"
 
-[sub_resource type="Resource" id="Resource_0dke7"]
+[sub_resource type="Resource" id="Resource_5jxvv"]
 script = ExtResource("10_b7r71")
 context_stats_id = &"weapon_stats"
 stat_id = &"weapon_damage"
-bonus_values = Array[ExtResource("8_lxb88")]([SubResource("Resource_lkj7d")])
+bonus_values = Array[ExtResource("8_lxb88")]([SubResource("Resource_0dke7")])
 metadata/_custom_type_script = "uid://dydu23koa8oxk"
 
-[sub_resource type="Resource" id="Resource_q1qjq"]
+[sub_resource type="Resource" id="Resource_lxb88"]
 script = ExtResource("5_5tn57")
 mode = -1
-value_provider_template = SubResource("Resource_0dke7")
+value_provider_template = SubResource("Resource_5jxvv")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_q8oit"]
 script = ExtResource("11_fx3rg")
-flat_mutator_templates = Array[ExtResource("5_5tn57")]([SubResource("Resource_q1qjq")])
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_lxb88")
 effect_event_templates = Array[ExtResource("4_aq1cs")]([SubResource("Resource_b7r71"), SubResource("Resource_4v6ep")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 

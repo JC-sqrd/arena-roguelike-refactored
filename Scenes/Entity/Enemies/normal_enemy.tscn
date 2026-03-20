@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="10_l5mrb"]
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="10_t0f8w"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="11_218yx"]
-[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="12_2upka"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="11_kfoqm"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="13_ytdn0"]
 [ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="15_ukqmv"]
 [ext_resource type="Script" uid="uid://mhvoa3j15n4q" path="res://Scripts/Entity/EntityNode.gd" id="16_2upka"]
@@ -21,21 +21,20 @@
 [ext_resource type="Resource" uid="uid://cte3qnacw8jc" path="res://Resources/normal_enemy_stats_template.tres" id="18_2upka"]
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="20_kfoqm"]
 
-[sub_resource type="Resource" id="Resource_kfoqm"]
-script = ExtResource("12_2upka")
-context_stats_id = &"attacker_stats"
-stat_id = &"attack_damage"
-metadata/_custom_type_script = "uid://dydu23koa8oxk"
-
 [sub_resource type="Resource" id="Resource_t0f8w"]
+script = ExtResource("11_kfoqm")
+value = 5.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_p6avx"]
 script = ExtResource("9_ukqmv")
 mode = -1
-value_provider_template = SubResource("Resource_kfoqm")
+value_provider_template = SubResource("Resource_t0f8w")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_7wydm"]
 script = ExtResource("13_ytdn0")
-flat_mutator_templates = Array[ExtResource("9_ukqmv")]([SubResource("Resource_t0f8w")])
+flat_mutator_template = SubResource("Resource_p6avx")
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [sub_resource type="Resource" id="Resource_ytdn0"]
