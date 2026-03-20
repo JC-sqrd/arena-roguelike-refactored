@@ -19,7 +19,7 @@ signal weapon_hit(hits : Array[RID])
 
 func initialize(wielder : Entity):
 	self.wielder = wielder
-	controller_context = generate_controller_context()
+	#controller_context = generate_controller_context()
 	_on_initialized()
 	pass
 

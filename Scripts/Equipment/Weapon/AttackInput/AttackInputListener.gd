@@ -14,7 +14,6 @@ func initialize(stats : Stats):
 		#return
 		#
 	#if event is InputEventMouseButton and Input.is_action_just_pressed("attack"):
-		#print("START ATTACK INPUT!")
 		#pass
 	#pass
 

@@ -43,8 +43,6 @@ func _on_weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant]
 	if context.source != caster:
 		return
 	
-	print("WEAPON HIT!")
-	
 	_hit_counter += 1
 	
 	if _hit_counter >= hit_threshold:

@@ -28,7 +28,6 @@ func update_position(delta : float):
 		global_position = parent_node.global_position
 	
 	xForm = Transform2D(angle, global_position)
-	#print("AREA GLOBAL POS: " + str(global_position))
 	PhysicsServer2D.area_set_transform(area_rid, xForm)
 	pass
 

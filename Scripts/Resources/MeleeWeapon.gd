@@ -40,6 +40,7 @@ func equip(context : EquipContext):
 	melee_controller.effects = _weapon_effects
 	melee_controller.effect_context = _weapon_context
 	melee_controller.action_time_ratio = action_time_ratio
+	melee_controller.controller_context = _weapon_context
 	
 	melee_controller.initialize(wielder)
 	

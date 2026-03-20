@@ -38,7 +38,6 @@ func _process(delta: float) -> void:
 	
 	if cooling_down:
 		_curr_cd += delta
-		#print("COOLING DOWN: " + str(_curr_cd))
 	
 	if _curr_cd >= cooldown:
 		_curr_cd = 0
@@ -52,7 +51,6 @@ func _process(delta: float) -> void:
 		pass
 	
 	if orbiting:
-		#print("ORBITING: " + str(orbit_angle))
 		
 		if _curr_dur >= duration:
 			cd_hitbox.queue_free()

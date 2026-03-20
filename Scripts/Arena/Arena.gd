@@ -8,7 +8,6 @@ func _ready():
 	var rect_position : Vector2i = main_tilemap_layer.get_used_rect().position
 	var rect_size : Vector2i = main_tilemap_layer.get_used_rect().size
 	
-	print("ARENA USED RECT SIZE: " + str((rect_position + (rect_size/2))))
 	queue_redraw()
 	pass
 

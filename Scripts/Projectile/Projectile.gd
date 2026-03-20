@@ -34,6 +34,8 @@ var context : Dictionary[StringName, Variant]
 
 var hit_log : Array[RID]
 
+signal projectile_hit(hit : RID)
+
 func process_projectile(delta : float):
 	
 	movement.update_movement(delta)
@@ -73,12 +75,13 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 	
 	_pierce_count += 1
 	
-	for effect in effects:
-		EffectServer.receive_effect(area_rid, effect, context)
-		EventServer.effect_hit.emit(area_rid, effect, context)
+	projectile_hit.emit(area_rid)
+	
+	#for effect in effects:
+		#EffectServer.receive_effect(area_rid, effect, context)
+		#EventServer.effect_hit.emit(area_rid, effect, context)
 	
 	hit_log.append(area_rid)
-	
 	pass
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):

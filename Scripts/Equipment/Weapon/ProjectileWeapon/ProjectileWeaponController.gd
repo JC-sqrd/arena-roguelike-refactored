@@ -18,7 +18,6 @@ var queries : Array[RID]
 var _input_held : bool = false
 
 func _on_initialized():
-	
 	listen_for_input = true
 	
 	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
@@ -45,11 +44,10 @@ func execute_attack():
 	attack_executed.emit()
 	
 	var projectile : Projectile = projectile_template.build_projectile()
+	projectile.projectile_hit.connect(_on_projectile_hit)
 	projectile.direction = (get_global_mouse_position() - global_position).normalized()
 	projectile.angle = projectile.direction.angle()
 	projectile.texture_angle = projectile.direction.angle()
-	projectile.effects = effects
-	projectile.context = effect_context
 	SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
 	
 	pass
@@ -78,7 +76,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	pass
 
+func send_effects_to_hits(hits : Array[RID]):
+	for hit in hits:
+		for effect in effects:
+			EffectServer.receive_effect(hit, effect, effect_context)
+			EventServer.effect_hit.emit(hit, effect, effect_context)
+	pass
+
 func _on_hit(hits : Array[RID]):
 	weapon_hit.emit(hits)
+	EventServer.weapon_hit.emit(hits, effect_context)
+	pass
+
+func _on_projectile_hit(hit : RID):
+	var hits : Array[RID] = [hit]
+	send_effects_to_hits(hits)
 	EventServer.weapon_hit.emit(hits, effect_context)
 	pass

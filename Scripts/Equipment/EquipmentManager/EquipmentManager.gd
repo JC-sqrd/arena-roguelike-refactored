@@ -75,12 +75,10 @@ func process_input():
 		pass
 	
 	if Input.is_action_pressed("attack"):
-		print("WEAPON 1 ATTACK")
 		weapon_1_input_held = true
 		pass
 	
 	if Input.is_action_pressed("attack2"):
-		print("WEAPON 2 ATTACK")
 		weapon_2_input_held = true
 		pass
 	

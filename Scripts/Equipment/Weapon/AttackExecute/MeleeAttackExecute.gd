@@ -46,8 +46,9 @@ func _process(delta: float) -> void:
 			_curr_anim_pos = melee_anim_player.current_animation_position
 			_action_time = _curr_anim_length * action_time_ratio
 			if _curr_anim_pos >= _action_time:
-				var hits : Array[RID]
-				melee_hitbox.query_hitbox(false, hits)
+				var hits : Array[RID] = melee_hitbox.query_hits(false)
+				#melee_hitbox.query_hitbox(false, hits)
+				send_effects_to_hits(hits)
 				EventServer.weapon_hit.emit(hits, melee_context)
 				#query_hitbox()
 				active_hit = false
@@ -77,30 +78,9 @@ func _on_attack_anim_finished(anim : StringName):
 	pass
 
 
-func query_hitbox():
-	var space_state : = melee_hitbox.get_world_2d().direct_space_state
-	
-	var hits : Array[RID]
-	
-	for child in melee_hitbox.get_children():
-		if child is CollisionShape2D:
-			var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
-			query.shape_rid = child.shape.get_rid()
-			query.transform = child.global_transform
-			query.collision_mask = melee_hitbox.collision_mask
-			query.collide_with_areas = true
-				
-			var results = space_state.intersect_shape(query, 500)
-				
-			for result in results:
-				hits.append(result.rid)
-				pass
-			pass
-	
-	
-	if hits.size() > 0:
-		for hit in hits:
-			for effect in context.attack_effects:
-				EffectServer.receive_effect(hit, effect, context.effects_context)
-		hit.emit(hits)
+func send_effects_to_hits(hits : Array[RID]):
+	for hit in hits:
+		for effect in melee_hitbox.effects:
+			EffectServer.receive_effect(hit, effect, context)
+			EventServer.effect_hit.emit(hit, effect, context)
 	pass

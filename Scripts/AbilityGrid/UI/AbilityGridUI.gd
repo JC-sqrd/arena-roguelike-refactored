@@ -26,7 +26,6 @@ signal locked_slot_clicked(slot_pos : Vector2i, grid : AbilityGrid)
 
 func generate_grid_ui(ability_grid : AbilityGrid):
 	clear_grid_ui()
-	print("ABILITY GRID SIZE: " + str(ability_grid.grid_coords))
 	
 	
 	size = ability_grid.get_grid_size() * slot_size
@@ -119,10 +118,8 @@ func show_locked_slots():
 		slot.slot_exited.connect(_on_mouse_exited_slot)
 		slot.slot_clicked.connect(_on_mouse_clicked_slot)
 	
-	print("GRID POS: " + str(grid_layer.position))
 	
 	#_generate_grid_ui_contents(_ability_grid)
-	print("SHOWING LOCKED COORDS")
 	pass
 
 
