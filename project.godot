@@ -34,6 +34,7 @@ KnockbackServer="*uid://cesy7fytmnbv"
 
 window/size/viewport_width=640
 window/size/viewport_height=320
+window/size/mode=2
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

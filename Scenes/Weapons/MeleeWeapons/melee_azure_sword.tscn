@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://j4im60xe17ni" path="res://Placeholders/Blue Sword Smear.png" id="3_4inym"]
 [ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="3_gycd8"]
 [ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_4inym"]
+[ext_resource type="Texture2D" uid="uid://x554rdhcnbme" path="res://Sprites/Weapons/Azure Sword/AzureSwordSmear.png" id="7_8mjo1"]
 [ext_resource type="Texture2D" uid="uid://bkdx4rj3u453l" path="res://Sprites/Weapons/Azure Sword/AzureSword.png" id="7_w1odl"]
 
 [sub_resource type="Animation" id="Animation_y7ryr"]
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -28)]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -45,6 +46,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_lmb0f"]
@@ -85,6 +98,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.08629985, 0.1691819, 0.25206393, 0.3400727, 0.43320817),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4]
 }
 
 [sub_resource type="Animation" id="Animation_abf18"]
@@ -140,10 +165,46 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkbcb"]
-size = Vector2(30, 60.5)
+size = Vector2(58, 80)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7ryr"]
-size = Vector2(22, 46.5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv1bv"]
+atlas = ExtResource("7_8mjo1")
+region = Rect2(222, 0, 74, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe5c0"]
+atlas = ExtResource("7_8mjo1")
+region = Rect2(0, 0, 74, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yf0l"]
+atlas = ExtResource("7_8mjo1")
+region = Rect2(74, 0, 74, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0fa1"]
+atlas = ExtResource("7_8mjo1")
+region = Rect2(148, 0, 74, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxk42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv1bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe5c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yf0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0fa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv1bv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="MeleeAzureSword" type="Node2D" unique_id=1213163053 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player", "attack_execute")]
 script = ExtResource("1_h7mjo")
@@ -166,7 +227,7 @@ anim_player = NodePath("../MeleeAnimationPlayer")
 metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=612972648]
-position = Vector2(12, 7)
+position = Vector2(26, 7)
 shape = SubResource("RectangleShape2D_kkbcb")
 
 [node name="BlueSwordSmear" type="Sprite2D" parent="Area2D/CollisionShape2D" unique_id=315443846]
@@ -179,16 +240,15 @@ scale = Vector2(0.8230717, 3.2260568)
 skew = 0.8036052
 texture = ExtResource("3_4inym")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1854946083]
-position = Vector2(38, 7)
-shape = SubResource("RectangleShape2D_y7ryr")
-
 [node name="MeleeAttackExecute" type="Node" parent="." unique_id=1641505679]
 script = ExtResource("6_4inym")
 metadata/_custom_type_script = "uid://d2m8vf2tidody"
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1261218419]
+position = Vector2(22, 2)
+sprite_frames = SubResource("SpriteFrames_vxk42")
+
 [node name="AzureSword" type="Sprite2D" parent="." unique_id=1242457659]
 texture_filter = 1
-position = Vector2(0, -28)
 texture = ExtResource("7_w1odl")
 offset = Vector2(0, -28)

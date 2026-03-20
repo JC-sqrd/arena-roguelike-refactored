@@ -37,6 +37,15 @@ func execute_attack():
 func end_attack():
 	pass
 
+func input_pressed():
+	pass
+
+func input_held():
+	pass
+
+func input_released():
+	pass
+
 func generate_controller_context() -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant] = {}
 	context["source"] = wielder
