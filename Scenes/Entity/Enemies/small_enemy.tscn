@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="3_pe4y6"]
 [ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="3_xnsb2"]
 [ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_5vrbn"]
+[ext_resource type="Script" uid="uid://uulu8pqdbuxy" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantGoldOnDeathListener.gd" id="4_d01e7"]
 [ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="4_rnlce"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="5_8a2hg"]
 [ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="5_xfl3c"]
@@ -22,6 +23,11 @@ script = ExtResource("3_d01e7")
 stat_id = &"exp"
 grant_value = 10.0
 metadata/_custom_type_script = "uid://jj452ixveqqd"
+
+[sub_resource type="Resource" id="Resource_44u58"]
+script = ExtResource("4_d01e7")
+amount = 1.0
+metadata/_custom_type_script = "uid://uulu8pqdbuxy"
 
 [sub_resource type="Resource" id="Resource_58hsy"]
 script = ExtResource("5_8a2hg")
@@ -98,7 +104,7 @@ target_distance_threshold = 40.0
 attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
-death_listeners = Array[ExtResource("2_owhfj")]([SubResource("Resource_d01e7")])
+death_listeners = Array[ExtResource("2_owhfj")]([SubResource("Resource_d01e7"), SubResource("Resource_44u58")])
 _components = [NodePath("GPUParticles2D")]
 metadata/_custom_type_script = "uid://knv07avm0ire"
 
