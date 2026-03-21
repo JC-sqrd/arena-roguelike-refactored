@@ -9,7 +9,6 @@ const SPIKED_BAT_HITBOX = preload("uid://sy60xpo0pa1x")
 
 var hitbox : HitBox
 var area : Area
-var effects : Array[Effect]
 
 var c_float_around_target : FloatAroundTarget
 

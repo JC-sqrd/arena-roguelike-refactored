@@ -46,6 +46,9 @@ func input_held():
 func input_released():
 	pass
 
+func generate_effects() -> Array[Effect]:
+	return []
+
 func generate_controller_context() -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant] = {}
 	context["source"] = wielder

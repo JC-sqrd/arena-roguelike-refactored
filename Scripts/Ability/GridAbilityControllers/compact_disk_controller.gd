@@ -4,8 +4,6 @@ const COMPACT_DISK_HITBOX = preload("uid://8j11sug2jlbu")
 
 @export var effect_templates : Array[EffectTemplate]
 
-var effects : Array[Effect]
-
 var cd_hitbox : HitBox
 var duration : float = 3
 var cooldown : float = 6

@@ -1,0 +1,34 @@
+#Ground Slam Ability Controller
+extends ActiveAbilityController
+@export var effect_templates : Array[EffectTemplate]
+
+#Spawn A Delay a Hitbox
+const GROUND_SLAM_HITBOX = preload("uid://hkn4jr4vsdqg")
+
+func _on_initialized():
+	
+	pass
+
+func start_ability():
+	var hitbox : DelayHitbox = GROUND_SLAM_HITBOX.instantiate() as DelayHitbox
+	hitbox.hits_queried.connect(_on_hit_queried)
+	controller_context = generate_controller_context()
+	effects = generate_effects_from_templates(effect_templates, controller_context)
+	hitbox.global_position = caster.global_position
+	
+	ArenaServer.active_arena.add_child(hitbox)
+	hitbox.initialize()
+	hitbox.query_hits(false)
+	pass
+
+
+func _on_hit_queried(hits : Array[RID]):
+	send_effects_to_hits(hits)
+	pass
+
+func send_effects_to_hits(hits : Array[RID]):
+	for hit in hits:
+		for effect in effects:
+			EffectServer.receive_effect(hit, effect, controller_context)
+			pass
+	pass

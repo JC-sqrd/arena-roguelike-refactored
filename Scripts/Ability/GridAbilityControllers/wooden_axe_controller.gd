@@ -7,7 +7,6 @@ var weapon_controller : WeaponController
 const TEST_ABILITY_HITBOX = preload("uid://bhyjrjxakyds1")
 
 var hitbox : HitBox
-var effects : Array[Effect]
 
 var hit_threshold : int = 5
 var _hit_counter : int = 0
@@ -69,12 +68,17 @@ func _on_weapon_hit(hits : Array[RID], effects : Array[Effect],context : Diction
 	
 	if _hit_counter >= hit_threshold:
 		hitbox = TEST_ABILITY_HITBOX.instantiate() as DelayHitbox
-		hitbox.effects = hit_effects
-		hitbox.context = controller_context
+		hitbox.hits_queried.connect(_on_hit_queried)
 		hitbox.global_position = caster.action_point
 		hitbox.collision_mask = coll_mask
 		hitbox.initialize()
 		ArenaServer.active_arena.add_child(hitbox)
 		hitbox.look_at(hitbox.get_global_mouse_position())
 		_hit_counter = 0
+	pass
+
+func _on_hit_queried(hits : Array[RID]):
+	for hit in hits:
+		for effect in effects:
+			EffectServer.receive_effect(hit, effect, controller_context)
 	pass

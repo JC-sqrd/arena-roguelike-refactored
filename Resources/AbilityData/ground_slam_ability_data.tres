@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ActiveAbilityData" format=3 uid="uid://soq4ia2k2yq4"]
+
+[ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_j265y"]
+[ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_umsrf"]
+[ext_resource type="PackedScene" uid="uid://dubg2cu114sdb" path="res://Scenes/AbilityScenes/ActiveAbilities/ground_slam_ability_controller.tscn" id="2_4f8ii"]
+
+[resource]
+script = ExtResource("1_umsrf")
+ability_scene = ExtResource("2_4f8ii")
+ability_name = "Ground Slam"
+ability_id = &"ground_slam"
+ability_icon = ExtResource("1_j265y")
+ability_details = "Slam the ground for MASSIVE damage."
+metadata/_custom_type_script = "uid://dixh3jk1fs5ag"

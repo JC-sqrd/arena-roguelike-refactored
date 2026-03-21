@@ -8,7 +8,6 @@ var hitbox : HitBox
 var area : Area
 
 @export var effect_templates : Array[EffectTemplate]
-var effects : Array[Effect]
 var targets : Array[RID]
 
 

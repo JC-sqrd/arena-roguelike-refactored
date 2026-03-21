@@ -4,12 +4,14 @@ class_name DelayHitbox extends HitBox
 @export var delay : float = 1
 
 
+signal hits_queried(hits : Array[RID]) 
+
 func _ready() -> void:
 	get_tree().create_timer(free_at).timeout.connect(remove_hitbox)
 	await get_tree().create_timer(delay).timeout
 	
 	
-	query_hitbox()
+	hits_queried.emit(query_hits()) 
 	#for hit in area_hits:
 		#for effect in effects:
 			#EffectServer.receive_effect(hit.get_rid(), effect, context)

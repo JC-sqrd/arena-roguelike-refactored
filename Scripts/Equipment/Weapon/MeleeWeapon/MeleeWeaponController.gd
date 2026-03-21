@@ -43,7 +43,7 @@ func execute_attack():
 		var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 	
 		attack_context.wielder_stats = wielder_stats
-		attack_context.attack_effects = effects
+		attack_context.attack_effects = generate_effects()
 		attack_context.effects_context = effect_context
 		attack_context.queries = queries
 		attack_context.weapon_stats = weapon_stats
@@ -60,6 +60,9 @@ func execute_attack():
 func end_attack():
 	attack_end.emit()
 	pass
+
+func generate_effects() -> Array[Effect]:
+	return effects.duplicate(true)
 
 func _on_attack_finished_executing():
 	end_attack()

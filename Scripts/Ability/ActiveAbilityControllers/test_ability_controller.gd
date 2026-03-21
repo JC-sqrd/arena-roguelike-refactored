@@ -8,6 +8,7 @@ extends ActiveAbilityController
 
 @export_flags_2d_physics var abiltiy_coll_mask : int = 0
 
+var _damage_effect : Effect
 var hitbox : DelayHitbox
 
 func _on_initialized():
@@ -16,8 +17,11 @@ func _on_initialized():
 
 func start_ability():
 	hitbox = hitbox_scene.instantiate() as DelayHitbox
-	hitbox.effects = [damage_effect.build_effect(controller_context)]
-	hitbox.context = controller_context
+	hitbox.hits_queried.connect(_on_hits_queried)
+	_damage_effect = damage_effect.build_effect(controller_context)
+	controller_context = generate_controller_context()
+	#hitbox.effects = [damage_effect.build_effect(controller_context)]
+	#hitbox.context = controller_context
 	hitbox.global_position = caster.action_point
 	hitbox.collision_mask = abiltiy_coll_mask
 	hitbox.initialize()
@@ -48,4 +52,9 @@ func execute():
 		
 		await get_tree().create_timer(0.05).timeout
 	end()
+	pass
+
+func _on_hits_queried(hits : Array[RID]):
+	for hit in hits:
+		EffectServer.receive_effect(hit, _damage_effect, controller_context)
 	pass

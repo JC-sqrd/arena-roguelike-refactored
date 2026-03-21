@@ -34,7 +34,7 @@ func execute_attack():
 	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 		
 	attack_context.wielder_stats = wielder_stats
-	attack_context.attack_effects = effects
+	attack_context.attack_effects = generate_effects()
 	attack_context.effects_context = effect_context
 	attack_context.queries = queries
 	attack_context.weapon_stats = weapon_stats
@@ -82,6 +82,9 @@ func send_effects_to_hits(hits : Array[RID]):
 			EffectServer.receive_effect(hit, effect, effect_context)
 			EventServer.effect_hit.emit(hit, effect, effect_context)
 	pass
+
+func generate_effects() -> Array[Effect]:
+	return effects.duplicate(true)
 
 func _on_hit(hits : Array[RID]):
 	weapon_hit.emit(hits)
