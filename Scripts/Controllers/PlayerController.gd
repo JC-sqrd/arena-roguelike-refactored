@@ -55,11 +55,18 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if input_dir.length() > 0:
-		velocity = input_dir * move_speed 
-	else:
-		velocity = Vector2.ZERO
+	if player_entity.entity.can_move:
+		if input_dir.length() > 0:
+			player_entity.entity.velocity = input_dir * move_speed 
+			#velocity = player_entity.entity.velocity 
+		else:
+			player_entity.entity.velocity = Vector2.ZERO
+			#velocity = player_entity.entity.velocity
+	
+	velocity = player_entity.entity.velocity
+	#global_position = player_entity.entity.global_position
 	move_and_slide()
+	player_entity.entity.global_position = global_position
 	pass
 
 func _exit_tree() -> void:

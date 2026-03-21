@@ -17,7 +17,7 @@ func update_position(delta : float) -> Vector2:
 	#global_position = enemy_entity.entity.global_position
 	
 	if _distance_to_target <= target_distance_threshold:
-		velocity = Vector2.ZERO
+		enemy_entity.velocity = Vector2.ZERO
 		pass
 	
 	target = PlayerServer.main_player.global_position
@@ -25,9 +25,10 @@ func update_position(delta : float) -> Vector2:
 	#Update velocity and push vector
 	_dir_to_target = (target - enemy_entity.global_position).normalized()
 	_distance_to_target = (target - enemy_entity.global_position).length()
-	#velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-	velocity = _dir_to_target * move_speed_stat.get_value() * delta
-	enemy_entity.global_position += velocity
+	#enemy_entity.velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+	enemy_entity.velocity = _dir_to_target * move_speed_stat.get_value() 
+	enemy_entity.velocity *= delta
+	enemy_entity.global_position += enemy_entity.velocity
 	return enemy_entity.global_position
 
 

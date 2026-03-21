@@ -4,6 +4,7 @@ class_name ActiveAbilityControllerManager extends AbilityControllerManager
 @export var default_ability_data : Array[ActiveAbilityData]
 
 @export var ability_one : ActiveAbilityData
+@export var ability_two : ActiveAbilityData
 
 var controllers : Dictionary[ActiveAbilityData, ActiveAbilityController]
 var caster : Entity
@@ -18,10 +19,15 @@ func initialize(caster : Entity):
 		add_controller(controller)
 		pass
 	
-	ability_one = ability_one.duplicate()
+	ability_one = ability_one.duplicate(true)
 	var ability_one_controller : ActiveAbilityController = ability_one.build_abiltiy_controller()
 	add_controller(ability_one_controller)
 	controllers[ability_one] = ability_one_controller
+	
+	ability_two = ability_two.duplicate(true)
+	var ability_two_controller : ActiveAbilityController = ability_two.build_abiltiy_controller()
+	add_controller(ability_two_controller)
+	controllers[ability_two] = ability_two_controller
 	pass
 
 
@@ -35,8 +41,13 @@ func remove_controller():
 
 func _unhandled_input(event: InputEvent) -> void:
 	
-	if Input.is_action_just_pressed("active_ability_1"):
+	if Input.is_action_just_pressed("active_ability_1") and caster.can_cast:
 		var controller : ActiveAbilityController = controllers.get(ability_one)
+		controller.start_ability()
+		pass
+	
+	if Input.is_action_just_pressed("active_ability_2") and caster.can_cast:
+		var controller : ActiveAbilityController = controllers.get(ability_two)
 		controller.start_ability()
 		pass
 	

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bqtfjrqiquofa"]
+
+[ext_resource type="Script" uid="uid://bdauuv5kjbw8" path="res://Scripts/Ability/ActiveAbilityControllers/dash_punch_ability_controller.gd" id="1_wcr3w"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="2_sh1oj"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="3_5jn5i"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_ng5w3"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="3_yofhl"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_yvlgx"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="5_n7881"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="6_yofhl"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="7_4a328"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="7_d4lk6"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="8_4a328"]
+[ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="8_dlxot"]
+
+[sub_resource type="Resource" id="Resource_bj60v"]
+script = ExtResource("3_yofhl")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_r8hir"]
+script = ExtResource("7_4a328")
+value = 1000.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_1ymrh"]
+script = ExtResource("8_dlxot")
+magnitude = SubResource("Resource_r8hir")
+metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
+
+[sub_resource type="Resource" id="Resource_dlxot"]
+script = ExtResource("7_d4lk6")
+value = -0.5
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_rqodt"]
+script = ExtResource("8_4a328")
+context_stats_id = &"caster_stats"
+stat_id = &"lethality"
+multipliers = Array[ExtResource("7_d4lk6")]([SubResource("Resource_dlxot")])
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_ggkh8"]
+script = ExtResource("4_yvlgx")
+mode = -1
+value_provider_template = SubResource("Resource_rqodt")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_kcf3j"]
+script = ExtResource("3_5jn5i")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_ggkh8")
+effect_event_templates = Array[ExtResource("2_sh1oj")]([SubResource("Resource_bj60v"), SubResource("Resource_1ymrh")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="DashPunchAbiltityController" type="Node" unique_id=842585258]
+script = ExtResource("1_wcr3w")
+max_dash_distance = 128.0
+dash_speed = 600.0
+punch_effect_temp = SubResource("Resource_kcf3j")
+metadata/_custom_type_script = "uid://b71v68teuxsft"

@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://dhhynaisfxsr3" path="res://Scripts/Ability/ActiveAbilityControllerManager.gd" id="24_5pv1g"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="24_c44xl"]
 [ext_resource type="Resource" uid="uid://soq4ia2k2yq4" path="res://Resources/AbilityData/ground_slam_ability_data.tres" id="26_jq2g3"]
+[ext_resource type="Resource" uid="uid://dltuy5kw6uh4c" path="res://Resources/AbilityData/dash_punch_ability_data.tres" id="27_b2ade"]
 
 [sub_resource type="Resource" id="Resource_l0a5t"]
 script = ExtResource("2_xpoel")
@@ -120,6 +121,7 @@ metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
 [node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller_manager", "grid_ability_controller_manager", "interactable_detector")]
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_vvirn")
 player_entity = NodePath("PlayerEntityNode")
 active_ability_controller_manager = NodePath("ActiveAbilityControllerManager")
@@ -203,4 +205,5 @@ metadata/_custom_type_script = "uid://bc6u0xacwhuly"
 [node name="ActiveAbilityControllerManager" type="Node" parent="." unique_id=910106214]
 script = ExtResource("24_5pv1g")
 ability_one = ExtResource("26_jq2g3")
+ability_two = ExtResource("27_b2ade")
 metadata/_custom_type_script = "uid://dhhynaisfxsr3"

@@ -136,7 +136,10 @@ func _physics_process(delta: float) -> void:
 func update_position(delta : float):
 	global_position = enemy_entity.entity.global_position
 	
-	if !active : 
+	if !active: 
+		return
+	
+	if !enemy_entity.entity.can_move:
 		return
 	
 	enemy_entity.entity.global_position = enemy_movement.update_position(delta) 

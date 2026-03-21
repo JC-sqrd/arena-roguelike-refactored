@@ -3,6 +3,7 @@ extends GridAbilityController
 const COMPACT_DISK_HITBOX = preload("uid://8j11sug2jlbu")
 
 @export var effect_templates : Array[EffectTemplate]
+@export var orbit_distance : float = 64
 
 var cd_hitbox : HitBox
 var duration : float = 3
@@ -15,7 +16,6 @@ var _curr_dur : float = 0
 var _curr_cd : float = 0
 var orbit_center : Vector2
 var orbit_offset : Vector2
-var orbit_distance : float = 200
 var orbit_angle : float = 0
 
 var start : bool = false

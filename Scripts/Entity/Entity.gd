@@ -15,6 +15,7 @@ var entity_rid : RID
 var entity_node : Node2D
 
 var global_position : Vector2
+var velocity : Vector2
 
 signal died(context : Dictionary[StringName, Variant])
 
