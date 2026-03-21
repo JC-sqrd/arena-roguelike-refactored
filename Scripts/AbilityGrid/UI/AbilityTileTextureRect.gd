@@ -1,6 +1,6 @@
 class_name AbilityTileTextureRect extends TextureRect
 
-var slot_size : float = 32
+var slot_size : float = 16
 var ability_tile : AbilityTile
 var root_offset_pos : Vector2
 
