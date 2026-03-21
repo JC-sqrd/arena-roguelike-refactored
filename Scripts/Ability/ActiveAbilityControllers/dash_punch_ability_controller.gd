@@ -1,8 +1,8 @@
 #Dash Punch Ability Controller
 extends ActiveAbilityController
 
-@export var max_dash_distance : float = 500
-@export var dash_speed : float = 120
+@export var max_dash_distance : float = 128
+@export var dash_speed : float = 600
 @export var acceleration : float = 1000
 
 @export var punch_effect_temp : EffectTemplate

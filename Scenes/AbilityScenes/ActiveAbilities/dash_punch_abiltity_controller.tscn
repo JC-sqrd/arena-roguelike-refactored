@@ -54,7 +54,5 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [node name="DashPunchAbiltityController" type="Node" unique_id=842585258]
 script = ExtResource("1_wcr3w")
-max_dash_distance = 128.0
-dash_speed = 600.0
 punch_effect_temp = SubResource("Resource_kcf3j")
 metadata/_custom_type_script = "uid://b71v68teuxsft"
