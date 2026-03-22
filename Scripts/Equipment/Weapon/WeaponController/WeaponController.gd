@@ -1,6 +1,7 @@
 class_name WeaponController extends Node2D
 
 @export var weapon_input : WeaponControllerInputStrategy
+@export var upgrade_controllers : Array[WeaponUpgradeController]
 
 var weapon_id : StringName
 var wielder : Entity
@@ -14,13 +15,17 @@ var _cooldown : float = 0
 var _curr_cooldown : float = 0
 
 signal attack_start()
+signal attack_to_execute()
 signal attack_executed()
 signal attack_end()
 
-signal weapon_hit(hits : Array[RID])
+signal weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant])
 
 func initialize(wielder : Entity):
 	self.wielder = wielder
+	for upgrade in upgrade_controllers:
+		upgrade.initialize(self)
+		pass
 	if weapon_input == null:
 		weapon_input = InstantWeaponInput.new()
 		weapon_input.initialize(self)
@@ -34,14 +39,28 @@ func _on_initialized():
 	pass
 
 func start_attack():
+	attack_start.emit()
+	_on_start()
 	pass
 
+func _on_start():
+	pass
 
 func execute_attack():
+	attack_to_execute.emit()
+	_on_execute()
+	attack_executed.emit()
 	pass
 
+func _on_execute():
+	pass
 
 func end_attack():
+	_on_end()
+	attack_end.emit()
+	pass
+
+func _on_end():
 	pass
 
 func input_pressed():

@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("2_8r4bj")
 name = "Lethality"
 stat_id = &"lethality"
-value = 500.0
+value = 10.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_4altn"]

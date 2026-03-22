@@ -32,14 +32,15 @@ func _on_initialized():
 	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
 	pass
 
-func start_attack():
+func _on_start():
 	if !on_cooldown:
 		execute_attack()
 		attack_start.emit()
 		on_cooldown = true
 	pass
 
-func execute_attack():
+
+func _on_execute():
 	if !attack_execute.active:
 		var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 	
@@ -55,11 +56,7 @@ func execute_attack():
 		melee_hitbox.context = effect_context
 		
 		attack_execute.execute(attack_context)
-		attack_executed.emit()
-	pass
-
-func end_attack():
-	attack_end.emit()
+		end_attack()
 	pass
 
 func generate_effects() -> Array[Effect]:
@@ -82,6 +79,5 @@ func _process(delta: float) -> void:
 
 
 func _on_hit(hits : Array[RID]):
-	weapon_hit.emit(hits)
-	EventServer.weapon_hit.emit(hits, effect_context)
+	weapon_hit.emit(hits, effect_context)
 	pass

@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://bwglurqwi8rne"]
 
-[ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponController.gd" id="1_7lgl7"]
+[ext_resource type="Script" uid="uid://chspwcxn4otlg" path="res://Scripts/Equipment/Weapon/MeleeWeapon/Controllers/baseball_weapon_controller.gd" id="1_x2mww"]
 [ext_resource type="Script" uid="uid://k7uy7l3rc455" path="res://Scripts/WeponControllerInputStrategy/InstantWeaponInput.gd" id="2_tnldk"]
 [ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="2_x2mww"]
 [ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_tnldk"]
 [ext_resource type="Texture2D" uid="uid://ca3nj52dmx51p" path="res://Sprites/Weapons/Baseball Bat/BaseballSwingAnim.png" id="4_4ok8m"]
 [ext_resource type="Texture2D" uid="uid://mw8i7r013rnk" path="res://Sprites/Weapons/Baseball Bat/BaseballBat.png" id="5_am676"]
 [ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_iinfb"]
+[ext_resource type="Script" uid="uid://d235jaba4t8d8" path="res://Scripts/WeaponUpgrade/UpgradeControllers/basebal-1-1-upgrade.gd" id="8_tnldk"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="9_78g75"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="10_dfq3g"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="11_xaiik"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="12_gro1x"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="13_u8jud"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="14_58bfw"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="15_48t44"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="16_4vm40"]
 
 [sub_resource type="Resource" id="Resource_x2mww"]
 script = ExtResource("2_tnldk")
@@ -248,12 +257,37 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="MeleeBaseballBat" type="Node2D" unique_id=161408375 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player", "attack_execute")]
-script = ExtResource("1_7lgl7")
+[sub_resource type="Resource" id="Resource_l74cs"]
+script = ExtResource("14_58bfw")
+value = -0.8
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_0l051"]
+script = ExtResource("15_48t44")
+context_stats_id = &"weapon_stats"
+stat_id = &"weapon_damage"
+multipliers = Array[ExtResource("14_58bfw")]([SubResource("Resource_l74cs")])
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_4s55g"]
+script = ExtResource("11_xaiik")
+mode = -1
+value_provider_template = SubResource("Resource_0l051")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_1kruw"]
+script = ExtResource("16_4vm40")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_4s55g")
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="MeleeBaseballBat" type="Node2D" unique_id=161408375 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player", "attack_execute", "upgrade_controllers")]
+script = ExtResource("1_x2mww")
 melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
 attack_execute = NodePath("MeleeAttackExecute")
 weapon_input = SubResource("Resource_x2mww")
+upgrade_controllers = [NodePath("WeaponUpgradeController")]
 metadata/_custom_type_script = "uid://c5mbvnyf1mbqm"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1772335603 node_paths=PackedStringArray("anim_player")]
@@ -287,3 +321,9 @@ offset = Vector2(0, -28)
 [node name="MeleeAttackExecute" type="Node" parent="." unique_id=1900437744]
 script = ExtResource("6_iinfb")
 metadata/_custom_type_script = "uid://d2m8vf2tidody"
+
+[node name="WeaponUpgradeController" type="Node" parent="." unique_id=1887598258]
+script = ExtResource("8_tnldk")
+effect_template = SubResource("Resource_1kruw")
+coll_mask = 4
+metadata/_custom_type_script = "uid://d1e1s36dwj2f1"

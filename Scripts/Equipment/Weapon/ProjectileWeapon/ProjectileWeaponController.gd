@@ -23,14 +23,13 @@ func _on_initialized():
 	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
 	pass
 
-func start_attack():
+func _on_start():
 	if !on_cooldown:
 		execute_attack()
-		attack_start.emit()
 		on_cooldown = true
 	pass
 
-func execute_attack():
+func _on_execute():
 	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 		
 	attack_context.wielder_stats = wielder_stats
@@ -48,13 +47,8 @@ func execute_attack():
 	projectile.angle = projectile.direction.angle()
 	projectile.texture_angle = projectile.direction.angle()
 	SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
-	
-	attack_executed.emit()
-	pass
+	end_attack()
 
-func end_attack():
-	attack_end.emit()
-	pass
 
 func _on_attack_finished_executing():
 	end_attack()
@@ -86,13 +80,9 @@ func send_effects_to_hits(hits : Array[RID]):
 func generate_effects() -> Array[Effect]:
 	return effects.duplicate(true)
 
-func _on_hit(hits : Array[RID]):
-	weapon_hit.emit(hits)
-	EventServer.weapon_hit.emit(hits, effect_context)
-	pass
-
 func _on_projectile_hit(hit : RID):
 	var hits : Array[RID] = [hit]
 	send_effects_to_hits(hits)
 	EventServer.weapon_hit.emit(hits, effects, effect_context)
+	weapon_hit.emit(hits, effect_context)
 	pass
