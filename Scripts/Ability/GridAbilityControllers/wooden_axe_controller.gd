@@ -13,9 +13,9 @@ var _hit_counter : int = 0
 
 func _on_initialized():
 	
-	for template in effect_templates:
-		effects.append(template.build_effect(controller_context))
-		pass
+	#for template in effect_templates:
+	#	effects.append(template.build_effect(controller_context))
+	#	pass
 	
 	EventServer.weapon_hit.connect(_on_weapon_hit)
 	
@@ -42,9 +42,9 @@ func _on_weapon_hit(hits : Array[RID], effects : Array[Effect],context : Diction
 	if context.source != caster:
 		return
 	
-	var value_mult : ValueMultiplier = ValueMultiplier.new(0.8)
+	#var value_mult : ValueMultiplier = ValueMultiplier.new(0.8)
 	
-	var hit_effects : Array[Effect]# = [instant_effect]
+	#var hit_effects : Array[Effect]# = [instant_effect]
 	var effect_value : float = 0
 	
 	for effect in effects:
@@ -54,20 +54,26 @@ func _on_weapon_hit(hits : Array[RID], effects : Array[Effect],context : Diction
 			break
 		pass
 	
+	print("ATTACK DAMAGE EFFECT VALUE: " + str(effect_value))
 	var value_provider : FlatValueProvider = FlatValueProvider.new(effect_value * 0.8)
 	var mutator : FlatStatMutator = FlatStatMutator.new("current_health", value_provider, [])
 	var instant_effect : InstantEffect = InstantEffect.new(mutator, "damage_effect")
+	
+	
+	print("WOODEN AXE ATTACK DAMAGE EFFECT VALUE: " + str(instant_effect.mutator.value_provider.get_value(context)))
 	
 	instant_effect.effect_context = context
 	instant_effect.effect_events.append(DamageEffectEventTemplate.new())
 	mutator.mode = mutator.Mode.SUBTRACT
 	
-	hit_effects = [instant_effect]
+	#hit_effects = 
+	print("WOODEN AXE EFFECTS: " + str(effects))
 	_hit_counter += 1
 	
 	
 	if _hit_counter >= hit_threshold:
 		hitbox = TEST_ABILITY_HITBOX.instantiate() as DelayHitbox
+		self.effects = [instant_effect]
 		hitbox.hits_queried.connect(_on_hit_queried)
 		hitbox.global_position = caster.action_point
 		hitbox.collision_mask = coll_mask
@@ -80,5 +86,6 @@ func _on_weapon_hit(hits : Array[RID], effects : Array[Effect],context : Diction
 func _on_hit_queried(hits : Array[RID]):
 	for hit in hits:
 		for effect in effects:
+			print("WOODEN AXE EFFECT SENT TO SERVER!")
 			EffectServer.receive_effect(hit, effect, controller_context)
 	pass

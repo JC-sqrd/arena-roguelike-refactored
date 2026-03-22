@@ -41,7 +41,6 @@ func execute_attack():
 	attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
 	attack_context.action_time_ratio = action_time_ratio
 	
-	attack_executed.emit()
 	
 	var projectile : Projectile = projectile_template.build_projectile()
 	projectile.projectile_hit.connect(_on_projectile_hit)
@@ -50,6 +49,7 @@ func execute_attack():
 	projectile.texture_angle = projectile.direction.angle()
 	SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
 	
+	attack_executed.emit()
 	pass
 
 func end_attack():
