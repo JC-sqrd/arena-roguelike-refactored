@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bwglurqwi8rne"]
 
 [ext_resource type="Script" uid="uid://c5mbvnyf1mbqm" path="res://Scripts/Equipment/Weapon/MeleeWeapon/MeleeWeaponController.gd" id="1_7lgl7"]
+[ext_resource type="Script" uid="uid://k7uy7l3rc455" path="res://Scripts/WeponControllerInputStrategy/InstantWeaponInput.gd" id="2_tnldk"]
 [ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="2_x2mww"]
 [ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="3_tnldk"]
 [ext_resource type="Texture2D" uid="uid://ca3nj52dmx51p" path="res://Sprites/Weapons/Baseball Bat/BaseballSwingAnim.png" id="4_4ok8m"]
 [ext_resource type="Texture2D" uid="uid://mw8i7r013rnk" path="res://Sprites/Weapons/Baseball Bat/BaseballBat.png" id="5_am676"]
 [ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_iinfb"]
+
+[sub_resource type="Resource" id="Resource_x2mww"]
+script = ExtResource("2_tnldk")
+metadata/_custom_type_script = "uid://k7uy7l3rc455"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc1v0"]
 size = Vector2(64, 104)
@@ -248,6 +253,7 @@ script = ExtResource("1_7lgl7")
 melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
 attack_execute = NodePath("MeleeAttackExecute")
+weapon_input = SubResource("Resource_x2mww")
 metadata/_custom_type_script = "uid://c5mbvnyf1mbqm"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1772335603 node_paths=PackedStringArray("anim_player")]

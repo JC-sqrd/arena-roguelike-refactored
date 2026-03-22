@@ -4,6 +4,7 @@ class_name MeleeWeaponController extends WeaponController
 @export var melee_hitbox : HitBox
 @export var melee_animation_player : MeleeAnimationPlayer
 
+
 var action_time_ratio : float = 0
 
 @export var attack_execute : MeleeAttackExecute
@@ -79,20 +80,6 @@ func _process(delta: float) -> void:
 		on_cooldown = false
 		_curr_cooldown = 0
 
-func _unhandled_input(event: InputEvent) -> void:
-	#if !listen_for_input:
-		#return
-		#
-	#if event is InputEventMouseButton and Input.is_action_pressed("attack"):
-		#_input_held = true
-		#pass
-	#
-	#if event is InputEventMouseButton and Input.is_action_just_released("attack"):
-		#_input_held = false
-	#
-	#if _input_held:
-		#start_attack()
-	pass
 
 func _on_hit(hits : Array[RID]):
 	weapon_hit.emit(hits)

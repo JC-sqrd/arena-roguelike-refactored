@@ -1,5 +1,7 @@
 class_name WeaponController extends Node2D
 
+@export var weapon_input : WeaponControllerInputStrategy
+
 var weapon_id : StringName
 var wielder : Entity
 var wielder_stats : Stats
@@ -19,6 +21,11 @@ signal weapon_hit(hits : Array[RID])
 
 func initialize(wielder : Entity):
 	self.wielder = wielder
+	if weapon_input == null:
+		weapon_input = InstantWeaponInput.new()
+		weapon_input.initialize(self)
+	else:
+		weapon_input.initialize(self)
 	#controller_context = generate_controller_context()
 	_on_initialized()
 	pass

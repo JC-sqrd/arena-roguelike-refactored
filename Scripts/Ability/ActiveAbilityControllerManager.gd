@@ -64,14 +64,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("active_ability_1"):
 		ability_1_input_buffer.buffer_input()
-		#var controller : ActiveAbilityController = controllers.get(ability_one)
-		#controller.start_ability()
 		pass
 	
 	if Input.is_action_just_pressed("active_ability_2"):
 		ability_2_input_buffer.buffer_input()
-		#var controller : ActiveAbilityController = controllers.get(ability_two)
-		#controller.start_ability()
-		pass
 	
 	pass
