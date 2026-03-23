@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://doeawvjvfy2rr"]
 
 [ext_resource type="Script" uid="uid://bnrjqoh0a4ih5" path="res://Scripts/UI/WeaponUpgradeIcon.gd" id="1_rj38m"]
+[ext_resource type="Texture2D" uid="uid://b4315inop7t8y" path="res://icon.svg" id="2_ji5bg"]
 
 [node name="WeaponUpgradeIcon" type="TextureRect" unique_id=1362092306]
 script = ExtResource("1_rj38m")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2038257856]
+layout_mode = 0
+offset_left = -98.978546
+offset_top = -93.62892
+offset_right = 29.021454
+offset_bottom = 67.312546
+rotation = 0.03483498
+pivot_offset = Vector2(64, 272)
+texture = ExtResource("2_ji5bg")
+region_rect = Rect2(0, 0, 128, 128)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
