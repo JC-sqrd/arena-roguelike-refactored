@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="6_j36k2"]
 [ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="7_5jxvv"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="8_lxb88"]
-[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="9_lxb88"]
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="9_om0yy"]
 [ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="10_b7r71"]
 [ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="10_om0yy"]
@@ -40,9 +39,10 @@ script = ExtResource("5_5jxvv")
 metadata/_custom_type_script = "uid://cuuicijbtm5ky"
 
 [sub_resource type="Resource" id="Resource_fx3rg"]
-script = ExtResource("9_lxb88")
-value = 50.0
-metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+script = ExtResource("10_b7r71")
+context_stats_id = &"weapon_stats"
+stat_id = &"weapon_knockback"
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
 
 [sub_resource type="Resource" id="Resource_4v6ep"]
 script = ExtResource("10_om0yy")
@@ -81,6 +81,13 @@ flat_mutator_template = SubResource("Resource_lxb88")
 effect_event_templates = Array[ExtResource("4_aq1cs")]([SubResource("Resource_b7r71"), SubResource("Resource_4v6ep")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
+[sub_resource type="Resource" id="Resource_q1qjq"]
+script = ExtResource("2_m5255")
+name = "Weapon Knockback"
+stat_id = &"weapon_knockback"
+value = 50.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
 [sub_resource type="Resource" id="Resource_03p31"]
 script = ExtResource("4_pyv20")
 radius = 6
@@ -101,6 +108,7 @@ weapon_scene = ExtResource("5_ysrop")
 projectile_template = SubResource("Resource_20e3m")
 damage_stat = SubResource("Resource_pyv20")
 attack_speed_stat = SubResource("Resource_m5255")
+knockback_stat = SubResource("Resource_q1qjq")
 action_time_ratio = 0.2
 effect_templates = Array[ExtResource("2_jpwde")]([SubResource("Resource_q8oit")])
 metadata/_custom_type_script = "uid://cvps4oja0ggr3"

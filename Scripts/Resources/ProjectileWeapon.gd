@@ -6,6 +6,8 @@ class_name ProjectileWeapon extends Weapon
 @export var damage_stat : StatTemplate = StatTemplate.new()
 @export_category("Attack Speed Stat")
 @export var attack_speed_stat : StatTemplate = StatTemplate.new()
+@export_category("Knockback")
+@export var knockback_stat : StatTemplate = StatTemplate.new()
 @export_category("Weapon Animation")
 @export var action_time_ratio : float = 0 
 
@@ -62,10 +64,11 @@ func generate_effect_context(weapon_stats : Stats) -> Dictionary[StringName, Var
 	context["weapon_stats"] = weapon_stats
 	return context
 
-func generate_weapon_stats() -> Stats:	
+func generate_weapon_stats() -> Stats:
 	var stats_template : StatsTemplate = StatsTemplate.new()
 	stats_template.stat_templates.append(damage_stat)
 	stats_template.stat_templates.append(attack_speed_stat)
+	stats_template.stat_templates.append(knockback_stat)
 	
 	var stats : Stats = Stats.new()
 	stats.stats_template = stats_template
