@@ -35,12 +35,11 @@ func _on_initialized():
 func _on_start():
 	if !on_cooldown:
 		execute_attack()
-		attack_start.emit()
 		on_cooldown = true
 	pass
 
 
-func _on_execute():
+func execute_attack():
 	if !attack_execute.active:
 		var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 	
@@ -56,7 +55,6 @@ func _on_execute():
 		
 		attack_execute.execute(attack_context)
 		end_attack()
-	pass
 
 func generate_effects() -> Array[Effect]:
 	return effects.duplicate(true)

@@ -14,9 +14,11 @@ var on_cooldown : bool = false
 var _cooldown : float = 0
 var _curr_cooldown : float = 0
 
-signal attack_start()
+signal attack_to_start()
+signal attack_started()
 signal attack_to_execute()
 signal attack_executed()
+signal attack_to_end()
 signal attack_end()
 
 signal weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant])
@@ -39,23 +41,22 @@ func _on_initialized():
 	pass
 
 func start_attack():
-	attack_start.emit()
+	attack_to_start.emit()
 	_on_start()
+	attack_started.emit()
 	pass
 
 func _on_start():
 	pass
 
 func execute_attack():
-	attack_to_execute.emit()
-	_on_execute()
-	attack_executed.emit()
 	pass
 
 func _on_execute():
 	pass
 
 func end_attack():
+	attack_to_end.emit()
 	_on_end()
 	attack_end.emit()
 	pass
@@ -80,5 +81,6 @@ func generate_controller_context() -> Dictionary[StringName, Variant]:
 	context["source"] = wielder
 	context["wielder"] = wielder
 	context["wielder_stats"] = wielder.stats
+	context["weapon_id"] = weapon_id
 	context["controller"] = self
 	return context

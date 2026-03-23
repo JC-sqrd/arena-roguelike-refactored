@@ -28,7 +28,8 @@ func _on_initialized():
 	pass
 
 
-func start_ability():
+func _on_start():
+	ability_to_execute.emit()
 	if dashing:
 		return
 	print("DASH PUNCH!!!")
@@ -58,6 +59,8 @@ func _physics_process(delta: float) -> void:
 	timer += delta
 	
 	if timer >= _dash_time:
+		ability_executed.emit()
+		end()
 		stop_dash()
 		var hitbox : DelayHitbox = GROUND_SLAM_HITBOX.instantiate() as DelayHitbox
 		controller_context = generate_controller_context()

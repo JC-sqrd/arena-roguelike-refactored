@@ -6,6 +6,13 @@ var caster : Entity
 var effects : Array[Effect]
 signal ability_finished(abiltiy : ActiveAbilityController)
 
+signal ability_to_start()
+signal ability_started()
+signal ability_to_execute()
+signal ability_executed()
+signal ability_to_end()
+signal ability_ended()
+
 func initialize(caster : Entity):
 	self.caster = caster
 	active = true
@@ -17,15 +24,28 @@ func _on_initialized():
 	pass
 
 func start_ability():
-	execute()
+	ability_to_start.emit()
+	_on_start()
+	ability_started.emit()
+	pass
+
+func _on_start():
 	pass
 
 func execute():
-	end()
+	pass
+
+func _on_execute():
+	
 	pass
 
 func end():
-	ability_finished.emit(self)
+	ability_to_end.emit()
+	_on_end()
+	ability_ended.emit()
+	pass
+
+func _on_end():
 	pass
 
 func generate_effects_from_templates(templates : Array[EffectTemplate], context : Dictionary[StringName, Variant]) -> Array[Effect]:
@@ -40,5 +60,6 @@ func generate_controller_context() -> Dictionary[StringName, Variant]:
 	context["source"] = caster
 	context["caster"] = caster
 	context["caster_stats"] = caster.stats
+	context["ability_id"] = ability_id
 	context["controller"] = self
 	return context

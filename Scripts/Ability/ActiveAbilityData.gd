@@ -13,6 +13,7 @@ class_name ActiveAbilityData extends AbilityData
 
 func build_abiltiy_controller() -> AbilityController:
 	var ability_controller : ActiveAbilityController = ability_scene.instantiate() as ActiveAbilityController
+	ability_controller.ability_id = ability_id
 	#ability.ability_name = ability_name
 	#ability.ability_id = ability_id
 	#ability.ability_icon = ability_icon

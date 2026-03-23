@@ -29,6 +29,7 @@ func start_ability():
 	pass
 
 func execute():
+	ability_to_execute.emit()
 	ArenaServer.active_arena.add_child(hitbox)
 	hitbox.look_at(hitbox.get_global_mouse_position())
 	
@@ -51,6 +52,7 @@ func execute():
 		#SpawnProjectile.spawn_projectile(projectile, caster.action_point.global_position)
 		
 		await get_tree().create_timer(0.05).timeout
+	ability_executed.emit()
 	end()
 	pass
 

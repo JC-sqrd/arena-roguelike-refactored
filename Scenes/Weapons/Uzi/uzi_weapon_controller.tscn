@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://olgyxda111up" path="res://Scripts/Equipment/Weapon/ProjectileWeapon/Controllers/uzi_weapon_controller.gd" id="1_t076g"]
 [ext_resource type="Texture2D" uid="uid://b23too2bmxc0h" path="res://Sprites/Weapons/Uzi/Uzi.png" id="2_4j7am"]
+[ext_resource type="Script" uid="uid://k7uy7l3rc455" path="res://Scripts/WeponControllerInputStrategy/InstantWeaponInput.gd" id="2_s3t5p"]
 [ext_resource type="Script" uid="uid://d235jaba4t8d8" path="res://Scripts/WeaponUpgrade/UpgradeControllers/basebal-1-1-upgrade.gd" id="4_fpfo7"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="5_jklx7"]
 [ext_resource type="Script" uid="uid://4pdjveo6qn8t" path="res://Scripts/AnimationPlayer/ProjectileAnimationPlayer.gd" id="6_jklx7"]
@@ -13,9 +14,13 @@
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="10_f23do"]
 [ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="11_4qos4"]
 
+[sub_resource type="Resource" id="Resource_o50pe"]
+script = ExtResource("2_s3t5p")
+metadata/_custom_type_script = "uid://k7uy7l3rc455"
+
 [sub_resource type="Resource" id="Resource_wkfe5"]
 script = ExtResource("10_f23do")
-value = -0.8
+value = 2.0
 metadata/_custom_type_script = "uid://whdynsblqt1m"
 
 [sub_resource type="Resource" id="Resource_jxdul"]
@@ -41,6 +46,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 script = ExtResource("1_t076g")
 projectile_animation_player = NodePath("ProjectileAnimationPlayer")
 action_point = NodePath("Marker2D")
+weapon_input = SubResource("Resource_o50pe")
 upgrade_controllers = [NodePath("WeaponUpgradeController")]
 metadata/_custom_type_script = "uid://caa13wedfq6w6"
 

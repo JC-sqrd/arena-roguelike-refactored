@@ -9,7 +9,8 @@ func _on_initialized():
 	
 	pass
 
-func start_ability():
+func _on_start():
+	ability_to_execute.emit()
 	var hitbox : DelayHitbox = GROUND_SLAM_HITBOX.instantiate() as DelayHitbox
 	hitbox.hits_queried.connect(_on_hit_queried)
 	controller_context = generate_controller_context()
@@ -19,8 +20,9 @@ func start_ability():
 	ArenaServer.active_arena.add_child(hitbox)
 	hitbox.initialize()
 	hitbox.query_hits(false)
+	ability_executed.emit()
+	end()
 	pass
-
 
 func _on_hit_queried(hits : Array[RID]):
 	send_effects_to_hits(hits)

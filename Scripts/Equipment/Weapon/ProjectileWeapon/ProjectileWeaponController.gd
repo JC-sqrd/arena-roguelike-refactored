@@ -29,7 +29,7 @@ func _on_start():
 		on_cooldown = true
 	pass
 
-func _on_execute():
+func execute_attack():
 	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 		
 	attack_context.wielder_stats = wielder_stats
@@ -49,10 +49,6 @@ func _on_execute():
 	SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
 	end_attack()
 
-
-func _on_attack_finished_executing():
-	end_attack()
-	pass
 
 func _process(delta: float) -> void:
 	if listen_for_input:
