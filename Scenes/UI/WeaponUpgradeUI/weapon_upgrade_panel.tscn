@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cm2wepytkbf72"]
+
+[ext_resource type="Script" uid="uid://baipg8ldxtsst" path="res://Scripts/UI/WeaponUpgradeUI.gd" id="1_35efv"]
+
+[node name="WeaponUpgradePanel" type="PanelContainer" unique_id=1182034905]
+custom_minimum_size = Vector2(32, 64)
+script = ExtResource("1_35efv")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://doeawvjvfy2rr"]
+
+[ext_resource type="Script" uid="uid://bnrjqoh0a4ih5" path="res://Scripts/UI/WeaponUpgradeIcon.gd" id="1_rj38m"]
+
+[node name="WeaponUpgradeIcon" type="TextureRect" unique_id=1362092306]
+script = ExtResource("1_rj38m")
