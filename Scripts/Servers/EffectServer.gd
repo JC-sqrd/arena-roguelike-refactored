@@ -23,6 +23,7 @@ func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,
 		effect.effect_context = context
 		effect.effect_context.target_rid = rid
 		effect_listener.receive_effect(effect)
+		EventServer.effect_hit.emit(rid, effect, effect.effect_context)
 		effect.invoke_effect_events()
 		#for event_template in effect.effect_events:
 			#event_template.build_effect_event(effect).invoke_event()

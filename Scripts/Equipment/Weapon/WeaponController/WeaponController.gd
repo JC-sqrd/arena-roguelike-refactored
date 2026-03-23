@@ -1,5 +1,6 @@
 class_name WeaponController extends Node2D
 
+@export var action_point : Node2D
 @export var weapon_input : WeaponControllerInputStrategy
 @export var weapon_upgrades : Array[WeaponUpgrade]
 

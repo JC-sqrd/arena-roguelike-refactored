@@ -10,6 +10,8 @@ func initialize(rid : RID):
 
 func _on_effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName, Variant]):
 	if rid == entity_rid:
+		if emitting:
+			restart()
 		emitting = true
 		var source_pos : Vector2 = context.source.global_position
 		pass

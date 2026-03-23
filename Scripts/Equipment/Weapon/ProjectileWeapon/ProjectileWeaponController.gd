@@ -3,7 +3,7 @@ class_name ProjectileWeaponController extends WeaponController
 
 @export var projectile_animation_player : ProjectileAnimationPlayer
 @export var projectile_attack_execute : ProjectileAttackExecute
-@export var action_point : Node2D
+
 
 var projectile_template : ProjectileTemplate
 

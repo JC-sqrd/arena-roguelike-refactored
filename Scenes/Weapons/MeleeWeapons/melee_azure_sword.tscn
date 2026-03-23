@@ -206,11 +206,12 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="MeleeAzureSword" type="Node2D" unique_id=1213163053 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player", "attack_execute")]
+[node name="MeleeAzureSword" type="Node2D" unique_id=1213163053 node_paths=PackedStringArray("melee_hitbox", "melee_animation_player", "attack_execute", "action_point")]
 script = ExtResource("1_w1odl")
 melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
 attack_execute = NodePath("MeleeAttackExecute")
+action_point = NodePath(".")
 
 [node name="MeleeAnimationPlayer" type="AnimationPlayer" parent="." unique_id=35372316]
 libraries/ = SubResource("AnimationLibrary_lmb0f")

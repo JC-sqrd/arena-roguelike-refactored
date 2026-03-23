@@ -84,5 +84,4 @@ func send_effects_to_hits(hits : Array[RID]):
 	for hit in hits:
 		for effect in melee_hitbox.effects:
 			EffectServer.receive_effect(hit, effect, context)
-			EventServer.effect_hit.emit(hit, effect, context)
 	pass

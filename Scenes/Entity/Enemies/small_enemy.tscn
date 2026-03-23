@@ -79,21 +79,31 @@ colors = PackedColorArray(0.11372549, 0.09019608, 0.16862746, 1, 0.9843137, 0.94
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_feok4"]
 gradient = SubResource("Gradient_ixvhf")
 
-[sub_resource type="Curve" id="Curve_ixvhf"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.013380352, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_d01e7"]
+_data = [Vector2(0, 0.5005569), 0.0, 0.0, 0, 0, Vector2(0.9734513, 0.21826291), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_feok4"]
-curve = SubResource("Curve_ixvhf")
+[sub_resource type="Curve" id="Curve_44u58"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49852508, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_fvne2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_w3rv6"]
+curve_x = SubResource("Curve_d01e7")
+curve_y = SubResource("Curve_44u58")
+curve_z = SubResource("Curve_fvne2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j38lc"]
+particle_flag_align_y = true
 particle_flag_disable_z = true
-angle_min = -337.69998
-angle_max = 302.30002
 radial_velocity_min = 199.99997
 radial_velocity_max = 299.99997
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_feok4")
+scale_min = 0.75
+scale_curve = SubResource("CurveXYZTexture_w3rv6")
 color_ramp = SubResource("GradientTexture1D_feok4")
 
 [node name="SmallEnemy" type="Node2D" unique_id=1231003198 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
@@ -146,12 +156,12 @@ texture = ExtResource("11_feok4")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=414331185]
 texture_filter = 1
+position = Vector2(0, -10)
 emitting = false
 texture = ExtResource("12_58hsy")
-lifetime = 0.5
+lifetime = 0.35000000000000003
 one_shot = true
 explosiveness = 1.0
-fixed_fps = 12
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_j38lc")
 script = ExtResource("13_ixvhf")
