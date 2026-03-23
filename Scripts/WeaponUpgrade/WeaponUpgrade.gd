@@ -1,6 +1,6 @@
 class_name WeaponUpgrade extends Resource
 
-
+@export_category("Upgrade Information")
 @export var upgrade_name : String
 @export_multiline("Upgrade Detail") var upgrade_details : String
 @export_multiline("Upgrade Description") var upgrade_description : String

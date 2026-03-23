@@ -3,15 +3,17 @@
 [ext_resource type="Script" uid="uid://olgyxda111up" path="res://Scripts/Equipment/Weapon/ProjectileWeapon/Controllers/uzi_weapon_controller.gd" id="1_t076g"]
 [ext_resource type="Texture2D" uid="uid://b23too2bmxc0h" path="res://Sprites/Weapons/Uzi/Uzi.png" id="2_4j7am"]
 [ext_resource type="Script" uid="uid://k7uy7l3rc455" path="res://Scripts/WeponControllerInputStrategy/InstantWeaponInput.gd" id="2_s3t5p"]
+[ext_resource type="Script" uid="uid://cifhtxe1tjwrp" path="res://Scripts/Equipment/Weapon/AttackExecute/ProjectileAttackExecute.gd" id="5_ro1n7"]
 [ext_resource type="Script" uid="uid://4pdjveo6qn8t" path="res://Scripts/AnimationPlayer/ProjectileAnimationPlayer.gd" id="6_jklx7"]
 
 [sub_resource type="Resource" id="Resource_o50pe"]
 script = ExtResource("2_s3t5p")
 metadata/_custom_type_script = "uid://k7uy7l3rc455"
 
-[node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("projectile_animation_player", "action_point")]
+[node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("projectile_animation_player", "projectile_attack_execute", "action_point")]
 script = ExtResource("1_t076g")
 projectile_animation_player = NodePath("ProjectileAnimationPlayer")
+projectile_attack_execute = NodePath("ProjectileAttackExecute")
 action_point = NodePath("Marker2D")
 weapon_input = SubResource("Resource_o50pe")
 metadata/_custom_type_script = "uid://caa13wedfq6w6"
@@ -27,3 +29,7 @@ position = Vector2(14, -5)
 [node name="ProjectileAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1716762883]
 script = ExtResource("6_jklx7")
 metadata/_custom_type_script = "uid://4pdjveo6qn8t"
+
+[node name="ProjectileAttackExecute" type="Node" parent="." unique_id=979978483]
+script = ExtResource("5_ro1n7")
+metadata/_custom_type_script = "uid://cifhtxe1tjwrp"

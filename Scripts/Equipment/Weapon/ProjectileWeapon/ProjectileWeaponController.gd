@@ -2,6 +2,7 @@ class_name ProjectileWeaponController extends WeaponController
 
 
 @export var projectile_animation_player : ProjectileAnimationPlayer
+@export var projectile_attack_execute : ProjectileAttackExecute
 @export var action_point : Node2D
 
 var projectile_template : ProjectileTemplate
@@ -21,6 +22,7 @@ func _on_initialized():
 	listen_for_input = true
 	
 	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
+	projectile_attack_execute.projectile_hit.connect(_on_projectile_hit)
 	pass
 
 func _on_start():
@@ -39,14 +41,16 @@ func execute_attack():
 	attack_context.weapon_stats = weapon_stats
 	attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
 	attack_context.action_time_ratio = action_time_ratio
+	attack_context.projectile_template = projectile_template
+	attack_context.controller = self
 	
-	
-	var projectile : Projectile = projectile_template.build_projectile()
-	projectile.projectile_hit.connect(_on_projectile_hit)
-	projectile.direction = (get_global_mouse_position() - global_position).normalized()
-	projectile.angle = projectile.direction.angle()
-	projectile.texture_angle = projectile.direction.angle()
-	SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
+	projectile_attack_execute.execute(attack_context)
+	#var projectile : Projectile = projectile_template.build_projectile()
+	#projectile.projectile_hit.connect(_on_projectile_hit)
+	#projectile.direction = (get_global_mouse_position() - global_position).normalized()
+	#projectile.angle = projectile.direction.angle()
+	#projectile.texture_angle = projectile.direction.angle()
+	#SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
 	end_attack()
 
 func _on_process(delta : float):
