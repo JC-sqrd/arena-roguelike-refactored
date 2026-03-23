@@ -4,7 +4,7 @@ const slot_size : int = 16
 
 @onready var texture_layer: Control = %TextureLayer
 @onready var grid_layer: Control = %GridLayer
-@onready var locked_grid: Control = %LockedGrid
+@onready var locked_slots: Control = %LockedSlots
 
 
 const _SLOT = preload("uid://dirhqxxxcbmm1")
@@ -21,8 +21,13 @@ var _original_size : Vector2
 var _original_grid_position : Vector2
 var _original_tex_layer_position : Vector2
 
+var _combined_grid_coords : Array[Vector2i]
+
 signal slot_clicked(slot_pos : Vector2i, grid : AbilityGrid)
 signal locked_slot_clicked(slot_pos : Vector2i, grid : AbilityGrid)
+
+func _ready() -> void:
+	visibility_changed.connect(_on_visibility_changed)
 
 func generate_grid_ui(ability_grid : AbilityGrid):
 	clear_grid_ui()
@@ -66,66 +71,50 @@ func _generate_grid_ui_contents(ability_grid : AbilityGrid):
 	pass
 
 func show_locked_slots():
-	#clear_grid_ui()
 	
 	if _ability_grid == null:
 		printerr("Cannot display locked slots of a null ability grid")
+		return
 	
 	var locked_coords : Array[Vector2i] = _ability_grid.get_locked_coords()
 	var grid_coords : Array[Vector2i] = _ability_grid.grid_coords.keys()
 	
 	grid_coords.append_array(locked_coords)
-	
-	
-	
-	
-	var size_tweener : Tween = create_tween()
-	#size_tweener.tween_property(self, "custom_minimum_size",AbilityGrid.get_grid_size_from_grid_coords(grid_coords) * slot_size, 0.2)
-	
-	#await  get_tree().process_frame
-	
-	#var locked_grid_tweener : Tween = create_tween()
-	var locked_grid_bounding_box : Rect2i = AbilityGrid.get_grid_bounds_from_grid_coords(grid_coords)
-	locked_grid.position = Vector2(-locked_grid_bounding_box.position) * slot_size
-	#locked_grid_tweener.tween_property(locked_grid, "position", Vector2(-locked_grid_bounding_box.position) * slot_size, 0.2)
-	
-	#var grid_layer_tweener : Tween = create_tween()
-	var ability_grid_bounding_box : Rect2i = _ability_grid.get_grid_bounds()
-	var center_pos : Vector2 = Vector2(-(ability_grid_bounding_box.position + locked_grid_bounding_box.position)) * slot_size
-	grid_layer.position = center_pos
-	#grid_layer_tweener.tween_property(grid_layer, "position", center_pos, 0.2)
-	
-	#var tex_layer_tweener : Tween = create_tween()
-	texture_layer.position = grid_layer.position
-	#tex_layer_tweener.tween_property(texture_layer, "position", center_pos, 0.2)
-	
+	_combined_grid_coords = grid_coords
 	size = AbilityGrid.get_grid_size_from_grid_coords(grid_coords) * slot_size
 	custom_minimum_size = size
-	(get_parent() as Control).queue_sort()
-	
 	
 	for coord in locked_coords:
 		var slot : AbilityGridSlotUI = _SLOT.instantiate() as AbilityGridSlotUI
 		slot.grid_coord = coord
 		slots[coord] = slot
 		
-		
 		var slot_pos : Vector2 = coord * slot_size
 		slot.position = slot_pos
-		locked_grid.add_child(slot)
+		locked_slots.add_child(slot)
 		
 		slot.slot_hovered.connect(_on_mouse_hovered_slot)
 		slot.slot_exited.connect(_on_mouse_exited_slot)
 		slot.slot_clicked.connect(_on_mouse_clicked_slot)
 	
-	
-	#_generate_grid_ui_contents(_ability_grid)
+	call_deferred("_apply_locked_slot_positions", _combined_grid_coords)
 	pass
 
-
-func update_ui():
+func _apply_locked_slot_positions(grid_coords: Array[Vector2i]):
+	print("UPDATE LOCKED SLOTS POSITION")
 	
+	var locked_slots_bounding_box : Rect2i = AbilityGrid.get_grid_bounds_from_grid_coords(grid_coords)
+	var origin_offset : Vector2 = Vector2(-locked_slots_bounding_box.position) * slot_size
 	
+	locked_slots.position = origin_offset
+	grid_layer.position = origin_offset
+	texture_layer.position = origin_offset
+	
+func _on_visibility_changed():
+	print("ABILITY GRID UI VISIBILITY CHANGED")
+	if visible and !_combined_grid_coords.is_empty():
+		await get_tree().process_frame
+		call_deferred("_apply_locked_slot_positions", _combined_grid_coords)
 	pass
 
 func get_tile_rect(tile : AbilityTile) -> AbilityTileTextureRect:

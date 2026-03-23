@@ -3,22 +3,9 @@
 [ext_resource type="Script" uid="uid://byhkpl77h30kg" path="res://Scripts/AbilityGrid/UI/AbilityGridUIController.gd" id="1_s7agp"]
 [ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_c1r0r"]
 [ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="2_jtagy"]
-[ext_resource type="PackedScene" uid="uid://lf8p3afeubb1" path="res://Scenes/UI/AbilityGrid/AbilityTileInventoryUI/ability_tile_inventory_panel.tscn" id="3_feec0"]
 [ext_resource type="Script" uid="uid://fxe70e5ucsga" path="res://Scripts/AbilityGrid/UI/AbilityGraphUIFSM/AbilityGridUIFSM.gd" id="4_y4sfo"]
 
-[node name="UiAbilityGrid" type="Control" unique_id=1020187136 node_paths=PackedStringArray("ability_grid_ui", "ability_inventory_ui")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_s7agp")
-ability_grid_ui = NodePath("VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/AbilityGridPanel")
-ability_inventory_ui = NodePath("VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/AbilityTileInventoryPanel")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1017418631]
-layout_mode = 1
+[node name="UiAbilityGrid" type="PanelContainer" unique_id=1912909464 node_paths=PackedStringArray("ability_grid_ui", "ability_inventory_ui")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -30,6 +17,12 @@ offset_right = 70.5
 offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s7agp")
+ability_grid_ui = NodePath("VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/AbilityGridPanel")
+ability_inventory_ui = NodePath("VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/AbilityTileInventoryPanel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1017418631]
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=711269844]
 layout_mode = 2
@@ -53,6 +46,18 @@ text = "Abilities"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="LockedSlots" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/AbilityGridPanel" index="0" unique_id=33497688]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="GridLayer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/AbilityGridPanel" index="1" unique_id=1489131281]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureLayer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/AbilityGridPanel" index="2" unique_id=2058507175]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=2127615643]
 layout_mode = 2
 
@@ -62,15 +67,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Inventory"
 
-[node name="AbilityTileInventoryPanel" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=376456563 instance=ExtResource("3_feec0")]
+[node name="AbilityTileInventoryPanel" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=468543042 instance=ExtResource("2_c1r0r")]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="CursorUI" type="Control" parent="." unique_id=616808118]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 0
-pivot_offset_ratio = Vector2(0.5, 0.5)
+layout_mode = 2
 mouse_filter = 2
 script = ExtResource("2_jtagy")
 
