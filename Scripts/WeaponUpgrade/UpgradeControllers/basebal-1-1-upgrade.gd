@@ -12,6 +12,7 @@ var hit_context : Dictionary[StringName, Variant]
 func _on_initialized():
 	print("UPGRADE INITIALIZED: " + str(weapon_controller))
 	weapon_controller.weapon_hit.connect(_on_weapon_hit)
+	weapon_controller.weapon_stats.get_stat("weapon_damage").add(10, {})
 	pass
 
 func _on_weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant]):

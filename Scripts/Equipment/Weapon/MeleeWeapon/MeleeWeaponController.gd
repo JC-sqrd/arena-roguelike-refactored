@@ -46,7 +46,6 @@ func _on_execute():
 	
 		attack_context.wielder_stats = wielder_stats
 		attack_context.attack_effects = generate_effects()
-		attack_context.effects_context = effect_context
 		attack_context.queries = queries
 		attack_context.weapon_stats = weapon_stats
 		attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()

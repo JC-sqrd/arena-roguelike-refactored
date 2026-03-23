@@ -78,7 +78,7 @@ func generate_effects() -> Array[Effect]:
 func generate_controller_context() -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant] = {}
 	context["source"] = wielder
-	context["caster"] = wielder
-	context["caster_stats"] = wielder.stats
+	context["wielder"] = wielder
+	context["wielder_stats"] = wielder.stats
 	context["controller"] = self
 	return context
