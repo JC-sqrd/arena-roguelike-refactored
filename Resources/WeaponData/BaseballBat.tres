@@ -100,4 +100,6 @@ attack_speed_stat = SubResource("Resource_gbpjn")
 action_time_ratio = 0.45
 effect_templates = Array[ExtResource("1_blpvi")]([SubResource("Resource_i7i4b")])
 abilities = Array[ExtResource("1_77wov")]([ExtResource("2_urw0e")])
+item_name = "Baseball Bat"
+item_id = &"weapon_baseball_bat"
 metadata/_custom_type_script = "uid://cje4onngvnlma"

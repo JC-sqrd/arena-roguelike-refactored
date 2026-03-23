@@ -11,6 +11,6 @@ func initialize(entity : Entity):
 
 func _on_entity_died(death_event : EntityDeathEvent):
 	if death_event.entity == entity:
-		GoldServer.add_gold(amount)
+		CurrencyServer.add_gold(amount)
 		pass
 	pass
