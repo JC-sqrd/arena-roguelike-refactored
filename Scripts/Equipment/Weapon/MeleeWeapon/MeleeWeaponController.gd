@@ -63,7 +63,7 @@ func _on_attack_finished_executing():
 	end_attack()
 	pass
 
-func _process(delta: float) -> void:
+func _on_process(delta):
 	if listen_for_input:
 		look_at(get_global_mouse_position())
 	
@@ -73,7 +73,6 @@ func _process(delta: float) -> void:
 	if _curr_cooldown >= _cooldown:
 		on_cooldown = false
 		_curr_cooldown = 0
-
 
 func _on_hit(hits : Array[RID]):
 	weapon_hit.emit(hits, effect_context)

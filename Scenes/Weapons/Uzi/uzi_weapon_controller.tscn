@@ -3,51 +3,17 @@
 [ext_resource type="Script" uid="uid://olgyxda111up" path="res://Scripts/Equipment/Weapon/ProjectileWeapon/Controllers/uzi_weapon_controller.gd" id="1_t076g"]
 [ext_resource type="Texture2D" uid="uid://b23too2bmxc0h" path="res://Sprites/Weapons/Uzi/Uzi.png" id="2_4j7am"]
 [ext_resource type="Script" uid="uid://k7uy7l3rc455" path="res://Scripts/WeponControllerInputStrategy/InstantWeaponInput.gd" id="2_s3t5p"]
-[ext_resource type="Script" uid="uid://d235jaba4t8d8" path="res://Scripts/WeaponUpgrade/UpgradeControllers/basebal-1-1-upgrade.gd" id="4_fpfo7"]
-[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="5_jklx7"]
 [ext_resource type="Script" uid="uid://4pdjveo6qn8t" path="res://Scripts/AnimationPlayer/ProjectileAnimationPlayer.gd" id="6_jklx7"]
-[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="6_qqxkq"]
-[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="6_wkfe5"]
-[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="7_s3t5p"]
-[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="8_o50pe"]
-[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="9_jybbv"]
-[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="10_f23do"]
-[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="11_4qos4"]
 
 [sub_resource type="Resource" id="Resource_o50pe"]
 script = ExtResource("2_s3t5p")
 metadata/_custom_type_script = "uid://k7uy7l3rc455"
 
-[sub_resource type="Resource" id="Resource_wkfe5"]
-script = ExtResource("10_f23do")
-value = 2.0
-metadata/_custom_type_script = "uid://whdynsblqt1m"
-
-[sub_resource type="Resource" id="Resource_jxdul"]
-script = ExtResource("11_4qos4")
-context_stats_id = &"weapon_stats"
-stat_id = &"weapon_damage"
-multipliers = Array[ExtResource("10_f23do")]([SubResource("Resource_wkfe5")])
-metadata/_custom_type_script = "uid://dydu23koa8oxk"
-
-[sub_resource type="Resource" id="Resource_8k5aw"]
-script = ExtResource("7_s3t5p")
-mode = -1
-value_provider_template = SubResource("Resource_jxdul")
-metadata/_custom_type_script = "uid://c58d5uuvecjfb"
-
-[sub_resource type="Resource" id="Resource_uub4g"]
-script = ExtResource("6_qqxkq")
-effect_id = &"damage_effect"
-flat_mutator_template = SubResource("Resource_8k5aw")
-metadata/_custom_type_script = "uid://ett7q7dk3f8l"
-
-[node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("projectile_animation_player", "action_point", "upgrade_controllers")]
+[node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("projectile_animation_player", "action_point")]
 script = ExtResource("1_t076g")
 projectile_animation_player = NodePath("ProjectileAnimationPlayer")
 action_point = NodePath("Marker2D")
 weapon_input = SubResource("Resource_o50pe")
-upgrade_controllers = [NodePath("WeaponUpgradeController")]
 metadata/_custom_type_script = "uid://caa13wedfq6w6"
 
 [node name="Uzi" type="Sprite2D" parent="." unique_id=2121141959]
@@ -61,9 +27,3 @@ position = Vector2(14, -5)
 [node name="ProjectileAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1716762883]
 script = ExtResource("6_jklx7")
 metadata/_custom_type_script = "uid://4pdjveo6qn8t"
-
-[node name="WeaponUpgradeController" type="Node" parent="." unique_id=914585165]
-script = ExtResource("4_fpfo7")
-effect_template = SubResource("Resource_uub4g")
-coll_mask = 4
-metadata/_custom_type_script = "uid://d1e1s36dwj2f1"

@@ -49,8 +49,7 @@ func execute_attack():
 	SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
 	end_attack()
 
-
-func _process(delta: float) -> void:
+func _on_process(delta : float):
 	if listen_for_input:
 		look_at(get_global_mouse_position())
 	
@@ -60,6 +59,7 @@ func _process(delta: float) -> void:
 	if _curr_cooldown >= _cooldown:
 		on_cooldown = false
 		_curr_cooldown = 0
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !listen_for_input:

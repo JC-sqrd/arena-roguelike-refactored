@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxhb556s4svew" path="res://Scripts/UI/arena_ui.gd" id="1_yd7mu"]
 [ext_resource type="PackedScene" uid="uid://bat7m2g4maub7" path="res://Scenes/UI/AbilityGrid/ui_ability_grid.tscn" id="2_jtl6x"]
+[ext_resource type="PackedScene" uid="uid://cm2wepytkbf72" path="res://Scenes/UI/WeaponUpgradeUI/weapon_upgrade_panel.tscn" id="3_rtivg"]
 
 [node name="ArenaUi" type="Control" unique_id=1446304066]
 layout_mode = 3
@@ -13,5 +14,33 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yd7mu")
 
-[node name="UiAbilityGrid" parent="." unique_id=1020187136 instance=ExtResource("2_jtl6x")]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1069597814]
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 4.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+current_tab = 0
+tab_focus_mode = 1
+tab_0/title = "Artifact"
+tab_1/title = "Weapon"
+
+[node name="UiAbilityGrid" parent="TabContainer" unique_id=1020187136 instance=ExtResource("2_jtl6x")]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = "Artifact"
+
+[node name="WeaponUpgradePanel" parent="TabContainer" unique_id=1182034905 instance=ExtResource("3_rtivg")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = "Weapon"

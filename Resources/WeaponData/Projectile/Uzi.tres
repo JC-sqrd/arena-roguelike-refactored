@@ -24,7 +24,7 @@
 script = ExtResource("2_m5255")
 name = "Attack Speed"
 stat_id = &"attack_speed"
-value = 5.0
+value = 10.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_pyv20"]

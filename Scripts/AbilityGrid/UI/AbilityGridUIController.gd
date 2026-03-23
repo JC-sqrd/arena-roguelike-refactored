@@ -5,8 +5,6 @@ class_name AbilityGridUIController extends BaseAbilityGridUIController
 
 func _ready() -> void:
 	visibility_changed.connect(_on_visibility_changed)
-	
-	visible = false
 	player = PlayerServer.main_player
 	
 	player.initialized_grids.connect(
@@ -27,13 +25,11 @@ func _on_visibility_changed():
 		disconnect_grid_signals(ability_inventory_ui)
 	pass
 
-func open_ui():
-	visible = !visible
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.keycode == KEY_TAB and event.pressed:
-		open_ui()
-		pass
+	#if event is InputEventKey and event.keycode == KEY_TAB and event.pressed:
+		#open_ui()
+		#pass
 	
 	if event is InputEventKey and event.keycode == KEY_I and event.pressed:
 		ability_grid_ui.show_locked_slots()

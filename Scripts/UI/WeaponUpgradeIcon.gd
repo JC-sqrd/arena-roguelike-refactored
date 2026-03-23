@@ -1,7 +1,7 @@
 class_name WeaponUpgradeIcon extends TextureRect
 
 
-var upgrade_leaf : WeaponUpgradeLeaf
+var upgrade_leaf : WeaponUpgrade
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
