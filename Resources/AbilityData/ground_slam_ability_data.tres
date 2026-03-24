@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ActiveAbilityData" format=3 uid="uid://soq4ia2k2yq4"]
 
-[ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_j265y"]
+[ext_resource type="Texture2D" uid="uid://cn1l74fs0o8dx" path="res://AbilityIcons/GroundSlamIcon.png" id="1_j265y"]
 [ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_umsrf"]
 [ext_resource type="PackedScene" uid="uid://dubg2cu114sdb" path="res://Scenes/AbilityScenes/ActiveAbilities/ground_slam_ability_controller.tscn" id="2_4f8ii"]
 
