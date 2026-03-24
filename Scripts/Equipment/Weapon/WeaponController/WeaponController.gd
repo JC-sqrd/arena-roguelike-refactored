@@ -2,7 +2,6 @@ class_name WeaponController extends Node2D
 
 @export var action_point : Node2D
 @export var weapon_input : WeaponControllerInputStrategy
-@export var weapon_upgrades : Array[WeaponUpgrade]
 
 var weapon_id : StringName
 var wielder : Entity
@@ -26,9 +25,6 @@ signal weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant])
 
 func initialize(wielder : Entity):
 	self.wielder = wielder
-	for upgrade in weapon_upgrades:
-		upgrade.apply_upgrade(self)
-		pass
 	if weapon_input == null:
 		weapon_input = InstantWeaponInput.new()
 		weapon_input.initialize(self)
@@ -67,10 +63,6 @@ func _on_end():
 
 func _process(delta: float) -> void:
 	_on_process(delta)
-	
-	if !weapon_upgrades.size() <= 0:
-		for upgrade in weapon_upgrades:
-			upgrade.update(delta)
 	pass
 
 func _on_process(delta):

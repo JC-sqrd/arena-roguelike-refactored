@@ -1,3 +1,22 @@
-class_name WeaponUpgradeBranch extends Resource
+class_name WeaponUpgradeNode extends Node
 
-@export var upgrade_leaves : Array[WeaponUpgrade]
+var upgrade_tree : WeaponUpgradeTree
+@export var applied : bool = false
+
+
+@export var next_nodes : Array[WeaponUpgradeNode]
+
+func initialize(tree : WeaponUpgradeTree):
+	upgrade_tree = tree
+	for child in get_children():
+		if child is WeaponUpgradeNode:
+			child.initialize(tree)
+			pass
+		pass
+	if applied:
+		apply_upgrade()
+	pass
+
+func apply_upgrade():
+	
+	pass

@@ -4,7 +4,6 @@ class_name Weapon extends Item
 @export var effect_templates : Array[EffectTemplate]
 @export var abilities : Array[ActiveAbilityData]
 @export_category("Weapon Upgrade Tree")
-@export var upgrade_tree : WeaponUpgradeTree
 
 var wielder : Entity
 var wielder_stats : Stats

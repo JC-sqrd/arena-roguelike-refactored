@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://duiummoyew8wj"]
 
 [ext_resource type="Script" uid="uid://btlckxl62jvbk" path="res://Scripts/Equipment/Weapon/MeleeWeapon/Controllers/azure_sword_weapon_controller.gd" id="1_w1odl"]
+[ext_resource type="Script" uid="uid://k7uy7l3rc455" path="res://Scripts/WeponControllerInputStrategy/InstantWeaponInput.gd" id="2_8mjo1"]
 [ext_resource type="Script" uid="uid://ble50ri3t2w38" path="res://Scripts/AnimationPlayer/MeleeAnimationPlayer.gd" id="2_gycd8"]
 [ext_resource type="Texture2D" uid="uid://j4im60xe17ni" path="res://Placeholders/Blue Sword Smear.png" id="3_4inym"]
 [ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="3_gycd8"]
 [ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_4inym"]
 [ext_resource type="Texture2D" uid="uid://x554rdhcnbme" path="res://Sprites/Weapons/Azure Sword/AzureSwordSmear.png" id="7_8mjo1"]
 [ext_resource type="Texture2D" uid="uid://bkdx4rj3u453l" path="res://Sprites/Weapons/Azure Sword/AzureSword.png" id="7_w1odl"]
+
+[sub_resource type="Resource" id="Resource_xe5c0"]
+script = ExtResource("2_8mjo1")
+metadata/_custom_type_script = "uid://k7uy7l3rc455"
 
 [sub_resource type="Animation" id="Animation_y7ryr"]
 length = 0.001
@@ -212,6 +217,7 @@ melee_hitbox = NodePath("Area2D")
 melee_animation_player = NodePath("MeleeAnimationPlayer")
 attack_execute = NodePath("MeleeAttackExecute")
 action_point = NodePath(".")
+weapon_input = SubResource("Resource_xe5c0")
 
 [node name="MeleeAnimationPlayer" type="AnimationPlayer" parent="." unique_id=35372316]
 libraries/ = SubResource("AnimationLibrary_lmb0f")

@@ -1,4 +1,4 @@
-class_name WeaponUpgrade extends Resource
+class_name WeaponUpgrade extends Node
 
 @export_category("Upgrade Information")
 @export var upgrade_name : String
