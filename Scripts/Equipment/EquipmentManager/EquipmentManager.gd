@@ -64,10 +64,10 @@ func _process(delta: float) -> void:
 	if weapon_2_controller != null:
 		weapon_2_controller.weapon_input.update(delta)
 	
-	process_input()
+	
 
 func _unhandled_input(event: InputEvent) -> void:
-	#process_input()
+	process_input()
 	#if _input_held:
 	pass
 

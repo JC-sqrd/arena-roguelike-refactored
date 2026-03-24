@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="7_d4lk6"]
 [ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="8_4a328"]
 [ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="8_dlxot"]
+[ext_resource type="Script" uid="uid://cl0p5siqyev36" path="res://Scripts/Utility/CooldownTimer.gd" id="13_d4lk6"]
 
 [sub_resource type="Resource" id="Resource_bj60v"]
 script = ExtResource("3_yofhl")
@@ -52,7 +53,14 @@ flat_mutator_template = SubResource("Resource_ggkh8")
 effect_event_templates = Array[ExtResource("2_sh1oj")]([SubResource("Resource_bj60v"), SubResource("Resource_1ymrh")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
+[sub_resource type="Resource" id="Resource_4a328"]
+script = ExtResource("13_d4lk6")
+cooldown = 5.0
+metadata/_custom_type_script = "uid://cl0p5siqyev36"
+
 [node name="DashPunchAbiltityController" type="Node" unique_id=842585258]
 script = ExtResource("1_wcr3w")
 punch_effect_temp = SubResource("Resource_kcf3j")
+cooldown_timer = SubResource("Resource_4a328")
+start_cooldown_on = 2
 metadata/_custom_type_script = "uid://b71v68teuxsft"

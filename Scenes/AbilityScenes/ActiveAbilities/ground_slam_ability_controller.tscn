@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="8_nfie2"]
 [ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="9_lrehm"]
 [ext_resource type="Script" uid="uid://dou0wul2vu5jy" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/ContextStatBonusValue.gd" id="12_opdr6"]
+[ext_resource type="Script" uid="uid://cl0p5siqyev36" path="res://Scripts/Utility/CooldownTimer.gd" id="14_eyoms"]
 
 [sub_resource type="Resource" id="Resource_sm3mb"]
 script = ExtResource("4_8f6iw")
@@ -59,7 +60,13 @@ flat_mutator_template = SubResource("Resource_d7yfr")
 effect_event_templates = Array[ExtResource("3_pjfmm")]([SubResource("Resource_sm3mb"), SubResource("Resource_uxqie")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
+[sub_resource type="Resource" id="Resource_nfie2"]
+script = ExtResource("14_eyoms")
+cooldown = 10.0
+metadata/_custom_type_script = "uid://cl0p5siqyev36"
+
 [node name="GroundSlamAbilityController" type="Node" unique_id=430261796]
 script = ExtResource("1_ruyde")
 effect_templates = Array[ExtResource("2_kbq12")]([SubResource("Resource_8f6iw")])
+cooldown_timer = SubResource("Resource_nfie2")
 metadata/_custom_type_script = "uid://b71v68teuxsft"

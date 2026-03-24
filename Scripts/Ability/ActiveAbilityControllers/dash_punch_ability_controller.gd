@@ -32,7 +32,6 @@ func _on_start():
 	ability_to_execute.emit()
 	if dashing:
 		return
-	print("DASH PUNCH!!!")
 	caster.can_move = false
 	caster.can_cast = false
 	dashing = true
@@ -54,12 +53,11 @@ func _physics_process(delta: float) -> void:
 	dash_force = _dash_direction * dash_speed 
 	caster.velocity = dash_force
 	
-	print("DASHNG!: " + str(timer))
-	
 	timer += delta
 	
 	if timer >= _dash_time:
 		ability_executed.emit()
+		print("DASH PUNCH END")
 		end()
 		stop_dash()
 		var hitbox : DelayHitbox = GROUND_SLAM_HITBOX.instantiate() as DelayHitbox
@@ -71,7 +69,6 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func stop_dash():
-	print("DASH STOP!")
 	timer = 0
 	_curr_speed = 0
 	_distance_traveled_squared = 0
