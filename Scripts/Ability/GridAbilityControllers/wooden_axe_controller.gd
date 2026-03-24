@@ -54,20 +54,16 @@ func _on_weapon_hit(hits : Array[RID], effects : Array[Effect],context : Diction
 			break
 		pass
 	
-	print("ATTACK DAMAGE EFFECT VALUE: " + str(effect_value))
 	var value_provider : FlatValueProvider = FlatValueProvider.new(effect_value * 0.8)
 	var mutator : FlatStatMutator = FlatStatMutator.new("current_health", value_provider, [])
 	var instant_effect : InstantEffect = InstantEffect.new(mutator, "damage_effect")
 	
-	
-	print("WOODEN AXE ATTACK DAMAGE EFFECT VALUE: " + str(instant_effect.mutator.value_provider.get_value(context)))
 	
 	instant_effect.effect_context = context
 	instant_effect.effect_events.append(DamageEffectEventTemplate.new())
 	mutator.mode = mutator.Mode.SUBTRACT
 	
 	#hit_effects = 
-	print("WOODEN AXE EFFECTS: " + str(effects))
 	_hit_counter += 1
 	
 	
@@ -86,6 +82,5 @@ func _on_weapon_hit(hits : Array[RID], effects : Array[Effect],context : Diction
 func _on_hit_queried(hits : Array[RID]):
 	for hit in hits:
 		for effect in effects:
-			print("WOODEN AXE EFFECT SENT TO SERVER!")
 			EffectServer.receive_effect(hit, effect, controller_context)
 	pass

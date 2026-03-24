@@ -1,12 +1,28 @@
-extends Control
+class_name ArenaUI extends Control
+
+@onready var player_ui: Control = %PlayerUI
+@onready var hidden_layer: Control = $HiddenLayer
+@onready var player_character_ui: PlayerCharacterUI = $PlayerUI/MarginContainer/PlayerCharacterUi
+@onready var ui_ability_grid: AbilityGridUIController = %UiAbilityGrid
+@onready var weapon_upgrade_panel: WeaponUpgradeUI = %WeaponUpgradePanel
+
+func initialize():
+	player_character_ui.initialize(PlayerServer.main_player)
+	ui_ability_grid.initialize()
+	weapon_upgrade_panel.initailize()
+	pass
 
 func _ready() -> void:
-	visible = false
+	hidden_layer.visible =false
+
+func toggle_hidden_layer_visibility():
+	hidden_layer.visible = !hidden_layer.visible
+	pass
 
 func open_ui():
 	visible = !visible
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_TAB and event.pressed:
-		open_ui()
+		toggle_hidden_layer_visibility()
 		pass

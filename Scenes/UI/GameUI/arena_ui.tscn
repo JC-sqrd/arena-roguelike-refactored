@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxhb556s4svew" path="res://Scripts/UI/arena_ui.gd" id="1_yd7mu"]
 [ext_resource type="PackedScene" uid="uid://bat7m2g4maub7" path="res://Scenes/UI/AbilityGrid/ui_ability_grid.tscn" id="2_jtl6x"]
+[ext_resource type="PackedScene" uid="uid://6neyt6gw61d4" path="res://Scenes/UI/CharacterUI/PlayerCharacterUI.tscn" id="2_puehs"]
 [ext_resource type="PackedScene" uid="uid://cm2wepytkbf72" path="res://Scenes/UI/WeaponUpgradeUI/weapon_upgrade_panel.tscn" id="3_rtivg"]
 
 [node name="ArenaUi" type="Control" unique_id=1446304066]
@@ -14,7 +15,44 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yd7mu")
 
-[node name="TabContainer" type="TabContainer" parent="." unique_id=1069597814]
+[node name="PlayerUI" type="Control" parent="." unique_id=853957942]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI" unique_id=945860184]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_right = 56.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PlayerCharacterUi" parent="PlayerUI/MarginContainer" unique_id=1415726095 instance=ExtResource("2_puehs")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HiddenLayer" type="Control" parent="." unique_id=1428969262]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="HiddenLayer" unique_id=1069597814]
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 1
 anchors_preset = 8
@@ -22,10 +60,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -20.0
-offset_right = 4.0
-offset_bottom = 20.0
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 8
@@ -34,12 +72,14 @@ tab_focus_mode = 1
 tab_0/title = "Artifact"
 tab_1/title = "Weapon"
 
-[node name="UiAbilityGrid" parent="TabContainer" unique_id=1020187136 instance=ExtResource("2_jtl6x")]
+[node name="UiAbilityGrid" parent="HiddenLayer/TabContainer" unique_id=1020187136 instance=ExtResource("2_jtl6x")]
+unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 metadata/_tab_name = "Artifact"
 
-[node name="WeaponUpgradePanel" parent="TabContainer" unique_id=1182034905 instance=ExtResource("3_rtivg")]
+[node name="WeaponUpgradePanel" parent="HiddenLayer/TabContainer" unique_id=1182034905 instance=ExtResource("3_rtivg")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1

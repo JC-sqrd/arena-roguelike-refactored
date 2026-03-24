@@ -62,7 +62,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [sub_resource type="Resource" id="Resource_nfie2"]
 script = ExtResource("14_eyoms")
-cooldown = 10.0
+cooldown = 6.0
 metadata/_custom_type_script = "uid://cl0p5siqyev36"
 
 [node name="GroundSlamAbilityController" type="Node" unique_id=430261796]

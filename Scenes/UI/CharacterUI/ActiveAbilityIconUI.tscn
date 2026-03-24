@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://fq3pvdt5w8gm"]
+
+[ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_yo3kf"]
+[ext_resource type="Script" uid="uid://kt122ytnpe1o" path="res://Scripts/UI/AbilityIconUI/AbilityIconUI.gd" id="2_2r60w"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yo3kf"]
+
+[node name="ActiveAbilityIconUi" type="TextureRect" unique_id=2070512218]
+custom_minimum_size = Vector2(16, 16)
+texture = ExtResource("1_yo3kf")
+expand_mode = 3
+script = ExtResource("2_2r60w")
+
+[node name="CooldownProgressBar" type="TextureProgressBar" parent="." unique_id=517339818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("CanvasTexture_yo3kf")
+tint_progress = Color(0.25490198, 0.4627451, 0.69411767, 0.5921569)

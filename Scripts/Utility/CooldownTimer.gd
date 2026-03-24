@@ -6,6 +6,7 @@ var active : bool = false
 
 var time_left : float = 0
 
+signal cooldown_start()
 signal timeout()
 
 
@@ -15,6 +16,7 @@ func start(time : float = 0):
 		time_left = cooldown
 	else:
 		time_left = time
+	cooldown_start.emit()
 	CooldownServer.start_cooldown_timer(self)
 	pass
 

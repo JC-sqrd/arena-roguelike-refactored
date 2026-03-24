@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="17_ytdn0"]
 [ext_resource type="Resource" uid="uid://cte3qnacw8jc" path="res://Resources/normal_enemy_stats_template.tres" id="18_2upka"]
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="20_kfoqm"]
+[ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="24_f41wj"]
+[ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="25_ybc5p"]
 
 [sub_resource type="Resource" id="Resource_fmc6w"]
 script = ExtResource("3_p6avx")
@@ -63,7 +65,41 @@ area_coll_layer = 4
 area_coll_mask = 2
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
-[node name="NormalEnemy" type="Node2D" unique_id=1528450500 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer")]
+[sub_resource type="Gradient" id="Gradient_ghwbu"]
+offsets = PackedFloat32Array(0.16287878, 0.39772728, 0.5265151, 0.84090906)
+colors = PackedColorArray(0.11372549, 0.09019608, 0.16862746, 1, 0.9843137, 0.9490196, 0.21176471, 1, 0.4627451, 0.25882354, 0.5411765, 1, 0.11372549, 0.09019608, 0.16862746, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n2vpp"]
+gradient = SubResource("Gradient_ghwbu")
+
+[sub_resource type="Curve" id="Curve_rathl"]
+_data = [Vector2(0, 0.5005569), 0.0, 0.0, 0, 0, Vector2(0.9734513, 0.21826291), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_hla4v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49852508, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_hi1q3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_1xhry"]
+curve_x = SubResource("Curve_rathl")
+curve_y = SubResource("Curve_hla4v")
+curve_z = SubResource("Curve_hi1q3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x522p"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+radial_velocity_min = 199.99997
+radial_velocity_max = 299.99997
+gravity = Vector3(0, 0, 0)
+scale_min = 0.75
+scale_curve = SubResource("CurveXYZTexture_1xhry")
+color_ramp = SubResource("GradientTexture1D_n2vpp")
+
+[node name="NormalEnemy" type="Node2D" unique_id=1528450500 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
 script = ExtResource("1_jxxdc")
 enemy_entity = NodePath("EntityNode")
 enemy_movement = NodePath("FollowTarget")
@@ -72,6 +108,7 @@ attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
 death_listeners = Array[ExtResource("2_7wydm")]([SubResource("Resource_fmc6w"), SubResource("Resource_f41wj")])
+_components = [NodePath("GPUParticles2D")]
 
 [node name="EnemyFront" type="Sprite2D" parent="." unique_id=63442275]
 texture_filter = 1
@@ -113,3 +150,16 @@ metadata/_custom_type_script = "uid://chi8el32v5eh0"
 [node name="FollowTarget" type="Node" parent="." unique_id=149703252]
 script = ExtResource("20_kfoqm")
 metadata/_custom_type_script = "uid://c0ba4ih2p3yws"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2117001756]
+texture_filter = 1
+position = Vector2(0, -10)
+emitting = false
+texture = ExtResource("24_f41wj")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_x522p")
+script = ExtResource("25_ybc5p")
+metadata/_custom_type_script = "uid://hq3w2lovo02u"

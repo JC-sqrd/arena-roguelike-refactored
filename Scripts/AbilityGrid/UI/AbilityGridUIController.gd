@@ -3,9 +3,12 @@ class_name AbilityGridUIController extends BaseAbilityGridUIController
 @export var ability_grid_ui : AbilityGridUI
 @export var ability_inventory_ui : AbilityGridUI
 
-func _ready() -> void:
+func initialize():
 	visibility_changed.connect(_on_visibility_changed)
 	player = PlayerServer.main_player
+	
+	ability_grid_ui.generate_grid_ui(player.ability_grid)
+	ability_inventory_ui.generate_grid_ui(player.ability_tile_inventory)
 	
 	player.initialized_grids.connect(
 		func(ability_grid : AbilityGrid, ability_inventory : AbilityGrid):

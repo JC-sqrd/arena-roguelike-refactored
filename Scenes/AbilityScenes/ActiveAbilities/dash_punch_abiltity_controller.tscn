@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [sub_resource type="Resource" id="Resource_4a328"]
 script = ExtResource("13_d4lk6")
-cooldown = 5.0
+cooldown = 3.0
 metadata/_custom_type_script = "uid://cl0p5siqyev36"
 
 [node name="DashPunchAbiltityController" type="Node" unique_id=842585258]
