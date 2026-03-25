@@ -8,7 +8,7 @@ const TEST_ABILITY_HITBOX = preload("uid://bhyjrjxakyds1")
 
 var hitbox : HitBox
 
-var hit_threshold : int = 5
+var hit_threshold : int = 15
 var _hit_counter : int = 0
 
 func _on_initialized():
@@ -41,10 +41,7 @@ func _on_weapon_unequipped(weapon : Weapon):
 func _on_weapon_hit(hit : RID, effects : Array[Effect],context : Dictionary[StringName, Variant]):
 	if context.source != caster:
 		return
-	
-	#var value_mult : ValueMultiplier = ValueMultiplier.new(0.8)
-	
-	#var hit_effects : Array[Effect]# = [instant_effect]
+
 	var effect_value : float = 0
 	
 	for effect in effects:
