@@ -2,6 +2,7 @@ class_name MeleeAttackExecute extends AttackExecute
 
 var melee_anim_player : MeleeAnimationPlayer
 var melee_hitbox : HitBox
+var melee_controller : MeleeWeaponController
 var melee_context : Dictionary[StringName, Variant]
 var successful_queries : Array[RID]
 
@@ -13,7 +14,9 @@ var _action_time : float
 
 var active_hit : bool = false
 
-signal hit(hits : Array[RID])
+signal to_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
+signal hit(hits : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
+
 signal finished_executing()
 
 func initialize():
@@ -28,6 +31,7 @@ func execute(context : Dictionary[StringName, Variant]):
 	self.context = context
 	
 	melee_context = context
+	melee_controller = context.weapon_controller
 	
 	action_time_ratio = context.action_time_ratio
 	melee_anim_player.speed_scale = maxf(1, context.anim_speed) 
@@ -47,12 +51,11 @@ func _process(delta: float) -> void:
 			_action_time = _curr_anim_length * action_time_ratio
 			if _curr_anim_pos >= _action_time:
 				var hits : Array[RID] = melee_hitbox.query_hits(false)
-				#melee_hitbox.query_hitbox(false, hits)
-				send_effects_to_hits(hits)
-				if hits.size() > 0:
-					EventServer.weapon_hit.emit(hits, melee_hitbox.effects, melee_context)
-					hit.emit(hits)
-				#query_hitbox()
+				for queried_hit in hits:
+					var effects : Array[Effect] = melee_controller.generate_effects(melee_context)
+					to_hit.emit(queried_hit, effects, melee_context)
+					hit.emit(queried_hit, effects, melee_context)
+					pass
 				active_hit = false
 			pass
 
@@ -77,11 +80,4 @@ func _on_attack_anim_finished(anim : StringName):
 	if anim == "attack":
 		melee_anim_player.play("recovery")
 		finish_execute()
-	pass
-
-
-func send_effects_to_hits(hits : Array[RID]):
-	for hit in hits:
-		for effect in melee_hitbox.effects:
-			EffectServer.receive_effect(hit, effect, context)
 	pass

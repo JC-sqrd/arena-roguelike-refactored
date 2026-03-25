@@ -2,12 +2,14 @@ class_name WeaponController extends Node2D
 
 @export var action_point : Node2D
 @export var weapon_input : WeaponControllerInputStrategy
+@export var upgrade_tree : WeaponUpgradeTree
 
 var weapon_id : StringName
 var wielder : Entity
 var wielder_stats : Stats
 var weapon_stats : Stats
 var listen_for_input : bool = false
+var effect_templates : Array[EffectTemplate]
 var effects : Array[Effect]
 var controller_context : Dictionary[StringName, Variant]
 var on_cooldown : bool = false
@@ -21,10 +23,13 @@ signal attack_executed()
 signal attack_to_end()
 signal attack_end()
 
-signal weapon_hit(hits : Array[RID], context : Dictionary[StringName, Variant])
+signal weapon_to_hit(hit : RID, context : Dictionary[StringName, Variant])
+signal weapon_hit(hit : RID, context : Dictionary[StringName, Variant])
 
 func initialize(wielder : Entity):
 	self.wielder = wielder
+	if upgrade_tree != null:
+		upgrade_tree.initialize(self)
 	if weapon_input == null:
 		weapon_input = InstantWeaponInput.new()
 		weapon_input.initialize(self)
@@ -77,7 +82,7 @@ func input_held():
 func input_released():
 	pass
 
-func generate_effects() -> Array[Effect]:
+func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect]:
 	return []
 
 func apply_upgrade(upgrade : WeaponUpgrade):

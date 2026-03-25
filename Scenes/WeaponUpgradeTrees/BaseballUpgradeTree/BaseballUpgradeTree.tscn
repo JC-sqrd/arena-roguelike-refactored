@@ -3,9 +3,15 @@
 [ext_resource type="Script" uid="uid://cn2eohbo1v7um" path="res://Scripts/WeaponUpgrade/WeaponUpgradeTree.gd" id="1_m86gm"]
 [ext_resource type="Script" uid="uid://p4k3icbp6ngr" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/baseball_1_1.gd" id="2_jptoa"]
 [ext_resource type="Script" uid="uid://ctuvidsyalcq4" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/baseball_1_2.gd" id="3_fwhsc"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="4_pr3v7"]
 [ext_resource type="Script" uid="uid://cjp7cx4jndqjx" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/baseball_1_3.gd" id="4_ygdon"]
 [ext_resource type="Script" uid="uid://1x6r2atmi451" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/baseball_1_4.gd" id="5_pr3v7"]
 [ext_resource type="Script" uid="uid://cy2cx6vxj34sw" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/baseball_1_5.gd" id="6_1oh6c"]
+
+[sub_resource type="Resource" id="Resource_1oh6c"]
+script = ExtResource("4_pr3v7")
+value = 1.0
+metadata/_custom_type_script = "uid://whdynsblqt1m"
 
 [node name="BaseballUpgradeTree" type="Node" unique_id=771546205 node_paths=PackedStringArray("branches")]
 script = ExtResource("1_m86gm")
@@ -13,19 +19,25 @@ branches = [NodePath("Baseball-1-1")]
 
 [node name="Baseball-1-1" type="Node" parent="." unique_id=689559271 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("2_jptoa")
+applied = true
 next_nodes = [NodePath("Baseball-1-2")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
-[node name="Baseball-1-2" type="Node" parent="Baseball-1-1" unique_id=39704309]
+[node name="Baseball-1-2" type="Node" parent="Baseball-1-1" unique_id=39704309 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("3_fwhsc")
+damage_multiplier = SubResource("Resource_1oh6c")
+applied = true
+next_nodes = [NodePath("Baseball-1-3")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
-[node name="Baseball-1-3" type="Node" parent="Baseball-1-1/Baseball-1-2" unique_id=776873163]
+[node name="Baseball-1-3" type="Node" parent="Baseball-1-1/Baseball-1-2" unique_id=776873163 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("4_ygdon")
+next_nodes = [NodePath("Baseball-1-4")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
-[node name="Baseball-1-4" type="Node" parent="Baseball-1-1/Baseball-1-2/Baseball-1-3" unique_id=1064270675]
+[node name="Baseball-1-4" type="Node" parent="Baseball-1-1/Baseball-1-2/Baseball-1-3" unique_id=1064270675 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("5_pr3v7")
+next_nodes = [NodePath("Baseball-1-5")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="Baseball-1-5" type="Node" parent="Baseball-1-1/Baseball-1-2/Baseball-1-3/Baseball-1-4" unique_id=1244613984]

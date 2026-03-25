@@ -38,6 +38,7 @@ func equip(context : EquipContext):
 	projectile_weapon_controller.wielder_stats = wielder_stats
 	projectile_weapon_controller.weapon_stats = _weapon_stats
 	projectile_weapon_controller.effects = _weapon_effects
+	projectile_weapon_controller.effect_templates = effect_templates
 	projectile_weapon_controller.effect_context = _weapon_context
 	projectile_weapon_controller.action_time_ratio = action_time_ratio
 	projectile_weapon_controller.controller_context = _weapon_context

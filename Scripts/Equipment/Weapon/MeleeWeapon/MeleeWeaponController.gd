@@ -19,9 +19,12 @@ var queries : Array[RID]
 
 var _input_held : bool = false
 
+signal weapon_hits(hits : Array[RID], weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
+
 func _on_initialized():
 	
 	attack_execute.hit.connect(_on_hit)
+	attack_execute.to_hit.connect(_on_to_hit)
 	
 	listen_for_input = true
 	
@@ -42,13 +45,14 @@ func _on_start():
 func execute_attack():
 	if !attack_execute.active:
 		var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
-	
+		effect_context = attack_context
 		attack_context.wielder_stats = wielder_stats
-		attack_context.attack_effects = generate_effects()
+		effects = generate_effects(attack_context)
 		attack_context.queries = queries
 		attack_context.weapon_stats = weapon_stats
 		attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
 		attack_context.action_time_ratio = action_time_ratio
+		attack_context.weapon_controller = self
 		
 		melee_hitbox.effects = effects
 		melee_hitbox.context = effect_context
@@ -56,8 +60,12 @@ func execute_attack():
 		attack_execute.execute(attack_context)
 		end_attack()
 
-func generate_effects() -> Array[Effect]:
-	return effects.duplicate(true)
+func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect]:
+	var generated_effects : Array[Effect]
+	for template in effect_templates:
+		generated_effects.append(template.build_effect(context))
+		pass
+	return generated_effects
 
 func _on_attack_finished_executing():
 	end_attack()
@@ -74,6 +82,21 @@ func _on_process(delta):
 		on_cooldown = false
 		_curr_cooldown = 0
 
-func _on_hit(hits : Array[RID]):
-	weapon_hit.emit(hits, effect_context)
+func _on_to_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant]):
+	weapon_to_hit.emit(hit, weapon_effects, context)
+	pass
+
+func _on_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant]):
+	send_effects_to_hit(hit, weapon_effects)
+	EventServer.weapon_hit.emit(hit, weapon_effects, effect_context)
+	weapon_hit.emit(hit, weapon_effects, context)
+	pass
+
+func _on_hits(hits : Array[RID], weapon_effects : Array[Effect], context : Dictionary[StringName, Variant]):
+	weapon_hits.emit(hits, weapon_effects, context)
+	pass
+
+func send_effects_to_hit(hit : RID, effects : Array[Effect]):
+	for effect in effects:
+		EffectServer.receive_effect(hit, effect, effect_context)
 	pass

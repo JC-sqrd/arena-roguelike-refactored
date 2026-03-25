@@ -6,6 +6,10 @@ var active : bool = false
 var effects : Array[Effect]
 var adjacent_controllers : Array[GridAbilityController]
 
+
+signal to_send_effect(hit : RID, effects : Array[Effect])
+signal effect_sent(hit : RID, effects : Array[Effect])
+
 signal adjacent_contollers_updated(controllers : Array[GridAbilityController])
 
 func initialize(caster : Entity):

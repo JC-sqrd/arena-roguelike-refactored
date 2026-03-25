@@ -35,7 +35,8 @@ func execute_attack():
 	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 		
 	attack_context.wielder_stats = wielder_stats
-	attack_context.attack_effects = generate_effects()
+	effects = generate_effects(attack_context)
+	attack_context.attack_effects = effects
 	attack_context.effects_context = effect_context
 	attack_context.queries = queries
 	attack_context.weapon_stats = weapon_stats
@@ -43,6 +44,7 @@ func execute_attack():
 	attack_context.action_time_ratio = action_time_ratio
 	attack_context.projectile_template = projectile_template
 	attack_context.controller = self
+	
 	
 	projectile_attack_execute.execute(attack_context)
 	#var projectile : Projectile = projectile_template.build_projectile()
@@ -70,19 +72,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	pass
 
-func send_effects_to_hits(hits : Array[RID]):
-	for hit in hits:
-		for effect in effects:
-			EffectServer.receive_effect(hit, effect, effect_context)
-			EventServer.effect_hit.emit(hit, effect, effect_context)
+func send_effects_to_hit(hit : RID):
+	for effect in effects:
+		EffectServer.receive_effect(hit, effect, effect_context)
+		EventServer.effect_hit.emit(hit, effect, effect_context)
 	pass
 
-func generate_effects() -> Array[Effect]:
-	return effects.duplicate(true)
+func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect]:
+	var generated_effects : Array[Effect]
+	for template in effect_templates:
+		generated_effects.append(template.build_effect(context))
+		pass
+	return generated_effects
 
 func _on_projectile_hit(hit : RID):
-	var hits : Array[RID] = [hit]
-	send_effects_to_hits(hits)
-	EventServer.weapon_hit.emit(hits, effects, effect_context)
-	weapon_hit.emit(hits, effect_context)
+	send_effects_to_hit(hit)
+	EventServer.weapon_hit.emit(hit, effects, effect_context)
+	weapon_hit.emit(hit, effect_context)
 	pass

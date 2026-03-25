@@ -25,7 +25,7 @@ func add_tag(tag : StringName):
 
 func initialize():
 	stat_dict = stats_template.build_stats_from_template()
-	initialize_defined_stats()
+	#initialize_defined_stats()
 	pass
 
 func has(stat_id : StringName) -> bool:

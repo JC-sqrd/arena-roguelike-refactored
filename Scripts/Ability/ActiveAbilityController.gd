@@ -9,6 +9,9 @@ var caster : Entity
 var effects : Array[Effect]
 signal ability_finished(abiltiy : ActiveAbilityController)
 
+signal to_send_effect(hit : RID, effects : Array[Effect])
+signal effect_sent(hit : RID, effects : Array[Effect])
+
 signal ability_to_start()
 signal ability_started()
 signal ability_to_execute()
