@@ -2,6 +2,7 @@ class_name KnockbackEffectEventTemplate extends EffectEventTemplate
 
 @export var magnitude : ValueProviderTemplate
 
+var event_id : StringName = "knockback_effect_event"
 var magnitude_value_provider : ValueProvider
 
 func build_effect_event(effect : Effect) -> EffectEvent:
@@ -13,5 +14,9 @@ func build_effect_event(effect : Effect) -> EffectEvent:
 		magnitude_value_provider = magnitude.build_value_provider(effect.effect_context)
 	
 	var knockback_event : KnockbackEffectEvent = KnockbackEffectEvent.new()
+	knockback_event.event_id = event_id
 	knockback_event.magnitude = magnitude_value_provider.get_value(effect.effect_context)
 	return knockback_event
+
+func get_effect_event_template_id() -> StringName:
+	return event_id

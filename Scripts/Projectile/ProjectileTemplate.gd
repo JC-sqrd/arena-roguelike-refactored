@@ -4,7 +4,7 @@ class_name ProjectileTemplate extends Resource
 @export var speed : float = 0
 @export var projectile_shape : ProjectileShape
 @export var pierce : int = 0
-@export var lifetime : float = 10
+@export var range : float = 256
 @export var monitorable : bool = false
 
 @export var projectile_texture : Texture2D
@@ -16,7 +16,7 @@ class_name ProjectileTemplate extends Resource
 func build_projectile() -> Projectile:
 	var projectile : Projectile = Projectile.new()
 	
-	projectile.lifetime = lifetime
+	projectile.range = range
 	
 	projectile.pierce = pierce
 	

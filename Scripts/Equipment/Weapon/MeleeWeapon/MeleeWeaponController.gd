@@ -37,27 +37,29 @@ func _on_initialized():
 
 func _on_start():
 	if !on_cooldown:
+		
+		effect_context = generate_controller_context()
+		effect_context.wielder_stats = wielder_stats
+		effects = generate_effects(effect_context)
+		effect_context.queries = queries
+		effect_context.weapon_stats = weapon_stats
+		effect_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
+		effect_context.action_time_ratio = action_time_ratio
+		effect_context.weapon_controller = self
+		
+		
 		execute_attack()
 		on_cooldown = true
+		
 	pass
 
 
 func execute_attack():
 	if !attack_execute.active:
-		var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
-		effect_context = attack_context
-		attack_context.wielder_stats = wielder_stats
-		effects = generate_effects(attack_context)
-		attack_context.queries = queries
-		attack_context.weapon_stats = weapon_stats
-		attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
-		attack_context.action_time_ratio = action_time_ratio
-		attack_context.weapon_controller = self
-		
 		melee_hitbox.effects = effects
 		melee_hitbox.context = effect_context
 		
-		attack_execute.execute(attack_context)
+		attack_execute.execute(effect_context)
 		end_attack()
 
 func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect]:

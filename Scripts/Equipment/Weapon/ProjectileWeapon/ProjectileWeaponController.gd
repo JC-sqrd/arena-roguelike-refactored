@@ -19,19 +19,16 @@ var queries : Array[RID]
 var _input_held : bool = false
 
 func _on_initialized():
-	listen_for_input = true
-	
 	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
 	projectile_attack_execute.projectile_hit.connect(_on_projectile_hit)
 	pass
 
 func _on_start():
-	if !on_cooldown:
-		execute_attack()
-		on_cooldown = true
+	execute_attack()
 	pass
 
 func execute_attack():
+	
 	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 		
 	attack_context.wielder_stats = wielder_stats
@@ -45,19 +42,11 @@ func execute_attack():
 	attack_context.projectile_template = projectile_template
 	attack_context.controller = self
 	
-	
 	projectile_attack_execute.execute(attack_context)
-	#var projectile : Projectile = projectile_template.build_projectile()
-	#projectile.projectile_hit.connect(_on_projectile_hit)
-	#projectile.direction = (get_global_mouse_position() - global_position).normalized()
-	#projectile.angle = projectile.direction.angle()
-	#projectile.texture_angle = projectile.direction.angle()
-	#SpawnProjectile.spawn_projectile(projectile, action_point.global_position)
 	end_attack()
 
 func _on_process(delta : float):
-	if listen_for_input:
-		look_at(get_global_mouse_position())
+	look_at(get_global_mouse_position())
 	
 	if on_cooldown:
 		_curr_cooldown += delta

@@ -43,9 +43,11 @@ func _on_initialized():
 	pass
 
 func start_attack():
-	attack_to_start.emit()
-	_on_start()
-	attack_started.emit()
+	if !on_cooldown:
+		attack_to_start.emit()
+		attack_started.emit()
+		_on_start()
+		on_cooldown = true
 	pass
 
 func _on_start():

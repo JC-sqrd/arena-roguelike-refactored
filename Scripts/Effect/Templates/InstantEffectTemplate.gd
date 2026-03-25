@@ -11,5 +11,6 @@ func build_effect(context : Dictionary[StringName, Variant]) -> Effect:
 	instant_effect.effect_context = context
 	instant_effect.applied_tags = applied_tags
 	instant_effect.block_tags = block_tags
-	instant_effect.effect_events = effect_event_templates
+	for effect_event_template in effect_event_templates:
+		instant_effect.effect_events.append(effect_event_template.duplicate_effect_event_template(true))
 	return instant_effect

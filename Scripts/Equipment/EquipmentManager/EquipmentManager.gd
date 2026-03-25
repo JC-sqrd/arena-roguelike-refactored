@@ -98,35 +98,6 @@ func process_input():
 		if weapon_2_controller != null:
 			weapon_2_controller.weapon_input.handle_input_released()
 			pass
-	
-	#if Input.is_action_pressed("attack"):
-		#weapon_1_input_held = true
-		#pass
-	#
-	#if Input.is_action_pressed("attack2"):
-		#weapon_2_input_held = true
-		#pass
-	#
-	#if Input.is_action_just_released("attack"):
-		#weapon_1_input_held = false
-		#pass
-	#
-	#if Input.is_action_just_released("attack2"):
-		#weapon_2_input_held = false
-		#pass
-	
-	#if weapon_1_input_held and !weapon_2_input_held:
-		#if weapon_1_controller != null:
-			#weapon_1_controller.start_attack()
-		#pass
-	#elif weapon_2_input_held and !weapon_1_input_held:
-		#if weapon_2_controller != null:
-			#weapon_2_controller.start_attack()
-		#pass
-	#elif weapon_1_input_held and weapon_2_input_held:
-		#if weapon_1_controller != null:
-			#weapon_1_controller.start_attack()
-		#pass
 	pass
 
 func on_weapon_unequipped(weapon : Weapon):

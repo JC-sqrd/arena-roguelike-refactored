@@ -37,6 +37,8 @@ metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="Baseball-1-4" type="Node" parent="Baseball-1-1/Baseball-1-2/Baseball-1-3" unique_id=1064270675 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("5_pr3v7")
+bonus_knockback = 1000.0
+applied = true
 next_nodes = [NodePath("Baseball-1-5")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 

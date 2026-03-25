@@ -21,11 +21,11 @@ var direction : Vector2 = Vector2(1,0)
 var speed : float
 var velocity : Vector2
 var pierce : int = 0
-var lifetime : float = 10
+var range : float = 64
+var _range_counter : float = 0
 var angle : float = 0
 var active : bool = true
 
-var _lifetime_counter : float = 0
 var _pierce_count : int = 0
 
 var movement : ProjectileMovement
@@ -42,13 +42,11 @@ func process_projectile(delta : float):
 	
 	update_render()
 	
-	if _lifetime_counter >= lifetime:
+	if _range_counter >= (range):
 		#free_projectile()
 		active = false
 		ProjectileServer.to_free(projectile_rid)
 		pass
-	
-	_lifetime_counter += delta
 	pass
 
 func update_render():
