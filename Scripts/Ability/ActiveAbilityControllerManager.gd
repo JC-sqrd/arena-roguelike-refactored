@@ -38,18 +38,28 @@ func _process(delta: float) -> void:
 	
 	if ability_1_input_buffer.buffered and caster.can_cast:
 		var controller : ActiveAbilityController = controllers.get(ability_one)
+		var curr_on_cooldown : bool = false
+		if controller.cooldown_timer.active:
+			curr_on_cooldown = true
+			pass
 		controller.start_ability()
-		ability_1_input_buffer.buffered = false
+		if !curr_on_cooldown:
+			ability_1_input_buffer.buffered = false
+
 		pass
 	
 	if ability_2_input_buffer.buffered and caster.can_cast:
 		var controller : ActiveAbilityController = controllers.get(ability_two)
+		var curr_on_cooldown : bool = false
+		if controller.cooldown_timer.active:
+			curr_on_cooldown = true
+			pass
 		controller.start_ability()
-		ability_2_input_buffer.buffered = false
+		if !curr_on_cooldown:
+			ability_2_input_buffer.buffered = false
 	pass
-
 	
-	
+	ability_2_input_buffer.update_buffer(delta)
 	ability_1_input_buffer.update_buffer(delta)
 
 func add_controller(controller : AbilityController):

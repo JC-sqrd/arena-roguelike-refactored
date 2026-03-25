@@ -2,6 +2,7 @@ class_name WeaponUpgradeNode extends Node
 
 var upgrade_tree : WeaponUpgradeTree
 @export var applied : bool = false
+@export var upgrade_data : WeaponUpgradeData
 
 
 @export var next_nodes : Array[WeaponUpgradeNode]
