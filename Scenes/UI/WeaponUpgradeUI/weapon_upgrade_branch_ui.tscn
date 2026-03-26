@@ -4,15 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://doeawvjvfy2rr" path="res://Scenes/UI/WeaponUpgradeUI/weapon_upgrade_icon.tscn" id="2_gb7r8"]
 
 [node name="WeaponUpgradeBranchUi" type="PanelContainer" unique_id=1394729919]
-custom_minimum_size = Vector2(32, 64)
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
 script = ExtResource("1_rms4u")
 
-[node name="LineLayer" type="Control" parent="." unique_id=977951170]
-layout_mode = 2
-
-[node name="IconLayer" type="VBoxContainer" parent="." unique_id=4079945]
-layout_mode = 2
-
-[node name="WeaponUpgradeIcon" parent="IconLayer" unique_id=1362092306 instance=ExtResource("2_gb7r8")]
+[node name="WeaponUpgradeIcon" parent="." unique_id=1362092306 instance=ExtResource("2_gb7r8")]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4

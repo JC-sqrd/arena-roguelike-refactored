@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dv31bcc25ca1t"]
+
+[ext_resource type="Script" uid="uid://be5wv3ix6j8yf" path="res://Scripts/UI/WeaponUpgradeTreeUI.gd" id="1_vdfta"]
+
+[node name="WeaponUpgradeTree" type="BoxContainer" unique_id=1379107502]
+script = ExtResource("1_vdfta")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1783985257]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
