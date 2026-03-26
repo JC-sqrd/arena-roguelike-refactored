@@ -59,6 +59,11 @@ func _ready() -> void:
 	
 	enemy_movement.initialize(enemy_entity.entity, self)
 	
+	EnemyServer.register_enemy(_id, self)
+	enemy_entity.entity.global_position = global_position
+	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
+	EntityServer.register_entity(enemy_entity.entity.entity_rid, enemy_entity.entity)
+	
 	move_speed_stat = enemy_entity.entity.stats.get_stat("move_speed")
 	
 	attack_controller.initialize(enemy_entity.entity.stats)
@@ -67,13 +72,7 @@ func _ready() -> void:
 	
 	_target = PlayerServer.main_player
 	
-	for component in _components:
-		if component.has_method("get_component_name"):
-			components[component.get_component_name()] = component
-			if component.has_method("initialize"):
-				component.initialize(area_controller.area.area_rid)
-				pass
-		pass
+	
 	
 	
 	for listener in death_listeners:
@@ -84,10 +83,15 @@ func _ready() -> void:
 		listener.initialize(enemy_entity.entity)
 		pass
 	
-	EnemyServer.register_enemy(_id, self)
-	enemy_entity.entity.global_position = global_position
-	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
-	EntityServer.register_entity(enemy_entity.entity.entity_rid, enemy_entity.entity)
+	
+	for component in _components:
+		if component.has_method("get_component_name"):
+			components[component.get_component_name()] = component
+			if component.has_method("initialize"):
+				component.initialize(area_controller.area.area_rid)
+				pass
+		pass
+	
 	pass
 
 

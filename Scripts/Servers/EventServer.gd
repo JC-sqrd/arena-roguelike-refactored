@@ -1,6 +1,9 @@
 extends Node
 
+
 signal effect_event_occured(effect_event : EffectEvent)
+
+signal damage_effect_event_occured(damage_event : DamageEffectEvent)
 
 signal entity_died(death_event : EntityDeathEvent)
 

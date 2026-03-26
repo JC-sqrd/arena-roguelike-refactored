@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="20_kfoqm"]
 [ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="24_f41wj"]
 [ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="25_ybc5p"]
+[ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="26_ybc5p"]
 
 [sub_resource type="Resource" id="Resource_fmc6w"]
 script = ExtResource("3_p6avx")
@@ -99,6 +100,11 @@ scale_min = 0.75
 scale_curve = SubResource("CurveXYZTexture_1xhry")
 color_ramp = SubResource("GradientTexture1D_n2vpp")
 
+[sub_resource type="LabelSettings" id="LabelSettings_ghwbu"]
+font_size = 8
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="NormalEnemy" type="Node2D" unique_id=1528450500 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
 script = ExtResource("1_jxxdc")
 enemy_entity = NodePath("EntityNode")
@@ -108,7 +114,7 @@ attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
 death_listeners = Array[ExtResource("2_7wydm")]([SubResource("Resource_fmc6w"), SubResource("Resource_f41wj")])
-_components = [NodePath("GPUParticles2D")]
+_components = [NodePath("GPUParticles2D"), NodePath("EntityDamageNumberSpawner")]
 
 [node name="EnemyFront" type="Sprite2D" parent="." unique_id=63442275]
 texture_filter = 1
@@ -163,3 +169,9 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_x522p")
 script = ExtResource("25_ybc5p")
 metadata/_custom_type_script = "uid://hq3w2lovo02u"
+
+[node name="EntityDamageNumberSpawner" type="Node" parent="." unique_id=1507417688 node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("26_ybc5p")
+label_settings = SubResource("LabelSettings_ghwbu")
+spawn_point = NodePath("..")
+metadata/_custom_type_script = "uid://em1gs1v5i405"

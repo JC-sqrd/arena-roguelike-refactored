@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="12_58hsy"]
 [ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="13_ixvhf"]
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="14_feok4"]
+[ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="18_44u58"]
 
 [sub_resource type="Resource" id="Resource_d01e7"]
 script = ExtResource("3_d01e7")
@@ -106,6 +107,11 @@ scale_min = 0.75
 scale_curve = SubResource("CurveXYZTexture_w3rv6")
 color_ramp = SubResource("GradientTexture1D_feok4")
 
+[sub_resource type="LabelSettings" id="LabelSettings_44u58"]
+font_size = 8
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="SmallEnemy" type="Node2D" unique_id=1231003198 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
 script = ExtResource("1_te1ps")
 enemy_entity = NodePath("EntityNode")
@@ -115,7 +121,7 @@ attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
 death_listeners = Array[ExtResource("2_owhfj")]([SubResource("Resource_d01e7"), SubResource("Resource_44u58")])
-_components = [NodePath("GPUParticles2D")]
+_components = [NodePath("GPUParticles2D"), NodePath("EntityDamageNumberSpawner")]
 metadata/_custom_type_script = "uid://knv07avm0ire"
 
 [node name="EntityNode" type="Node" parent="." unique_id=1786571583 node_paths=PackedStringArray("stats_node", "action_point")]
@@ -171,3 +177,9 @@ metadata/_custom_type_script = "uid://hq3w2lovo02u"
 script = ExtResource("14_feok4")
 target_distance_threshold = 40.0
 metadata/_custom_type_script = "uid://c0ba4ih2p3yws"
+
+[node name="EntityDamageNumberSpawner" type="Node" parent="." unique_id=489325873 node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("18_44u58")
+label_settings = SubResource("LabelSettings_44u58")
+spawn_point = NodePath("..")
+metadata/_custom_type_script = "uid://em1gs1v5i405"
