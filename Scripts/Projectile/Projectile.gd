@@ -35,18 +35,13 @@ var context : Dictionary[StringName, Variant]
 var hit_log : Array[RID]
 
 signal projectile_hit(hit : RID)
+signal to_free()
 
 func process_projectile(delta : float):
-	
-	movement.update_movement(delta)
+	if active:
+		movement.update_movement(delta)
 	
 	update_render()
-	
-	if _range_counter >= (range):
-		#free_projectile()
-		active = false
-		ProjectileServer.to_free(projectile_rid)
-		pass
 	pass
 
 func update_render():
@@ -86,9 +81,19 @@ func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, i
 	pass
 
 func free_projectile():
+	to_free.emit()
+	effects.clear()
+	hit_log.clear() 
+	context.clear()
 	active = false
-	ProjectileServer.free_projectile(projectile_rid)
+	movement.projectile = null
+	movement = null
+	
+	for connection in projectile_hit.get_connections():
+		projectile_hit.disconnect(connection.callable)
+	
 	if projectile_rid.is_valid():
+		print("FREE PROJECTILE PHYSICS RID")
 		PhysicsServer2D.free_rid(projectile_rid)
 	if shape_rid.is_valid():
 		PhysicsServer2D.free_rid(shape_rid)

@@ -32,6 +32,7 @@ func execute_attack():
 	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
 		
 	attack_context.wielder_stats = wielder_stats
+	effects.clear()
 	effects = generate_effects(attack_context)
 	attack_context.attack_effects = effects
 	attack_context.effects_context = effect_context
@@ -78,4 +79,5 @@ func _on_projectile_hit(hit : RID):
 	send_effects_to_hit(hit)
 	EventServer.weapon_hit.emit(hit, effects, effect_context)
 	weapon_hit.emit(hit, effect_context)
+	effects.clear()
 	pass

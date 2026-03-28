@@ -1,3 +1,4 @@
+#Entity Server
 extends Node
 
 var active_entities : Dictionary[RID, Entity]
@@ -11,10 +12,11 @@ func _physics_process(delta: float) -> void:
 	
 	for entity_to_free in free_queue:
 		if active_entities.has(entity_to_free):
-			#var entity : Entity = active_entities.get(entity_to_free)
-			free_entity(entity_to_free)
-		free_queue.erase(entity_to_free)
+			var entity : Entity = active_entities.get(entity_to_free)
+			entity.cleanup()
+			active_entities.erase(entity_to_free)
 		pass
+	free_queue.clear()
 	
 	#_keys.clear()
 	#_keys = active_entities.keys()

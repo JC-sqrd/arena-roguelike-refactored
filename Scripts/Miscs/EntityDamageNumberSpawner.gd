@@ -47,3 +47,7 @@ func spawn_label(damage_event : DamageEffectEvent):
 
 func get_component_name() -> StringName:
 	return "entity_damage_number_spawner"
+
+func _exit_tree() -> void:
+	_entity_id = RID()
+	entity = null

@@ -40,6 +40,7 @@ func _on_start():
 		
 		effect_context = generate_controller_context()
 		effect_context.wielder_stats = wielder_stats
+		effects.clear()
 		effects = generate_effects(effect_context)
 		effect_context.queries = queries
 		effect_context.weapon_stats = weapon_stats
@@ -50,14 +51,13 @@ func _on_start():
 		
 		execute_attack()
 		on_cooldown = true
-		
 	pass
 
 
 func execute_attack():
 	if !attack_execute.active:
-		melee_hitbox.effects = effects
-		melee_hitbox.context = effect_context
+		#melee_hitbox.effects = effects
+		#melee_hitbox.context = effect_context
 		
 		attack_execute.execute(effect_context)
 		end_attack()
@@ -92,6 +92,7 @@ func _on_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[Str
 	send_effects_to_hit(hit, weapon_effects)
 	EventServer.weapon_hit.emit(hit, weapon_effects, effect_context)
 	weapon_hit.emit(hit, weapon_effects, context)
+	effects.clear()
 	pass
 
 func _on_hits(hits : Array[RID], weapon_effects : Array[Effect], context : Dictionary[StringName, Variant]):

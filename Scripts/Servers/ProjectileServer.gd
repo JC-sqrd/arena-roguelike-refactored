@@ -18,18 +18,18 @@ func regiser_projectile(rid : RID, projectile : Projectile):
 
 func _physics_process(delta: float) -> void:
 	queue_redraw()
-	
 	if active_projectiles.size() == 0:
 		return
 	
-	for rid in free_queue:
-		var projectile : Projectile = active_projectiles.get(rid)
-		if projectile:
-			free_projectile(rid)
-			projectile.free_projectile()
-			free_queue.erase(rid)
-		pass
-		free_queue.erase(rid)
+	if not free_queue.is_empty():
+		var curr_free_queue : Array = free_queue.duplicate()
+		free_queue.clear()
+		for rid in curr_free_queue:
+			if active_projectiles.has(rid):
+				var projectile : Projectile = active_projectiles[rid]
+				active_projectiles.erase(rid)
+				if projectile != null:
+					projectile.free_projectile()
 	
 	_keys.clear()
 	_keys = active_projectiles.keys()
@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 			active_projectiles[key].process_projectile(delta)
 			pass
 		pass
+	var after = Performance.get_monitor(Performance.OBJECT_COUNT)
 	pass
 
 
@@ -46,8 +47,6 @@ func to_free(rid : RID):
 	free_queue.append(rid)
 	pass
 
-func free_projectile(rid : RID):
-	active_projectiles.erase(rid)
 
 func _draw() -> void:
 	if debug:

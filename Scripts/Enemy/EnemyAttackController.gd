@@ -60,3 +60,12 @@ func generate_effect_context(attacker_stats : Stats) -> Dictionary[StringName, V
 	var context : Dictionary[StringName, Variant]
 	context["attacker_stats"] = attacker_stats
 	return context
+
+func _exit_tree() -> void:
+	for effect in _effects:
+		effect.cleanup()
+	_effects.clear()
+	hit_logs.clear()
+	_attacker_stats = null
+	_attack_speed_stat = null
+	pass

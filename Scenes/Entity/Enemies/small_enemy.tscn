@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" uid="uid://knv07avm0ire" path="res://Scripts/Controllers/EnemyController.gd" id="1_te1ps"]
 [ext_resource type="Script" uid="uid://mhvoa3j15n4q" path="res://Scripts/Entity/EntityNode.gd" id="2_4v03t"]
-[ext_resource type="Script" uid="uid://hguha3wmbmsl" path="res://Scripts/GameEvent/EventListener/OnDeathListener/OnDeathEventListener.gd" id="2_owhfj"]
-[ext_resource type="Script" uid="uid://jj452ixveqqd" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantStatOnDeathListener.gd" id="3_d01e7"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="3_pe4y6"]
 [ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="3_xnsb2"]
 [ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_5vrbn"]
-[ext_resource type="Script" uid="uid://uulu8pqdbuxy" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantGoldOnDeathListener.gd" id="4_d01e7"]
 [ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="4_rnlce"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="5_8a2hg"]
 [ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="5_xfl3c"]
@@ -17,18 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="12_58hsy"]
 [ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="13_ixvhf"]
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="14_feok4"]
+[ext_resource type="Material" uid="uid://kq7aylhbtm15" path="res://Resources/ParticleProcessMaterial/enemy_hit_particle_process_material.tres" id="16_fvne2"]
 [ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="18_44u58"]
-
-[sub_resource type="Resource" id="Resource_d01e7"]
-script = ExtResource("3_d01e7")
-stat_id = &"exp"
-grant_value = 10.0
-metadata/_custom_type_script = "uid://jj452ixveqqd"
-
-[sub_resource type="Resource" id="Resource_44u58"]
-script = ExtResource("4_d01e7")
-amount = 1.0
-metadata/_custom_type_script = "uid://uulu8pqdbuxy"
 
 [sub_resource type="Resource" id="Resource_58hsy"]
 script = ExtResource("5_8a2hg")
@@ -73,43 +60,9 @@ area_coll_layer = 4
 area_coll_mask = 2
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
-[sub_resource type="Gradient" id="Gradient_ixvhf"]
-offsets = PackedFloat32Array(0.16287878, 0.39772728, 0.5265151, 0.84090906)
-colors = PackedColorArray(0.11372549, 0.09019608, 0.16862746, 1, 0.9843137, 0.9490196, 0.21176471, 1, 0.4627451, 0.25882354, 0.5411765, 1, 0.11372549, 0.09019608, 0.16862746, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_feok4"]
-gradient = SubResource("Gradient_ixvhf")
-
-[sub_resource type="Curve" id="Curve_d01e7"]
-_data = [Vector2(0, 0.5005569), 0.0, 0.0, 0, 0, Vector2(0.9734513, 0.21826291), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_44u58"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49852508, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_fvne2"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_w3rv6"]
-curve_x = SubResource("Curve_d01e7")
-curve_y = SubResource("Curve_44u58")
-curve_z = SubResource("Curve_fvne2")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j38lc"]
-particle_flag_align_y = true
-particle_flag_disable_z = true
-radial_velocity_min = 199.99997
-radial_velocity_max = 299.99997
-gravity = Vector3(0, 0, 0)
-scale_min = 0.75
-scale_curve = SubResource("CurveXYZTexture_w3rv6")
-color_ramp = SubResource("GradientTexture1D_feok4")
-
 [sub_resource type="LabelSettings" id="LabelSettings_44u58"]
 font_size = 8
-outline_size = 2
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="SmallEnemy" type="Node2D" unique_id=1231003198 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
@@ -120,7 +73,6 @@ target_distance_threshold = 40.0
 attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
-death_listeners = Array[ExtResource("2_owhfj")]([SubResource("Resource_d01e7"), SubResource("Resource_44u58")])
 _components = [NodePath("GPUParticles2D"), NodePath("EntityDamageNumberSpawner")]
 metadata/_custom_type_script = "uid://knv07avm0ire"
 
@@ -169,7 +121,7 @@ lifetime = 0.35000000000000003
 one_shot = true
 explosiveness = 1.0
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_j38lc")
+process_material = ExtResource("16_fvne2")
 script = ExtResource("13_ixvhf")
 metadata/_custom_type_script = "uid://hq3w2lovo02u"
 

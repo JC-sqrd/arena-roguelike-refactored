@@ -33,3 +33,8 @@ func evaluate_health():
 
 func get_health() -> float:
 	return current_health.get_derived_value()
+
+func cleanup():
+	max_health = null
+	current_health = null
+	pass

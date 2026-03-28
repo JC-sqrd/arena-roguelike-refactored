@@ -62,6 +62,7 @@ func draw_bar():
 	pass
 
 func _exit_tree() -> void:
+	health_manager = null
 	RenderingServer.canvas_item_clear(canvas_item)
 	RenderingServer.free_rid(canvas_item)
 
@@ -91,7 +92,7 @@ func tween_drain_bar(value : float):
 	drawing = false
 	pass
 
-func _on_health_depleted():
+func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	percentage = 0
 	health_manager.current_health.value_changed.disconnect(_on_current_health_changed)
 	health_manager.max_health.value_changed.disconnect(_on_max_health_changed)

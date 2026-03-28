@@ -116,6 +116,7 @@ func calculate_leftover_budget() -> float:
 func free_wave_enemies():
 	for enemy in wave_enemies:
 		if enemy != null:
-			EnemyServer.to_free(enemy._id)
+			#EnemyServer.to_free(enemy._id)
+			enemy.free_controller()
 	wave_enemies.clear()
 	pass

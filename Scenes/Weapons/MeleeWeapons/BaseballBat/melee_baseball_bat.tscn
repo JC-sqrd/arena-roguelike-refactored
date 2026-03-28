@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ca3nj52dmx51p" path="res://Sprites/Weapons/Baseball Bat/BaseballSwingAnim.png" id="4_4ok8m"]
 [ext_resource type="Texture2D" uid="uid://mw8i7r013rnk" path="res://Sprites/Weapons/Baseball Bat/BaseballBat.png" id="5_am676"]
 [ext_resource type="Script" uid="uid://d2m8vf2tidody" path="res://Scripts/Equipment/Weapon/AttackExecute/MeleeAttackExecute.gd" id="6_iinfb"]
-[ext_resource type="PackedScene" uid="uid://dpbhaakr6v1th" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/BaseballUpgradeTree.tscn" id="8_tnldk"]
+[ext_resource type="PackedScene" uid="uid://dpbhaakr6v1th" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/BaseballBatUpgradeTree.tscn" id="8_tnldk"]
 
 [sub_resource type="Resource" id="Resource_x2mww"]
 script = ExtResource("2_tnldk")
@@ -256,7 +256,7 @@ melee_animation_player = NodePath("MeleeAnimationPlayer")
 attack_execute = NodePath("MeleeAttackExecute")
 action_point = NodePath(".")
 weapon_input = SubResource("Resource_x2mww")
-upgrade_tree = NodePath("BaseballUpgradeTree")
+upgrade_tree = NodePath("BaseballBatUpgradeTree")
 metadata/_custom_type_script = "uid://c5mbvnyf1mbqm"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1772335603 node_paths=PackedStringArray("anim_player")]
@@ -291,4 +291,4 @@ offset = Vector2(0, -28)
 script = ExtResource("6_iinfb")
 metadata/_custom_type_script = "uid://d2m8vf2tidody"
 
-[node name="BaseballUpgradeTree" parent="." unique_id=771546205 instance=ExtResource("8_tnldk")]
+[node name="BaseballBatUpgradeTree" parent="." unique_id=771546205 instance=ExtResource("8_tnldk")]

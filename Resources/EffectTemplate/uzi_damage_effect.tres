@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="InstantEffectTemplate" format=3 uid="uid://crb0opuuj8bic"]
+
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="1_061ch"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="2_sy8uj"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="3_tejnc"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="4_8w6wl"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="5_w8d70"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="6_h2yan"]
+[ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="7_7eqqf"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="8_17pem"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="9_vb5sf"]
+[ext_resource type="Script" uid="uid://dou0wul2vu5jy" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/ContextStatBonusValue.gd" id="10_sug74"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="11_0j1gg"]
+
+[sub_resource type="Resource" id="Resource_b7r71"]
+script = ExtResource("2_sy8uj")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_fx3rg"]
+script = ExtResource("6_h2yan")
+context_stats_id = &"weapon_stats"
+stat_id = &"weapon_knockback"
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_4v6ep"]
+script = ExtResource("7_7eqqf")
+magnitude = SubResource("Resource_fx3rg")
+metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
+
+[sub_resource type="Resource" id="Resource_om0yy"]
+script = ExtResource("5_w8d70")
+value = -0.9
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_0dke7"]
+script = ExtResource("10_sug74")
+context_stats = &"wielder_stats"
+stat_id = &"lethality"
+multipliers = Array[ExtResource("5_w8d70")]([SubResource("Resource_om0yy")])
+metadata/_custom_type_script = "uid://dou0wul2vu5jy"
+
+[sub_resource type="Resource" id="Resource_5jxvv"]
+script = ExtResource("6_h2yan")
+context_stats_id = &"weapon_stats"
+stat_id = &"weapon_damage"
+bonus_values = Array[ExtResource("4_8w6wl")]([SubResource("Resource_0dke7")])
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_lxb88"]
+script = ExtResource("9_vb5sf")
+mode = -1
+value_provider_template = SubResource("Resource_5jxvv")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[resource]
+script = ExtResource("11_0j1gg")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_lxb88")
+effect_event_templates = Array[ExtResource("1_061ch")]([SubResource("Resource_b7r71"), SubResource("Resource_4v6ep")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"

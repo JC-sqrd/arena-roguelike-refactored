@@ -43,6 +43,8 @@ var velocity : Vector2 = Vector2(0,0)
 var overlapped_bodies : Array[RID]
 var overlapped_areas : Array[Area2D]
 
+var _dead : bool = false
+var _death_delay : float = 0.5
 
 func _ready() -> void:
 	
@@ -96,15 +98,16 @@ func _ready() -> void:
 
 
 func _on_health_depleted(context : Dictionary[StringName, Variant]):
+	print("ENEMY HEALTH DEPLETED")
 	velocity = Vector2.ZERO
-	area_controller.free_area()
-	enemy_entity.entity.died.emit(context)
-	EventServer.entity_died.emit(EntityDeathEvent.new(enemy_entity.entity, context))
 	active = false
-	await get_tree().create_timer(0.5).timeout
-	area_controller.active = false 
-	EnemyServer.to_free(_id)
-	#queue_free()
+	area_controller.area.set_coll_mask(0)
+	area_controller.free_area()
+	#enemy_entity.entity.died.emit(context)
+	#EventServer.entity_died.emit(enemy_entity.entity, context)
+	_dead = true
+	#await get_tree().create_timer(0.5).timeout
+	free_controller()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -138,7 +141,20 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func update_position(delta : float):
-	global_position = enemy_entity.entity.global_position
+	
+	if _dead:
+		_death_delay -= delta
+		if _death_delay <= 0:
+			print("FREE ENEMY")
+			global_position = global_position
+			print_stack()
+			free_controller()
+		pass
+	else:
+		global_position = enemy_entity.entity.global_position
+	
+	
+		pass
 	
 	if !active: 
 		return
@@ -185,8 +201,9 @@ func update_cell_coords(delta : float):
 	#pass
 
 func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
-	overlapped_bodies.append(body_rid)
-	attack_controller.activate(body_rid)
+	if active:
+		overlapped_bodies.append(body_rid)
+		attack_controller.activate(body_rid)
 	pass
 
 func _on_body_exited(body : Node2D):
@@ -239,6 +256,16 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 	pass
 
 func _exit_tree() -> void:
+	move_speed_stat = null
+	death_listeners.clear()
+	unique_death_listeners.clear()
+	if enemy_entity.entity != null:
+		EntityServer.to_free(enemy_entity.entity.entity_rid)
+
+func free_controller():
+	overlapped_areas.clear()
+	overlapped_bodies.clear()
+	area_controller.free_area()
 	EnemyServer.to_free(_id)
-	EntityServer.to_free(enemy_entity.entity.entity_rid)
 	EnemyServer.free_from_cell(_curr_cell_coords, self)
+	pass

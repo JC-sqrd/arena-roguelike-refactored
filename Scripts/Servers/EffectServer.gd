@@ -27,6 +27,7 @@ func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,
 		effect.invoke_effect_events()
 		#for event_template in effect.effect_events:
 			#event_template.build_effect_event(effect).invoke_event()
+		effect.cleanup()
 		return
 	printerr("No registered effect listener for: " + str(rid))
 	return

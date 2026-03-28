@@ -15,12 +15,12 @@ func _physics_process(delta: float) -> void:
 	
 	for enemy in free_queue:
 		if active_enemies.has(enemy):
-			var controller : EnemyController = active_enemies.get(enemy)
+			var controller : EnemyController = active_enemies[enemy]
 			if controller != null:
+				free_enemy(enemy)
 				controller.queue_free()
-			free_enemy(enemy)
-		free_queue.erase(enemy)
 		pass
+	free_queue.clear()
 	
 	_keys.clear()
 	_keys = active_enemies.keys()

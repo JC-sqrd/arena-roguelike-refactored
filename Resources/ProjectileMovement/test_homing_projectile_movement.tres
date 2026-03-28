@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FireworkMovement" format=3 uid="uid://r0ktckk21sjr"]
+
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="1_l7xf3"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="2_3pxkq"]
+[ext_resource type="Script" uid="uid://peycyprnmgm0" path="res://Scripts/Projectile/ProjectileMovement/FireworkProjectileMovement.gd" id="3_secjj"]
+
+[sub_resource type="Resource" id="Resource_n1pwq"]
+script = ExtResource("1_l7xf3")
+radius = 360.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_ilddx"]
+script = ExtResource("2_3pxkq")
+area_shape = SubResource("Resource_n1pwq")
+area_coll_mask = 4
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[resource]
+script = ExtResource("3_secjj")
+idle_speed = 50.0
+steer_force = 800.0
+homing_area_template = SubResource("Resource_ilddx")
+metadata/_custom_type_script = "uid://peycyprnmgm0"

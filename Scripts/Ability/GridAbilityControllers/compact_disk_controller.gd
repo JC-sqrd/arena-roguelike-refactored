@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 func start_ability():
 	cd_hitbox = COMPACT_DISK_HITBOX.instantiate()
 	cd_hitbox.context = controller_context
-	cd_hitbox.effects = effects
+	#cd_hitbox.effects = effects
 	get_tree().root.add_child(cd_hitbox)
 	orbiting = true
 	pass

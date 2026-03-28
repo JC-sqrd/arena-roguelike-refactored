@@ -86,3 +86,7 @@ func get_base_value() -> float:
 
 func set_base_balue(value : float):
 	_base = value
+
+func cleanup():
+	modifiers.clear()
+	pass

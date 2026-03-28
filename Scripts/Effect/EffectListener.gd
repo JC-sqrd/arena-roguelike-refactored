@@ -11,3 +11,7 @@ func _init(stats : Stats):
 func receive_effect(effect : Effect):
 	effect.apply_effect(stats)
 	pass
+
+func cleanup():
+	stats = null
+	pass

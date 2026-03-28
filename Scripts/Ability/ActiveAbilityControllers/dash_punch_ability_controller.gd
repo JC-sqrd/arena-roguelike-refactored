@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		stop_dash()
 		var hitbox : DelayHitbox = GROUND_SLAM_HITBOX.instantiate() as DelayHitbox
 		controller_context = generate_controller_context()
+		punch_effect = null
 		punch_effect = punch_effect_temp.build_effect(controller_context)
 		hitbox.hits_queried.connect(_on_hit_queried)
 		ArenaServer.active_arena.add_child(hitbox)

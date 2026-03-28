@@ -19,3 +19,7 @@ func _on_effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName,
 
 func get_component_name() -> StringName:
 	return "hit_particle_2d"
+
+func _exit_tree() -> void:
+	entity_rid = RID()
+	pass

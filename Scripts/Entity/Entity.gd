@@ -35,7 +35,19 @@ func initalize(rid : RID):
 	
 	pass
 
-
-func _exit_tree() -> void:
-	EffectServer.free_rid(entity_rid)
+func cleanup():
+	print("ENTITY CLEANUP")
+	print_stack()
+	stats.cleanup()
+	health_manager.cleanup()
+	effect_listener.cleanup()
+	stats = null
+	health_manager = null
+	effect_listener = null
+	stats = null
+	entity_rid = RID()
 	pass
+
+#func _exit_tree() -> void:
+#	EffectServer.free_rid(entity_rid)
+#	pass

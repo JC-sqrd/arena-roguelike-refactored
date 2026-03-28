@@ -1,0 +1,35 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://kq7aylhbtm15"]
+
+[sub_resource type="Gradient" id="Gradient_ixvhf"]
+offsets = PackedFloat32Array(0.16287878, 0.39772728, 0.5265151, 0.84090906)
+colors = PackedColorArray(0.11372549, 0.09019608, 0.16862746, 1, 0.9843137, 0.9490196, 0.21176471, 1, 0.4627451, 0.25882354, 0.5411765, 1, 0.11372549, 0.09019608, 0.16862746, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_feok4"]
+gradient = SubResource("Gradient_ixvhf")
+
+[sub_resource type="Curve" id="Curve_d01e7"]
+_data = [Vector2(0, 0.5005569), 0.0, 0.0, 0, 0, Vector2(0.9734513, 0.21826291), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_44u58"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49852508, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_fvne2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_w3rv6"]
+curve_x = SubResource("Curve_d01e7")
+curve_y = SubResource("Curve_44u58")
+curve_z = SubResource("Curve_fvne2")
+
+[resource]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+radial_velocity_min = 199.99997
+radial_velocity_max = 299.99997
+gravity = Vector3(0, 0, 0)
+scale_min = 0.75
+scale_curve = SubResource("CurveXYZTexture_w3rv6")
+color_ramp = SubResource("GradientTexture1D_feok4")

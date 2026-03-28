@@ -20,3 +20,9 @@ func _process(delta: float) -> void:
 	if !initialized:
 		return
 	entity.action_point = action_point.global_position
+
+func _exit_tree() -> void:
+	if entity != null:
+		EntityServer.to_free(entity.entity_rid)
+		entity = null
+	pass

@@ -10,7 +10,6 @@ func initialize(controller : ProjectileWeaponController):
 	pass
 
 func _on_weapon_attack_started():
-	print("EMIT MUZZEL PARTICLES")
 	restart()
 	emitting = true
 	pass

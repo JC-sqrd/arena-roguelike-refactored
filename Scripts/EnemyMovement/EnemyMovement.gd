@@ -15,3 +15,7 @@ func initialize(entity : Entity, controller : EnemyController):
 func update_position(delta : float):
 	
 	pass
+
+func _exit_tree() -> void:
+	move_speed_stat = null
+	enemy_entity = null

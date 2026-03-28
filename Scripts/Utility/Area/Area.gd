@@ -48,6 +48,12 @@ func set_body_enter_callback(callable : Callable):
 	PhysicsServer2D.area_set_monitor_callback(area_rid, callable)
 	pass
 
+func set_coll_layer(layer : int):
+	PhysicsServer2D.area_set_collision_layer(area_rid, layer)
+
+func set_coll_mask(mask : int):
+	PhysicsServer2D.area_set_collision_mask(area_rid, mask)
+
 func free_area():
 	PhysicsServer2D.free_rid(area_rid)
 	PhysicsServer2D.free_rid(shape_rid)

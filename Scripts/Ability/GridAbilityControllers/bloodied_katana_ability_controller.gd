@@ -44,7 +44,7 @@ func _on_initialized():
 	area = area_template.build_area()
 	get_tree().root.add_child(hitbox)
 	AreaServer.register_area(caster.entity_rid, area)
-	hitbox.effects = effects
+	#hitbox.effects = effects
 	hitbox.context = controller_context
 	hitbox.collision_mask = collision_mask_layer
 	hitbox.global_position = caster.global_position

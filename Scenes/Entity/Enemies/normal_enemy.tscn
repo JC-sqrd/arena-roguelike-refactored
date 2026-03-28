@@ -102,7 +102,7 @@ color_ramp = SubResource("GradientTexture1D_n2vpp")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ghwbu"]
 font_size = 8
-outline_size = 2
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="NormalEnemy" type="Node2D" unique_id=1528450500 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]

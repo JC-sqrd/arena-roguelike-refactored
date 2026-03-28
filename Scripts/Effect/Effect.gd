@@ -29,5 +29,10 @@ func invoke_effect_events():
 		pass
 	pass
 
+func cleanup():
+	mutator = null
+	modifier = null
+	pass
+
 func _to_string() -> String:
 	return "Effect modifier: " + str(modifier) + " Effect mutators: " + str(mutator)

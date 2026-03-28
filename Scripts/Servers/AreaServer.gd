@@ -20,6 +20,15 @@ func register_area(rid : RID, area : Area):
 	pass
 
 func _physics_process(delta: float) -> void:
+	
+	for rid in free_queue:
+		if active_areas.has(rid):
+			var area : Area = active_areas[rid]
+			area.active = false
+			active_areas.erase(rid)
+			area.free_area()
+	free_queue.clear()
+	
 	_keys = active_areas.keys()
 	
 	for key in _keys:
@@ -28,13 +37,6 @@ func _physics_process(delta: float) -> void:
 			area.update_position(delta)
 		pass
 	
-	for rid in free_queue:
-		if active_areas.has(rid):
-			var area : Area = active_areas.get(rid)
-			area.active = false
-			area.free_area()
-			active_areas.erase(rid)
-		free_queue.erase(rid)
 	pass
 
 func to_free(rid : RID):

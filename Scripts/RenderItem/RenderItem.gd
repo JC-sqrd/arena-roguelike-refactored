@@ -2,7 +2,6 @@
 class_name RenderItem extends Node
 
 var canvas_item : RID
-var viewport_rid : RID
 var global_position : Vector2
 
 

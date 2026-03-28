@@ -5,9 +5,9 @@ signal effect_event_occured(effect_event : EffectEvent)
 
 signal damage_effect_event_occured(damage_event : DamageEffectEvent)
 
-signal entity_died(death_event : EntityDeathEvent)
+#signal entity_died(death_event : EntityDeathEvent)
 
-#signal entity_died(entity : Entity, context : Dictionary[StringName, Variant])
+signal entity_died(entity : Entity, context : Dictionary[StringName, Variant])
 
 signal weapon_attack(attack_event : AttackEvent)
 

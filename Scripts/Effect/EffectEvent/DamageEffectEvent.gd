@@ -2,10 +2,10 @@ class_name DamageEffectEvent extends EffectEvent
 
 var damage_amount : float = 0
 var target : RID
-var source : Entity
+var source : WeakRef
 
 func invoke_event(context : Dictionary[StringName, Variant] = {}):
-	source = context.get("source")
+	source = weakref(context.get("source"))
 	target = context.get("target_rid")
 	print("DAMAGE SOURCE: " + str(source))
 	print("DAMAGE AMOUNT: " + str(damage_amount))

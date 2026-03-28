@@ -47,3 +47,9 @@ func initialize_defined_stats():
 			stat_dict[key] = stat
 			pass
 	pass
+
+func cleanup():
+	for key in stat_dict.keys():
+		stat_dict[key].cleanup()
+	stat_dict.clear()
+	pass

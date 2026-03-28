@@ -12,21 +12,7 @@ var hit_threshold : int = 15
 var _hit_counter : int = 0
 
 func _on_initialized():
-	
-	#for template in effect_templates:
-	#	effects.append(template.build_effect(controller_context))
-	#	pass
-	
 	EventServer.weapon_hit.connect(_on_weapon_hit)
-	
-	#caster.equipment_manager.weapon_equipped.connect(_on_weapon_equipped)
-	
-	#var active_controller : WeaponController
-	#active_controller = caster.equipment_manager.equipped_weapon.get_active_controller()
-	#if active_controller != null:
-		#weapon_controller = active_controller
-		#weapon_controller.weapon_hit.connect(_on_weapon_hit)
-		#pass
 	pass
 
 func _on_weapon_equipped(weapon : Weapon):
@@ -80,4 +66,9 @@ func _on_hit_queried(hits : Array[RID]):
 	for hit in hits:
 		for effect in effects:
 			EffectServer.receive_effect(hit, effect, controller_context)
+	self.effects.clear()
+	pass
+
+func _exit_tree() -> void:
+	EventServer.weapon_hit.disconnect(_on_weapon_hit)
 	pass

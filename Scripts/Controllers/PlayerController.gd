@@ -70,5 +70,6 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func _exit_tree() -> void:
-	EntityServer.to_free(player_entity.entity.entity_rid)
+	if player_entity.entity != null:
+		EntityServer.to_free(player_entity.entity.entity_rid)
 	pass
