@@ -11,6 +11,8 @@ var effect_events : Array[EffectEventTemplate]
 
 var effect_context : Dictionary[StringName, Variant]
 
+var _freed : bool = false
+
 signal applied_effect(effect : Effect)
 
 func apply_effect(stats : Stats):
@@ -30,6 +32,7 @@ func invoke_effect_events():
 	pass
 
 func cleanup():
+	_freed = true
 	mutator = null
 	modifier = null
 	pass

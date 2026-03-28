@@ -58,13 +58,17 @@ func update_movement(delta: float):
 	
 	if _idle_time >= idle_time:
 		_target = null
-		homing_area = null
-		projectile.free_projectile()
+		var projectile_rid : RID = projectile.projectile_rid
+		var area_rid : RID = homing_area.area_rid
+		
 		projectile.active = false
-		ProjectileServer.to_free(projectile.projectile_rid)
-		AreaServer.to_free(homing_area.area_rid)
+		
 		homing_area.free_area()
-		pass
+		homing_area = null
+		
+		ProjectileServer.to_free(projectile_rid)
+		AreaServer.to_free(area_rid)
+		return
 	
 	# Apply movement using your existing PhysicsServer logic
 	projectile.velocity = _current_velocity * delta

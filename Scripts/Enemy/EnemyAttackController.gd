@@ -47,7 +47,8 @@ func deactivate():
 	pass
 
 func _on_attack_timer_timeout():
-	apply_effects()
+	if attack_timer != null:
+		apply_effects()
 	pass
 
 func apply_effects():
@@ -64,6 +65,7 @@ func generate_effect_context(attacker_stats : Stats) -> Dictionary[StringName, V
 func _exit_tree() -> void:
 	for effect in _effects:
 		effect.cleanup()
+	attack_timer.timeout.disconnect(_on_attack_timer_timeout)
 	_effects.clear()
 	hit_logs.clear()
 	_attacker_stats = null

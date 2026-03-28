@@ -16,6 +16,8 @@ var max_health : Stat
 
 var health_manager : HealthManager
 
+var _hide_timer : SceneTreeTimer = null
+
 func initialize(health_manager : HealthManager, parent_node : Node2D):
 	create_canvas_item()
 	rect_size = Vector2(width, height)
@@ -35,7 +37,6 @@ func initialize(health_manager : HealthManager, parent_node : Node2D):
 	percentage = current_health.get_value() / max_health.get_value()
 	_old_percentage = percentage
 	
-	#adraw_bar()
 	pass
 
 func _process(delta: float) -> void:
@@ -45,23 +46,10 @@ func _process(delta: float) -> void:
 	var xForm : Transform2D = Transform2D(0, parent_node.global_position + position_offset)
 	RenderingServer.canvas_item_set_transform(canvas_item, xForm)
 
-
-func update_render():
-	
-	
-	pass
-
-func draw_bar():
-	RenderingServer.canvas_item_clear(canvas_item)
-	
-	RenderingServer.canvas_item_add_rect(canvas_item, Rect2(global_position, rect_size), Color.BLACK, true)
-	
-	RenderingServer.canvas_item_add_rect(canvas_item, Rect2(global_position, Vector2(rect_size.x * percentage, rect_size.y)), Color.ORANGE_RED, true)
-	
-	RenderingServer.canvas_item_add_rect(canvas_item, Rect2(global_position, Vector2(rect_size.x * percentage, rect_size.y)), Color.SEA_GREEN, true)
-	pass
-
 func _exit_tree() -> void:
+	if _hide_timer != null:
+		_hide_timer.timeout.disconnect(_on_hide_timeout)
+		_hide_timer = null
 	health_manager = null
 	RenderingServer.canvas_item_clear(canvas_item)
 	RenderingServer.free_rid(canvas_item)
@@ -78,6 +66,13 @@ func tweened_update():
 	_old_percentage = percentage
 	pass
 
+func _restart_hide_timer():
+	if _hide_timer != null:
+		_hide_timer.timeout.disconnect(_on_hide_timeout)
+	_hide_timer = get_tree().create_timer(5.0)
+	_hide_timer.timeout.connect(_on_hide_timeout)
+	pass
+
 func tween_drain_bar(value : float):
 	RenderingServer.canvas_item_clear(canvas_item)
 	
@@ -87,9 +82,7 @@ func tween_drain_bar(value : float):
 	
 	RenderingServer.canvas_item_add_rect(canvas_item, Rect2(global_position, Vector2(rect_size.x * percentage, rect_size.y)), Color.SEA_GREEN, true)
 	
-	await get_tree().create_timer(5).timeout
-	RenderingServer.canvas_item_clear(canvas_item)
-	drawing = false
+	#RenderingServer.canvas_item_clear(canvas_item)
 	pass
 
 func _on_health_depleted(context : Dictionary[StringName, Variant]):
@@ -103,6 +96,12 @@ func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	RenderingServer.canvas_item_add_rect(canvas_item, Rect2(global_position, Vector2(rect_size.x * 0, rect_size.y)), Color.ORANGE_RED, true)
 	
 	RenderingServer.canvas_item_add_rect(canvas_item, Rect2(global_position, Vector2(rect_size.x * 0, rect_size.y)), Color.SEA_GREEN, true)
+	drawing = false
+	pass
+
+func _on_hide_timeout():
+	_hide_timer = null
+	RenderingServer.canvas_item_clear(canvas_item)
 	drawing = false
 	pass
 

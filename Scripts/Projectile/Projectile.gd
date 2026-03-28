@@ -81,6 +81,7 @@ func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, i
 	pass
 
 func free_projectile():
+	print("FREE PROJECTILE")
 	to_free.emit()
 	effects.clear()
 	hit_log.clear() 

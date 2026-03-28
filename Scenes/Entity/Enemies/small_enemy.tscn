@@ -5,16 +5,25 @@
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="3_pe4y6"]
 [ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="3_xnsb2"]
 [ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_5vrbn"]
-[ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="4_rnlce"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="5_8a2hg"]
 [ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="5_xfl3c"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="6_pe4y6"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="7_6imbo"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="8_rs1sc"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="9_jkami"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="10_4vh6j"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="11_5cjsa"]
 [ext_resource type="Texture2D" uid="uid://pkhk732uf3ej" path="res://Sprites/Enemies/Small Enemy/Tiny Enemy.png" id="11_feok4"]
 [ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="12_58hsy"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="12_482uc"]
 [ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="13_ixvhf"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="13_yk28v"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="14_copiu"]
 [ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="14_feok4"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="15_8jnd1"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="16_637q1"]
 [ext_resource type="Material" uid="uid://kq7aylhbtm15" path="res://Resources/ParticleProcessMaterial/enemy_hit_particle_process_material.tres" id="16_fvne2"]
+[ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="16_owhfj"]
 [ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="18_44u58"]
 
 [sub_resource type="Resource" id="Resource_58hsy"]
@@ -48,6 +57,22 @@ script = ExtResource("4_5vrbn")
 stat_templates = Array[ExtResource("5_8a2hg")]([SubResource("Resource_58hsy"), SubResource("Resource_ixvhf"), SubResource("Resource_j38lc"), SubResource("Resource_owhfj")])
 metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
+[sub_resource type="Resource" id="Resource_kk0g6"]
+script = ExtResource("15_8jnd1")
+value = 5.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_jcdd8"]
+script = ExtResource("11_5cjsa")
+mode = -1
+value_provider_template = SubResource("Resource_kk0g6")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_rtbfo"]
+script = ExtResource("16_637q1")
+flat_mutator_template = SubResource("Resource_jcdd8")
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
 [sub_resource type="Resource" id="Resource_5vrbn"]
 script = ExtResource("6_pe4y6")
 metadata/_custom_type_script = "uid://ul86s2dhadfg"
@@ -76,6 +101,12 @@ health_bar_renderer = NodePath("HealthBar")
 _components = [NodePath("GPUParticles2D"), NodePath("EntityDamageNumberSpawner")]
 metadata/_custom_type_script = "uid://knv07avm0ire"
 
+[node name="HealthBar" type="Node" parent="." unique_id=1632314997]
+script = ExtResource("16_owhfj")
+position_offset = Vector2(-5, -20)
+width = 10.0
+metadata/_custom_type_script = "uid://3qp0ggpyep3b"
+
 [node name="EntityNode" type="Node" parent="." unique_id=1786571583 node_paths=PackedStringArray("stats_node", "action_point")]
 script = ExtResource("2_4v03t")
 stats_node = NodePath("StatsNode")
@@ -90,16 +121,10 @@ metadata/_custom_type_script = "uid://chi8el32v5eh0"
 [node name="EnemyAttackController" type="Node" parent="." unique_id=1160419354 node_paths=PackedStringArray("attack_timer")]
 script = ExtResource("3_xnsb2")
 attack_timer = NodePath("Timer")
+effects_template = Array[ExtResource("8_rs1sc")]([SubResource("Resource_rtbfo")])
 metadata/_custom_type_script = "uid://b8uxde3hb1dy"
 
 [node name="Timer" type="Timer" parent="EnemyAttackController" unique_id=1929594295]
-
-[node name="HealthBar" type="Node" parent="." unique_id=935544066]
-script = ExtResource("4_rnlce")
-position_offset = Vector2(-16, -22)
-width = 32.0
-height = 1.0
-metadata/_custom_type_script = "uid://3qp0ggpyep3b"
 
 [node name="AreaController" type="Node2D" parent="." unique_id=12357011]
 position = Vector2(0, -20)

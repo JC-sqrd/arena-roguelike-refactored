@@ -34,6 +34,7 @@ var _target : Node2D
 
 var _dir_to_target : Vector2 
 var _distance_to_target : float
+var _freed : bool = false
 
 var active : bool = true
 
@@ -70,7 +71,8 @@ func _ready() -> void:
 	
 	attack_controller.initialize(enemy_entity.entity.stats)
 	
-	health_bar_renderer.initialize(enemy_entity.entity.health_manager, self)
+	if health_bar_renderer != null:
+		health_bar_renderer.initialize(enemy_entity.entity.health_manager, self)
 	
 	_target = PlayerServer.main_player
 	
@@ -107,7 +109,6 @@ func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	#EventServer.entity_died.emit(enemy_entity.entity, context)
 	_dead = true
 	#await get_tree().create_timer(0.5).timeout
-	free_controller()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -152,8 +153,6 @@ func update_position(delta : float):
 		pass
 	else:
 		global_position = enemy_entity.entity.global_position
-	
-	
 		pass
 	
 	if !active: 
@@ -263,6 +262,9 @@ func _exit_tree() -> void:
 		EntityServer.to_free(enemy_entity.entity.entity_rid)
 
 func free_controller():
+	if _freed:
+		return
+	_freed = true
 	overlapped_areas.clear()
 	overlapped_bodies.clear()
 	area_controller.free_area()

@@ -117,6 +117,7 @@ func free_wave_enemies():
 	for enemy in wave_enemies:
 		if enemy != null:
 			#EnemyServer.to_free(enemy._id)
+			enemy.active = false
 			enemy.free_controller()
 	wave_enemies.clear()
 	pass

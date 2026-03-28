@@ -12,20 +12,6 @@
 [ext_resource type="Resource" uid="uid://sksfvyj3sp13" path="res://Resources/EnemyData/WaveSpawnData/normal_enemy_wave_spawn_data.tres" id="5_6q7kt"]
 [ext_resource type="Script" uid="uid://d1rxdhgwesb0b" path="res://Scripts/WaveDirector/EnemyWaveDirector.gd" id="8_781r6"]
 
-[sub_resource type="Resource" id="Resource_cud1e"]
-script = ExtResource("3_15e5t")
-enemy_scene = ExtResource("4_6q7kt")
-weight = 10.0
-spawn_cost = 10.0
-metadata/_custom_type_script = "uid://8eg0pmyahc6u"
-
-[sub_resource type="Resource" id="Resource_nfwfb"]
-script = ExtResource("2_15e5t")
-wave_spawns = Array[ExtResource("3_15e5t")]([SubResource("Resource_cud1e")])
-wave_budget = 300.0
-budget_gain = 0.0
-metadata/_custom_type_script = "uid://d3cfwnt62d3li"
-
 [sub_resource type="Resource" id="Resource_gak5u"]
 script = ExtResource("2_15e5t")
 wave_spawns = Array[ExtResource("3_15e5t")]([ExtResource("4_6f1dk"), ExtResource("5_6q7kt")])
@@ -41,6 +27,21 @@ wave_budget = 600.0
 budget_gain = 150.0
 wave_duration = 30.0
 next_wave = SubResource("Resource_gak5u")
+metadata/_custom_type_script = "uid://d3cfwnt62d3li"
+
+[sub_resource type="Resource" id="Resource_cud1e"]
+script = ExtResource("3_15e5t")
+enemy_scene = ExtResource("4_6q7kt")
+weight = 10.0
+spawn_cost = 10.0
+metadata/_custom_type_script = "uid://8eg0pmyahc6u"
+
+[sub_resource type="Resource" id="Resource_nfwfb"]
+script = ExtResource("2_15e5t")
+wave_spawns = Array[ExtResource("3_15e5t")]([SubResource("Resource_cud1e")])
+wave_budget = 10.0
+budget_gain = 0.0
+next_wave = SubResource("Resource_15e5t")
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
 
 [sub_resource type="Resource" id="Resource_vmsas"]
