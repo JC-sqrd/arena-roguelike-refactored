@@ -61,6 +61,7 @@ func free_area():
 
 func _exit_tree() -> void:
 	active = false
+	area_template = null
 	if area != null:
 		AreaServer.to_free(area.area_rid)
 		area = null

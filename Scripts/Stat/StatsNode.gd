@@ -10,3 +10,8 @@ func build_stats() -> Stats:
 	stats.stats_template = stats_template
 	stats.initialize()
 	return stats
+
+func _exit_tree() -> void:
+	stats.cleanup()
+	stats = null
+	stats_template = null

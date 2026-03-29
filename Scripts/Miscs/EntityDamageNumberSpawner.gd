@@ -49,5 +49,7 @@ func get_component_name() -> StringName:
 	return "entity_damage_number_spawner"
 
 func _exit_tree() -> void:
+	EventServer.damage_effect_event_occured.disconnect(_on_damage_effect_event_occured)
 	_entity_id = RID()
 	entity = null
+	label_settings = null

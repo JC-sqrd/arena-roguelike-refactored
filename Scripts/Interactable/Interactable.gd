@@ -27,4 +27,5 @@ func interact(interactor : Entity):
 
 func _exit_tree() -> void:
 	AreaServer.to_free(area.area_rid)
+	area = null
 	pass

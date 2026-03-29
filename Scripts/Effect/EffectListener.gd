@@ -13,5 +13,6 @@ func receive_effect(effect : Effect):
 	pass
 
 func cleanup():
+	stats.cleanup()
 	stats = null
 	pass

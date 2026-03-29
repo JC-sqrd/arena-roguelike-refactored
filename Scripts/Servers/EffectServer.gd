@@ -1,3 +1,4 @@
+#Effect Server Singleton
 extends Node
 
 enum EffectEventTag {

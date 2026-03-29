@@ -18,14 +18,13 @@ var components : Dictionary[StringName, Variant]
 var _update_offset : int
 var _update_threshold : int = 10
 var _is_on_screen : bool = false
-#var _dist_to_screen : float = 0
-#var _initial_coll_mask : int 
-#var _zero_coll_mask : int = 0
+
 #Spatial Partitioning
 var _curr_cell_coords : Vector2i = Vector2i.ZERO
 var _new_cell_coords : Vector2i = Vector2i.ZERO
 var _cell_update_threshold : int = 5
 var _id : int
+
 #Soft Collisions
 var _separation_radius : float = 32
 var _separation_force : float = 30
@@ -100,11 +99,9 @@ func _ready() -> void:
 
 
 func _on_health_depleted(context : Dictionary[StringName, Variant]):
-	print("ENEMY HEALTH DEPLETED")
 	velocity = Vector2.ZERO
 	active = false
 	area_controller.area.set_coll_mask(0)
-	area_controller.free_area()
 	#enemy_entity.entity.died.emit(context)
 	#EventServer.entity_died.emit(enemy_entity.entity, context)
 	_dead = true
@@ -146,9 +143,7 @@ func update_position(delta : float):
 	if _dead:
 		_death_delay -= delta
 		if _death_delay <= 0:
-			print("FREE ENEMY")
 			global_position = global_position
-			print_stack()
 			free_controller()
 		pass
 	else:
@@ -264,6 +259,7 @@ func _exit_tree() -> void:
 func free_controller():
 	if _freed:
 		return
+	print("ENEMY CONTROLLER FREED")
 	_freed = true
 	overlapped_areas.clear()
 	overlapped_bodies.clear()

@@ -21,3 +21,6 @@ func update_render():
 
 func update_position():
 	pass
+
+func _exit_tree() -> void:
+	canvas_item = RID()

@@ -22,4 +22,5 @@ func get_component_name() -> StringName:
 
 func _exit_tree() -> void:
 	entity_rid = RID()
+	EventServer.effect_hit.disconnect(_on_effect_hit)
 	pass

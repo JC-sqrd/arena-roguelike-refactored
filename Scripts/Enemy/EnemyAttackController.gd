@@ -68,6 +68,8 @@ func _exit_tree() -> void:
 	attack_timer.timeout.disconnect(_on_attack_timer_timeout)
 	_effects.clear()
 	hit_logs.clear()
+	effects_template.clear()
+	_attacker_stats.cleanup()
 	_attacker_stats = null
 	_attack_speed_stat = null
 	pass

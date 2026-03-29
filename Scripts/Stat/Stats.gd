@@ -52,4 +52,5 @@ func cleanup():
 	for key in stat_dict.keys():
 		stat_dict[key].cleanup()
 	stat_dict.clear()
+	stats_template = null
 	pass

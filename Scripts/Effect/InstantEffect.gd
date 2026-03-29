@@ -6,6 +6,7 @@ func _init(mutator : StatMutator, effect_id : StringName = "instant_effect"):
 	pass
 
 func apply_effect(stats : Stats):
+	if _freed : return
 	for block_tag in block_tags:
 		if stats.has_tag(block_tag):
 			return

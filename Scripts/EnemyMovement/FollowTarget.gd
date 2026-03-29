@@ -20,6 +20,8 @@ func update_position(delta : float) -> Vector2:
 		enemy_entity.velocity = Vector2.ZERO
 		pass
 	
+	if PlayerServer.main_player == null:
+		return Vector2.ZERO
 	target = PlayerServer.main_player.global_position
 	
 	#Update velocity and push vector

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://2qb53arovk2u" path="res://Scenes/UI/GameUI/arena_ui.tscn" id="3_hq5rx"]
 [ext_resource type="PackedScene" uid="uid://bs7cobx06wp4e" path="res://Scenes/Entity/PlayerChracter/base_player_character.tscn" id="3_mjg4v"]
 [ext_resource type="Script" uid="uid://bv0b6cknh28xe" path="res://Scripts/Debug/debug_gold_ui.gd" id="4_en7hp"]
+[ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="10_73tfi"]
 [ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_spawner.tscn" id="10_hq5rx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y11aj"]
@@ -199,3 +200,23 @@ position = Vector2(-337, -128)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=571414428]
 script = ExtResource("1_0b76d")
+
+[node name="SmallEnemy" parent="." unique_id=1231003198 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy2" parent="." unique_id=488957251 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy3" parent="." unique_id=512014126 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy4" parent="." unique_id=27883302 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy5" parent="." unique_id=997746833 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy6" parent="." unique_id=197559409 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy7" parent="." unique_id=320735210 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy8" parent="." unique_id=1943827957 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy9" parent="." unique_id=1735352087 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy10" parent="." unique_id=928533876 instance=ExtResource("10_73tfi")]
