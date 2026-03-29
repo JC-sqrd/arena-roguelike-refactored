@@ -13,8 +13,8 @@ func _physics_process(delta: float) -> void:
 	for entity_to_free in free_queue:
 		if active_entities.has(entity_to_free):
 			var entity : Entity = active_entities.get(entity_to_free)
-			entity.cleanup()
 			active_entities.erase(entity_to_free)
+			entity.cleanup()
 		pass
 	free_queue.clear()
 	

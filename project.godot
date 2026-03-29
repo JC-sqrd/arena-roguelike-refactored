@@ -32,6 +32,10 @@ KnockbackServer="*uid://cesy7fytmnbv"
 CurrencyServer="*uid://07wnfdumblwm"
 CooldownServer="*uid://dharr65hdsoy8"
 
+[debug]
+
+settings/stdout/verbose_stdout=true
+
 [display]
 
 window/size/viewport_width=640

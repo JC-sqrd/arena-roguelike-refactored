@@ -202,21 +202,3 @@ position = Vector2(-337, -128)
 script = ExtResource("1_0b76d")
 
 [node name="SmallEnemy" parent="." unique_id=1231003198 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy2" parent="." unique_id=488957251 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy3" parent="." unique_id=512014126 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy4" parent="." unique_id=27883302 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy5" parent="." unique_id=997746833 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy6" parent="." unique_id=197559409 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy7" parent="." unique_id=320735210 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy8" parent="." unique_id=1943827957 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy9" parent="." unique_id=1735352087 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy10" parent="." unique_id=928533876 instance=ExtResource("10_73tfi")]

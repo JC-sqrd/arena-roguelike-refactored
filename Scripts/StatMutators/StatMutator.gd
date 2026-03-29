@@ -11,3 +11,8 @@ var _value : float = 0
 
 func get_value() -> float:
 	return _value
+
+func cleanup():
+	value_provider.cleanup()
+	value_provider = null
+	pass

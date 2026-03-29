@@ -34,3 +34,9 @@ func calculate_total_adder() -> float:
 		total_adder += adder.value
 		pass
 	return total_adder
+
+func cleanup():
+	bonus_values.clear()
+	multipliers.clear()
+	adders.clear()
+	pass

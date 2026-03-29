@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 	for rid in free_queue:
 		if active_areas.has(rid):
 			var area : Area = active_areas[rid]
-			area.active = false
 			active_areas.erase(rid)
+			area.active = false
 			area.free_area()
 	free_queue.clear()
 	

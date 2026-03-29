@@ -16,3 +16,7 @@ func remove_modifier(stat : Stat, context : Dictionary[StringName, Variant] = {}
 
 func get_value() -> float:
 	return _value
+
+func cleanup():
+	value_provider.cleanup()
+	pass

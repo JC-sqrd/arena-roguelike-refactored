@@ -255,6 +255,12 @@ func _exit_tree() -> void:
 	unique_death_listeners.clear()
 	if enemy_entity.entity != null:
 		EntityServer.to_free(enemy_entity.entity.entity_rid)
+	enemy_entity = null
+	enemy_movement = null 
+	attack_controller = null
+	area_controller = null
+	health_bar_renderer = null
+	death_listeners.clear()
 
 func free_controller():
 	if _freed:

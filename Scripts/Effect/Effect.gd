@@ -32,8 +32,13 @@ func invoke_effect_events():
 	pass
 
 func cleanup():
+	print("EFFECT CLEANUP")
 	_freed = true
+	if mutator != null:
+		mutator.cleanup()
 	mutator = null
+	if modifier != null:
+		modifier.cleanup()
 	modifier = null
 	pass
 
