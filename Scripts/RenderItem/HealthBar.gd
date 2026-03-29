@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	RenderingServer.canvas_item_set_transform(canvas_item, xForm)
 
 func _exit_tree() -> void:
-	super()
+	RenderingServer.canvas_item_clear(canvas_item)
 	if _hide_timer != null:
 		_hide_timer.timeout.disconnect(_on_hide_timeout)
 		_hide_timer = null
@@ -57,6 +57,7 @@ func _exit_tree() -> void:
 	RenderingServer.canvas_item_clear(canvas_item)
 	RenderingServer.free_rid(canvas_item)
 	print("HEALTH BAR CLEANUP")
+	super()
 
 func _on_current_health_changed(current_health : Stat, context : Dictionary[StringName, Variant]):
 	drawing = true
