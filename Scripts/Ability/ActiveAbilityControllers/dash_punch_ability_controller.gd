@@ -80,6 +80,6 @@ func stop_dash():
 
 func _on_hit_queried(hits : Array[RID]):
 	for hit in hits:
-		EffectServer.receive_effect(hit, punch_effect, controller_context)
+		EffectServer.receive_effect(hit, punch_effect_temp.build_effect(controller_context), controller_context)
 		pass
 	pass
