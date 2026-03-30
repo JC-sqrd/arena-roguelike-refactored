@@ -91,7 +91,7 @@ func _ready() -> void:
 		if component.has_method("get_component_name"):
 			components[component.get_component_name()] = component
 			if component.has_method("initialize"):
-				component.initialize(area_controller.area.area_rid)
+				component.initialize(enemy_entity.entity.entity_rid)
 				pass
 		pass
 	
@@ -102,8 +102,9 @@ func _on_health_depleted(context : Dictionary[StringName, Variant]):
 	velocity = Vector2.ZERO
 	active = false
 	area_controller.area.set_coll_mask(0)
-	#enemy_entity.entity.died.emit(context)
-	#EventServer.entity_died.emit(enemy_entity.entity, context)
+	area_controller.free_area()
+	enemy_entity.entity.died.emit(context)
+	EventServer.entity_died.emit(enemy_entity.entity, context)
 	_dead = true
 	#await get_tree().create_timer(0.5).timeout
 	pass
@@ -252,9 +253,12 @@ func _on_area_entered(status : PhysicsServer2D.AreaBodyStatus, area_rid : RID, i
 func _exit_tree() -> void:
 	move_speed_stat = null
 	death_listeners.clear()
-	unique_death_listeners.clear()
 	if enemy_entity.entity != null:
 		EntityServer.to_free(enemy_entity.entity.entity_rid)
+	for death_listener in unique_death_listeners:
+		death_listener.cleanup()
+		pass
+	unique_death_listeners.clear()
 	enemy_entity = null
 	enemy_movement = null 
 	attack_controller = null

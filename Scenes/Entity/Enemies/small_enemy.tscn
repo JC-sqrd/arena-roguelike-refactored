@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://knv07avm0ire" path="res://Scripts/Controllers/EnemyController.gd" id="1_te1ps"]
 [ext_resource type="Script" uid="uid://mhvoa3j15n4q" path="res://Scripts/Entity/EntityNode.gd" id="2_4v03t"]
-[ext_resource type="Script" uid="uid://hguha3wmbmsl" path="res://Scripts/GameEvent/EventListener/OnDeathListener/OnDeathEventListener.gd" id="2_4vh6j"]
-[ext_resource type="Script" uid="uid://uulu8pqdbuxy" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantGoldOnDeathListener.gd" id="3_5cjsa"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="3_pe4y6"]
 [ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="3_xnsb2"]
 [ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_5vrbn"]
@@ -27,10 +25,6 @@
 [ext_resource type="Material" uid="uid://kq7aylhbtm15" path="res://Resources/ParticleProcessMaterial/enemy_hit_particle_process_material.tres" id="16_fvne2"]
 [ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="16_owhfj"]
 [ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="18_44u58"]
-
-[sub_resource type="Resource" id="Resource_482uc"]
-script = ExtResource("3_5cjsa")
-metadata/_custom_type_script = "uid://uulu8pqdbuxy"
 
 [sub_resource type="Resource" id="Resource_58hsy"]
 script = ExtResource("5_8a2hg")
@@ -104,7 +98,6 @@ target_distance_threshold = 40.0
 attack_controller = NodePath("EnemyAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
-death_listeners = Array[ExtResource("2_4vh6j")]([SubResource("Resource_482uc")])
 _components = [NodePath("GPUParticles2D"), NodePath("EntityDamageNumberSpawner")]
 metadata/_custom_type_script = "uid://knv07avm0ire"
 
@@ -144,6 +137,11 @@ texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("11_feok4")
 
+[node name="FollowTarget" type="Node" parent="." unique_id=1236147036]
+script = ExtResource("14_feok4")
+target_distance_threshold = 40.0
+metadata/_custom_type_script = "uid://c0ba4ih2p3yws"
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=414331185]
 texture_filter = 1
 position = Vector2(0, -10)
@@ -156,11 +154,6 @@ local_coords = true
 process_material = ExtResource("16_fvne2")
 script = ExtResource("13_ixvhf")
 metadata/_custom_type_script = "uid://hq3w2lovo02u"
-
-[node name="FollowTarget" type="Node" parent="." unique_id=1236147036]
-script = ExtResource("14_feok4")
-target_distance_threshold = 40.0
-metadata/_custom_type_script = "uid://c0ba4ih2p3yws"
 
 [node name="EntityDamageNumberSpawner" type="Node" parent="." unique_id=489325873 node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("18_44u58")

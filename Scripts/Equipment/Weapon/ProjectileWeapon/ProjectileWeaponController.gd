@@ -30,11 +30,12 @@ func _on_start():
 func execute_attack():
 	
 	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
-		
+	var attack_effects : Array[Effect] = generate_effects(attack_context)
+	
 	attack_context.wielder_stats = wielder_stats
 	effects.clear()
-	effects = generate_effects(attack_context)
-	attack_context.attack_effects = effects
+	effects = attack_effects
+	attack_context.attack_effects = attack_effects
 	attack_context.effects_context = effect_context
 	attack_context.queries = queries
 	attack_context.weapon_stats = weapon_stats

@@ -8,9 +8,8 @@ func initialize(entity : Entity):
 	EventServer.entity_died.connect(_on_entity_died)
 	pass
 
-
-func _on_entity_died(death_event : EntityDeathEvent):
-	if death_event.entity == entity:
+func _on_entity_died(entity : Entity, context : Dictionary[StringName, Variant]):
+	if self.entity == entity:
 		CurrencyServer.add_gold(amount)
 		pass
 	pass

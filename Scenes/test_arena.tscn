@@ -202,3 +202,201 @@ position = Vector2(-337, -128)
 script = ExtResource("1_0b76d")
 
 [node name="SmallEnemy" parent="." unique_id=1231003198 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy2" parent="." unique_id=6215471 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy3" parent="." unique_id=1813956371 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy4" parent="." unique_id=2106234602 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy5" parent="." unique_id=1783730687 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy6" parent="." unique_id=2052603254 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy7" parent="." unique_id=422510712 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy8" parent="." unique_id=1117483912 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy9" parent="." unique_id=981913719 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy10" parent="." unique_id=661302850 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy11" parent="." unique_id=1338313980 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy12" parent="." unique_id=740874680 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy13" parent="." unique_id=498509365 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy14" parent="." unique_id=1620601535 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy15" parent="." unique_id=814513095 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy16" parent="." unique_id=868844042 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy17" parent="." unique_id=348382112 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy18" parent="." unique_id=1260325602 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy19" parent="." unique_id=1167877611 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy20" parent="." unique_id=1381504083 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy21" parent="." unique_id=1681141926 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy22" parent="." unique_id=976768533 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy23" parent="." unique_id=321186293 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy24" parent="." unique_id=1625126957 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy25" parent="." unique_id=1902364042 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy26" parent="." unique_id=23550615 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy27" parent="." unique_id=739833636 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy28" parent="." unique_id=2091603941 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy29" parent="." unique_id=1375877045 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy30" parent="." unique_id=1210906478 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy31" parent="." unique_id=2081475362 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy32" parent="." unique_id=1875654967 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy33" parent="." unique_id=2100756601 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy34" parent="." unique_id=1110220780 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy35" parent="." unique_id=129323420 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy36" parent="." unique_id=495056826 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy37" parent="." unique_id=345786275 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy38" parent="." unique_id=1017858434 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy39" parent="." unique_id=1847784347 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy40" parent="." unique_id=2064687401 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy41" parent="." unique_id=1285154279 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy42" parent="." unique_id=1859123662 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy43" parent="." unique_id=2027419893 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy44" parent="." unique_id=1760851704 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy45" parent="." unique_id=510090807 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy46" parent="." unique_id=1581399387 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy47" parent="." unique_id=1252624034 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy48" parent="." unique_id=922224125 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy49" parent="." unique_id=298477325 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy50" parent="." unique_id=1642456921 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy51" parent="." unique_id=277266113 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy52" parent="." unique_id=1591565022 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy53" parent="." unique_id=1617646545 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy54" parent="." unique_id=2039861800 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy55" parent="." unique_id=143808036 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy56" parent="." unique_id=1326886879 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy57" parent="." unique_id=1546105318 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy58" parent="." unique_id=2064479740 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy59" parent="." unique_id=1253064228 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy60" parent="." unique_id=1408567199 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy61" parent="." unique_id=1064536192 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy62" parent="." unique_id=154684603 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy63" parent="." unique_id=757511651 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy64" parent="." unique_id=2052955287 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy65" parent="." unique_id=389058364 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy66" parent="." unique_id=663775864 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy67" parent="." unique_id=42654088 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy68" parent="." unique_id=1329679100 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy69" parent="." unique_id=1648825358 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy70" parent="." unique_id=1019813703 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy71" parent="." unique_id=843532370 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy72" parent="." unique_id=766816215 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy73" parent="." unique_id=659705231 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy74" parent="." unique_id=1599288121 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy75" parent="." unique_id=1820557371 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy76" parent="." unique_id=1331978 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy77" parent="." unique_id=748866057 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy78" parent="." unique_id=296941575 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy79" parent="." unique_id=551219224 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy80" parent="." unique_id=445320040 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy81" parent="." unique_id=1205048862 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy82" parent="." unique_id=624003308 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy83" parent="." unique_id=456909953 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy84" parent="." unique_id=1641670721 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy85" parent="." unique_id=1964431197 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy86" parent="." unique_id=306742276 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy87" parent="." unique_id=1240196826 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy88" parent="." unique_id=306470865 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy89" parent="." unique_id=35751166 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy90" parent="." unique_id=535385930 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy91" parent="." unique_id=929138405 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy92" parent="." unique_id=492913231 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy93" parent="." unique_id=903023427 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy94" parent="." unique_id=1855442872 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy95" parent="." unique_id=1545760101 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy96" parent="." unique_id=1351348352 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy97" parent="." unique_id=1591192298 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy98" parent="." unique_id=1823236654 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy99" parent="." unique_id=970330210 instance=ExtResource("10_73tfi")]
+
+[node name="SmallEnemy100" parent="." unique_id=1440118523 instance=ExtResource("10_73tfi")]

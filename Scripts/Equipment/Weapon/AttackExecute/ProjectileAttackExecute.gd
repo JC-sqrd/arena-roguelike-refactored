@@ -1,6 +1,6 @@
 class_name ProjectileAttackExecute extends AttackExecute
 
-signal projectile_hit(hit : RID)
+signal projectile_hit(hit : RID, effects : Array[Effect], context : Dictionary[StringName, Variant])
 
 func initialize():
 	
@@ -16,7 +16,6 @@ func execute(context : Dictionary[StringName, Variant]):
 	pass
 
 func finish_execute():
-	
 	pass
 
 func _on_projectile_hit(hit : RID):
