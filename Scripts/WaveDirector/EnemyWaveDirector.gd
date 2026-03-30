@@ -28,7 +28,7 @@ func start_wave(wave_data : EnemyWaveData):
 
 func _on_wave_timeout():
 	
-	var arena_center : = ArenaServer.active_arena.main_tilemap_layer.get_used_rect().get_center() *  ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size 
+	var arena_center : Vector2i = ArenaServer.active_arena.main_tilemap_layer.get_used_rect().get_center() *  ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size 
 	print("ARENA CENTER: " + str(arena_center))
 	
 	print("SPAWN WAVE: " + str(_curr_wave_data.current_wave_time))

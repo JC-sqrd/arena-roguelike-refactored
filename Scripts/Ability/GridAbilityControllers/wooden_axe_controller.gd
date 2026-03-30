@@ -64,10 +64,12 @@ func _on_weapon_hit(hit : RID, effects : Array[Effect],context : Dictionary[Stri
 
 func _on_hit_queried(hits : Array[RID]):
 	for hit in hits:
-		for effect in effects:
+		var ability_effects : Array[Effect] = generate_effects()
+		for effect in ability_effects:
 			EffectServer.receive_effect(hit, effect, controller_context)
-	self.effects.clear()
+	controller_context.clear()
 	pass
+
 
 func _exit_tree() -> void:
 	EventServer.weapon_hit.disconnect(_on_weapon_hit)

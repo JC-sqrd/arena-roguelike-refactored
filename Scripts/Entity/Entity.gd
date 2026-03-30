@@ -40,6 +40,7 @@ func cleanup():
 	print_stack()
 	stats.cleanup()
 	health_manager.cleanup()
+	EffectServer.free_rid(entity_rid)
 	effect_listener.cleanup()
 	stats = null
 	health_manager = null
