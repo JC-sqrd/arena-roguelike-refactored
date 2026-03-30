@@ -11,9 +11,6 @@ var action_time_ratio : float = 0
 
 var executing : bool = false
 
-var effect_context : Dictionary[StringName, Variant]
-
-var melee_stats : Stats
 var queries : Array[RID]
 
 var _input_held : bool = false
@@ -29,22 +26,22 @@ func _on_start():
 
 func execute_attack():
 	
-	var attack_context : Dictionary[StringName, Variant] = generate_controller_context()
-	var attack_effects : Array[Effect] = generate_effects(attack_context)
+	controller_context = generate_controller_context()
+	var attack_effects : Array[Effect] = generate_effects(controller_context)
 	
-	attack_context.wielder_stats = wielder_stats
+	controller_context.wielder_stats = wielder_stats
 	effects.clear()
 	effects = attack_effects
-	attack_context.attack_effects = attack_effects
-	attack_context.effects_context = effect_context
-	attack_context.queries = queries
-	attack_context.weapon_stats = weapon_stats
-	attack_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
-	attack_context.action_time_ratio = action_time_ratio
-	attack_context.projectile_template = projectile_template
-	attack_context.controller = self
+	controller_context.attack_effects = attack_effects
+	controller_context.effects_context = controller_context
+	controller_context.queries = queries
+	controller_context.weapon_stats = weapon_stats
+	controller_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
+	controller_context.action_time_ratio = action_time_ratio
+	controller_context.projectile_template = projectile_template
+	controller_context.controller = self
 	
-	projectile_attack_execute.execute(attack_context)
+	projectile_attack_execute.execute(controller_context)
 	end_attack()
 
 func _on_process(delta : float):
@@ -65,8 +62,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func send_effects_to_hit(hit : RID):
 	for effect in effects:
-		EffectServer.receive_effect(hit, effect, effect_context)
-		EventServer.effect_hit.emit(hit, effect, effect_context)
+		EffectServer.receive_effect(hit, effect, controller_context)
+		EventServer.effect_hit.emit(hit, effect, controller_context)
 	pass
 
 func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect]:
@@ -77,8 +74,8 @@ func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect
 	return generated_effects
 
 func _on_projectile_hit(hit : RID):
+	EventServer.weapon_hit.emit(hit, effects, controller_context)
 	send_effects_to_hit(hit)
-	EventServer.weapon_hit.emit(hit, effects, effect_context)
-	weapon_hit.emit(hit, effect_context)
+	weapon_hit.emit(hit, controller_context)
 	effects.clear()
 	pass

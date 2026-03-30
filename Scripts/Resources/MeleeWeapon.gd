@@ -29,11 +29,9 @@ func equip(context : EquipContext):
 	context.hold_anchor.add_child(melee_controller)
 	
 	_weapon_stats = generate_weapon_stats() 
-	melee_controller.melee_stats = _weapon_stats
+	melee_controller.weapon_stats = _weapon_stats
 	
 	_weapon_stats.initialize()
-	
-	_weapon_context = generate_effect_context(_weapon_stats)
 	
 	_weapon_effects = generate_effects(_weapon_context)
 	
@@ -41,7 +39,6 @@ func equip(context : EquipContext):
 	melee_controller.weapon_stats = _weapon_stats
 	melee_controller.effects = _weapon_effects
 	melee_controller.effect_templates = effect_templates
-	melee_controller.effect_context = _weapon_context
 	melee_controller.action_time_ratio = action_time_ratio
 	melee_controller.controller_context = _weapon_context
 	

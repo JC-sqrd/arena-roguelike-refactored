@@ -97,8 +97,21 @@ func remove_upgrade():
 func generate_controller_context() -> Dictionary[StringName, Variant]:
 	var context : Dictionary[StringName, Variant] = {}
 	context["source"] = wielder
+	context["source_stats"] = wielder_stats
 	context["wielder"] = wielder
 	context["wielder_stats"] = wielder.stats
+	context["weapon_stats"] = weapon_stats
 	context["weapon_id"] = weapon_id
 	context["controller"] = self
 	return context
+
+
+func _exit_tree() -> void:
+	wielder = null
+	wielder_stats = null
+	weapon_stats = null
+	effect_templates.clear()
+	for effect in effects:
+		effect.cleanup()
+	effects.clear()
+	pass

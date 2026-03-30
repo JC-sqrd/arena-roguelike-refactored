@@ -14,7 +14,6 @@ var executing : bool = false
 
 var effect_context : Dictionary[StringName, Variant]
 
-var melee_stats : Stats
 var queries : Array[RID]
 
 var _input_held : bool = false
