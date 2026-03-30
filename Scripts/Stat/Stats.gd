@@ -12,6 +12,7 @@ enum DefinedStats {
 
 @export var stats_template : StatsTemplate
 @export var tags : Array[StringName]
+
 var stat_dict : Dictionary[StringName, Stat]
 
 signal tag_added(tag : StringName)

@@ -14,6 +14,7 @@ var effect_context : Dictionary[StringName, Variant]
 var _freed : bool = false
 
 signal applied_effect(effect : Effect)
+signal invoked_effect_events()
 
 func apply_effect(stats : Stats):
 	pass
@@ -29,6 +30,7 @@ func invoke_effect_events():
 		var effect_event : EffectEvent = event_template.build_effect_event(self)
 		effect_event.invoke_event(effect_context)
 		pass
+	invoked_effect_events.emit()
 	pass
 
 func cleanup():

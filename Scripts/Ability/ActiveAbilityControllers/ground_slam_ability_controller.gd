@@ -30,7 +30,8 @@ func _on_hit_queried(hits : Array[RID]):
 
 func send_effects_to_hits(hits : Array[RID]):
 	for hit in hits:
-		for effect in effects:
+		var ability_effects : Array[Effect] = generate_effects_from_templates(effect_templates, controller_context)
+		for effect in ability_effects:
 			EffectServer.receive_effect(hit, effect, controller_context)
 			pass
 	pass
