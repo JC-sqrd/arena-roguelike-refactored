@@ -22,7 +22,6 @@ func _on_weapon_to_hit(hit : RID, effects : Array[Effect], context : Dictionary[
 		if effect.effect_id == "damage_effect":
 			if effect.mutator != null:
 				effect.mutator.value_provider.multipliers.append(damage_multiplier)
-				print("DAMAGE MULTIPLIER APPLIED")
 			if effect.modifier != null:
 				effect.modifier.value_provider.multipliers.append(damage_multiplier)
 			pass

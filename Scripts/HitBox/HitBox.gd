@@ -54,7 +54,6 @@ func initialize():
 			#pass
 		#pass
 	#
-	##print("HITBOX QUERIED: " + str(hits))
 	#
 	#for hit in new_hits:
 		#for effect in effects:
@@ -101,5 +100,4 @@ func query_hits(log_hit : bool = false) -> Array[RID]:
 			pass
 		pass
 	
-	#print("HITBOX QUERIED: " + str(hits))
 	return new_hits

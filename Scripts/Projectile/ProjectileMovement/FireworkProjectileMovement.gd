@@ -30,7 +30,6 @@ func _on_projectile_initialized():
 	var random_angle : float = randf_range(min_angle, max_angle)
 	var launch_vec : Vector2 = projectile.direction.rotated(random_angle)
 	#_current_velocity = launch_vec * curve_speed
-	print("PROJECTILE LAUNCH VECTOR: ",rad_to_deg(min_angle), " ", rad_to_deg(max_angle))
 	pass
 
 func update_movement(delta: float):

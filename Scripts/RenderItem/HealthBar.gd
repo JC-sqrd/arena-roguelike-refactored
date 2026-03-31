@@ -56,7 +56,6 @@ func _exit_tree() -> void:
 	max_health = null
 	RenderingServer.canvas_item_clear(canvas_item)
 	RenderingServer.free_rid(canvas_item)
-	print("HEALTH BAR CLEANUP")
 	super()
 
 func _on_current_health_changed(current_health : Stat, context : Dictionary[StringName, Variant]):

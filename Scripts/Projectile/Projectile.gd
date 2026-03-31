@@ -82,7 +82,6 @@ func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, i
 	pass
 
 func free_projectile():
-	print("FREE PROJECTILE")
 	to_free.emit()
 	effects.clear()
 	hit_log.clear() 
@@ -95,7 +94,6 @@ func free_projectile():
 		projectile_hit.disconnect(connection.callable)
 	
 	if projectile_rid.is_valid():
-		print("FREE PROJECTILE PHYSICS RID")
 		PhysicsServer2D.free_rid(projectile_rid)
 	if shape_rid.is_valid():
 		PhysicsServer2D.free_rid(shape_rid)

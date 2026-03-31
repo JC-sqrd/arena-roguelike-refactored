@@ -131,9 +131,8 @@ metadata/_custom_type_script = "uid://b8uxde3hb1dy"
 
 [node name="HealthBar" type="Node" parent="." unique_id=1835499700]
 script = ExtResource("15_ukqmv")
-position_offset = Vector2(-16, -30)
-width = 32.0
-height = 1.0
+position_offset = Vector2(-7.5, -30)
+width = 15.0
 metadata/_custom_type_script = "uid://3qp0ggpyep3b"
 
 [node name="AreaController" type="Node2D" parent="." unique_id=988022686]

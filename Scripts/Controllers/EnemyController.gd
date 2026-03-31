@@ -273,7 +273,6 @@ func _exit_tree() -> void:
 func free_controller():
 	if _freed:
 		return
-	print("ENEMY CONTROLLER FREED")
 	active = false
 	_freed = true
 	overlapped_areas.clear()

@@ -57,7 +57,6 @@ func _physics_process(delta: float) -> void:
 	
 	if timer >= _dash_time:
 		ability_executed.emit()
-		print("DASH PUNCH END")
 		end()
 		stop_dash()
 		var hitbox : DelayHitbox = GROUND_SLAM_HITBOX.instantiate() as DelayHitbox

@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 
 func _exit_tree() -> void:
 	if entity != null:
-		print("ENTITY FROM ENTITY NODE FREED")
 		EntityServer.to_free(entity.entity_rid)
 		entity = null
 	pass
