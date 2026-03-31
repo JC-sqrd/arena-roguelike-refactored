@@ -28,7 +28,9 @@ func update_position(delta : float) -> Vector2:
 	_dir_to_target = (target - enemy_entity.global_position).normalized()
 	_distance_to_target = (target - enemy_entity.global_position).length()
 	#enemy_entity.velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-	enemy_entity.velocity = _dir_to_target * move_speed_stat.get_value() 
+	if active:
+		enemy_entity.velocity = _dir_to_target * move_speed_stat.get_value() 
+	
 	enemy_entity.velocity *= delta
 	enemy_entity.global_position += enemy_entity.velocity
 	return enemy_entity.global_position

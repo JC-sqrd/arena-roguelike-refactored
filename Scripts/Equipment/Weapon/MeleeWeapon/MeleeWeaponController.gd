@@ -89,8 +89,8 @@ func _on_to_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[
 
 func _on_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant]):
 	EventServer.weapon_hit.emit(hit, weapon_effects, effect_context)
-	send_effects_to_hit(hit, weapon_effects)
 	weapon_hit.emit(hit, weapon_effects, context)
+	send_effects_to_hit(hit, weapon_effects)
 	effects.clear()
 	pass
 

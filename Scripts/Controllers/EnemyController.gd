@@ -99,8 +99,9 @@ func _ready() -> void:
 
 
 func _on_health_depleted(context : Dictionary[StringName, Variant]):
+	if _dead : return
 	velocity = Vector2.ZERO
-	active = false
+	enemy_movement.active = false
 	area_controller.area.set_coll_mask(0)
 	area_controller.free_area()
 	enemy_entity.entity.died.emit(context)
@@ -141,18 +142,21 @@ func _physics_process(delta: float) -> void:
 
 func update_position(delta : float):
 	
+	if !active: 
+		return
+	
 	if _dead:
 		_death_delay -= delta
 		if _death_delay <= 0:
 			global_position = global_position
 			free_controller()
+		else:
+			global_position = enemy_entity.entity.global_position
 		pass
 	else:
 		global_position = enemy_entity.entity.global_position
 		pass
 	
-	if !active: 
-		return
 	
 	if !enemy_entity.entity.can_move:
 		return
@@ -270,6 +274,7 @@ func free_controller():
 	if _freed:
 		return
 	print("ENEMY CONTROLLER FREED")
+	active = false
 	_freed = true
 	overlapped_areas.clear()
 	overlapped_bodies.clear()

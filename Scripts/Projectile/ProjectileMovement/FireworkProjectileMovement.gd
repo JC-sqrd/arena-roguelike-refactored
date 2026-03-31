@@ -21,14 +21,17 @@ func initialize(projectile: Projectile):
 	super.initialize(projectile)
 	homing_area = homing_area_template.build_area()
 	_time_elapsed = 0.0
-	var spread : float = deg_to_rad(30)
+
+func _on_projectile_initialized():
+	var spread : float = deg_to_rad(10)
 	var dir_angle : float = projectile.direction.angle()
 	var min_angle : float = dir_angle - spread
 	var max_angle : float = dir_angle + spread
 	var random_angle : float = randf_range(min_angle, max_angle)
 	var launch_vec : Vector2 = projectile.direction.rotated(random_angle)
-	_current_velocity = launch_vec * curve_speed
-	print("PROJECTILE LAUNCH VECTOR: ",projectile.direction)
+	#_current_velocity = launch_vec * curve_speed
+	print("PROJECTILE LAUNCH VECTOR: ",rad_to_deg(min_angle), " ", rad_to_deg(max_angle))
+	pass
 
 func update_movement(delta: float):
 	_time_elapsed += delta

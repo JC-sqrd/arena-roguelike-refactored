@@ -36,8 +36,7 @@ var hit_log : Array[RID]
 
 signal projectile_hit(hit : RID)
 signal to_free()
-
-
+signal initialized()
 
 func process_projectile(delta : float):
 	if active:

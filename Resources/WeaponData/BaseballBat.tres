@@ -23,7 +23,7 @@
 script = ExtResource("1_qo6pl")
 name = "Attack Speed"
 stat_id = &"attack_speed"
-value = 1.1
+value = 1.25
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_ciktv"]

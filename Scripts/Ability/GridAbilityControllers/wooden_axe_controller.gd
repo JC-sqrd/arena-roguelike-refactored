@@ -29,7 +29,7 @@ func _on_weapon_unequipped(weapon : Weapon):
 	active = false
 	pass
 
-func _on_weapon_hit(hit : RID, effects : Array[Effect],context : Dictionary[StringName, Variant]):
+func _on_weapon_hit(hit : RID, effects : Array[Effect], context : Dictionary[StringName, Variant]):
 	if context.source != caster:
 		return
 	

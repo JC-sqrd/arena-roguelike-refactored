@@ -32,7 +32,6 @@ func execute_attack():
 	controller_context.wielder_stats = wielder_stats
 	effects.clear()
 	effects = attack_effects
-	controller_context.attack_effects = attack_effects
 	controller_context.effects_context = controller_context
 	controller_context.queries = queries
 	controller_context.weapon_stats = weapon_stats
@@ -60,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	pass
 
-func send_effects_to_hit(hit : RID):
+func send_effects_to_hit(hit : RID, effects : Array[Effect]):
 	for effect in effects:
 		EffectServer.receive_effect(hit, effect, controller_context)
 		EventServer.effect_hit.emit(hit, effect, controller_context)
@@ -74,8 +73,9 @@ func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect
 	return generated_effects
 
 func _on_projectile_hit(hit : RID):
-	EventServer.weapon_hit.emit(hit, effects, controller_context)
-	send_effects_to_hit(hit)
+	var projectile_effects : Array[Effect] = generate_effects(controller_context)
+	EventServer.weapon_hit.emit(hit, projectile_effects, generate_controller_context())
 	weapon_hit.emit(hit, controller_context)
+	send_effects_to_hit(hit, projectile_effects)
 	effects.clear()
 	pass

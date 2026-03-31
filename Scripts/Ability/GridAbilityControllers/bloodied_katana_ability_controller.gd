@@ -91,9 +91,17 @@ func _process(delta: float) -> void:
 
 
 func start_ability():
-	var hits : Array[RID] = hitbox.query_hitbox() 
-	EventServer.weapon_hit.emit(hits, controller_context)
+	var hits : Array[RID] = hitbox.query_hits() 
+	for hit in hits:
+		var effects : Array[Effect]
+		var context : Dictionary[StringName, Variant] = generate_controller_context() 
+		for template in effect_templates:
+			effects.append(template.build_effect(context))
+		for effect in effects:
+			EventServer.weapon_hit.emit(hits, effects, context)
+			EffectServer.receive_effect(hit, effect, context)
 	pass
+
 
 func _physics_process(delta: float) -> void:
 	if !active:

@@ -8,11 +8,14 @@ var _range_counter : float = 0
 var projectile : Projectile
 
 func initialize(projectile : Projectile):
+	projectile.initialized.connect(_on_projectile_initialized)
 	projectile.range = range
 	projectile.speed = speed
 	self.projectile = projectile
 
-
+func _on_projectile_initialized():
+	
+	pass
 
 func update_movement(delta : float):
 	var frame_distance : float = speed * delta

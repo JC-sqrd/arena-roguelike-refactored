@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func regiser_projectile(rid : RID, projectile : Projectile):
 	active_projectiles[rid] = projectile
+	projectile.initialized.emit()
 	pass
 
 
