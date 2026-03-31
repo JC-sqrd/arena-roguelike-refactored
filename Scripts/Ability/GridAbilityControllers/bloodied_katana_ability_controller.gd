@@ -98,7 +98,7 @@ func start_ability():
 		for template in effect_templates:
 			effects.append(template.build_effect(context))
 		for effect in effects:
-			EventServer.weapon_hit.emit(hits, effects, context)
+			EventServer.weapon_hit.emit(hit, effects, context)
 			EffectServer.receive_effect(hit, effect, context)
 	pass
 
