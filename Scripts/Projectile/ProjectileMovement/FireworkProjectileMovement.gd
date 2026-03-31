@@ -17,6 +17,8 @@ var _time_elapsed: float = 0.0
 var _target: Entity = null
 var _current_velocity: Vector2 = Vector2.ZERO
 
+var _physics_shape_query_params : PhysicsShapeQueryParameters2D
+
 func initialize(projectile: Projectile):
 	super.initialize(projectile)
 	homing_area = homing_area_template.build_area()
@@ -99,13 +101,13 @@ func _find_nearest_enemy() -> RID:
 	
 	var results : Array[Dictionary]
 	
-	var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
-	query.shape_rid = homing_area.shape_rid
-	query.transform = homing_area.xForm
-	query.collision_mask = homing_area.coll_mask
-	query.collide_with_areas = true
+	_physics_shape_query_params = PhysicsShapeQueryParameters2D.new()
+	_physics_shape_query_params.shape_rid = homing_area.shape_rid
+	_physics_shape_query_params.transform = homing_area.xForm
+	_physics_shape_query_params.collision_mask = homing_area.coll_mask
+	_physics_shape_query_params.collide_with_areas = true
 		
-	results = space_state.intersect_shape(query, 500)
+	results = space_state.intersect_shape(_physics_shape_query_params, 500)
 	if results.is_empty():
 		return RID()
 	return results[0].rid
