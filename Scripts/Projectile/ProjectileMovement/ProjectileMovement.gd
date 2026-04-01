@@ -34,3 +34,6 @@ func update_movement(delta : float):
 func free_rids():
 	
 	pass
+
+func cleanup():
+	pass

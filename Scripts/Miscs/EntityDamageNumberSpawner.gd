@@ -9,19 +9,21 @@ var entity : Entity
 
 func initialize(entity_id : RID):
 	entity = EntityServer.active_entities[entity_id]
-	EventServer.damage_effect_event_occured.connect(_on_damage_effect_event_occured)
+	EventServer.damage_event.connect(_on_damage_event_occured)
+	
 	_entity_id = entity_id
 	pass
 
-func _on_damage_effect_event_occured(event : DamageEffectEvent):
-	if event.target == _entity_id:
-		spawn_label(event)
-		pass
+
+
+func _on_damage_event_occured(damage_amount : float, target : Entity, source : Entity, context : Dictionary[StringName, Variant]):
+	if target.entity_rid == _entity_id:
+		spawn_label(damage_amount, context)
 	pass
 
-func spawn_label(damage_event : DamageEffectEvent):
+func spawn_label(damage_amount : float, context : Dictionary[StringName, Variant]):
 	var new_label : Label = Label.new()
-	new_label.text = str(damage_event.damage_amount)
+	new_label.text = str(damage_amount)
 	new_label.label_settings = label_settings.duplicate()
 	new_label.z_index = 1000
 	new_label.pivot_offset_ratio = Vector2(0.5, 1.0)
@@ -49,7 +51,7 @@ func get_component_name() -> StringName:
 	return "entity_damage_number_spawner"
 
 func _exit_tree() -> void:
-	EventServer.damage_effect_event_occured.disconnect(_on_damage_effect_event_occured)
+	EventServer.damage_event.disconnect(_on_damage_event_occured)
 	_entity_id = RID()
 	entity = null
 	label_settings = null

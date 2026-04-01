@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 		
 		orbit_offset = (Vector2.UP * 32) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * orbit_distance) 
 		
-		cd_hitbox.query_hitbox(true)
+		cd_hitbox.query_hits(true)
 		
 		cd_hitbox.global_position = orbit_offset
 		pass

@@ -8,8 +8,34 @@
 [ext_resource type="PackedScene" uid="uid://2qb53arovk2u" path="res://Scenes/UI/GameUI/arena_ui.tscn" id="3_hq5rx"]
 [ext_resource type="PackedScene" uid="uid://bs7cobx06wp4e" path="res://Scenes/Entity/PlayerChracter/base_player_character.tscn" id="3_mjg4v"]
 [ext_resource type="Script" uid="uid://bv0b6cknh28xe" path="res://Scripts/Debug/debug_gold_ui.gd" id="4_en7hp"]
-[ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="10_73tfi"]
+[ext_resource type="Script" uid="uid://knv07avm0ire" path="res://Scripts/Controllers/EnemyController.gd" id="10_6ofph"]
 [ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_spawner.tscn" id="10_hq5rx"]
+[ext_resource type="Script" uid="uid://hguha3wmbmsl" path="res://Scripts/GameEvent/EventListener/OnDeathListener/OnDeathEventListener.gd" id="11_fy5er"]
+[ext_resource type="Script" uid="uid://uulu8pqdbuxy" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantGoldOnDeathListener.gd" id="12_1euef"]
+[ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="13_lm6ba"]
+[ext_resource type="Script" uid="uid://mhvoa3j15n4q" path="res://Scripts/Entity/EntityNode.gd" id="14_uvilt"]
+[ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="15_7a1nj"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="16_tgtkq"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="17_v4k7i"]
+[ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="18_0icjl"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="19_r2tel"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="20_dafon"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="21_rdy4b"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="22_o38rl"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="23_60q0j"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="24_bmvur"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="25_kep6j"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="26_1e8gw"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="27_nm0uk"]
+[ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="28_mopb5"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="29_rrj03"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="30_lcm75"]
+[ext_resource type="Texture2D" uid="uid://pkhk732uf3ej" path="res://Sprites/Enemies/Small Enemy/Tiny Enemy.png" id="31_e8i7w"]
+[ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="32_hm7t2"]
+[ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="33_bonrv"]
+[ext_resource type="Material" uid="uid://kq7aylhbtm15" path="res://Resources/ParticleProcessMaterial/enemy_hit_particle_process_material.tres" id="34_wrxwk"]
+[ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="35_j2qg4"]
+[ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="36_6pn82"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y11aj"]
 texture = ExtResource("1_34on7")
@@ -162,6 +188,75 @@ gradient = SubResource("Gradient_mpqp4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Resource" id="Resource_482uc"]
+script = ExtResource("12_1euef")
+amount = 1.0
+metadata/_custom_type_script = "uid://uulu8pqdbuxy"
+
+[sub_resource type="Resource" id="Resource_shcvs"]
+script = ExtResource("17_v4k7i")
+name = "Max Health"
+stat_id = &"max_health"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_ixvhf"]
+script = ExtResource("17_v4k7i")
+name = "Health"
+stat_id = &"current_health"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_j38lc"]
+script = ExtResource("17_v4k7i")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_owhfj"]
+script = ExtResource("17_v4k7i")
+name = "Move Speed"
+stat_id = &"move_speed"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_i2wn4"]
+script = ExtResource("16_tgtkq")
+stat_templates = Array[ExtResource("17_v4k7i")]([SubResource("Resource_shcvs"), SubResource("Resource_ixvhf"), SubResource("Resource_j38lc"), SubResource("Resource_owhfj")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
+
+[sub_resource type="Resource" id="Resource_kk0g6"]
+script = ExtResource("26_1e8gw")
+value = 5.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_jcdd8"]
+script = ExtResource("22_o38rl")
+mode = -1
+value_provider_template = SubResource("Resource_kk0g6")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_rtbfo"]
+script = ExtResource("27_nm0uk")
+flat_mutator_template = SubResource("Resource_jcdd8")
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="Resource" id="Resource_5vrbn"]
+script = ExtResource("29_rrj03")
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_8a2hg"]
+script = ExtResource("30_lcm75")
+monitorable = true
+area_shape = SubResource("Resource_5vrbn")
+area_coll_layer = 4
+area_coll_mask = 2
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[sub_resource type="LabelSettings" id="LabelSettings_44u58"]
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [node name="TestArena" type="Node2D" unique_id=452003229 node_paths=PackedStringArray("main_tilemap_layer", "arena_ui")]
 script = ExtResource("1_73tfi")
 main_tilemap_layer = NodePath("TileMapLayer")
@@ -201,202 +296,74 @@ position = Vector2(-337, -128)
 [node name="Node2D" type="Node2D" parent="." unique_id=571414428]
 script = ExtResource("1_0b76d")
 
-[node name="SmallEnemy" parent="." unique_id=1231003198 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy2" parent="." unique_id=6215471 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy3" parent="." unique_id=1813956371 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy4" parent="." unique_id=2106234602 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy5" parent="." unique_id=1783730687 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy6" parent="." unique_id=2052603254 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy7" parent="." unique_id=422510712 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy8" parent="." unique_id=1117483912 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy9" parent="." unique_id=981913719 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy10" parent="." unique_id=661302850 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy11" parent="." unique_id=1338313980 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy12" parent="." unique_id=740874680 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy13" parent="." unique_id=498509365 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy14" parent="." unique_id=1620601535 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy15" parent="." unique_id=814513095 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy16" parent="." unique_id=868844042 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy17" parent="." unique_id=348382112 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy18" parent="." unique_id=1260325602 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy19" parent="." unique_id=1167877611 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy20" parent="." unique_id=1381504083 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy21" parent="." unique_id=1681141926 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy22" parent="." unique_id=976768533 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy23" parent="." unique_id=321186293 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy24" parent="." unique_id=1625126957 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy25" parent="." unique_id=1902364042 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy26" parent="." unique_id=23550615 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy27" parent="." unique_id=739833636 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy28" parent="." unique_id=2091603941 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy29" parent="." unique_id=1375877045 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy30" parent="." unique_id=1210906478 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy31" parent="." unique_id=2081475362 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy32" parent="." unique_id=1875654967 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy33" parent="." unique_id=2100756601 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy34" parent="." unique_id=1110220780 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy35" parent="." unique_id=129323420 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy36" parent="." unique_id=495056826 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy37" parent="." unique_id=345786275 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy38" parent="." unique_id=1017858434 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy39" parent="." unique_id=1847784347 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy40" parent="." unique_id=2064687401 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy41" parent="." unique_id=1285154279 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy42" parent="." unique_id=1859123662 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy43" parent="." unique_id=2027419893 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy44" parent="." unique_id=1760851704 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy45" parent="." unique_id=510090807 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy46" parent="." unique_id=1581399387 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy47" parent="." unique_id=1252624034 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy48" parent="." unique_id=922224125 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy49" parent="." unique_id=298477325 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy50" parent="." unique_id=1642456921 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy51" parent="." unique_id=277266113 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy52" parent="." unique_id=1591565022 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy53" parent="." unique_id=1617646545 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy54" parent="." unique_id=2039861800 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy55" parent="." unique_id=143808036 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy56" parent="." unique_id=1326886879 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy57" parent="." unique_id=1546105318 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy58" parent="." unique_id=2064479740 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy59" parent="." unique_id=1253064228 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy60" parent="." unique_id=1408567199 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy61" parent="." unique_id=1064536192 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy62" parent="." unique_id=154684603 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy63" parent="." unique_id=757511651 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy64" parent="." unique_id=2052955287 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy65" parent="." unique_id=389058364 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy66" parent="." unique_id=663775864 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy67" parent="." unique_id=42654088 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy68" parent="." unique_id=1329679100 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy69" parent="." unique_id=1648825358 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy70" parent="." unique_id=1019813703 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy71" parent="." unique_id=843532370 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy72" parent="." unique_id=766816215 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy73" parent="." unique_id=659705231 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy74" parent="." unique_id=1599288121 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy75" parent="." unique_id=1820557371 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy76" parent="." unique_id=1331978 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy77" parent="." unique_id=748866057 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy78" parent="." unique_id=296941575 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy79" parent="." unique_id=551219224 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy80" parent="." unique_id=445320040 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy81" parent="." unique_id=1205048862 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy82" parent="." unique_id=624003308 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy83" parent="." unique_id=456909953 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy84" parent="." unique_id=1641670721 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy85" parent="." unique_id=1964431197 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy86" parent="." unique_id=306742276 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy87" parent="." unique_id=1240196826 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy88" parent="." unique_id=306470865 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy89" parent="." unique_id=35751166 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy90" parent="." unique_id=535385930 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy91" parent="." unique_id=929138405 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy92" parent="." unique_id=492913231 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy93" parent="." unique_id=903023427 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy94" parent="." unique_id=1855442872 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy95" parent="." unique_id=1545760101 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy96" parent="." unique_id=1351348352 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy97" parent="." unique_id=1591192298 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy98" parent="." unique_id=1823236654 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy99" parent="." unique_id=970330210 instance=ExtResource("10_73tfi")]
-
-[node name="SmallEnemy100" parent="." unique_id=1440118523 instance=ExtResource("10_73tfi")]
+[node name="SmallEnemy" type="Node2D" parent="." unique_id=1231003198 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
+script = ExtResource("10_6ofph")
+enemy_entity = NodePath("EntityNode")
+enemy_movement = NodePath("FollowTarget")
+target_distance_threshold = 40.0
+attack_controller = NodePath("EnemyAttackController")
+area_controller = NodePath("AreaController")
+health_bar_renderer = NodePath("HealthBar")
+death_listeners = Array[ExtResource("11_fy5er")]([SubResource("Resource_482uc")])
+_components = [NodePath("GPUParticles2D"), NodePath("EntityDamageNumberSpawner")]
+metadata/_custom_type_script = "uid://knv07avm0ire"
+
+[node name="HealthBar" type="Node" parent="SmallEnemy" unique_id=1632314997]
+script = ExtResource("13_lm6ba")
+position_offset = Vector2(-5, -25)
+width = 10.0
+metadata/_custom_type_script = "uid://3qp0ggpyep3b"
+
+[node name="EntityNode" type="Node" parent="SmallEnemy" unique_id=1786571583 node_paths=PackedStringArray("stats_node", "action_point")]
+script = ExtResource("14_uvilt")
+stats_node = NodePath("StatsNode")
+action_point = NodePath("..")
+metadata/_custom_type_script = "uid://mhvoa3j15n4q"
+
+[node name="StatsNode" type="Node" parent="SmallEnemy/EntityNode" unique_id=2070120279]
+script = ExtResource("15_7a1nj")
+stats_template = SubResource("Resource_i2wn4")
+metadata/_custom_type_script = "uid://chi8el32v5eh0"
+
+[node name="EnemyAttackController" type="Node" parent="SmallEnemy" unique_id=1160419354 node_paths=PackedStringArray("attack_timer")]
+script = ExtResource("18_0icjl")
+attack_timer = NodePath("Timer")
+effects_template = Array[ExtResource("19_r2tel")]([SubResource("Resource_rtbfo")])
+metadata/_custom_type_script = "uid://b8uxde3hb1dy"
+
+[node name="Timer" type="Timer" parent="SmallEnemy/EnemyAttackController" unique_id=1929594295]
+
+[node name="AreaController" type="Node2D" parent="SmallEnemy" unique_id=12357011]
+position = Vector2(0, -20)
+script = ExtResource("28_mopb5")
+area_template = SubResource("Resource_8a2hg")
+metadata/_custom_type_script = "uid://btw2yykugf86t"
+
+[node name="SmallEnemyFront" type="Sprite2D" parent="SmallEnemy" unique_id=1398099840]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("31_e8i7w")
+
+[node name="FollowTarget" type="Node" parent="SmallEnemy" unique_id=1236147036]
+script = ExtResource("32_hm7t2")
+target_distance_threshold = 40.0
+metadata/_custom_type_script = "uid://c0ba4ih2p3yws"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SmallEnemy" unique_id=414331185]
+texture_filter = 1
+position = Vector2(0, -10)
+emitting = false
+texture = ExtResource("33_bonrv")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = ExtResource("34_wrxwk")
+script = ExtResource("35_j2qg4")
+metadata/_custom_type_script = "uid://hq3w2lovo02u"
+
+[node name="EntityDamageNumberSpawner" type="Node" parent="SmallEnemy" unique_id=489325873 node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("36_6pn82")
+label_settings = SubResource("LabelSettings_44u58")
+spawn_point = NodePath("..")
+metadata/_custom_type_script = "uid://em1gs1v5i405"

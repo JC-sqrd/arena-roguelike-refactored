@@ -11,23 +11,6 @@ texture = ExtResource("1_yo3kf")
 expand_mode = 3
 script = ExtResource("2_2r60w")
 
-[node name="CooldownLabel" type="Label" parent="." unique_id=639414287]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -6.0
-offset_right = 0.5
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "CD"
-
 [node name="CooldownProgressBar" type="TextureProgressBar" parent="." unique_id=517339818]
 clip_contents = true
 layout_mode = 1
@@ -39,13 +22,30 @@ grow_vertical = 2
 fill_mode = 5
 nine_patch_stretch = true
 texture_progress = SubResource("CanvasTexture_yo3kf")
-tint_progress = Color(0.25490198, 0.4627451, 0.69411767, 0.5921569)
+tint_progress = Color(0.25646755, 0.34965977, 0.7016829, 0.7411765)
+
+[node name="CooldownLabel" type="Label" parent="." unique_id=639414287]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -6.0
+offset_right = 5.5
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "CD"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1442865620]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 offset_right = 16.0
-offset_bottom = 16.0
+offset_bottom = 23.0
 
 [node name="Label" type="Label" parent="CenterContainer" unique_id=598135552]
 layout_mode = 2

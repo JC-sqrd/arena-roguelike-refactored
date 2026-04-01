@@ -15,6 +15,7 @@ var _idle_time : float = 0
 
 var _time_elapsed: float = 0.0
 var _target: Entity = null
+var _target_rid : RID
 var _current_velocity: Vector2 = Vector2.ZERO
 
 var _physics_shape_query_params : PhysicsShapeQueryParameters2D
@@ -25,6 +26,7 @@ func initialize(projectile: Projectile):
 	_time_elapsed = 0.0
 
 func _on_projectile_initialized():
+	_physics_shape_query_params = PhysicsShapeQueryParameters2D.new()
 	var spread : float = deg_to_rad(10)
 	var dir_angle : float = projectile.direction.angle()
 	var min_angle : float = dir_angle - spread
@@ -43,6 +45,7 @@ func update_movement(delta: float):
 	else:
 		# PHASE 2: Homing
 		if _target == null:
+			print("SEARCH NEAREST ENEMY")
 			_target = EntityServer.active_entities.get(_find_nearest_enemy())
 			if _target == null:
 				_idle = true
@@ -50,10 +53,10 @@ func update_movement(delta: float):
 		elif EntityServer.active_entities.has(_target.entity_rid):
 			var to_target : Vector2  = _target.global_position - projectile.global_position
 			var distance_sqrd : float = to_target.length_squared()
-			if distance_sqrd > 100.0: # Only steer if we aren't already "there"
+			if distance_sqrd > 100.0: 
 				var desired : Vector2  = to_target.normalized() * homing_speed
 				var steer : Vector2  = (desired - _current_velocity)
-				steer.limit_length(steer_force)
+				steer.limit_length(steer_force * delta)
 				_current_velocity += steer * delta
 				_idle = false
 		else:
@@ -101,13 +104,17 @@ func _find_nearest_enemy() -> RID:
 	
 	var results : Array[Dictionary]
 	
-	_physics_shape_query_params = PhysicsShapeQueryParameters2D.new()
 	_physics_shape_query_params.shape_rid = homing_area.shape_rid
 	_physics_shape_query_params.transform = homing_area.xForm
 	_physics_shape_query_params.collision_mask = homing_area.coll_mask
 	_physics_shape_query_params.collide_with_areas = true
 		
-	results = space_state.intersect_shape(_physics_shape_query_params, 500)
+	results = space_state.intersect_shape(_physics_shape_query_params, 1)
 	if results.is_empty():
 		return RID()
 	return results[0].rid
+
+
+func cleanup():
+	_physics_shape_query_params = null
+	pass
