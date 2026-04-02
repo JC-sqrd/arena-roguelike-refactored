@@ -8,5 +8,5 @@ func _on_initialized():
 	pass
 
 func _exit_tree() -> void:
-	
+	caster.stats.get_stat("lethality").add_bonus_value(-10)
 	pass
