@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://b2kgasaeylb2e"]
+
+[ext_resource type="Script" uid="uid://knv07avm0ire" path="res://Scripts/Controllers/EnemyController.gd" id="1_4s7ea"]
+[ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="2_u72bw"]
+[ext_resource type="Script" uid="uid://mhvoa3j15n4q" path="res://Scripts/Entity/EntityNode.gd" id="3_y1we7"]
+[ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="4_k00il"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="5_nalql"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="6_5h18o"]
+[ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController/EnemyAttackController.gd" id="7_rgs4o"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="8_7ya0l"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="9_owony"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="10_qbxn3"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="11_dqpl8"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="12_14rj0"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="13_qlax1"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="14_amb0i"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="15_8vum5"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="16_1odnv"]
+[ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="17_y5scj"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="18_58uo4"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="19_8qnl5"]
+[ext_resource type="Texture2D" uid="uid://pkhk732uf3ej" path="res://Sprites/Enemies/Small Enemy/Tiny Enemy.png" id="20_3ilqn"]
+[ext_resource type="Script" uid="uid://c0ba4ih2p3yws" path="res://Scripts/EnemyMovement/FollowTarget.gd" id="21_6qhe7"]
+[ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="22_bedyl"]
+[ext_resource type="Material" uid="uid://kq7aylhbtm15" path="res://Resources/ParticleProcessMaterial/enemy_hit_particle_process_material.tres" id="23_wti4u"]
+[ext_resource type="Script" uid="uid://hq3w2lovo02u" path="res://Scripts/Miscs/HitParticles2D.gd" id="24_ttbri"]
+[ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="25_lerps"]
+
+[sub_resource type="Resource" id="Resource_u72bw"]
+script = ExtResource("6_5h18o")
+name = "Max Health"
+stat_id = &"max_health"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_y1we7"]
+script = ExtResource("6_5h18o")
+name = "Health"
+stat_id = &"current_health"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_k00il"]
+script = ExtResource("6_5h18o")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_nalql"]
+script = ExtResource("6_5h18o")
+name = "Move Speed"
+stat_id = &"move_speed"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_5h18o"]
+script = ExtResource("5_nalql")
+stat_templates = Array[ExtResource("6_5h18o")]([SubResource("Resource_u72bw"), SubResource("Resource_y1we7"), SubResource("Resource_k00il"), SubResource("Resource_nalql")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
+
+[sub_resource type="Resource" id="Resource_rgs4o"]
+script = ExtResource("15_8vum5")
+value = 5.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_7ya0l"]
+script = ExtResource("11_dqpl8")
+mode = -1
+value_provider_template = SubResource("Resource_rgs4o")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_owony"]
+script = ExtResource("16_1odnv")
+flat_mutator_template = SubResource("Resource_7ya0l")
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="Resource" id="Resource_qbxn3"]
+script = ExtResource("18_58uo4")
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_dqpl8"]
+script = ExtResource("19_8qnl5")
+monitorable = true
+area_shape = SubResource("Resource_qbxn3")
+area_coll_layer = 4
+area_coll_mask = 2
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[sub_resource type="LabelSettings" id="LabelSettings_mg1fn"]
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="RangedEnemy" type="Node2D" unique_id=732744670 node_paths=PackedStringArray("enemy_entity", "enemy_movement", "attack_controller", "area_controller", "health_bar_renderer", "_components")]
+script = ExtResource("1_4s7ea")
+enemy_entity = NodePath("EntityNode")
+enemy_movement = NodePath("FollowTarget")
+attack_controller = NodePath("EnemyAttackController")
+area_controller = NodePath("AreaController")
+health_bar_renderer = NodePath("HealthBar")
+_components = [NodePath("HitParticles2D"), NodePath("EntityDamageNumberSpawner")]
+metadata/_custom_type_script = "uid://knv07avm0ire"
+
+[node name="HealthBar" type="Node" parent="." unique_id=208877080]
+script = ExtResource("2_u72bw")
+position_offset = Vector2(-5, -25)
+width = 10.0
+metadata/_custom_type_script = "uid://3qp0ggpyep3b"
+
+[node name="EntityNode" type="Node" parent="." unique_id=1286133649 node_paths=PackedStringArray("stats_node", "action_point")]
+script = ExtResource("3_y1we7")
+stats_node = NodePath("StatsNode")
+action_point = NodePath("..")
+metadata/_custom_type_script = "uid://mhvoa3j15n4q"
+
+[node name="StatsNode" type="Node" parent="EntityNode" unique_id=311095342]
+script = ExtResource("4_k00il")
+stats_template = SubResource("Resource_5h18o")
+metadata/_custom_type_script = "uid://chi8el32v5eh0"
+
+[node name="EnemyAttackController" type="Node" parent="." unique_id=347992458 node_paths=PackedStringArray("attack_timer")]
+script = ExtResource("7_rgs4o")
+attack_timer = NodePath("Timer")
+effects_template = Array[ExtResource("8_7ya0l")]([SubResource("Resource_owony")])
+metadata/_custom_type_script = "uid://b8uxde3hb1dy"
+
+[node name="Timer" type="Timer" parent="EnemyAttackController" unique_id=1795185051]
+
+[node name="AreaController" type="Node2D" parent="." unique_id=584819242]
+position = Vector2(0, -20)
+script = ExtResource("17_y5scj")
+area_template = SubResource("Resource_dqpl8")
+metadata/_custom_type_script = "uid://btw2yykugf86t"
+
+[node name="SmallEnemyFront" type="Sprite2D" parent="." unique_id=109911000]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("20_3ilqn")
+
+[node name="FollowTarget" type="Node" parent="." unique_id=1485535645]
+script = ExtResource("21_6qhe7")
+target_distance_threshold = 40.0
+metadata/_custom_type_script = "uid://c0ba4ih2p3yws"
+
+[node name="HitParticles2D" type="GPUParticles2D" parent="." unique_id=401865013]
+texture_filter = 1
+position = Vector2(0, -10)
+emitting = false
+texture = ExtResource("22_bedyl")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = ExtResource("23_wti4u")
+script = ExtResource("24_ttbri")
+metadata/_custom_type_script = "uid://hq3w2lovo02u"
+
+[node name="EntityDamageNumberSpawner" type="Node" parent="." unique_id=1044645078]
+script = ExtResource("25_lerps")
+label_settings = SubResource("LabelSettings_mg1fn")
+metadata/_custom_type_script = "uid://em1gs1v5i405"

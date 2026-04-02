@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://hguha3wmbmsl" path="res://Scripts/GameEvent/EventListener/OnDeathListener/OnDeathEventListener.gd" id="2_4vh6j"]
 [ext_resource type="Script" uid="uid://uulu8pqdbuxy" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantGoldOnDeathListener.gd" id="3_5cjsa"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="3_pe4y6"]
-[ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="3_xnsb2"]
 [ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="4_5vrbn"]
 [ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="5_8a2hg"]
 [ext_resource type="Script" uid="uid://btw2yykugf86t" path="res://Scripts/Utility/Area/AreaController.gd" id="5_xfl3c"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="6_pe4y6"]
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="7_6imbo"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="8_rs1sc"]
+[ext_resource type="Script" uid="uid://un0ihrev6o23" path="res://Scripts/Enemy/EnemyAttackController/EnemyContactAttackController.gd" id="9_44u58"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="9_jkami"]
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="10_4vh6j"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="11_5cjsa"]
@@ -50,6 +50,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("5_8a2hg")
 name = "Attack Speed"
 stat_id = &"attack_speed"
+value = 1.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_owhfj"]
@@ -64,30 +65,31 @@ script = ExtResource("4_5vrbn")
 stat_templates = Array[ExtResource("5_8a2hg")]([SubResource("Resource_58hsy"), SubResource("Resource_ixvhf"), SubResource("Resource_j38lc"), SubResource("Resource_owhfj")])
 metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
-[sub_resource type="Resource" id="Resource_kk0g6"]
+[sub_resource type="Resource" id="Resource_5cjsa"]
 script = ExtResource("15_8jnd1")
-value = 5.0
+value = 2.0
 metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
 
-[sub_resource type="Resource" id="Resource_jcdd8"]
+[sub_resource type="Resource" id="Resource_yk28v"]
 script = ExtResource("11_5cjsa")
 mode = -1
-value_provider_template = SubResource("Resource_kk0g6")
+value_provider_template = SubResource("Resource_5cjsa")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
-[sub_resource type="Resource" id="Resource_rtbfo"]
+[sub_resource type="Resource" id="Resource_copiu"]
 script = ExtResource("16_637q1")
-flat_mutator_template = SubResource("Resource_jcdd8")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_yk28v")
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
-[sub_resource type="Resource" id="Resource_5vrbn"]
+[sub_resource type="Resource" id="Resource_4vh6j"]
 script = ExtResource("6_pe4y6")
 metadata/_custom_type_script = "uid://ul86s2dhadfg"
 
 [sub_resource type="Resource" id="Resource_8a2hg"]
 script = ExtResource("7_6imbo")
 monitorable = true
-area_shape = SubResource("Resource_5vrbn")
+area_shape = SubResource("Resource_4vh6j")
 area_coll_layer = 4
 area_coll_mask = 2
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
@@ -102,7 +104,7 @@ script = ExtResource("1_te1ps")
 enemy_entity = NodePath("EntityNode")
 enemy_movement = NodePath("FollowTarget")
 target_distance_threshold = 40.0
-attack_controller = NodePath("EnemyAttackController")
+attack_controller = NodePath("EnemyContactAttackController")
 area_controller = NodePath("AreaController")
 health_bar_renderer = NodePath("HealthBar")
 death_listeners = Array[ExtResource("2_4vh6j")]([SubResource("Resource_482uc")])
@@ -126,13 +128,14 @@ script = ExtResource("3_pe4y6")
 stats_template = SubResource("Resource_feok4")
 metadata/_custom_type_script = "uid://chi8el32v5eh0"
 
-[node name="EnemyAttackController" type="Node" parent="." unique_id=1160419354 node_paths=PackedStringArray("attack_timer")]
-script = ExtResource("3_xnsb2")
+[node name="EnemyContactAttackController" type="Node" parent="." unique_id=1160419354 node_paths=PackedStringArray("area_controller", "attack_timer")]
+script = ExtResource("9_44u58")
+area_controller = NodePath("../AreaController")
 attack_timer = NodePath("Timer")
-effects_template = Array[ExtResource("8_rs1sc")]([SubResource("Resource_rtbfo")])
+effects_template = Array[ExtResource("8_rs1sc")]([SubResource("Resource_copiu")])
 metadata/_custom_type_script = "uid://b8uxde3hb1dy"
 
-[node name="Timer" type="Timer" parent="EnemyAttackController" unique_id=1929594295]
+[node name="Timer" type="Timer" parent="EnemyContactAttackController" unique_id=1929594295]
 
 [node name="AreaController" type="Node2D" parent="." unique_id=12357011]
 position = Vector2(0, -20)

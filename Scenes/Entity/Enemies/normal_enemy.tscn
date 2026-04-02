@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://jj452ixveqqd" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantStatOnDeathListener.gd" id="3_p6avx"]
 [ext_resource type="Script" uid="uid://uulu8pqdbuxy" path="res://Scripts/GameEvent/EventListener/OnDeathListener/GrantGoldOnDeathListener.gd" id="4_p6avx"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="5_218yx"]
-[ext_resource type="Script" uid="uid://b8uxde3hb1dy" path="res://Scripts/Enemy/EnemyAttackController.gd" id="7_wq74i"]
+[ext_resource type="Script" uid="uid://un0ihrev6o23" path="res://Scripts/Enemy/EnemyAttackController/EnemyContactAttackController.gd" id="6_ybc5p"]
 [ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="8_kfoqm"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="8_p51cc"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="9_ukqmv"]
@@ -121,11 +121,12 @@ texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("2_kfoqm")
 
-[node name="EnemyAttackController" type="Node" parent="." unique_id=626775941 node_paths=PackedStringArray("attack_timer")]
-script = ExtResource("7_wq74i")
+[node name="EnemyAttackController" type="Node" parent="." unique_id=239153833 node_paths=PackedStringArray("area_controller", "attack_timer")]
+script = ExtResource("6_ybc5p")
+area_controller = NodePath("../AreaController")
 attack_timer = NodePath("Timer")
 effects_template = Array[ExtResource("8_p51cc")]([SubResource("Resource_7wydm")])
-metadata/_custom_type_script = "uid://b8uxde3hb1dy"
+metadata/_custom_type_script = "uid://un0ihrev6o23"
 
 [node name="Timer" type="Timer" parent="EnemyAttackController" unique_id=860097410]
 

@@ -53,7 +53,6 @@ func _ready() -> void:
 	_curr_cell_coords = _calculate_new_cell_coords()
 	
 	area_controller.initialize()
-	area_controller.set_body_enter_callback(_on_body_entered)
 	
 	#enemy_entity.initalize(get_rid(), self)
 	enemy_entity.initialize(area_controller.area.area_rid)
@@ -68,7 +67,7 @@ func _ready() -> void:
 	
 	move_speed_stat = enemy_entity.entity.stats.get_stat("move_speed")
 	
-	attack_controller.initialize(enemy_entity.entity.stats)
+	attack_controller.initialize(enemy_entity.entity)
 	
 	if health_bar_renderer != null:
 		health_bar_renderer.initialize(enemy_entity.entity.health_manager, self)
@@ -199,11 +198,6 @@ func update_cell_coords(delta : float):
 	#attack_controller.activate(body.get_rid())
 	#pass
 
-func _on_body_entered(status : PhysicsServer2D.AreaBodyStatus, body_rid : RID, instance_id : int, body_shape_idx : int, self_shape_idx : int):
-	if active:
-		overlapped_bodies.append(body_rid)
-		attack_controller.activate(body_rid)
-	pass
 
 func _on_body_exited(body : Node2D):
 	if overlapped_bodies.has(body):

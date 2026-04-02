@@ -8,6 +8,8 @@ var move_speed_stat : Stat
 
 var active : bool = false
 
+
+
 func initialize(entity : Entity, controller : EnemyController):
 	enemy_entity = entity
 	move_speed_stat = enemy_entity.stats.get_stat("move_speed")
