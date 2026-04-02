@@ -12,6 +12,7 @@ var input_dir : Vector2
 
 var move_speed : float
 
+
 signal initialized_grids(ability_grid : AbilityGrid, ability_inventory : AbilityGrid)
 
 func _init() -> void:
@@ -57,7 +58,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if player_entity.entity.can_move:
 		if input_dir.length() > 0:
-			player_entity.entity.velocity = input_dir * move_speed 
+			player_entity.entity.velocity = input_dir * move_speed
 			#velocity = player_entity.entity.velocity 
 		else:
 			player_entity.entity.velocity = Vector2.ZERO

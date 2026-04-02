@@ -6,12 +6,10 @@
 [ext_resource type="Script" uid="uid://cvps4oja0ggr3" path="res://Scripts/Resources/ProjectileWeapon.gd" id="3_m5255"]
 [ext_resource type="Resource" uid="uid://crb0opuuj8bic" path="res://Resources/EffectTemplate/uzi_damage_effect.tres" id="4_20e3m"]
 [ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="4_pyv20"]
-[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="5_1jkb6"]
 [ext_resource type="Texture2D" uid="uid://bp0fimggsu26v" path="res://Sprites/Weapons/Uzi/Uzi Bullet.png" id="5_03p31"]
+[ext_resource type="Script" uid="uid://p4wchjgkrolx" path="res://Scripts/Projectile/ProjectileMovement/ProjectileMovement.gd" id="5_20e3m"]
 [ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="5_holls"]
 [ext_resource type="PackedScene" uid="uid://vwlisr7budn7" path="res://Scenes/Weapons/Uzi/uzi_weapon_controller.tscn" id="5_ysrop"]
-[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="6_tp80p"]
-[ext_resource type="Script" uid="uid://peycyprnmgm0" path="res://Scripts/Projectile/ProjectileMovement/FireworkProjectileMovement.gd" id="7_p2uwh"]
 
 [sub_resource type="Resource" id="Resource_m5255"]
 script = ExtResource("2_m5255")
@@ -34,21 +32,9 @@ stat_id = &"weapon_knockback"
 value = 50.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
-[sub_resource type="Resource" id="Resource_ihksg"]
-script = ExtResource("5_1jkb6")
-radius = 10000.0
-metadata/_custom_type_script = "uid://ul86s2dhadfg"
-
-[sub_resource type="Resource" id="Resource_aq1cs"]
-script = ExtResource("6_tp80p")
-area_shape = SubResource("Resource_ihksg")
-area_coll_mask = 4
-metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
-
-[sub_resource type="Resource" id="Resource_5tn57"]
-script = ExtResource("7_p2uwh")
-homing_area_template = SubResource("Resource_aq1cs")
-metadata/_custom_type_script = "uid://peycyprnmgm0"
+[sub_resource type="Resource" id="Resource_im2xt"]
+script = ExtResource("5_20e3m")
+metadata/_custom_type_script = "uid://p4wchjgkrolx"
 
 [sub_resource type="Resource" id="Resource_03p31"]
 script = ExtResource("4_pyv20")
@@ -58,7 +44,7 @@ metadata/_custom_type_script = "uid://swufoypqyj1x"
 [sub_resource type="Resource" id="Resource_20e3m"]
 script = ExtResource("5_holls")
 projectile_shape = SubResource("Resource_03p31")
-projectile_movement = SubResource("Resource_5tn57")
+projectile_movement = SubResource("Resource_im2xt")
 projectile_texture = ExtResource("5_03p31")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"

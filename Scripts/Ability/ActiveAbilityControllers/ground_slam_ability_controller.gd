@@ -24,6 +24,7 @@ func _on_start():
 	end()
 	pass
 
+
 func _on_hit_queried(hits : Array[RID]):
 	send_effects_to_hits(hits)
 	pass

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bulhnvk73uj5c"]
+
+[ext_resource type="PackedScene" uid="uid://fq3pvdt5w8gm" path="res://Scenes/UI/CharacterUI/ActiveAbilityIconUI.tscn" id="1_cmtl5"]
+[ext_resource type="Script" uid="uid://6crqorgr1ks" path="res://Scripts/UI/AbilityIconUI/ActiveAbilityUI.gd" id="1_j5oi2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p5gct"]
+font_size = 4
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ActiveAbilityUI" type="VBoxContainer" unique_id=2022908606]
+theme_override_constants/separation = 0
+script = ExtResource("1_j5oi2")
+
+[node name="AbilityIcon" parent="." unique_id=2070512218 instance=ExtResource("1_cmtl5")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityKeyLabel" type="Label" parent="." unique_id=1620812155]
+unique_name_in_owner = true
+layout_mode = 2
+text = "KEY"
+label_settings = SubResource("LabelSettings_p5gct")
+horizontal_alignment = 1
+clip_text = true
