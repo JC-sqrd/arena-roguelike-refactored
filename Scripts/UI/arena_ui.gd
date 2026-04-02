@@ -5,6 +5,7 @@ class_name ArenaUI extends Control
 @onready var player_character_ui: PlayerCharacterUI = $PlayerUI/MarginContainer/PlayerCharacterUi
 @onready var ui_ability_grid: AbilityGridUIController = %UiAbilityGrid
 @onready var weapon_upgrade_panel: WeaponUpgradeUI = %WeaponUpgradePanel
+@onready var crosshair_ui: CrosshairUI = %CrosshairUI
 
 func initialize():
 	player_character_ui.initialize(PlayerServer.main_player)
@@ -17,6 +18,12 @@ func _ready() -> void:
 
 func toggle_hidden_layer_visibility():
 	hidden_layer.visible = !hidden_layer.visible
+	if hidden_layer.visible:
+		crosshair_ui.visible = false
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		crosshair_ui.visible = true
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	pass
 
 func open_ui():
