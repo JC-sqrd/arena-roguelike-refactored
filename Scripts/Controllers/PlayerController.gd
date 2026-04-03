@@ -70,6 +70,7 @@ func _physics_process(delta: float) -> void:
 	player_entity.entity.global_position = global_position
 	pass
 
+
 func _exit_tree() -> void:
 	if player_entity.entity != null:
 		EntityServer.to_free(player_entity.entity.entity_rid)

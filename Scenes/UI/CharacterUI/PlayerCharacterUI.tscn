@@ -19,3 +19,7 @@ layout_mode = 2
 [node name="ActiveAbility2UI" parent="HBoxContainer" unique_id=543991612 instance=ExtResource("2_nrqlt")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="ActiveAbility3UI" parent="HBoxContainer" unique_id=1158187249 instance=ExtResource("2_nrqlt")]
+unique_name_in_owner = true
+layout_mode = 2

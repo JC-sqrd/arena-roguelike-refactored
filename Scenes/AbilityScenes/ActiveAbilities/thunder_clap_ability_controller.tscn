@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dkauvnornq7fp"]
+
+[ext_resource type="Script" uid="uid://c8yw7mlo7gmh0" path="res://Scripts/Ability/ActiveAbilityControllers/thunder_clap_ability_controller.gd" id="1_rxfn1"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="2_25imr"]
+[ext_resource type="Script" uid="uid://cl0p5siqyev36" path="res://Scripts/Utility/CooldownTimer.gd" id="2_hybho"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_e244s"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="3_hcw5e"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_rg666"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="5_hcw5e"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="6_6hdnk"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="7_6hdnk"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="7_pnnj7"]
+[ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="8_pnnj7"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="8_whvsg"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="9_y3yut"]
+
+[sub_resource type="Resource" id="Resource_whvsg"]
+script = ExtResource("3_hcw5e")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_y3yut"]
+script = ExtResource("7_6hdnk")
+value = 800.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_k1nem"]
+script = ExtResource("8_pnnj7")
+magnitude = SubResource("Resource_y3yut")
+metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
+
+[sub_resource type="Resource" id="Resource_td2rm"]
+script = ExtResource("7_pnnj7")
+value = 0.5
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_rw210"]
+script = ExtResource("8_whvsg")
+context_stats_id = &"caster_stats"
+stat_id = &"lethality"
+multipliers = Array[ExtResource("7_pnnj7")]([SubResource("Resource_td2rm")])
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_teytm"]
+script = ExtResource("4_rg666")
+mode = -1
+value_provider_template = SubResource("Resource_rw210")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_2npkt"]
+script = ExtResource("9_y3yut")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_teytm")
+effect_event_templates = Array[ExtResource("2_25imr")]([SubResource("Resource_whvsg"), SubResource("Resource_k1nem")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="Resource" id="Resource_pvrys"]
+script = ExtResource("2_hybho")
+cooldown = 5.0
+metadata/_custom_type_script = "uid://cl0p5siqyev36"
+
+[node name="ThunderClapAbilityController" type="Node" unique_id=295960493]
+script = ExtResource("1_rxfn1")
+damage_effect_template = SubResource("Resource_2npkt")
+cooldown_timer = SubResource("Resource_pvrys")
+metadata/_custom_type_script = "uid://b71v68teuxsft"

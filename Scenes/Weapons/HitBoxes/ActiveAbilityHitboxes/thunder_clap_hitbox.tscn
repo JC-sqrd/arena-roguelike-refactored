@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://c0x0eirspcmbd"]
+
+[ext_resource type="Script" uid="uid://fkv1ury50md" path="res://Scripts/HitBox/DelayHitBox.gd" id="1_turtr"]
+[ext_resource type="Texture2D" uid="uid://xhxvyrouj1s2" path="res://Sprites/ActiveAbilities/ThunderClap/ThunderClap.png" id="2_re33v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n7hq"]
+size = Vector2(96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n7hq"]
+atlas = ExtResource("2_re33v")
+region = Rect2(0, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe8b2"]
+atlas = ExtResource("2_re33v")
+region = Rect2(128, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbrye"]
+atlas = ExtResource("2_re33v")
+region = Rect2(256, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q24yt"]
+atlas = ExtResource("2_re33v")
+region = Rect2(512, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_re33v"]
+atlas = ExtResource("2_re33v")
+region = Rect2(640, 0, 128, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y38yl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n7hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe8b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbrye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q24yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re33v")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ThunderClapHitbox" type="Area2D" unique_id=1512753485]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_turtr")
+delay = 0.4
+metadata/_custom_type_script = "uid://fkv1ury50md"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2125743911]
+position = Vector2(48, 0)
+shape = SubResource("RectangleShape2D_2n7hq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2125821994]
+position = Vector2(48, 0)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_y38yl")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0

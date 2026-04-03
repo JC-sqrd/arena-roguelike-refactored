@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="24_c44xl"]
 [ext_resource type="Resource" uid="uid://soq4ia2k2yq4" path="res://Resources/AbilityData/ground_slam_ability_data.tres" id="26_jq2g3"]
 [ext_resource type="Resource" uid="uid://dltuy5kw6uh4c" path="res://Resources/AbilityData/dash_punch_ability_data.tres" id="27_b2ade"]
+[ext_resource type="Resource" uid="uid://b3a5gvdqj53t8" path="res://Resources/AbilityData/thunder_clap_ability_data.tres" id="28_pf1fh"]
 
 [sub_resource type="Resource" id="Resource_l0a5t"]
 script = ExtResource("2_xpoel")
@@ -206,4 +207,5 @@ metadata/_custom_type_script = "uid://bc6u0xacwhuly"
 script = ExtResource("24_5pv1g")
 ability_one = ExtResource("26_jq2g3")
 ability_two = ExtResource("27_b2ade")
+ability_three = ExtResource("28_pf1fh")
 metadata/_custom_type_script = "uid://dhhynaisfxsr3"
