@@ -3,6 +3,7 @@ class_name PlayerCharacterUI extends Control
 @onready var active_ability_1ui: ActiveAbilityUI = %ActiveAbility1UI
 @onready var active_ability_2ui: ActiveAbilityUI = %ActiveAbility2UI
 @onready var active_ability_3ui: ActiveAbilityUI = %ActiveAbility3UI
+@onready var player_health_bar: PlayerHealthBar = %PlayerHealthBar
 
 
 var player_controller : PlayerController
@@ -19,4 +20,6 @@ func initialize(player_character : PlayerController):
 	
 	var ability_3_data : ActiveAbilityData = player_controller.active_ability_controller_manager.ability_three
 	active_ability_3ui.initialize(ability_3_data.get_active_ability_controller(), "active_ability_3", ability_3_data.ability_icon)
+	
+	player_health_bar.initialize(player_character.player_entity.entity)
 	pass

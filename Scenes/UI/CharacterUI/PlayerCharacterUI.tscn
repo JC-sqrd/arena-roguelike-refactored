@@ -2,24 +2,53 @@
 
 [ext_resource type="Script" uid="uid://b7q8uolv88nwm" path="res://Scripts/UI/PlayerCharacterUI/PlayerCharacterUI.gd" id="1_wnntl"]
 [ext_resource type="PackedScene" uid="uid://bulhnvk73uj5c" path="res://Scenes/UI/CharacterUI/ActiveAbilityUI.tscn" id="2_nrqlt"]
+[ext_resource type="Script" uid="uid://cq4i2cn8q2kw6" path="res://Scripts/UI/PlayerHealthBar/PlayerHealthBar.gd" id="3_nrqlt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nrqlt"]
 
 [node name="PlayerCharacterUi" type="PanelContainer" unique_id=1415726095]
-offset_right = 36.0
-offset_bottom = 16.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -11.5
+offset_right = 28.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_wnntl")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1238739634]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1221925368]
+layout_mode = 2
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=464307355]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("CanvasTexture_nrqlt")
+tint_progress = Color(0, 1, 0, 1)
+script = ExtResource("3_nrqlt")
+metadata/_custom_type_script = "uid://cq4i2cn8q2kw6"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1238739634]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
-[node name="ActiveAbility1UI" parent="HBoxContainer" unique_id=2022908606 instance=ExtResource("2_nrqlt")]
+[node name="ActiveAbility1UI" parent="VBoxContainer/HBoxContainer" unique_id=2022908606 instance=ExtResource("2_nrqlt")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ActiveAbility2UI" parent="HBoxContainer" unique_id=543991612 instance=ExtResource("2_nrqlt")]
+[node name="ActiveAbility2UI" parent="VBoxContainer/HBoxContainer" unique_id=543991612 instance=ExtResource("2_nrqlt")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ActiveAbility3UI" parent="HBoxContainer" unique_id=1158187249 instance=ExtResource("2_nrqlt")]
+[node name="ActiveAbility3UI" parent="VBoxContainer/HBoxContainer" unique_id=1158187249 instance=ExtResource("2_nrqlt")]
 unique_name_in_owner = true
 layout_mode = 2
