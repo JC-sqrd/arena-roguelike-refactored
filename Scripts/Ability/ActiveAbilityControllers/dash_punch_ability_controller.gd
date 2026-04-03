@@ -9,7 +9,7 @@ extends ActiveAbilityController
 
 var punch_effect : Effect
 
-const GROUND_SLAM_HITBOX = preload("uid://hkn4jr4vsdqg")
+const PUNCH_HITBOX = preload("uid://c6eavybt7t5bu")
 
 var dashing : bool = false
 var dash_force : Vector2
@@ -22,6 +22,10 @@ var _distance_traveled_squared : float = 0
 var _dash_time : float = 0 
 var timer : float = 0 
 var input_dir : Vector2
+
+var _is_anchored : bool = false
+var _hitbox : HitBox
+
 
 func _on_initialized():
 	
@@ -46,27 +50,40 @@ func _on_start():
 	pass
 
 func _physics_process(delta: float) -> void:
-	if !dashing:
+	if _is_anchored:
+		_hitbox.global_position = caster.action_point
+		print("ANCHOR HITBOX TO ACTION POINT")
+	
+	if dashing:
+	
+		_curr_speed += acceleration * delta
+		dash_force = _dash_direction * dash_speed 
+		caster.velocity = dash_force
+	
+		timer += delta
+	
+		if timer >= _dash_time:
+			_is_anchored = true
+			print("IS ANCHORED")
+			ability_executed.emit()
+			end()
+			stop_dash()
+			var hitbox : DelayHitbox = PUNCH_HITBOX.instantiate() as DelayHitbox
+			hitbox.to_be_freed.connect(_on_hitbox_to_be_freed)
+			_hitbox = hitbox
+			controller_context = generate_controller_context()
+			punch_effect = punch_effect_temp.build_effect(controller_context)
+			hitbox.hits_queried.connect(_on_hit_queried)
+			ArenaServer.active_arena.add_child(hitbox)
+			var mouse_pos : Vector2 = ArenaServer.active_arena.get_global_mouse_position() - caster.global_position
+			hitbox.rotate(mouse_pos.normalized().angle())
+			hitbox.global_position = caster.action_point
+	else:
 		return
-	
-	_curr_speed += acceleration * delta
-	dash_force = _dash_direction * dash_speed 
-	caster.velocity = dash_force
-	
-	timer += delta
-	
-	if timer >= _dash_time:
-		ability_executed.emit()
-		end()
-		stop_dash()
-		var hitbox : DelayHitbox = GROUND_SLAM_HITBOX.instantiate() as DelayHitbox
-		controller_context = generate_controller_context()
-		punch_effect = null
-		punch_effect = punch_effect_temp.build_effect(controller_context)
-		hitbox.hits_queried.connect(_on_hit_queried)
-		ArenaServer.active_arena.add_child(hitbox)
-		hitbox.global_position = caster.global_position
 	pass
+
+func _on_hitbox_to_be_freed():
+	_is_anchored = false
 
 func stop_dash():
 	timer = 0

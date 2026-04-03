@@ -6,6 +6,8 @@ class_name DelayHitbox extends HitBox
 
 signal hits_queried(hits : Array[RID]) 
 
+signal to_be_freed()
+
 func _ready() -> void:
 	get_tree().create_timer(free_at).timeout.connect(remove_hitbox)
 	await get_tree().create_timer(delay).timeout
@@ -18,5 +20,6 @@ func _ready() -> void:
 	pass
 
 func remove_hitbox():
+	to_be_freed.emit()
 	queue_free()
 	pass

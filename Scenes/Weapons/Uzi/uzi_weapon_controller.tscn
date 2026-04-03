@@ -75,6 +75,7 @@ script = ExtResource("5_ro1n7")
 metadata/_custom_type_script = "uid://cifhtxe1tjwrp"
 
 [node name="ProjectileWeaponMuzzleParticle2D" type="GPUParticles2D" parent="." unique_id=893034559]
+z_index = 20
 position = Vector2(14, -5)
 scale = Vector2(2, 2)
 emitting = false

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://c6eavybt7t5bu"]
+
+[ext_resource type="Script" uid="uid://fkv1ury50md" path="res://Scripts/HitBox/DelayHitBox.gd" id="1_62hat"]
+[ext_resource type="Texture2D" uid="uid://bsj1cftynpg8u" path="res://Sprites/ActiveAbilities/Punch/Punch.png" id="2_cj102"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b33t7"]
+size = Vector2(80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cggwm"]
+atlas = ExtResource("2_cj102")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwv8n"]
+atlas = ExtResource("2_cj102")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67d5i"]
+atlas = ExtResource("2_cj102")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34y4y"]
+atlas = ExtResource("2_cj102")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yga7h"]
+atlas = ExtResource("2_cj102")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uvt3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cggwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwv8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67d5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34y4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yga7h")
+}],
+"loop": false,
+"name": &"punch",
+"speed": 12.0
+}]
+
+[node name="PunchHitbox" type="Area2D" unique_id=1422985037]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_62hat")
+free_at = 0.75
+delay = 0.05
+metadata/_custom_type_script = "uid://fkv1ury50md"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1865576562]
+position = Vector2(40, 0)
+shape = SubResource("RectangleShape2D_b33t7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2069170146]
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_3uvt3")
+animation = &"punch"
+autoplay = "punch"
+frame = 4
+frame_progress = 1.0
