@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://1xn2obo8pow1" path="res://Resources/AbilityTiles/wooden_axe_tile.tres" id="9_jq2g3"]
 [ext_resource type="Texture2D" uid="uid://c0q5q5u87nhq2" path="res://Placeholders/PlaceholderPlayer.png" id="10_c44xl"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
+[ext_resource type="Resource" uid="uid://cfnee1kiyshfw" path="res://Resources/AbilityTiles/bow_and_arrow_tile.tres" id="10_wx6im"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 [ext_resource type="Script" uid="uid://c27363khv4g3j" path="res://Scripts/Entity/PlayerEntityNode.gd" id="13_1dleg"]
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
@@ -64,6 +65,7 @@ Vector2i(1, 2): ExtResource("8_c44xl"),
 Vector2i(1, 3): ExtResource("9_jq2g3"),
 Vector2i(2, 0): ExtResource("6_nn7uc"),
 Vector2i(3, 1): SubResource("Resource_22ndi"),
+Vector2i(3, 3): ExtResource("10_wx6im"),
 Vector2i(4, 0): ExtResource("4_v3i30"),
 Vector2i(4, 3): ExtResource("7_nqu6t")
 })

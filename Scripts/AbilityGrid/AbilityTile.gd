@@ -6,6 +6,8 @@ class_name AbilityTile extends Resource
 @export var name : String
 @export var texture : Texture2D
 @export var ability_controller_scene : PackedScene
+@export_multiline() var ability_details : String
+@export_multiline() var ability_description : String
 
 var adjacent_tiles : Dictionary[Vector2i, AbilityTile]
 

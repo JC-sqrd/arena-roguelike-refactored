@@ -46,6 +46,7 @@ func start_attack():
 	if !on_cooldown:
 		attack_to_start.emit()
 		attack_started.emit()
+		EventServer.weapon_attack_started.emit(self)
 		_on_start()
 		on_cooldown = true
 	pass

@@ -11,6 +11,10 @@ var _mouse_dir : Vector2
 var _pivot_to_mouse_dir : Vector2
 var _clamped_pos : Vector2
 
+
+var _relative_x : Vector2
+var _mouse_angle : float
+
 func _process(delta: float) -> void:
 	if !active:
 		return
@@ -24,4 +28,16 @@ func _process(delta: float) -> void:
 	
 	global_position = pivot_node.global_position + _clamped_pos 
 	
+	_relative_x = (mouse_pos - global_position)
+	_mouse_angle = rads_to_deg(_relative_x.angle())
+	
+	if _mouse_angle > 90 or _mouse_angle < -90:
+		scale.x = -1
+		pass
+	else:
+		scale.x = 1
 	#look_at(mouse_pos)
+
+
+func rads_to_deg(rad : float) -> float:
+	return rad * (180 / PI)

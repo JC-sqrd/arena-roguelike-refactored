@@ -10,7 +10,11 @@ signal damage_event(damage_amount : float, target : Entity, source : Entity, con
 
 signal entity_died(entity : Entity, context : Dictionary[StringName, Variant])
 
-signal weapon_attack(attack_event : AttackEvent)
+signal weapon_attack_started(weapon_controller : WeaponController)
+
+signal weapon_to_attack()
+
+signal weapon_attacked()
 
 signal effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName, Variant])
 
