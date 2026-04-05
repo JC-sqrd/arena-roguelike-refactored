@@ -14,6 +14,7 @@ func initialize():
 	ui_ability_grid.initialize()
 	weapon_upgrade_panel.initailize()
 	ability_grid_shop_panel.initialize()
+	crosshair_ui.initialize()
 	pass
 
 func _ready() -> void:

@@ -22,7 +22,6 @@ func _on_visibility_changed():
 		disconnect_grid_signals(ability_inventory_ui)
 	pass
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	#if event is InputEventKey and event.keycode == KEY_TAB and event.pressed:
 		#open_ui()

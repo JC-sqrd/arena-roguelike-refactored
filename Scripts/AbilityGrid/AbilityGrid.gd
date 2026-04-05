@@ -157,13 +157,11 @@ func get_tile_on_slot(slot_pos : Vector2i) -> AbilityTile:
 func can_place(ability_tile : AbilityTile, pos : Vector2i) -> bool:
 	
 	if !grid_coords.has(pos):
-		print("COORD NOT IN GRID")
 		return false
 	
 	for offset in ability_tile.offsets:
 		var slot_offsset : Vector2i = pos + offset
 		if slot_offsset.x < min_coord.x or slot_offsset.y < min_coord.y:
-			print("SLOT OFFSET OUT OF BOUNDS")
 			return false
 		elif slot_offsset.x >= size.x or slot_offsset.y >= size.y:
 			return false
