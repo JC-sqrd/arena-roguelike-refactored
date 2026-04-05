@@ -44,7 +44,7 @@ texture = ExtResource("8_nfh31")
 ability_controller_scene = ExtResource("7_86q43")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
-[sub_resource type="Resource" id="Resource_mttew"]
+[sub_resource type="Resource" id="Resource_n843e"]
 resource_local_to_scene = true
 script = ExtResource("7_ht5hn")
 adjacent_points = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0)])
@@ -179,7 +179,7 @@ ability_tile = SubResource("Resource_l3nk0")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-ability_tile = SubResource("Resource_mttew")
+ability_tile = SubResource("Resource_n843e")
 
 [node name="TextureRect4" parent="VBoxContainer/ShopItemContainer" unique_id=647996879 instance=ExtResource("3_fbs0u")]
 layout_mode = 2

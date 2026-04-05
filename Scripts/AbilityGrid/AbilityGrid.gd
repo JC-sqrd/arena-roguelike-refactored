@@ -9,6 +9,9 @@ var ability_tiles : Dictionary[AbilityTile, Vector2i]
 
 var initialized : bool = false
 
+var min_coord : Vector2i
+var max_coord : Vector2i
+
 signal grid_changed()
 signal grid_generated()
 signal placed_tile(tile : AbilityTile, coord : Vector2i)
@@ -58,6 +61,16 @@ func add_coord(coord : Vector2i) -> bool:
 	if !grid_coords.has(coord):
 		grid_coords[coord] = AbilityGridSlot.new()
 		grid_changed.emit()
+		
+		var coords : Array[Vector2i] = grid_coords.keys()
+		min_coord = coords[0]
+		max_coord = coords[0]
+		
+		for local_coord in coords:
+			min_coord = Vector2i(min(min_coord.x, local_coord.x), min(min_coord.y, local_coord.y))
+			max_coord = Vector2i(max(max_coord.x, local_coord.x), max(max_coord.y, local_coord.y))
+			pass
+		
 		return true
 	return false
 
@@ -121,6 +134,15 @@ func generate_grid():
 			pass
 		pass
 	
+	var coords : Array[Vector2i] = grid_coords.keys()
+	min_coord = coords[0]
+	max_coord = coords[0]
+	
+	for coord in coords:
+		min_coord = Vector2i(min(min_coord.x, coord.x), min(min_coord.y, coord.y))
+		max_coord = Vector2i(max(max_coord.x, coord.x), max(max_coord.y, coord.y))
+		pass
+	
 	grid_generated.emit()
 	initialized = true
 	pass
@@ -135,11 +157,13 @@ func get_tile_on_slot(slot_pos : Vector2i) -> AbilityTile:
 func can_place(ability_tile : AbilityTile, pos : Vector2i) -> bool:
 	
 	if !grid_coords.has(pos):
+		print("COORD NOT IN GRID")
 		return false
 	
 	for offset in ability_tile.offsets:
 		var slot_offsset : Vector2i = pos + offset
-		if slot_offsset.x < 0 or slot_offsset.y < 0:
+		if slot_offsset.x < min_coord.x or slot_offsset.y < min_coord.y:
+			print("SLOT OFFSET OUT OF BOUNDS")
 			return false
 		elif slot_offsset.x >= size.x or slot_offsset.y >= size.y:
 			return false

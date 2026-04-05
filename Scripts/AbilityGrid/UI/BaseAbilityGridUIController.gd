@@ -67,6 +67,7 @@ func _attempt_placement(slot_pos : Vector2i, grid : AbilityGrid):
 	pass
 
 func can_place_tile(tile : AbilityTile, grid : AbilityGrid, pos : Vector2i) -> bool:
+	print("CAN PLACE, ", grid.can_place(tile, pos))
 	return grid.can_place(tile, pos)
 
 func _confirm_placement(slot_pos : Vector2i, grid : AbilityGrid):
