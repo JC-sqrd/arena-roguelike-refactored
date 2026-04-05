@@ -9,12 +9,6 @@ func initialize():
 	
 	ability_grid_ui.generate_grid_ui(player.ability_grid)
 	ability_inventory_ui.generate_grid_ui(player.ability_tile_inventory)
-	
-	player.initialized_grids.connect(
-		func(ability_grid : AbilityGrid, ability_inventory : AbilityGrid):
-			ability_grid_ui.generate_grid_ui(ability_grid)
-			ability_inventory_ui.generate_grid_ui(ability_inventory)
-	)
 	pass
 
 func _on_visibility_changed():

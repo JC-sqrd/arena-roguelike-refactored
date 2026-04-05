@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dodmy7sq8plp1"]
+
+[ext_resource type="Script" uid="uid://csmpk3cxesed1" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_ui.gd" id="1_6y260"]
+[ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_ljkqe"]
+
+[node name="TextureRect" type="TextureRect" unique_id=1572222926]
+custom_minimum_size = Vector2(16, 16)
+texture = ExtResource("1_ljkqe")
+expand_mode = 3
+script = ExtResource("1_6y260")

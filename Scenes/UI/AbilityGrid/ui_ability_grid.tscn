@@ -5,6 +5,12 @@
 [ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="2_jtagy"]
 [ext_resource type="Script" uid="uid://fxe70e5ucsga" path="res://Scripts/AbilityGrid/UI/AbilityGraphUIFSM/AbilityGridUIFSM.gd" id="4_y4sfo"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_afqde"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_jtagy"]
+font_size = 8
+
 [node name="UiAbilityGrid" type="PanelContainer" unique_id=1912909464 node_paths=PackedStringArray("ability_grid_ui", "ability_inventory_ui")]
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,6 +47,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Abilities"
+label_settings = SubResource("LabelSettings_afqde")
 
 [node name="AbilityGridPanel" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1131529859 instance=ExtResource("2_c1r0r")]
 unique_name_in_owner = true
@@ -66,6 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Inventory"
+label_settings = SubResource("LabelSettings_jtagy")
 
 [node name="AbilityTileInventoryPanel" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=468543042 instance=ExtResource("2_c1r0r")]
 unique_name_in_owner = true

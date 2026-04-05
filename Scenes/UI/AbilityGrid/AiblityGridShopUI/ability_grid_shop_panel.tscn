@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://bqd4pcpe8o05h"]
+
+[ext_resource type="Script" uid="uid://co023jmwyyttu" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_grid_shop_panel.gd" id="1_diqma"]
+[ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_i1l14"]
+[ext_resource type="PackedScene" uid="uid://dodmy7sq8plp1" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_ui.tscn" id="3_fbs0u"]
+[ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="3_fmtjo"]
+[ext_resource type="PackedScene" uid="uid://b1k2qgud53n82" path="res://Scenes/AbilityScenes/GridAbilityControllers/bloodied_katana_controller.tscn" id="4_n843e"]
+[ext_resource type="Texture2D" uid="uid://ceeabpqv8kv8r" path="res://Placeholders/Bloody Samurai Tile.png" id="6_ddlcv"]
+[ext_resource type="PackedScene" uid="uid://5g7g6yfq5e3n" path="res://Scenes/AbilityScenes/GridAbilityControllers/marble_controller.tscn" id="6_mttew"]
+[ext_resource type="PackedScene" uid="uid://cb6vxkpn71uew" path="res://Scenes/AbilityScenes/GridAbilityControllers/wooden_axe_controller.tscn" id="7_86q43"]
+[ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="7_ht5hn"]
+[ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/Wooden Axe/Wooden Axe Tile.png" id="8_nfh31"]
+[ext_resource type="Texture2D" uid="uid://t5ul0geah7ea" path="res://Placeholders/Marble.png" id="8_yst28"]
+[ext_resource type="Script" uid="uid://b6a3i1yycy42k" path="res://Scripts/Ability/GridAbilityControllers/bloodied_katana_ability_controller.gd" id="9_1mmld"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="10_fi8yx"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="11_n843e"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="12_ddlcv"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="13_86q43"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="14_nfh31"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="15_ufa55"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="16_l3nk0"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="17_n7ioe"]
+[ext_resource type="Script" uid="uid://dou0wul2vu5jy" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/ContextStatBonusValue.gd" id="18_sx0bx"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="19_ciqrq"]
+[ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="20_vkwwd"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="21_y1y2j"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="22_4phuf"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="23_sxnur"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="24_ytatk"]
+
+[sub_resource type="Resource" id="Resource_ufa55"]
+script = ExtResource("7_ht5hn")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+name = "Bloodied Katana"
+texture = ExtResource("6_ddlcv")
+ability_controller_scene = ExtResource("4_n843e")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
+
+[sub_resource type="Resource" id="Resource_l3nk0"]
+script = ExtResource("7_ht5hn")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+name = "Wooden Axe"
+texture = ExtResource("8_nfh31")
+ability_controller_scene = ExtResource("7_86q43")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
+
+[sub_resource type="Resource" id="Resource_mttew"]
+resource_local_to_scene = true
+script = ExtResource("7_ht5hn")
+adjacent_points = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0)])
+name = "Marble"
+texture = ExtResource("8_yst28")
+ability_controller_scene = ExtResource("6_mttew")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
+
+[sub_resource type="Resource" id="Resource_fr0ks"]
+script = ExtResource("10_fi8yx")
+radius = 320.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_ypd4y"]
+script = ExtResource("11_n843e")
+area_shape = SubResource("Resource_fr0ks")
+area_coll_mask = 4
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[sub_resource type="Resource" id="Resource_fy8my"]
+script = ExtResource("14_nfh31")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_ebcqr"]
+script = ExtResource("18_sx0bx")
+context_stats = &"caster_stats"
+stat_id = &"knockback"
+metadata/_custom_type_script = "uid://dou0wul2vu5jy"
+
+[sub_resource type="Resource" id="Resource_sirmo"]
+script = ExtResource("19_ciqrq")
+value = 2.0
+bonus_values = Array[ExtResource("16_l3nk0")]([SubResource("Resource_ebcqr")])
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_eqnck"]
+script = ExtResource("20_vkwwd")
+magnitude = SubResource("Resource_sirmo")
+metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
+
+[sub_resource type="Resource" id="Resource_5ollp"]
+script = ExtResource("17_n7ioe")
+value = 0.5
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_f1prt"]
+script = ExtResource("23_sxnur")
+context_stats_id = &"caster_stats"
+stat_id = &"lethality"
+multipliers = Array[ExtResource("17_n7ioe")]([SubResource("Resource_5ollp")])
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
+
+[sub_resource type="Resource" id="Resource_uafyr"]
+script = ExtResource("22_4phuf")
+mode = -1
+value_provider_template = SubResource("Resource_f1prt")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_5gmol"]
+script = ExtResource("24_ytatk")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_uafyr")
+effect_event_templates = Array[ExtResource("13_86q43")]([SubResource("Resource_fy8my"), SubResource("Resource_eqnck")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="PackedScene" id="PackedScene_dn6td"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [],
+"names": PackedStringArray("BloodiedKatanaController", "Node", "script", "area_template", "collision_mask_layer", "effect_templates", "cooldown", "metadata/_custom_type_script"),
+"node_count": 1,
+"node_ids": PackedInt32Array(1961732915),
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0),
+"variants": [ExtResource("9_1mmld"), SubResource("Resource_ypd4y"), 4, Array[ExtResource("12_ddlcv")]([SubResource("Resource_5gmol")]), 1.0, "uid://ck2lns8ywy84t"],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_08urh"]
+load_path = "res://.godot/imported/Bloody Samurai Tile.png-2984f2cb2de950c327501adb0ee908ed.ctex"
+
+[sub_resource type="Resource" id="Resource_rbha1"]
+script = ExtResource("7_ht5hn")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+name = "Bloodied Katana"
+texture = SubResource("CompressedTexture2D_08urh")
+ability_controller_scene = SubResource("PackedScene_dn6td")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
+
+[node name="AbilityGridShopPanel" type="PanelContainer" unique_id=1315694252]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_diqma")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1415223996]
+layout_mode = 2
+
+[node name="ShopLabel" type="Label" parent="VBoxContainer" unique_id=2132519883]
+layout_mode = 2
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="AbilityInventoryUI" parent="VBoxContainer" unique_id=468543042 instance=ExtResource("2_i1l14")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="ShopItemContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=47204649]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" parent="VBoxContainer/ShopItemContainer" unique_id=1572222926 instance=ExtResource("3_fbs0u")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+ability_tile = SubResource("Resource_ufa55")
+
+[node name="TextureRect2" parent="VBoxContainer/ShopItemContainer" unique_id=1267410439 instance=ExtResource("3_fbs0u")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+ability_tile = SubResource("Resource_l3nk0")
+
+[node name="TextureRect3" parent="VBoxContainer/ShopItemContainer" unique_id=1517380334 instance=ExtResource("3_fbs0u")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+ability_tile = SubResource("Resource_mttew")
+
+[node name="TextureRect4" parent="VBoxContainer/ShopItemContainer" unique_id=647996879 instance=ExtResource("3_fbs0u")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+ability_tile = SubResource("Resource_rbha1")
+
+[node name="CursorUI" type="Control" parent="." unique_id=1120547964]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("3_fmtjo")

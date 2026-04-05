@@ -16,7 +16,7 @@ var queries : Array[RID]
 var _input_held : bool = false
 
 func _on_initialized():
-	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
+	_cooldown = 1 / (weapon_stats.get_stat("attack_speed").get_value() * wielder_stats.get_stat("attack_speed_mult").get_value())
 	projectile_attack_execute.projectile_hit.connect(_on_projectile_hit)
 	pass
 

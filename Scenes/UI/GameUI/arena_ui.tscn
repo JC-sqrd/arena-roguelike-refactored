@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://6neyt6gw61d4" path="res://Scenes/UI/CharacterUI/PlayerCharacterUI.tscn" id="2_puehs"]
 [ext_resource type="PackedScene" uid="uid://cm2wepytkbf72" path="res://Scenes/UI/WeaponUpgradeUI/weapon_upgrade_panel.tscn" id="3_rtivg"]
 [ext_resource type="PackedScene" uid="uid://ce01040y5fnqf" path="res://Scenes/UI/GameUI/crosshair_ui.tscn" id="5_laec8"]
+[ext_resource type="PackedScene" uid="uid://bqd4pcpe8o05h" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_grid_shop_panel.tscn" id="5_s6je5"]
 
 [node name="ArenaUi" type="Control" unique_id=1446304066]
 layout_mode = 3
@@ -49,7 +50,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="HiddenLayer" type="Control" parent="." unique_id=1428969262]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,13 +72,15 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 8
-current_tab = 0
+current_tab = 2
 tab_focus_mode = 1
 tab_0/title = "Artifact"
 tab_1/title = "Weapon"
+tab_2/title = "Shop"
 
 [node name="UiAbilityGrid" parent="HiddenLayer/TabContainer" unique_id=1020187136 instance=ExtResource("2_jtl6x")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 metadata/_tab_name = "Artifact"
@@ -89,6 +91,12 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = "Weapon"
+
+[node name="AbilityGridShopPanel" parent="HiddenLayer/TabContainer" unique_id=1315694252 instance=ExtResource("5_s6je5")]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = "Shop"
 
 [node name="CrosshairUI" parent="." unique_id=146612626 instance=ExtResource("5_laec8")]
 unique_name_in_owner = true

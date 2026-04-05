@@ -32,7 +32,6 @@ func _ready() -> void:
 func generate_grid_ui(ability_grid : AbilityGrid):
 	clear_grid_ui()
 	
-	
 	size = ability_grid.get_grid_size() * slot_size
 	custom_minimum_size = size
 	var ability_grid_bounding_box : Rect2i = ability_grid.get_grid_bounds()

@@ -10,6 +10,8 @@ var _original_grid : AbilityGrid
 var _original_pos : Vector2i
 var _original_rotation_idx : int = 0
 
+func intitialize():
+	pass
 
 func _process(delta: float) -> void:
 	if visible:
@@ -71,7 +73,7 @@ func _confirm_placement(slot_pos : Vector2i, grid : AbilityGrid):
 	if grid.place_tile_on_slot(_held_tile, slot_pos):
 		_held_tile.update_adjacent_tiles(grid.get_adjacent_tiles_from_adjacent_points(_held_tile))
 		_update_adjacent_tiles(grid.get_adjacent_tiles(_held_tile), grid)
-		_clear_helt_state()
+		_clear_held_state()
 		pass
 	pass
 
@@ -80,10 +82,10 @@ func _rollback_placement():
 	_original_grid.place_tile_on_slot(_held_tile, _original_pos)
 	_held_tile.update_adjacent_tiles(_original_grid.get_adjacent_tiles_from_adjacent_points(_held_tile))
 	_update_adjacent_tiles(_original_grid.get_adjacent_tiles(_held_tile), _original_grid)
-	_clear_helt_state()
+	_clear_held_state()
 	pass
 
-func _clear_helt_state():
+func _clear_held_state():
 	_held_tile = null
 	_original_grid = null
 	_original_pos = Vector2i(-1, -1)

@@ -31,7 +31,7 @@ func _on_initialized():
 	attack_execute.set_melee_hitbox(melee_hitbox)
 	attack_execute.finished_executing.connect(_on_attack_finished_executing)
 	
-	_cooldown = 1 / weapon_stats.get_stat("attack_speed").get_value()
+	_cooldown = 1 / (weapon_stats.get_stat("attack_speed").get_value() * wielder_stats.get_stat("attack_speed_mult").get_value())
 	pass
 
 func _on_start():

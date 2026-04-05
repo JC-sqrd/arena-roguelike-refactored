@@ -15,7 +15,6 @@ class_name MeleeWeapon extends Weapon
 
 var melee_controller : MeleeWeaponController
 
-
 func equip(context : EquipContext):
 	
 	wielder = context.wielder

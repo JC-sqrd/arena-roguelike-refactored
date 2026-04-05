@@ -71,7 +71,14 @@ stat_id = &"knockback"
 value = 10.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
+[sub_resource type="Resource" id="Resource_250lf"]
+script = ExtResource("2_8r4bj")
+name = "Attack Speed"
+stat_id = &"attack_speed_mult"
+value = 1.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
 [resource]
 script = ExtResource("1_r4w27")
-stat_templates = Array[ExtResource("2_8r4bj")]([SubResource("Resource_72w0c"), SubResource("Resource_f4r5d"), SubResource("Resource_aysh2"), SubResource("Resource_mpqp4"), SubResource("Resource_xpoel"), SubResource("Resource_r4w27"), SubResource("Resource_8r4bj"), SubResource("Resource_ljqrd"), SubResource("Resource_4altn"), SubResource("Resource_7agys")])
+stat_templates = Array[ExtResource("2_8r4bj")]([SubResource("Resource_72w0c"), SubResource("Resource_f4r5d"), SubResource("Resource_aysh2"), SubResource("Resource_mpqp4"), SubResource("Resource_xpoel"), SubResource("Resource_r4w27"), SubResource("Resource_8r4bj"), SubResource("Resource_ljqrd"), SubResource("Resource_4altn"), SubResource("Resource_7agys"), SubResource("Resource_250lf")])
 metadata/_custom_type_script = "uid://cdquhx3qorgp1"
