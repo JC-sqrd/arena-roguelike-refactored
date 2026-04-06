@@ -1,9 +1,13 @@
-class_name AbilityShopItemUI extends TextureRect
+class_name AbilityShopItemUI extends Container
 
 @export var item_data : AbilityTileShopItemData
+@onready var ability_shop_item_texture_rect: AbilityShopItemTextureRect = %AbilityShopItemTextureRect
+@onready var item_cost_label: Label = %ItemCostLabel
+
 
 var slot_size : float = 16
 var root_offset_pos : Vector2
+
 
 signal item_hovered(shop_item_ui : AbilityShopItemUI)
 signal item_exited(shop_item_ui : AbilityShopItemUI)
@@ -14,19 +18,22 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 func initialize(_ability_tile : AbilityTile):
-	#self.ability_tile = ability_tile
-	texture = item_data.ability_tile.texture
+	ability_shop_item_texture_rect.initialize(item_data)
 	
-	var max_offset : Vector2i = calculate_max_offset(item_data.ability_tile.offsets)
-	var min_offset : Vector2i = calculate_min_offset(item_data.ability_tile.offsets)
+	var max_offset : Vector2i = calculate_max_offset(_ability_tile.offsets)
+	var min_offset : Vector2i = calculate_min_offset(_ability_tile.offsets)
 	
 	var width : float = ((max_offset.x - min_offset.x) + 1) *  slot_size
 	var height : float = ((max_offset.y - min_offset.y) + 1) * slot_size
 	
-	custom_minimum_size = Vector2(width, height)
-	size = Vector2(width, height)
+	item_cost_label.text = str(item_data.cost)
+	ability_shop_item_texture_rect.custom_minimum_size = Vector2(width, height)
+	ability_shop_item_texture_rect.size = Vector2(width, height)
+	#custom_minimum_size = Vector2(width, height)
+	#size = Vector2(width, height)
+
 	print("ABILITY SHOP ITEM UI SIZE: ", size)
-	root_offset_pos = get_root_offset_position(item_data.ability_tile.offsets)
+	root_offset_pos = get_root_offset_position(_ability_tile.offsets)
 	#position = calculate_pos_relative_to_grid(ability_tile, grid_pos)
 
 

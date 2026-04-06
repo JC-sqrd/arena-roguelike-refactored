@@ -4,6 +4,7 @@ extends BaseAbilityGridUIController
 @onready var shop_item_container: HBoxContainer = %ShopItemContainer
 
 var _held_item_tile : AbilityTile
+var _held_shop_item_data : ShopItemData
 
 func initialize():
 	visibility_changed.connect(_on_visibility_changed)
@@ -13,7 +14,7 @@ func initialize():
 	
 	for child in shop_item_container.get_children():
 		if child is AbilityShopItemUI:
-			child.initialize(null)
+			child.initialize(child.item_data.ability_tile)
 			child.item_clicked.connect(_on_item_clicked)
 		pass
 	pass
@@ -52,6 +53,7 @@ func _attempt_item_purchase(slot_pos : Vector2i, grid : AbilityGrid):
 
 func _attempt_item_placement(slot_pos : Vector2i, grid : AbilityGrid):
 	if can_place_tile(_held_item_tile, grid, slot_pos):
+		CurrencyServer.add_gold(-_held_shop_item_data.get_cost())
 		_confirm_item_placement(slot_pos, grid)
 		pass
 	else:
@@ -68,11 +70,16 @@ func _confirm_item_placement(slot_pos : Vector2i, grid : AbilityGrid):
 
 func _clear_item_held_state():
 	_held_item_tile = null
+	_held_shop_item_data = null
 	cursor_ui.clear()
 	pass
 
 func _on_item_clicked(shop_item_ui : AbilityShopItemUI):
+	if !shop_item_ui.item_data.can_buy(CurrencyServer.current_gold):
+		return
+	
 	if _held_item_tile == null:
+		_held_shop_item_data = shop_item_ui.item_data
 		_held_item_tile = shop_item_ui.item_data.ability_tile
 		shop_item_ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		shop_item_container.remove_child(shop_item_ui)

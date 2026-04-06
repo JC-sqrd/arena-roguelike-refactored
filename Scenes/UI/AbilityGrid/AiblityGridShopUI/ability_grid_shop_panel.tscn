@@ -4,29 +4,68 @@
 [ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_i1l14"]
 [ext_resource type="PackedScene" uid="uid://dodmy7sq8plp1" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_ui.tscn" id="3_fbs0u"]
 [ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="3_fmtjo"]
-[ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/bloodied_katana_tile.tres" id="4_6mel7"]
+[ext_resource type="PackedScene" uid="uid://b1k2qgud53n82" path="res://Scenes/AbilityScenes/GridAbilityControllers/bloodied_katana_controller.tscn" id="4_tj7d1"]
 [ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="5_mttew"]
-[ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="6_ht5hn"]
-[ext_resource type="Resource" uid="uid://1xn2obo8pow1" path="res://Resources/AbilityTiles/wooden_axe_tile.tres" id="7_yst28"]
+[ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="5_mymt3"]
+[ext_resource type="Texture2D" uid="uid://ceeabpqv8kv8r" path="res://Placeholders/Bloody Samurai Tile.png" id="6_x3daa"]
+[ext_resource type="PackedScene" uid="uid://5g7g6yfq5e3n" path="res://Scenes/AbilityScenes/GridAbilityControllers/marble_controller.tscn" id="8_grgy4"]
+[ext_resource type="Texture2D" uid="uid://t5ul0geah7ea" path="res://Placeholders/Marble.png" id="9_uar3j"]
+[ext_resource type="PackedScene" uid="uid://cb6vxkpn71uew" path="res://Scenes/AbilityScenes/GridAbilityControllers/wooden_axe_controller.tscn" id="10_kmbx3"]
+[ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/Wooden Axe/Wooden Axe Tile.png" id="11_3sfd6"]
+
+[sub_resource type="Resource" id="Resource_oga0t"]
+script = ExtResource("5_mymt3")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+name = "Bloodied Katana"
+texture = ExtResource("6_x3daa")
+ability_controller_scene = ExtResource("4_tj7d1")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
 [sub_resource type="Resource" id="Resource_tj7d1"]
 script = ExtResource("5_mttew")
-ability_tile = ExtResource("4_6mel7")
+ability_tile = SubResource("Resource_oga0t")
+cost = 100.0
 metadata/_custom_type_script = "uid://dklu5y62oe8s4"
+
+[sub_resource type="Resource" id="Resource_78sk1"]
+script = ExtResource("5_mymt3")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+name = "Bloodied Katana"
+texture = ExtResource("6_x3daa")
+ability_controller_scene = ExtResource("4_tj7d1")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
 [sub_resource type="Resource" id="Resource_mymt3"]
 script = ExtResource("5_mttew")
-ability_tile = ExtResource("4_6mel7")
+ability_tile = SubResource("Resource_78sk1")
 metadata/_custom_type_script = "uid://dklu5y62oe8s4"
+
+[sub_resource type="Resource" id="Resource_un373"]
+resource_local_to_scene = true
+script = ExtResource("5_mymt3")
+adjacent_points = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0)])
+name = "Marble"
+texture = ExtResource("9_uar3j")
+ability_controller_scene = ExtResource("8_grgy4")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
 [sub_resource type="Resource" id="Resource_x3daa"]
 script = ExtResource("5_mttew")
-ability_tile = ExtResource("6_ht5hn")
+ability_tile = SubResource("Resource_un373")
+cost = 50.0
 metadata/_custom_type_script = "uid://dklu5y62oe8s4"
+
+[sub_resource type="Resource" id="Resource_prs56"]
+script = ExtResource("5_mymt3")
+offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+name = "Wooden Axe"
+texture = ExtResource("11_3sfd6")
+ability_controller_scene = ExtResource("10_kmbx3")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 
 [sub_resource type="Resource" id="Resource_grgy4"]
 script = ExtResource("5_mttew")
-ability_tile = ExtResource("7_yst28")
+ability_tile = SubResource("Resource_prs56")
 metadata/_custom_type_script = "uid://dklu5y62oe8s4"
 
 [node name="AbilityGridShopPanel" type="PanelContainer" unique_id=1315694252]

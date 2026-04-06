@@ -2,9 +2,38 @@
 
 [ext_resource type="Script" uid="uid://csmpk3cxesed1" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_ui.gd" id="1_6y260"]
 [ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_ljkqe"]
+[ext_resource type="Script" uid="uid://g736uy57so57" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_texture_rect.gd" id="3_07ovx"]
 
-[node name="TextureRect" type="TextureRect" unique_id=1572222926]
+[sub_resource type="LabelSettings" id="LabelSettings_07ovx"]
+font_size = 4
+
+[node name="TextureRect" type="MarginContainer" unique_id=569745466]
 custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6y260")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1415961500]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="AbilityShopItemTextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1878641602]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_ljkqe")
 expand_mode = 3
-script = ExtResource("1_6y260")
+script = ExtResource("3_07ovx")
+metadata/_custom_type_script = "uid://g736uy57so57"
+
+[node name="ItemCostLabel" type="Label" parent="VBoxContainer" unique_id=886437802]
+unique_name_in_owner = true
+layout_mode = 2
+text = "COST"
+label_settings = SubResource("LabelSettings_07ovx")
+horizontal_alignment = 1
