@@ -4,17 +4,18 @@ var entity_rid : RID
 
 func initialize(rid : RID):
 	entity_rid = rid
-	EventServer.effect_hit.connect(_on_effect_hit)
+	EventServer.damage_event.connect(_on_damage_event_occured)
 	pass
 
-
-func _on_effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName, Variant]):
-	if rid == entity_rid:
+func _on_damage_event_occured(damage_amount : float, target : Entity, source : Entity, context : Dictionary[StringName, Variant]):
+	if target.entity_rid == entity_rid:
 		if emitting:
 			restart()
 		emitting = true
-		var source_pos : Vector2 = context.source.global_position
-		pass
+	pass
+
+func _on_effect_applied(rid : RID, effect : Effect, context : Dictionary[StringName, Variant]):
+	
 	pass
 
 func get_component_name() -> StringName:
@@ -22,5 +23,5 @@ func get_component_name() -> StringName:
 
 func _exit_tree() -> void:
 	entity_rid = RID()
-	EventServer.effect_hit.disconnect(_on_effect_hit)
+	EventServer.damage_event.disconnect(_on_damage_event_occured)
 	pass

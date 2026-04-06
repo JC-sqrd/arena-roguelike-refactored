@@ -1,20 +1,19 @@
-class_name PeriodicEffect extends Effect
+class_name PeriodicEffect extends DurationalEffect
 
-var flat_modifiers : Array[FlatStatModifier]
-var mult_modifiers : Array[MultiplierStatModifier]
-var override_modifiers : Array[OverrideStatModifier]
+#var flat_modifiers : Array[FlatStatModifier]
+#var mult_modifiers : Array[MultiplierStatModifier]
+#var override_modifiers : Array[OverrideStatModifier]
 
 func _init(modifier : StatModifier, effect_id : StringName = "periodic_effect"):
 	self.modifier = modifier
 	self.effect_id = effect_id
 	pass
 
-func apply_effect(stats : Stats, context : Dictionary = {}):
+func apply_effect(stats : Stats):
 	if stats.has(modifier.stat_id):
 		modifier.apply_modifier(stats.get_stat(modifier.stat_id))
 		pass
-	
-	applied_effect.emit()
+	applied_effect.emit(self)
 	pass
 
 func add_modifier(modifier : StatModifier):

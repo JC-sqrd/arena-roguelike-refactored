@@ -18,6 +18,8 @@ signal weapon_attacked()
 
 signal effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName, Variant])
 
+signal effect_applied(rid : RID, effect : Effect, context : Dictionary[StringName, Variant])
+
 signal weapon_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
 
 signal ability_start(ability_controller : AbilityController, context : Dictionary[StringName, Variant])

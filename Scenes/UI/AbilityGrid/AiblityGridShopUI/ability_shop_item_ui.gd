@@ -1,6 +1,6 @@
 class_name AbilityShopItemUI extends TextureRect
 
-@export var ability_tile : AbilityTile
+@export var item_data : AbilityTileShopItemData
 
 var slot_size : float = 16
 var root_offset_pos : Vector2
@@ -15,10 +15,10 @@ func _ready() -> void:
 
 func initialize(_ability_tile : AbilityTile):
 	#self.ability_tile = ability_tile
-	texture = self.ability_tile.texture
+	texture = item_data.ability_tile.texture
 	
-	var max_offset : Vector2i = calculate_max_offset(ability_tile.offsets)
-	var min_offset : Vector2i = calculate_min_offset(ability_tile.offsets)
+	var max_offset : Vector2i = calculate_max_offset(item_data.ability_tile.offsets)
+	var min_offset : Vector2i = calculate_min_offset(item_data.ability_tile.offsets)
 	
 	var width : float = ((max_offset.x - min_offset.x) + 1) *  slot_size
 	var height : float = ((max_offset.y - min_offset.y) + 1) * slot_size
@@ -26,7 +26,7 @@ func initialize(_ability_tile : AbilityTile):
 	custom_minimum_size = Vector2(width, height)
 	size = Vector2(width, height)
 	print("ABILITY SHOP ITEM UI SIZE: ", size)
-	root_offset_pos = get_root_offset_position(ability_tile.offsets)
+	root_offset_pos = get_root_offset_position(item_data.ability_tile.offsets)
 	#position = calculate_pos_relative_to_grid(ability_tile, grid_pos)
 
 

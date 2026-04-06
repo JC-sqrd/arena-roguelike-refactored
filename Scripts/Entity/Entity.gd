@@ -24,11 +24,11 @@ func initalize(rid : RID):
 	#entity_node = node
 	stats.initialize()
 	
-	effect_listener = EffectListener.new(stats)
+	effect_listener = EffectListener.new(self)
 	EffectServer.register_effect_listener(rid, effect_listener)
 	
 	health_manager = HealthManager.new()
-	health_manager.initialize(stats)
+	health_manager.initialize(self)
 	
 	if equipment_manager != null:
 		equipment_manager.initialize(self)

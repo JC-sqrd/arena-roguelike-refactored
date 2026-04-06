@@ -64,7 +64,11 @@ func _process(delta: float) -> void:
 		
 		orbit_offset = (Vector2.UP * 32) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * orbit_distance) 
 		
-		cd_hitbox.query_hits(true)
+		var hits : Array[RID] = cd_hitbox.query_hits(true)
+		var context : Dictionary[StringName, Variant] = generate_controller_context()
+		for hit in hits:
+			for template in effect_templates:
+				EffectServer.receive_effect(hit, template.build_effect(context), context)
 		
 		cd_hitbox.global_position = orbit_offset
 		pass

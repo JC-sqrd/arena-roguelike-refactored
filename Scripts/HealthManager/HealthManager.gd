@@ -1,13 +1,14 @@
 class_name HealthManager extends RefCounted
 
+var entity : Entity
 var max_health : Stat
 var current_health : Stat
 
 signal health_depleted(context : Dictionary[StringName, Variant])
 
-func initialize(stats : Stats):
-	self.max_health = stats.get_stat("max_health")
-	self.current_health = stats.get_stat("current_health")
+func initialize(entity : Entity):
+	self.max_health = entity.stats.get_stat("max_health")
+	self.current_health = entity.stats.get_stat("current_health")
 	self.current_health.set_value(max_health.get_value())
 	self.current_health.value_changed.connect(_on_current_health_value_changed)
 	pass
@@ -19,6 +20,7 @@ func _on_current_health_value_changed(current_health_stat : Stat, context : Dict
 
 func add_health(value : float):
 	current_health.add(value)
+	
 	evaluate_health()
 	pass
 
@@ -35,6 +37,7 @@ func get_health() -> float:
 	return current_health.get_derived_value()
 
 func cleanup():
+	entity = null
 	max_health = null
 	current_health = null
 	pass

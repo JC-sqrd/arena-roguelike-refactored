@@ -73,11 +73,11 @@ func _clear_item_held_state():
 
 func _on_item_clicked(shop_item_ui : AbilityShopItemUI):
 	if _held_item_tile == null:
-		_held_item_tile = shop_item_ui.ability_tile
+		_held_item_tile = shop_item_ui.item_data.ability_tile
 		shop_item_ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		shop_item_container.remove_child(shop_item_ui)
 		cursor_ui.add_child(shop_item_ui)
-		shop_item_ui.position = Vector2.ZERO - shop_item_ui.get_root_offset_position(shop_item_ui.ability_tile.offsets)
+		shop_item_ui.position = Vector2.ZERO - shop_item_ui.get_root_offset_position(shop_item_ui.item_data.ability_tile.offsets)
 	pass
 
 func _pick_up_item(shop_item_ui : AbilityShopItemUI):
