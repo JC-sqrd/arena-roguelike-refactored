@@ -7,6 +7,7 @@ const ABILITY_SHOP_ITEM_UI = preload("uid://dodmy7sq8plp1")
 var shop_item_pool : AbilityTileShopItemPool
 
 var _held_item_tile : AbilityTile
+var _held_item_shop_ui : AbilityShopItemUI
 var _held_shop_item_data : ShopItemData
 
 func initialize_shop_ui(item_pool : AbilityTileShopItemPool):
@@ -89,6 +90,18 @@ func _confirm_item_placement(slot_pos : Vector2i, grid : AbilityGrid):
 		pass
 	pass
 
+func _rollback_placement():
+	cursor_ui.remove_child(_held_item_shop_ui)
+	shop_item_container.add_child(_held_item_shop_ui)
+	_held_item_shop_ui.mouse_filter = Control.MOUSE_FILTER_PASS
+	#_held_tile.set_rotation_to(_original_rotation_idx)
+	#_original_grid.place_tile_on_slot(_held_tile, _original_pos)
+	#_held_tile.update_adjacent_tiles(_original_grid.get_adjacent_tiles_from_adjacent_points(_held_tile))
+	#_update_adjacent_tiles(_original_grid.get_adjacent_tiles(_held_tile), _original_grid)
+	#_clear_held_state()
+	_clear_item_held_state()
+	pass
+
 func _clear_item_held_state():
 	_held_item_tile = null
 	_held_shop_item_data = null
@@ -100,6 +113,7 @@ func _on_item_clicked(shop_item_ui : AbilityShopItemUI):
 		return
 	
 	if _held_item_tile == null:
+		_held_item_shop_ui = shop_item_ui
 		_held_shop_item_data = shop_item_ui.item_data
 		_held_item_tile = shop_item_ui.item_data.ability_tile
 		shop_item_ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
