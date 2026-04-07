@@ -6,5 +6,4 @@
 [resource]
 script = ExtResource("2_3kcst")
 ability_tile = ExtResource("1_lxryi")
-cost = 500.0
 metadata/_custom_type_script = "uid://dklu5y62oe8s4"

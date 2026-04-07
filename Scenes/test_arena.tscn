@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://2qb53arovk2u" path="res://Scenes/UI/GameUI/arena_ui.tscn" id="3_hq5rx"]
 [ext_resource type="PackedScene" uid="uid://bs7cobx06wp4e" path="res://Scenes/Entity/PlayerChracter/base_player_character.tscn" id="3_mjg4v"]
 [ext_resource type="Script" uid="uid://bv0b6cknh28xe" path="res://Scripts/Debug/debug_gold_ui.gd" id="4_en7hp"]
+[ext_resource type="Resource" uid="uid://h0fjl8pue2rx" path="res://Resources/ShopItemPool/ability_tile_shop_item_pool.tres" id="5_73tfi"]
 [ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="10_73tfi"]
 [ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_spawner.tscn" id="10_hq5rx"]
 
@@ -172,6 +173,7 @@ metadata/_custom_type_script = "uid://babhl38fqi7ie"
 [node name="GameUI" parent="." unique_id=1935258993 instance=ExtResource("2_dhtwe")]
 
 [node name="ArenaUi" parent="GameUI" unique_id=1446304066 instance=ExtResource("3_hq5rx")]
+ability_shop_item_pool = ExtResource("5_73tfi")
 
 [node name="DebugGoldUI" type="Control" parent="GameUI" unique_id=1529267983]
 layout_mode = 3

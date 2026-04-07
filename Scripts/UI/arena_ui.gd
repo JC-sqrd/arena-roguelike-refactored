@@ -1,5 +1,7 @@
 class_name ArenaUI extends Control
 
+@export var ability_shop_item_pool : AbilityTileShopItemPool
+
 @onready var player_ui: Control = %PlayerUI
 @onready var hidden_layer: Control = $HiddenLayer
 @onready var player_character_ui: PlayerCharacterUI = $PlayerUI/MarginContainer/PlayerCharacterUi
@@ -13,7 +15,7 @@ func initialize():
 	player_character_ui.initialize(PlayerServer.main_player)
 	ui_ability_grid.initialize()
 	weapon_upgrade_panel.initailize()
-	ability_grid_shop_panel.initialize()
+	ability_grid_shop_panel.initialize_shop_ui(ability_shop_item_pool)
 	crosshair_ui.initialize()
 	pass
 

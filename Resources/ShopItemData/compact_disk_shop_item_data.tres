@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityTileShopItemData" format=3 uid="uid://da6sslk6qn81j"]
+
+[ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="1_fc3iw"]
+[ext_resource type="Resource" uid="uid://bwt0luahnpv5f" path="res://Resources/AbilityTiles/compact_disk_tile.tres" id="1_m2o4o"]
+
+[resource]
+script = ExtResource("1_fc3iw")
+ability_tile = ExtResource("1_m2o4o")
+metadata/_custom_type_script = "uid://dklu5y62oe8s4"
