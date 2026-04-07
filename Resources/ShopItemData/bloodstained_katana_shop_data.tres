@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityTileShopItemData" format=3 uid="uid://cwxgnrk45desi"]
+
+[ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/blood_stained_katana_tile.tres" id="1_lxryi"]
+[ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="2_3kcst"]
+
+[resource]
+script = ExtResource("2_3kcst")
+ability_tile = ExtResource("1_lxryi")
+cost = 500.0
+metadata/_custom_type_script = "uid://dklu5y62oe8s4"

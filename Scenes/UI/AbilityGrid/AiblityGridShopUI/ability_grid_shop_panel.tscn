@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_i1l14"]
 [ext_resource type="PackedScene" uid="uid://dodmy7sq8plp1" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_ui.tscn" id="3_fbs0u"]
 [ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="3_fmtjo"]
-[ext_resource type="PackedScene" uid="uid://b1k2qgud53n82" path="res://Scenes/AbilityScenes/GridAbilityControllers/bloodied_katana_controller.tscn" id="4_tj7d1"]
+[ext_resource type="PackedScene" uid="uid://b1k2qgud53n82" path="res://Scenes/AbilityScenes/GridAbilityControllers/bloodstained_katana_controller.tscn" id="4_tj7d1"]
 [ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="5_mttew"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="5_mymt3"]
 [ext_resource type="Texture2D" uid="uid://ceeabpqv8kv8r" path="res://Placeholders/Bloody Samurai Tile.png" id="6_x3daa"]
