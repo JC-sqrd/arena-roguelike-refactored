@@ -8,18 +8,6 @@
 [ext_resource type="Resource" uid="uid://cwxgnrk45desi" path="res://Resources/ShopItemData/bloodstained_katana_shop_data.tres" id="4_8m84c"]
 [ext_resource type="Resource" uid="uid://da6sslk6qn81j" path="res://Resources/ShopItemData/compact_disk_shop_item_data.tres" id="6_dqp4m"]
 
-[sub_resource type="Resource" id="Resource_8m84c"]
-script = ExtResource("1_arugh")
-item_shop_data = ExtResource("4_8m84c")
-weight = 5.0
-metadata/_custom_type_script = "uid://dfsa7i4fiit15"
-
-[sub_resource type="Resource" id="Resource_dqp4m"]
-script = ExtResource("2_8m84c")
-tier_weight = 5.0
-data = Array[ExtResource("3_clldh")]([SubResource("Resource_8m84c")])
-metadata/_custom_type_script = "uid://dff87kt0tuhx0"
-
 [sub_resource type="Resource" id="Resource_a7daa"]
 script = ExtResource("1_arugh")
 item_shop_data = ExtResource("6_dqp4m")
@@ -32,9 +20,21 @@ tier_weight = 100.0
 data = Array[ExtResource("3_clldh")]([SubResource("Resource_a7daa")])
 metadata/_custom_type_script = "uid://dff87kt0tuhx0"
 
+[sub_resource type="Resource" id="Resource_8m84c"]
+script = ExtResource("1_arugh")
+item_shop_data = ExtResource("4_8m84c")
+weight = 5.0
+metadata/_custom_type_script = "uid://dfsa7i4fiit15"
+
+[sub_resource type="Resource" id="Resource_dqp4m"]
+script = ExtResource("2_8m84c")
+tier_weight = 5.0
+data = Array[ExtResource("3_clldh")]([SubResource("Resource_8m84c")])
+metadata/_custom_type_script = "uid://dff87kt0tuhx0"
+
 [sub_resource type="Resource" id="Resource_det04"]
 script = ExtResource("1_clldh")
-tiers = Array[ExtResource("2_8m84c")]([SubResource("Resource_dqp4m"), SubResource("Resource_cm4e0")])
+tiers = Array[ExtResource("2_8m84c")]([SubResource("Resource_cm4e0"), SubResource("Resource_dqp4m")])
 metadata/_custom_type_script = "uid://dab73glj8ldb"
 
 [resource]

@@ -14,8 +14,8 @@ func get_random_item() -> ItemPoolInstance:
 	var selected_tier : ItemPoolTier 
 	
 	for tier in tiers:
-		total_tier_weight -= tier.tier_weight
-		if total_tier_weight <= 0:
+		rand -= tier.tier_weight
+		if rand <= 0:
 			selected_tier = tier
 			break
 		pass
