@@ -81,3 +81,8 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	item_exited.emit(self)
 	pass
+
+func _get_tooltip(at_position: Vector2) -> String:
+	if item_data != null:
+		return item_data.ability_tile.name
+	return "This is a tooltip"

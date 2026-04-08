@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dntk7n6vl7dj7"]
+
+[ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="1_c3fn3"]
+
+[node name="CursorUI" type="Control" unique_id=484285240]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_c3fn3")

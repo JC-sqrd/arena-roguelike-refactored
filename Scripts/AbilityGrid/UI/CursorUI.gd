@@ -1,6 +1,7 @@
 class_name CursorUI extends Control
 
 
+
 func clear():
 	for child in get_children():
 		child.queue_free()

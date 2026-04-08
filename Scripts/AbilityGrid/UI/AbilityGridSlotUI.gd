@@ -1,8 +1,8 @@
 class_name AbilityGridSlotUI extends Control
 
 
+var ability_tile : AbilityTile
 var grid_coord : Vector2i = Vector2i(0,0)
-
 
 signal slot_hovered(coord : Vector2i)
 signal slot_exited(coord : Vector2i)
@@ -25,3 +25,8 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	slot_exited.emit(grid_coord)
 	pass
+
+func _get_tooltip(at_position: Vector2) -> String:
+	if ability_tile != null:
+		return ability_tile.name
+	return ""

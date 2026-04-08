@@ -47,11 +47,15 @@ func generate_grid_ui(ability_grid : AbilityGrid):
 	_ability_grid.placed_tile.connect(_on_grid_placed_tile)
 	_ability_grid.removed_tile.connect(_on_grid_removed_tile)
 	
+	#signal placed_tile(tile : AbilityTile, coord : Vector2i)
+	#signal removed_tile(tile : AbilityTile, coord : Vector2i)
+	
 	pass
 
 func _generate_grid_ui_contents(ability_grid : AbilityGrid):
 	for coord in ability_grid.grid_coords:
 		var slot : AbilityGridSlotUI = _SLOT.instantiate() as AbilityGridSlotUI
+		slot.ability_tile = ability_grid.grid_coords[coord].occupied_by
 		slot.grid_coord = coord
 		slots[coord] = slot
 		
@@ -171,10 +175,33 @@ func _on_mouse_clicked_slot(coord : Vector2i):
 	pass
 
 func _on_grid_placed_tile(tile : AbilityTile, pos : Vector2i):
+	
+	var slots_to_occupy : Array[Vector2i]
+	
+	for offset in tile.offsets:
+		var slot_offsset : Vector2i = pos + offset
+		slots_to_occupy.append(slot_offsset)
+		
+	for slot_coord in slots_to_occupy:
+		var slot : AbilityGridSlotUI = slots.get(slot_coord)
+		slot.ability_tile = tile
+		pass
+	
 	add_tile_rect(tile, pos)
 	pass
 
 func _on_grid_removed_tile(tile : AbilityTile, pos : Vector2i):
+	var slots_to_deoccupy : Array[Vector2i]
+	
+	for offset in tile.offsets:
+		var slot_offsset : Vector2i = pos + offset
+		slots_to_deoccupy.append(slot_offsset)
+		
+	for slot_coord in slots_to_deoccupy:
+		var slot : AbilityGridSlotUI = slots.get(slot_coord)
+		slot.ability_tile = null
+		pass
+	
 	if tile_rects.has(tile):
 		var tile_rect : AbilityTileTextureRect = tile_rects.get(tile)
 		tile_rect.slot_size = slot_size

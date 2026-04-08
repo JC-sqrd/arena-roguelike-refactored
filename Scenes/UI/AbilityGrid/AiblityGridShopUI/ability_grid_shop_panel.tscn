@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://co023jmwyyttu" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_grid_shop_panel.gd" id="1_diqma"]
 [ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_i1l14"]
 [ext_resource type="PackedScene" uid="uid://dodmy7sq8plp1" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_ui.tscn" id="3_fbs0u"]
-[ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="3_fmtjo"]
 [ext_resource type="PackedScene" uid="uid://b1k2qgud53n82" path="res://Scenes/AbilityScenes/GridAbilityControllers/bloodstained_katana_controller.tscn" id="4_tj7d1"]
 [ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="5_mttew"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="5_mymt3"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://t5ul0geah7ea" path="res://Placeholders/Marble.png" id="9_uar3j"]
 [ext_resource type="PackedScene" uid="uid://cb6vxkpn71uew" path="res://Scenes/AbilityScenes/GridAbilityControllers/wooden_axe_controller.tscn" id="10_kmbx3"]
 [ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/Wooden Axe/Wooden Axe Tile.png" id="11_3sfd6"]
+[ext_resource type="PackedScene" uid="uid://dntk7n6vl7dj7" path="res://Scenes/UI/AbilityGrid/cursor_ui.tscn" id="12_tj7d1"]
 
 [sub_resource type="Resource" id="Resource_oga0t"]
 script = ExtResource("5_mymt3")
@@ -119,8 +119,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 item_data = SubResource("Resource_grgy4")
 
-[node name="CursorUI" type="Control" parent="." unique_id=1120547964]
+[node name="CursorUI" parent="." unique_id=484285240 instance=ExtResource("12_tj7d1")]
 unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 2
-script = ExtResource("3_fmtjo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736711176]

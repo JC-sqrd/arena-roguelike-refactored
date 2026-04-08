@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://byhkpl77h30kg" path="res://Scripts/AbilityGrid/UI/AbilityGridUIController.gd" id="1_s7agp"]
 [ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_c1r0r"]
-[ext_resource type="Script" uid="uid://b18dls1t1kgh2" path="res://Scripts/AbilityGrid/UI/CursorUI.gd" id="2_jtagy"]
+[ext_resource type="PackedScene" uid="uid://dntk7n6vl7dj7" path="res://Scenes/UI/AbilityGrid/cursor_ui.tscn" id="3_afqde"]
 [ext_resource type="Script" uid="uid://fxe70e5ucsga" path="res://Scripts/AbilityGrid/UI/AbilityGraphUIFSM/AbilityGridUIFSM.gd" id="4_y4sfo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_afqde"]
@@ -79,11 +79,9 @@ label_settings = SubResource("LabelSettings_jtagy")
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CursorUI" type="Control" parent="." unique_id=616808118]
+[node name="CursorUI" parent="." unique_id=484285240 instance=ExtResource("3_afqde")]
 unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 2
-script = ExtResource("2_jtagy")
 
 [node name="AbilityGridUIFSM" type="Node" parent="." unique_id=1118784499]
 script = ExtResource("4_y4sfo")

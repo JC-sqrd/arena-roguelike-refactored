@@ -10,6 +10,8 @@ var _original_grid : AbilityGrid
 var _original_pos : Vector2i
 var _original_rotation_idx : int = 0
 
+signal ability_tile_placed(tile : AbilityTile, slot_pos : Vector2i, offsets : Array[Vector2i])
+
 func intitialize():
 	pass
 
