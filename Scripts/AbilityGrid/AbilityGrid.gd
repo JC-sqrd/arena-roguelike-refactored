@@ -163,6 +163,8 @@ func can_place(ability_tile : AbilityTile, pos : Vector2i) -> bool:
 		var slot_offsset : Vector2i = pos + offset
 		if slot_offsset.x < min_coord.x or slot_offsset.y < min_coord.y:
 			return false
+		elif !grid_coords.has(slot_offsset):
+			return false
 		elif slot_offsset.x >= size.x or slot_offsset.y >= size.y:
 			return false
 		elif grid_coords[slot_offsset].occupied:
@@ -217,7 +219,7 @@ func remove_tile_on_slot(grid_pos : Vector2i) -> AbilityTile:
 		pass
 	
 	ability_tiles.erase(ability_tile)
-	removed_tile.emit(ability_tile, grid_pos)
+	removed_tile.emit(ability_tile, tile_pos)
 	return ability_tile
 
 func pop_tile_on_slot(slot_pos : Vector2i) -> AbilityTile:
