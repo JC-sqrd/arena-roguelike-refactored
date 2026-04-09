@@ -21,17 +21,17 @@ func calculate_bonus_value(value, context : Dictionary[StringName, Variant] = {}
 		pass
 	return bonus_value
 
-func calculate_total_multiplier() -> float:
+func calculate_total_multiplier(context : Dictionary[StringName, Variant]) -> float:
 	var total_multiplier : float = 1
 	for multiplier in multipliers:
-		total_multiplier += multiplier.value
+		total_multiplier += multiplier.get_value(context)
 		pass
 	return total_multiplier
 
-func calculate_total_adder() -> float:
+func calculate_total_adder(context : Dictionary[StringName, Variant]) -> float:
 	var total_adder : float = 0
 	for adder in adders:
-		total_adder += adder.value
+		total_adder += adder.get_value(context)
 		pass
 	return total_adder
 

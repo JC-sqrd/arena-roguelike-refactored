@@ -17,7 +17,9 @@ func get_value(context : Dictionary[StringName, Variant] = {}) -> float:
 	var stats : Stats = context[context_stats_id]
 	var stat : Stat = stats.get_stat(stat_id)
 	var final_value : float = 0
-	final_value = stat.get_value() + calculate_bonus_value(final_value, context)
-	final_value += calculate_total_adder()
-	final_value *= calculate_total_multiplier()
+	final_value = stat.get_value()
+	var bonus_value : float = calculate_bonus_value(final_value, context)
+	final_value += bonus_value #calculate_bonus_value(final_value, context)
+	final_value += calculate_total_adder(context)
+	final_value *= calculate_total_multiplier(context)
 	return final_value 

@@ -16,8 +16,8 @@ func add_bonus_value(bonus_value : BonusValue):
 
 func get_value(context : Dictionary[StringName, Variant] = {}) -> float:
 	var final_value : float = value + calculate_bonus_value(value, context)
-	final_value += calculate_total_adder()
-	final_value *= calculate_total_multiplier()
+	final_value += calculate_total_adder(context)
+	final_value *= calculate_total_multiplier(context)
 	return final_value
 
 func calculate_bonus_value(value, context : Dictionary[StringName, Variant] = {}) -> float:

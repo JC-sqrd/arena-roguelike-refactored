@@ -5,3 +5,6 @@ func _init(value : float = 0):
 	pass
 
 @export var value : float = 0
+
+func get_value(context : Dictionary[StringName, Variant]) -> float:
+	return value

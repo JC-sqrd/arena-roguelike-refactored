@@ -4,6 +4,7 @@ class_name AbilityShopItemUI extends Container
 @onready var ability_shop_item_texture_rect: AbilityShopItemTextureRect = %AbilityShopItemTextureRect
 @onready var item_cost_label: Label = %ItemCostLabel
 
+const GRID_ABILITY_TOOLTIP_UI = preload("uid://cbnnyh3j370hp")
 
 var slot_size : float = 16
 var root_offset_pos : Vector2
@@ -86,3 +87,8 @@ func _get_tooltip(at_position: Vector2) -> String:
 	if item_data != null:
 		return item_data.ability_tile.name
 	return "This is a tooltip"
+
+func _make_custom_tooltip(for_text: String) -> Object:
+	var tooltip : GridAbilityTooltipUI = GRID_ABILITY_TOOLTIP_UI.instantiate() as GridAbilityTooltipUI
+	tooltip.ability_tile = item_data.ability_tile
+	return tooltip

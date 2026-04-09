@@ -11,4 +11,5 @@ adjacent_points = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0)])
 name = "Marble"
 texture = ExtResource("2_lmkpg")
 ability_controller_scene = ExtResource("1_gogsh")
+ability_details = "+10 Lethality"
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

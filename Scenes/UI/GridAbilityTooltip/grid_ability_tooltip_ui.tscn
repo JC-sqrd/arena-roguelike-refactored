@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cbnnyh3j370hp"]
+
+[ext_resource type="Script" uid="uid://c11xqobbhi7xb" path="res://Scenes/UI/GridAbilityTooltip/GridAbilityTooltipUI.gd" id="1_01m6s"]
+[ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/Wooden Axe/Wooden Axe Tile.png" id="1_kihc1"]
+[ext_resource type="Script" uid="uid://df0a3ldeiackx" path="res://Scripts/AbilityGrid/UI/AbilityTileTextureRect.gd" id="2_01m6s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kihc1"]
+font_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_01m6s"]
+font_size = 4
+
+[node name="GridAbilityTooltipUi" type="PanelContainer" unique_id=774267832]
+custom_minimum_size = Vector2(64, 32)
+script = ExtResource("1_01m6s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1369159077]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1284592988]
+layout_mode = 2
+
+[node name="AbilityTileTextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=659645588]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_kihc1")
+expand_mode = 3
+script = ExtResource("2_01m6s")
+metadata/_custom_type_script = "uid://df0a3ldeiackx"
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1607009934]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_kihc1")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1550302636]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="DetailLabel" type="Label" parent="VBoxContainer/MarginContainer" unique_id=1830972016]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Ability Details"
+label_settings = SubResource("LabelSettings_01m6s")
+autowrap_mode = 2
