@@ -1,6 +1,5 @@
 extends Node
 
-
 signal effect_event_occured(effect_event : EffectEvent)
 
 #signal damage_effect_event_occured(damage_event : DamageEffectEvent)
@@ -17,6 +16,8 @@ signal weapon_to_attack()
 signal weapon_attacked()
 
 signal effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName, Variant])
+
+signal knockback_applied(data : Dictionary[StringName, Variant], context : Dictionary[StringName, Variant])
 
 signal effect_applied(rid : RID, effect : Effect, context : Dictionary[StringName, Variant])
 

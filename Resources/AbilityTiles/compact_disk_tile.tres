@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_m7sg2"]
 [ext_resource type="PackedScene" uid="uid://buan0kvyaori2" path="res://Scenes/AbilityScenes/GridAbilityControllers/compact_disk_controller.tscn" id="1_se5wl"]
-[ext_resource type="Texture2D" uid="uid://ch3m80htlg2eg" path="res://Sprites/Compact Disk/Compact Disk Tile.png" id="2_007ra"]
+[ext_resource type="Texture2D" uid="uid://ch3m80htlg2eg" path="res://Sprites/AbilityTiles/Compact Disk/Compact Disk Tile.png" id="2_007ra"]
 
 [resource]
 script = ExtResource("1_m7sg2")

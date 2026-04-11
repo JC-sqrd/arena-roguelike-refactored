@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m22m3kwqjh1f"
-path="res://.godot/imported/Wooden Axe Tile.png-d6d37641eb412aed8bb86f40dfffdadb.ctex"
+uid="uid://dehxt3pgu2m5k"
+path="res://.godot/imported/Sword.png-3402ccf348f4448bc0c78a9dfa9d3d68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Wooden Axe/Wooden Axe Tile.png"
-dest_files=["res://.godot/imported/Wooden Axe Tile.png-d6d37641eb412aed8bb86f40dfffdadb.ctex"]
+source_file="res://Sprites/AbilityTiles/Sword/Sword.png"
+dest_files=["res://.godot/imported/Sword.png-3402ccf348f4448bc0c78a9dfa9d3d68.ctex"]
 
 [params]
 

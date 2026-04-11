@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bak65y0dao0i0"
-path="res://.godot/imported/Rock Tile.png-7c706f16c96d9bb49f6b73f0978aafe9.ctex"
+uid="uid://bfayysirsrkn6"
+path="res://.godot/imported/ShortSwordTile.png-12e2a4ea761a465334483d9ef84030d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Rock/Rock Tile.png"
-dest_files=["res://.godot/imported/Rock Tile.png-7c706f16c96d9bb49f6b73f0978aafe9.ctex"]
+source_file="res://Sprites/AbilityTiles/Sword/ShortSwordTile.png"
+dest_files=["res://.godot/imported/ShortSwordTile.png-12e2a4ea761a465334483d9ef84030d9.ctex"]
 
 [params]
 

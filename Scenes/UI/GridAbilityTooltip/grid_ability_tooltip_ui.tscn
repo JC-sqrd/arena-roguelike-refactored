@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbnnyh3j370hp"]
 
 [ext_resource type="Script" uid="uid://c11xqobbhi7xb" path="res://Scenes/UI/GridAbilityTooltip/GridAbilityTooltipUI.gd" id="1_01m6s"]
-[ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/Wooden Axe/Wooden Axe Tile.png" id="1_kihc1"]
+[ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/AbilityTiles/Wooden Axe/Wooden Axe Tile.png" id="1_kihc1"]
 [ext_resource type="Script" uid="uid://df0a3ldeiackx" path="res://Scripts/AbilityGrid/UI/AbilityTileTextureRect.gd" id="2_01m6s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kihc1"]

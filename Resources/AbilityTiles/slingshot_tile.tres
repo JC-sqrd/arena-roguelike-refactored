@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityTile" format=3 uid="uid://bgacakxiqyl74"]
+
+[ext_resource type="PackedScene" uid="uid://cfttnkrwve3ct" path="res://Scenes/AbilityScenes/GridAbilityControllers/slingshot_ability_controller.tscn" id="1_w8ahi"]
+[ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="2_spl42"]
+[ext_resource type="Texture2D" uid="uid://57pxo6pqa70y" path="res://Sprites/AbilityTiles/Slingshot/Slingshot.png" id="3_iebb1"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_spl42")
+name = "Slingshot"
+texture = ExtResource("3_iebb1")
+ability_controller_scene = ExtResource("1_w8ahi")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

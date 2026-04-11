@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bb87hc3wsslfk"]
+
+[ext_resource type="Script" uid="uid://ddmsidac23wd2" path="res://Scripts/Ability/GridAbilityControllers/shortsword_controller.gd" id="1_gxjm8"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="2_nwutm"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="3_yomgq"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_yuh54"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_yomgq"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="5_ngljm"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="6_oexb5"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="7_dla5m"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="8_gxwhd"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="9_l1w5n"]
+
+[sub_resource type="Resource" id="Resource_ngljm"]
+script = ExtResource("3_yomgq")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_svhd6"]
+script = ExtResource("8_gxwhd")
+value = 5.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_j75er"]
+script = ExtResource("4_yomgq")
+mode = -1
+value_provider_template = SubResource("Resource_svhd6")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_o4y2l"]
+script = ExtResource("9_l1w5n")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_j75er")
+effect_event_templates = Array[ExtResource("2_nwutm")]([SubResource("Resource_ngljm")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="ShortswordController" type="Node" unique_id=1146598165]
+script = ExtResource("1_gxjm8")
+effect_template = SubResource("Resource_o4y2l")
+metadata/_custom_type_script = "uid://ck2lns8ywy84t"

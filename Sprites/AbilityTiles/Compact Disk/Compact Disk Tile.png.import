@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0gqkfipwchig"
-path="res://.godot/imported/Rock.png-d5f91c7975fd15d1cb3db33027a544f1.ctex"
+uid="uid://ch3m80htlg2eg"
+path="res://.godot/imported/Compact Disk Tile.png-0bd360d41d88eb9323f3e2015ca34513.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Rock/Rock.png"
-dest_files=["res://.godot/imported/Rock.png-d5f91c7975fd15d1cb3db33027a544f1.ctex"]
+source_file="res://Sprites/AbilityTiles/Compact Disk/Compact Disk Tile.png"
+dest_files=["res://.godot/imported/Compact Disk Tile.png-0bd360d41d88eb9323f3e2015ca34513.ctex"]
 
 [params]
 

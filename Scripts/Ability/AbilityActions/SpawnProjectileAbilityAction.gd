@@ -1,6 +1,6 @@
 class_name SpawnProjectileAbilityAction extends AbilityAction
 
-var ability_context : Dictionary[StringName, Variant]
+var ability_controller : AbilityController
 
 @export var projectile_template : ProjectileTemplate
 ##The effects that the projectile will apply to valid targets.
@@ -17,11 +17,11 @@ var ability_context : Dictionary[StringName, Variant]
 var effects : Array[Effect]
 
 
-func initialize(caster : Entity, context : Dictionary[StringName, Variant]):
-	ability_context = context
-	for template in effects_template:
-		effects.append(template.build_effect(context))
-
+func initialize(caster : Entity, controller : AbilityController):
+	ability_controller = controller
+	self.caster = caster
+	pass
+	
 func do(caster : Entity, context : Dictionary[StringName, Variant]):
 	self.caster = caster
 	
@@ -54,6 +54,7 @@ func spawn_projectile(caster : Entity, ability_context : Dictionary[StringName, 
 	pass
 
 func _on_projectile_hit(hit : RID):
-	for effect in effects:
-		EffectServer.receive_effect(hit, effect, ability_context)
+	var context : Dictionary[StringName, Variant] = ability_controller.generate_controller_context()
+	for effect in effects_template:
+		EffectServer.receive_effect(hit, effect.build_effect(context), context)
 	pass

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8j11sug2jlbu"]
 
 [ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_h7h3g"]
-[ext_resource type="Texture2D" uid="uid://bpjkg56ywxlou" path="res://Sprites/Compact Disk/Compact Disk.png" id="2_326n8"]
+[ext_resource type="Texture2D" uid="uid://bpjkg56ywxlou" path="res://Sprites/AbilityTiles/Compact Disk/Compact Disk.png" id="2_326n8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yah6s"]
 radius = 32.0

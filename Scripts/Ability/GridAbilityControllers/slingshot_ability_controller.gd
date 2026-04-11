@@ -15,7 +15,7 @@ var _bonus_projectile_count : int = 0
 var _timer : Timer 
 
 func _on_initialized():
-	spawn_projectile_action.initialize(caster, controller_context)
+	spawn_projectile_action.initialize(caster, self)
 	var projectile_count_stat : Stat = caster.stats.get_stat("projectile_count")
 	if projectile_count_stat != null:
 		_bonus_projectile_count = int(projectile_count_stat.get_value())

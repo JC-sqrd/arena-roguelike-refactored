@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cnhcp1vabdb3x" path="res://Scripts/Controllers/PlayerController.gd" id="1_vvirn"]
 [ext_resource type="Script" uid="uid://j0xukxc6ojgr" path="res://Scripts/AbilityGrid/AbilityGrid.gd" id="2_xpoel"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="3_8ud0v"]
-[ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/stone_tile.tres" id="4_v3i30"]
+[ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/slingshot_tile.tres" id="4_v3i30"]
 [ext_resource type="Resource" uid="uid://trpj7hg3rv0u" path="res://Resources/player_stats_template.tres" id="5_1dleg"]
 [ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/blood_stained_katana_tile.tres" id="5_l0a5t"]
 [ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="6_nn7uc"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpjkg56ywxlou"
-path="res://.godot/imported/Compact Disk.png-a25e0073ac926e0b892405ff25ddbe5c.ctex"
+uid="uid://m22m3kwqjh1f"
+path="res://.godot/imported/Wooden Axe Tile.png-9978da562ed09b620ed252e0659e402f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Compact Disk/Compact Disk.png"
-dest_files=["res://.godot/imported/Compact Disk.png-a25e0073ac926e0b892405ff25ddbe5c.ctex"]
+source_file="res://Sprites/AbilityTiles/Wooden Axe/Wooden Axe Tile.png"
+dest_files=["res://.godot/imported/Wooden Axe Tile.png-9978da562ed09b620ed252e0659e402f.ctex"]
 
 [params]
 

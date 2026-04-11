@@ -14,5 +14,7 @@ func invoke_event(context : Dictionary[StringName, Variant] = {}):
 	
 	var knockback_target : EntityKnockbackTarget = EntityKnockbackTarget.new(target)
 	
+	
 	KnockbackServer.apply_knockback(knockback_target, force)
+	EventServer.knockback_applied.emit({"magnitude" : magnitude, "direction" : direction, "force" : force}, context)
 	pass
