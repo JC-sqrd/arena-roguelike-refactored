@@ -14,7 +14,7 @@ func free_rid(rid : RID):
 
 func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,Variant]):
 	var effect_listener : EffectListener = effect_listeners.get(rid)
-	if effect_listener:
+	if effect_listener != null:
 		effect.effect_context = context
 		effect.effect_context.target_rid = rid
 		effect_listener.receive_effect(effect)

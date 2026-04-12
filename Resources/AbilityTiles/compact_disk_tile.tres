@@ -9,5 +9,7 @@ script = ExtResource("1_m7sg2")
 name = "Compact Disk"
 texture = ExtResource("2_007ra")
 ability_controller_scene = ExtResource("1_se5wl")
-ability_details = "ABILITY - Compact Disk: Manifest a deadly compact disk that revolves around the caster, dealing 10% LETHALITY damage."
+ability_details = "ABILITY - Compact Disk(6s CD): Manifest a deadly compact disk that revolves around the caster, dealing 10% LETHALITY damage.
+
+DURATION : 3s"
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

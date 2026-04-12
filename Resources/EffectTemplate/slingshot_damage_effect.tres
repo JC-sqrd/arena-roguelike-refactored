@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="InstantEffectTemplate" format=3 uid="uid://rqb5uit1ki55"]
+
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="1_x5bjb"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="2_xqwis"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_3kosf"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_m8n6c"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="5_qs4c6"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="6_5bvm2"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="7_r5rak"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="8_hmf6m"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="9_3o2un"]
+
+[sub_resource type="Resource" id="Resource_tbu26"]
+script = ExtResource("2_xqwis")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_jye4o"]
+script = ExtResource("8_hmf6m")
+value = 5.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_xp3cx"]
+script = ExtResource("4_m8n6c")
+mode = -1
+value_provider_template = SubResource("Resource_jye4o")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[resource]
+script = ExtResource("9_3o2un")
+flat_mutator_template = SubResource("Resource_xp3cx")
+effect_event_templates = Array[ExtResource("1_x5bjb")]([SubResource("Resource_tbu26")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"

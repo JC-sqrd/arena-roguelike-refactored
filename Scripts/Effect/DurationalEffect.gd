@@ -3,6 +3,8 @@ class_name DurationalEffect extends Effect
 #var flat_modifiers : Array[FlatStatModifier]
 #var mult_modifiers : Array[MultiplierStatModifier]
 #var override_modifiers : Array[OverrideStatModifier]
+var stackable : bool = false
+var stack : int = 1
 var duration : float = 0
 var _duration_counter : float = 0
 
@@ -17,6 +19,7 @@ func _init(modifier : StatModifier, effect_id : StringName = "durational_effect"
 
 func apply_effect(stats : Stats):
 	if stats.has(modifier.stat_id):
+		effect_context.effect_stack = stack
 		modifier.apply_modifier(stats.get_stat(modifier.stat_id))
 		pass
 	applied_effect.emit(self)

@@ -10,4 +10,5 @@ offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 name = "Bow and Arrow"
 texture = ExtResource("3_d2vxy")
 ability_controller_scene = ExtResource("1_d2vxy")
+ability_details = "ABILITY - Arrow Shot: Every 5th attack fire an arrow towards the mouse."
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

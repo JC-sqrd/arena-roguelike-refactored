@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dxq3hl61afsp7" path="res://Scripts/AbilityGrid/UI/CrosshairUI.gd" id="1_uq31p"]
 [ext_resource type="Texture2D" uid="uid://crb0rdna5guno" path="res://Textures/Crosshair.png" id="2_hwf1m"]
+[ext_resource type="Texture2D" uid="uid://ds1cqea5c0n7y" path="res://Textures/Crosshair Outer Reticle.png" id="3_uwo6q"]
+[ext_resource type="Texture2D" uid="uid://31em4lvbn550" path="res://Textures/Crosshair Inner Reticle.png" id="4_iy6u6"]
+[ext_resource type="Texture2D" uid="uid://bd2jvr6mt4ivi" path="res://Textures/Crosshair Wings.png" id="5_s8ems"]
 
 [sub_resource type="Animation" id="Animation_hwf1m"]
 length = 0.001
@@ -17,13 +20,49 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OuterReticle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InnerReticle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wings:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_28i82"]
 resource_name = "crosshair_attacked"
 length = 0.33333668
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("TextureRect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -32,6 +71,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -0.5, 2),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OuterReticle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333668),
+"transitions": PackedFloat32Array(-2, -0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InnerReticle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.33333668),
+"transitions": PackedFloat32Array(-2, -0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wings:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.33333668),
+"transitions": PackedFloat32Array(-2, -0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.75, 1.75), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qnqds"]
@@ -48,6 +123,7 @@ offset_bottom = 32.0
 script = ExtResource("1_uq31p")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1225299103]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
@@ -58,6 +134,45 @@ offset_bottom = 16.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("2_hwf1m")
+expand_mode = 3
+
+[node name="OuterReticle" type="TextureRect" parent="." unique_id=997280438]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("3_uwo6q")
+expand_mode = 3
+
+[node name="InnerReticle" type="TextureRect" parent="." unique_id=588059075]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_iy6u6")
+expand_mode = 3
+
+[node name="Wings" type="TextureRect" parent="." unique_id=849709155]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("5_s8ems")
 expand_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1083738048]
