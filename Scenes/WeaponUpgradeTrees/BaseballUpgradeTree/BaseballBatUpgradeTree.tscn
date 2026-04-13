@@ -144,6 +144,14 @@ flat_mutator_template = SubResource("Resource_pbxxe")
 effect_event_templates = Array[ExtResource("14_gcwu3")]([SubResource("Resource_vgg3q")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
+[sub_resource type="Resource" id="Resource_vl8oj"]
+script = ExtResource("3_pr3v7")
+upgrade_name = "Spirit Ball"
+upgrade_details = "Upon knocking back a target with the Baseball Bat, spawn a spirit ball that travels toward the struck enemy, when a spirit ball hits an enemy, it deals 10 DAMAGE and bounces.
+
+A Spirit Ball lasts 10s."
+metadata/_custom_type_script = "uid://b3h4uvinr4wly"
+
 [node name="BaseballBatUpgradeTree" type="Node" unique_id=771546205 node_paths=PackedStringArray("branches")]
 script = ExtResource("1_m86gm")
 branches = [NodePath("BaseballBat-1-1")]
@@ -206,6 +214,7 @@ script = ExtResource("13_3tm8i")
 target_area_template = SubResource("Resource_fqla7")
 ball_effect_template = SubResource("Resource_ur6gj")
 applied = true
+upgrade_data = SubResource("Resource_vl8oj")
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="BaseballBat-3-1" type="Node" parent="." unique_id=966016517]

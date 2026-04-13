@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 	
 
 func _on_knockback_applied(data : Dictionary[StringName, Variant], context : Dictionary[StringName, Variant]):
-	print("ON KNOCK BACK APPLIED")
 	if context.has("weapon_id") and context.weapon_id == upgrade_tree.weapon_controller.weapon_id:
 		var hitbox : HitBox = BASEBALL_HITBOX.instantiate() 
 		var wielder_pos : Vector2 = upgrade_tree.weapon_controller.wielder.global_position
