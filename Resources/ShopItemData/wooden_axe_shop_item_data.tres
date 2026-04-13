@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityTileShopItemData" format=3 uid="uid://dwb5650sworhr"]
+
+[ext_resource type="Resource" uid="uid://1xn2obo8pow1" path="res://Resources/AbilityTiles/wooden_axe_tile.tres" id="1_64m2p"]
+[ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="1_gvx5l"]
+
+[resource]
+script = ExtResource("1_gvx5l")
+ability_tile = ExtResource("1_64m2p")
+metadata/_custom_type_script = "uid://dklu5y62oe8s4"

@@ -5,7 +5,7 @@ class_name DurationalEffect extends Effect
 #var override_modifiers : Array[OverrideStatModifier]
 var stackable : bool = false
 var stack : int = 1
-var duration : float = 0
+var duration : float = 1
 var _duration_counter : float = 0
 
 var expired : bool = false
@@ -24,6 +24,15 @@ func apply_effect(stats : Stats):
 		pass
 	applied_effect.emit(self)
 	pass
+
+func remove_effect(stats : Stats):
+	if stats.has(modifier.stat_id):
+		effect_context.effect_stack = stack
+		modifier.remove_modifier(stats.get_stat(modifier.stat_id))
+		pass
+	pass
+
+
 
 func update(delta : float):
 	if expired:

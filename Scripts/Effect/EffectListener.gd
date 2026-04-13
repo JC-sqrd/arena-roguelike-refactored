@@ -31,13 +31,18 @@ func receive_effect(effect : Effect):
 	pass
 
 func update_durational_effects(delta : float):
+	if durational_effects.is_empty():
+		return
+	
 	for effect in durational_effects:
 		durational_effects[effect].update(delta)
+		print("UPDATING DURATION EFFECTS")
 	pass
 
-func _on_durational_effect_expired(effect : Effect):
+func _on_durational_effect_expired(effect : DurationalEffect):
+	effect.remove_effect(stats)
 	effect.cleanup()
-	durational_effects.erase(effect)
+	durational_effects.erase(effect.effect_id)
 	pass
 
 func cleanup():

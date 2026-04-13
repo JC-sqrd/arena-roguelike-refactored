@@ -42,7 +42,7 @@ metadata/_custom_type_script = "uid://ck45nau7el76p"
 
 [sub_resource type="Resource" id="Resource_5jxvv"]
 script = ExtResource("17_xb1ee")
-value = -0.75
+value = -0.25
 metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
 
 [sub_resource type="Resource" id="Resource_lxb88"]
@@ -53,7 +53,8 @@ metadata/_custom_type_script = "uid://ck25fp8ei7dte"
 
 [sub_resource type="Resource" id="Resource_jye4o"]
 script = ExtResource("17_jye4o")
-effect_id = &"uzi_slow_effect"
+effect_id = &"slingshot_slow_effect"
+duration = 1.5
 modifier = SubResource("Resource_lxb88")
 metadata/_custom_type_script = "uid://ugmjlr3iycc8"
 

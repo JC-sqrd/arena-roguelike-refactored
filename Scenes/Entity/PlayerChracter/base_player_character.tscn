@@ -3,19 +3,14 @@
 [ext_resource type="Script" uid="uid://cnhcp1vabdb3x" path="res://Scripts/Controllers/PlayerController.gd" id="1_vvirn"]
 [ext_resource type="Script" uid="uid://j0xukxc6ojgr" path="res://Scripts/AbilityGrid/AbilityGrid.gd" id="2_xpoel"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="3_8ud0v"]
-[ext_resource type="Resource" uid="uid://cql14jhbbb4y8" path="res://Resources/AbilityTiles/flying_flail_tile.tres" id="4_adr14"]
-[ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/slingshot_tile.tres" id="4_v3i30"]
 [ext_resource type="Resource" uid="uid://trpj7hg3rv0u" path="res://Resources/player_stats_template.tres" id="5_1dleg"]
 [ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/blood_stained_katana_tile.tres" id="5_l0a5t"]
 [ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="6_nn7uc"]
 [ext_resource type="Script" uid="uid://dlb4egg8f58tt" path="res://Scripts/Equipment/EquipmentManager/EquipmentManager.gd" id="7_72w0c"]
 [ext_resource type="Resource" uid="uid://b3mshjv3l6cf" path="res://Resources/AbilityTiles/spiked_bat_tile.tres" id="7_nqu6t"]
-[ext_resource type="Resource" uid="uid://bwt0luahnpv5f" path="res://Resources/AbilityTiles/compact_disk_tile.tres" id="8_c44xl"]
 [ext_resource type="Script" uid="uid://dq1xwwwhdd61h" path="res://Scripts/Equipment/EquipSlot/EquipSlot.gd" id="9_f4r5d"]
-[ext_resource type="Resource" uid="uid://1xn2obo8pow1" path="res://Resources/AbilityTiles/wooden_axe_tile.tres" id="9_jq2g3"]
 [ext_resource type="Texture2D" uid="uid://c0q5q5u87nhq2" path="res://Placeholders/PlaceholderPlayer.png" id="10_c44xl"]
 [ext_resource type="Script" uid="uid://tkt8plpn1a48" path="res://Scripts/Equipment/Weapon/AttackInput/AttackInputListener.gd" id="10_ushvb"]
-[ext_resource type="Resource" uid="uid://cfnee1kiyshfw" path="res://Resources/AbilityTiles/bow_and_arrow_tile.tres" id="10_wx6im"]
 [ext_resource type="Script" uid="uid://btal4uvbo5n3d" path="res://Scripts/ActionPoint/ActionPoint.gd" id="12_mpqp4"]
 [ext_resource type="Script" uid="uid://c27363khv4g3j" path="res://Scripts/Entity/PlayerEntityNode.gd" id="13_1dleg"]
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
@@ -50,15 +45,9 @@ metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 [sub_resource type="Resource" id="Resource_8ud0v"]
 script = ExtResource("2_xpoel")
 initial_ability_tiles = Dictionary[Vector2i, ExtResource("3_8ud0v")]({
-Vector2i(0, 0): ExtResource("4_adr14"),
-Vector2i(0, 2): ExtResource("4_v3i30"),
-Vector2i(0, 3): ExtResource("5_l0a5t"),
-Vector2i(1, 2): ExtResource("8_c44xl"),
-Vector2i(1, 3): ExtResource("9_jq2g3"),
+Vector2i(0, 0): ExtResource("5_l0a5t"),
 Vector2i(2, 0): ExtResource("6_nn7uc"),
 Vector2i(3, 1): SubResource("Resource_22ndi"),
-Vector2i(3, 3): ExtResource("10_wx6im"),
-Vector2i(4, 0): ExtResource("4_v3i30"),
 Vector2i(4, 3): ExtResource("7_nqu6t")
 })
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
