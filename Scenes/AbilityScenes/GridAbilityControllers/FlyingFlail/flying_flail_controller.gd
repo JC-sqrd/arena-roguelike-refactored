@@ -6,6 +6,10 @@ const FLYING_FLAIL_HITBOX = preload("uid://k7y78mwvl3gb")
 @export var distance_curve : Curve
 @export var orbit_distance : float = 64
 
+const FLYING_FLAIL_CHAIN = preload("uid://c5qyfdmtd1hef")
+
+const CHAIN_TEXTURE = preload("uid://cr4eh2yaxadki")
+
 var hitbox : HitBox
 var duration : float = 8
 var cooldown : float = 6
@@ -18,6 +22,7 @@ var _curr_cd : float = 0
 var orbit_center : Vector2
 var orbit_offset : Vector2
 var orbit_angle : float = 0
+var _chain : Line2D
 
 var start : bool = false
 
@@ -53,6 +58,7 @@ func _process(delta: float) -> void:
 		
 		if _curr_dur >= duration:
 			hitbox.queue_free()
+			_chain.queue_free()
 			_curr_dur = 0
 			cooling_down = true
 			orbiting = false
@@ -71,19 +77,26 @@ func _process(delta: float) -> void:
 			for template in effect_templates:
 				EffectServer.receive_effect(hit, template.build_effect(context), context)
 		
+		_chain.clear_points()
 		hitbox.global_position = orbit_offset
+		_chain.add_point(caster.action_point)
+		_chain.add_point(hitbox.global_position)
 		pass
 	pass
 
 func start_ability():
 	hitbox = FLYING_FLAIL_HITBOX.instantiate()
 	hitbox.context = controller_context
-	#hitbox.effects = effects
+	_chain = FLYING_FLAIL_CHAIN.instantiate()
+	get_tree().root.add_child(_chain)
 	get_tree().root.add_child(hitbox)
 	orbiting = true
 	pass
 
+
 func _exit_tree() -> void:
 	if hitbox != null:
 		hitbox.queue_free()
+	if _chain != null:
+		_chain.queue_free()
 	pass

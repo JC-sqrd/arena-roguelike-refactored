@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="9_7us5s"]
 [ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="9_vysl5"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_pn7b0"]
+[ext_resource type="Curve" uid="uid://ccb7dfxmwp63c" path="res://Resources/Curves/flying_flail_distance_curve.tres" id="13_8di0g"]
 
 [sub_resource type="Resource" id="Resource_vi0ju"]
 script = ExtResource("4_8di0g")
@@ -44,12 +45,8 @@ flat_mutator_template = SubResource("Resource_1oims")
 effect_event_templates = Array[ExtResource("3_8di0g")]([SubResource("Resource_vi0ju"), SubResource("Resource_wc7ik")])
 metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
-[sub_resource type="Curve" id="Curve_vysl5"]
-_data = [Vector2(0, 0.29990125), 0.0, 0.0, 0, 0, Vector2(0.49872124, 0.5054349), 1.1928973, 1.1928973, 0, 0, Vector2(0.99999994, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [node name="FlyingFlailController" type="Node" unique_id=563221198]
 script = ExtResource("1_ab7mh")
 effect_templates = Array[ExtResource("2_vysl5")]([SubResource("Resource_yys2v")])
-distance_curve = SubResource("Curve_vysl5")
+distance_curve = ExtResource("13_8di0g")
 metadata/_custom_type_script = "uid://ck2lns8ywy84t"

@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://dvp134exe010y"]
 
-[ext_resource type="Script" uid="uid://dy38evgu3oc2p" path="res://Scripts/EnemySpawner/EnemyWaveSpawner/EnemyWaveSpawner.gd" id="1_781r6"]
-[ext_resource type="Script" uid="uid://tshu46mt1lf3" path="res://Scripts/Interactable/Interactable.gd" id="1_lf4df"]
-[ext_resource type="Script" uid="uid://d3cfwnt62d3li" path="res://Scripts/WaveData/EnemyWaveData.gd" id="2_15e5t"]
-[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="2_ckt2a"]
-[ext_resource type="Script" uid="uid://8eg0pmyahc6u" path="res://Scripts/WaveData/EnemyWaveSpawn.gd" id="3_15e5t"]
-[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="3_nwip1"]
-[ext_resource type="Resource" uid="uid://bhi7i5h5yq7dg" path="res://Resources/EnemyData/WaveSpawnData/small_enemy_wave_spawn_data.tres" id="4_6f1dk"]
-[ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="4_6q7kt"]
-[ext_resource type="Texture2D" uid="uid://dhkj6c4whg5h1" path="res://Placeholders/AbilityTile_Placeholder_1.png" id="4_nwip1"]
-[ext_resource type="Resource" uid="uid://sksfvyj3sp13" path="res://Resources/EnemyData/WaveSpawnData/normal_enemy_wave_spawn_data.tres" id="5_6q7kt"]
-[ext_resource type="Script" uid="uid://d1rxdhgwesb0b" path="res://Scripts/WaveDirector/EnemyWaveDirector.gd" id="8_781r6"]
+[ext_resource type="Script" uid="uid://dy38evgu3oc2p" path="res://Scripts/EnemySpawner/EnemyWaveSpawner/EnemyWaveSpawner.gd" id="1_aphbl"]
+[ext_resource type="Script" uid="uid://d3cfwnt62d3li" path="res://Scripts/WaveData/EnemyWaveData.gd" id="2_x7pkk"]
+[ext_resource type="Script" uid="uid://8eg0pmyahc6u" path="res://Scripts/WaveData/EnemyWaveSpawn.gd" id="3_2nq7f"]
+[ext_resource type="Resource" uid="uid://bhi7i5h5yq7dg" path="res://Resources/EnemyData/WaveSpawnData/small_enemy_wave_spawn_data.tres" id="4_xqvkc"]
+[ext_resource type="Resource" uid="uid://sksfvyj3sp13" path="res://Resources/EnemyData/WaveSpawnData/normal_enemy_wave_spawn_data.tres" id="5_m7ml6"]
+[ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="6_6elf5"]
+[ext_resource type="Script" uid="uid://tshu46mt1lf3" path="res://Scripts/Interactable/Interactable.gd" id="7_o70s5"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="8_gk0l0"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="9_knxlh"]
+[ext_resource type="Texture2D" uid="uid://dhkj6c4whg5h1" path="res://Placeholders/AbilityTile_Placeholder_1.png" id="10_f0al5"]
+[ext_resource type="Script" uid="uid://d1rxdhgwesb0b" path="res://Scripts/WaveDirector/EnemyWaveDirector.gd" id="11_n85o8"]
 
 [sub_resource type="Curve" id="Curve_6q7kt"]
 _data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.5117494, 0.11842108), 0.0, 2.3330894, 0, 0, Vector2(0.616188, 0.42105263), 1.2598684, 4.157565, 0, 0, Vector2(1, 0.4868421), -3.3596513, 0.0, 0, 0]
@@ -25,8 +25,8 @@ _data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.25066668, 0.11842108)
 point_count = 4
 
 [sub_resource type="Resource" id="Resource_gak5u"]
-script = ExtResource("2_15e5t")
-wave_spawns = Array[ExtResource("3_15e5t")]([ExtResource("4_6f1dk"), ExtResource("5_6q7kt")])
+script = ExtResource("2_x7pkk")
+wave_spawns = Array[ExtResource("3_2nq7f")]([ExtResource("4_xqvkc"), ExtResource("5_m7ml6")])
 intensity_curve = SubResource("Curve_cud1e")
 wave_budget = 700.0
 budget_gain = 150.0
@@ -34,8 +34,8 @@ wave_duration = 30.0
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
 
 [sub_resource type="Resource" id="Resource_15e5t"]
-script = ExtResource("2_15e5t")
-wave_spawns = Array[ExtResource("3_15e5t")]([ExtResource("4_6f1dk")])
+script = ExtResource("2_x7pkk")
+wave_spawns = Array[ExtResource("3_2nq7f")]([ExtResource("4_xqvkc")])
 intensity_curve = SubResource("Curve_gak5u")
 wave_budget = 300.0
 budget_gain = 175.0
@@ -44,15 +44,15 @@ next_wave = SubResource("Resource_gak5u")
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
 
 [sub_resource type="Resource" id="Resource_cud1e"]
-script = ExtResource("3_15e5t")
-enemy_scene = ExtResource("4_6q7kt")
+script = ExtResource("3_2nq7f")
+enemy_scene = ExtResource("6_6elf5")
 weight = 10.0
 spawn_cost = 10.0
 metadata/_custom_type_script = "uid://8eg0pmyahc6u"
 
 [sub_resource type="Resource" id="Resource_nfwfb"]
-script = ExtResource("2_15e5t")
-wave_spawns = Array[ExtResource("3_15e5t")]([SubResource("Resource_cud1e")])
+script = ExtResource("2_x7pkk")
+wave_spawns = Array[ExtResource("3_2nq7f")]([SubResource("Resource_cud1e")])
 intensity_curve = SubResource("Curve_6q7kt")
 wave_budget = 250.0
 budget_gain = 150.0
@@ -61,12 +61,12 @@ next_wave = SubResource("Resource_15e5t")
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
 
 [sub_resource type="Resource" id="Resource_vmsas"]
-script = ExtResource("2_ckt2a")
+script = ExtResource("8_gk0l0")
 radius = 32.0
 metadata/_custom_type_script = "uid://ul86s2dhadfg"
 
 [sub_resource type="Resource" id="Resource_3fjd7"]
-script = ExtResource("3_nwip1")
+script = ExtResource("9_knxlh")
 monitorable = true
 area_shape = SubResource("Resource_vmsas")
 is_static = true
@@ -74,15 +74,15 @@ area_coll_layer = 1
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
 [node name="EnemySpawner" type="Node2D" unique_id=1839329007 node_paths=PackedStringArray("interactable", "wave_director")]
-script = ExtResource("1_781r6")
+script = ExtResource("1_aphbl")
 interactable = NodePath("Interactable")
 wave_director = NodePath("EnemyWaveDirector")
 initial_wave = SubResource("Resource_nfwfb")
-enemy_waves = Array[ExtResource("2_15e5t")]([SubResource("Resource_15e5t"), SubResource("Resource_gak5u")])
+enemy_waves = Array[ExtResource("2_x7pkk")]([SubResource("Resource_15e5t"), SubResource("Resource_gak5u")])
 metadata/_custom_type_script = "uid://dy38evgu3oc2p"
 
 [node name="Interactable" type="Node" parent="." unique_id=1733061659 node_paths=PackedStringArray("parent_node")]
-script = ExtResource("1_lf4df")
+script = ExtResource("7_o70s5")
 parent_node = NodePath("..")
 area_template = SubResource("Resource_3fjd7")
 metadata/_custom_type_script = "uid://tshu46mt1lf3"
@@ -90,10 +90,10 @@ metadata/_custom_type_script = "uid://tshu46mt1lf3"
 [node name="AbilityTilePlaceholder1" type="Sprite2D" parent="." unique_id=232141568]
 texture_filter = 1
 position = Vector2(0, -64)
-texture = ExtResource("4_nwip1")
+texture = ExtResource("10_f0al5")
 
 [node name="EnemyWaveDirector" type="Node" parent="." unique_id=122944847 node_paths=PackedStringArray("wave_timer")]
-script = ExtResource("8_781r6")
+script = ExtResource("11_n85o8")
 wave_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://d1rxdhgwesb0b"
 

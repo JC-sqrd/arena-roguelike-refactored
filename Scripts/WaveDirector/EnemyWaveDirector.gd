@@ -13,6 +13,8 @@ var wave_enemies : Array[EnemyController]
 
 var cost_dict : Dictionary[EnemyController, float]
 
+const ENEMY_SPAWNER = preload("uid://s82um7w1jiuq")
+
 func start_wave(wave_data : EnemyWaveData):
 	
 	print("STARTED WAVE")
@@ -75,18 +77,32 @@ func spawn_wave():
 			break
 		elif _curr_wave_data.curr_budget >= pick.spawn_cost:
 			_curr_wave_data.curr_budget -= pick.spawn_cost
-			var enemy : EnemyController = pick.instantiate_enemy()
+			#var enemy : EnemyController = pick.instantiate_spawn()
 			var tile_size : Vector2i = ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size
 			var used_cells : Array[Vector2i] = ArenaServer.active_arena.main_tilemap_layer.get_used_cells()
 			var rand_cell : Vector2i = used_cells[randi_range(0, used_cells.size()-1)] 
 			var rand_offset : Vector2i = Vector2i(randi_range(0, tile_size.x), randi_range(0, tile_size.y))
-			cost_dict[enemy] = pick.spawn_cost
-			enemy.global_position = (rand_cell * tile_size) + rand_offset #rand_pos
-			ArenaServer.active_arena.add_child(enemy)
-			wave_enemies.append(enemy)
+			var spawn_pos : Vector2 = (rand_cell * tile_size) + rand_offset 
+			
+			var spawner : EnemySpawner = ENEMY_SPAWNER.instantiate()
+			spawner.enemy_spawned.connect(_on_enemy_spawner_spawned)
+			spawner.spawn = pick
+			spawner.spawn_position = spawn_pos
+			spawner.global_position = spawn_pos
+			
+			ArenaServer.active_arena.add_child(spawner)
+			#enemy.global_position = (rand_cell * tile_size) + rand_offset #rand_pos
+			#ArenaServer.active_arena.add_child(enemy)
+			
 		else:
 			break
 		pass
+	pass
+
+func _on_enemy_spawner_spawned(enemy : EnemyController, spawn : SpawnData):
+	var pick : EnemyWaveSpawn = spawn as EnemyWaveSpawn
+	cost_dict[enemy] = pick.spawn_cost
+	wave_enemies.append(enemy)
 	pass
 
 func weighted_pick(spawns : Array[EnemyWaveSpawn]) -> EnemyWaveSpawn:

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c5qyfdmtd1hef"]
+
+[ext_resource type="Texture2D" uid="uid://cr4eh2yaxadki" path="res://Sprites/AbilityTiles/Flying Flail/Flail Chain.png" id="1_sxyt0"]
+
+[node name="Line2D" type="Line2D" unique_id=1810320570]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 77, 0)
+texture = ExtResource("1_sxyt0")
+texture_mode = 1

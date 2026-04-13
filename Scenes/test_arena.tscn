@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bv0b6cknh28xe" path="res://Scripts/Debug/debug_gold_ui.gd" id="4_en7hp"]
 [ext_resource type="Resource" uid="uid://h0fjl8pue2rx" path="res://Resources/ShopItemPool/ability_tile_shop_item_pool.tres" id="5_73tfi"]
 [ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="10_73tfi"]
-[ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_spawner.tscn" id="10_hq5rx"]
+[ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_wave_spawner.tscn" id="10_hq5rx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y11aj"]
 texture = ExtResource("1_34on7")
