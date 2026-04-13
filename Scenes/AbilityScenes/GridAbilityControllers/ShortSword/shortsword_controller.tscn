@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb87hc3wsslfk"]
 
-[ext_resource type="Script" uid="uid://ddmsidac23wd2" path="res://Scripts/Ability/GridAbilityControllers/shortsword_controller.gd" id="1_gxjm8"]
+[ext_resource type="Script" uid="uid://ddmsidac23wd2" path="res://Scenes/AbilityScenes/GridAbilityControllers/ShortSword/shortsword_controller.gd" id="1_gxjm8"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="2_nwutm"]
 [ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="3_yomgq"]
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_yuh54"]

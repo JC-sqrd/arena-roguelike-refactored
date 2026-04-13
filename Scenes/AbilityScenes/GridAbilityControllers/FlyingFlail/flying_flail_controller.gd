@@ -1,12 +1,13 @@
 extends GridAbilityController
 
-const COMPACT_DISK_HITBOX = preload("uid://8j11sug2jlbu")
+const FLYING_FLAIL_HITBOX = preload("uid://k7y78mwvl3gb")
 
 @export var effect_templates : Array[EffectTemplate]
+@export var distance_curve : Curve
 @export var orbit_distance : float = 64
 
-var cd_hitbox : HitBox
-var duration : float = 3
+var hitbox : HitBox
+var duration : float = 8
 var cooldown : float = 6
 var cooling_down : bool = false
 
@@ -21,8 +22,8 @@ var orbit_angle : float = 0
 var start : bool = false
 
 func _on_initialized():
-	#cd_hitbox = COMPACT_DISK_HITBOX.instantiate()
-	#get_tree().root.add_child(cd_hitbox)
+	#hitbox = COMPACT_DISK_HITBOX.instantiate()
+	#get_tree().root.add_child(hitbox)
 	for template in effect_templates:
 		effects.append(template.build_effect(controller_context))
 		pass
@@ -51,38 +52,38 @@ func _process(delta: float) -> void:
 	if orbiting:
 		
 		if _curr_dur >= duration:
-			cd_hitbox.queue_free()
+			hitbox.queue_free()
 			_curr_dur = 0
 			cooling_down = true
 			orbiting = false
 		
 		_curr_dur += delta
 		
-		orbit_angle += (5 * delta)
+		orbit_angle += (10 * delta)
 		
 		orbit_angle = fposmod(orbit_angle, (2 * PI))
 		
-		orbit_offset = (Vector2.UP * 32) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * orbit_distance) 
+		orbit_offset = (Vector2.UP * 16) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * (orbit_distance * (distance_curve.sample(_curr_dur / duration)))) 
 		
-		var hits : Array[RID] = cd_hitbox.query_hits(true)
+		var hits : Array[RID] = hitbox.query_hits(true)
 		var context : Dictionary[StringName, Variant] = generate_controller_context()
 		for hit in hits:
 			for template in effect_templates:
 				EffectServer.receive_effect(hit, template.build_effect(context), context)
 		
-		cd_hitbox.global_position = orbit_offset
+		hitbox.global_position = orbit_offset
 		pass
 	pass
 
 func start_ability():
-	cd_hitbox = COMPACT_DISK_HITBOX.instantiate()
-	cd_hitbox.context = controller_context
-	#cd_hitbox.effects = effects
-	get_tree().root.add_child(cd_hitbox)
+	hitbox = FLYING_FLAIL_HITBOX.instantiate()
+	hitbox.context = controller_context
+	#hitbox.effects = effects
+	get_tree().root.add_child(hitbox)
 	orbiting = true
 	pass
 
 func _exit_tree() -> void:
-	if cd_hitbox != null:
-		cd_hitbox.queue_free()
+	if hitbox != null:
+		hitbox.queue_free()
 	pass

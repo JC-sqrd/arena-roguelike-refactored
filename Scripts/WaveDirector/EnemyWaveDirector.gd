@@ -33,13 +33,23 @@ func _on_wave_timeout():
 	
 	print("SPAWN WAVE: " + str(_curr_wave_data.current_wave_time))
 	_curr_wave_data.current_wave_time -= 1
+
+	var wave_time : float = _curr_wave_data.wave_duration - _curr_wave_data.current_wave_time
+	var normalized_duration : float = wave_time / _curr_wave_data.wave_duration 
+	var intensity : float = _curr_wave_data.intensity_curve.sample(normalized_duration)
+	
+	print("SCALED BUDGET: " + str(intensity)+ " " + str(_curr_wave_data.wave_duration))
+	
+	
+	
 	var _leftover_spread : float = (_leftover_budget / _curr_wave_data.wave_duration)
-	var budget_gain : float = (_curr_wave_data.budget_gain + _leftover_spread) 
+	var budget_gain : float = ((_curr_wave_data.budget_gain) + _leftover_spread) * intensity 
 	_curr_wave_data.curr_budget += budget_gain
 	spawn_wave()
 	
 	if _curr_wave_data.current_wave_time <= 0:
 		_leftover_budget = calculate_leftover_budget()
+		print("LEFTOVER BUDGET: " + str(_leftover_budget))
 		_curr_wave_data.curr_budget = 0
 		free_wave_enemies()
 		wave_timer.stop()
@@ -49,6 +59,8 @@ func _on_wave_timeout():
 func spawn_wave():
 	
 	print("ACTIVE ENEMIES: " + str(EnemyServer.active_enemies.size()))
+	
+	
 	
 	while _curr_wave_data.curr_budget > 0:
 		

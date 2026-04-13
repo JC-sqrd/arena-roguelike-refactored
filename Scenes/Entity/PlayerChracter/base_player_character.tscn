@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cnhcp1vabdb3x" path="res://Scripts/Controllers/PlayerController.gd" id="1_vvirn"]
 [ext_resource type="Script" uid="uid://j0xukxc6ojgr" path="res://Scripts/AbilityGrid/AbilityGrid.gd" id="2_xpoel"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="3_8ud0v"]
+[ext_resource type="Resource" uid="uid://cql14jhbbb4y8" path="res://Resources/AbilityTiles/flying_flail_tile.tres" id="4_adr14"]
 [ext_resource type="Resource" uid="uid://bgacakxiqyl74" path="res://Resources/AbilityTiles/slingshot_tile.tres" id="4_v3i30"]
 [ext_resource type="Resource" uid="uid://trpj7hg3rv0u" path="res://Resources/player_stats_template.tres" id="5_1dleg"]
 [ext_resource type="Resource" uid="uid://cmr23ojdtdqfd" path="res://Resources/AbilityTiles/blood_stained_katana_tile.tres" id="5_l0a5t"]
@@ -36,16 +37,6 @@ unlocked_slots = Array[Vector2i]([Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(-1,
 size = Vector2i(3, 3)
 metadata/_custom_type_script = "uid://j0xukxc6ojgr"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hfmdo"]
-load_path = "res://.godot/imported/Flying Flail.png-3cac6c9b400eb1e774f4964a2ac7d524.ctex"
-
-[sub_resource type="Resource" id="Resource_weqa2"]
-script = ExtResource("3_8ud0v")
-offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(0, 1)])
-name = "Flying Flail"
-texture = SubResource("CompressedTexture2D_hfmdo")
-metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gc566"]
 load_path = "res://.godot/imported/AbilityTile_Placeholder_4.png-cbb3fc3de6f2eb4dc212048cf2886721.ctex"
 
@@ -59,7 +50,7 @@ metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
 [sub_resource type="Resource" id="Resource_8ud0v"]
 script = ExtResource("2_xpoel")
 initial_ability_tiles = Dictionary[Vector2i, ExtResource("3_8ud0v")]({
-Vector2i(0, 0): SubResource("Resource_weqa2"),
+Vector2i(0, 0): ExtResource("4_adr14"),
 Vector2i(0, 2): ExtResource("4_v3i30"),
 Vector2i(0, 3): ExtResource("5_l0a5t"),
 Vector2i(1, 2): ExtResource("8_c44xl"),

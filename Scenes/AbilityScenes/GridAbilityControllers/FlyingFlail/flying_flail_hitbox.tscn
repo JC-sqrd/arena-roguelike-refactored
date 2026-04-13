@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://k7y78mwvl3gb"]
+
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_2ajyp"]
+[ext_resource type="Texture2D" uid="uid://d2m8cwf4808p2" path="res://Sprites/AbilityTiles/Flying Flail/Flail Head.png" id="2_ywhhg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bao7a"]
+radius = 16.0
+
+[node name="FlyingFlailHitbox" type="Area2D" unique_id=1051235547]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_2ajyp")
+metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
+
+[node name="FlailHead" type="Sprite2D" parent="." unique_id=1970044934]
+texture_filter = 1
+texture = ExtResource("2_ywhhg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=32707838]
+shape = SubResource("CircleShape2D_bao7a")

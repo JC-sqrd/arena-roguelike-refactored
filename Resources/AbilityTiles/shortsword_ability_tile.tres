@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityTile" format=3 uid="uid://d3i6oa2bnjw6e"]
 
-[ext_resource type="PackedScene" uid="uid://bb87hc3wsslfk" path="res://Scenes/AbilityScenes/GridAbilityControllers/shortsword_controller.tscn" id="1_euk76"]
+[ext_resource type="PackedScene" uid="uid://bb87hc3wsslfk" path="res://Scenes/AbilityScenes/GridAbilityControllers/ShortSword/shortsword_controller.tscn" id="1_euk76"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_qyo16"]
 [ext_resource type="Texture2D" uid="uid://bfayysirsrkn6" path="res://Sprites/AbilityTiles/Sword/ShortSwordTile.png" id="3_d6jpl"]
 

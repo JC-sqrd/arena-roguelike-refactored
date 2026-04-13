@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpjkg56ywxlou" path="res://Sprites/AbilityTiles/Compact Disk/Compact Disk.png" id="2_326n8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yah6s"]
-radius = 32.0
+radius = 8.0
 
 [node name="CompactDiskHitbox" type="Area2D" unique_id=515364315]
 collision_layer = 0
@@ -13,9 +13,10 @@ monitorable = false
 script = ExtResource("1_h7h3g")
 metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894608429]
-shape = SubResource("CircleShape2D_yah6s")
-
 [node name="CompactDisk" type="Sprite2D" parent="." unique_id=1888325812]
 texture_filter = 1
+scale = Vector2(0.234375, 0.234375)
 texture = ExtResource("2_326n8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=894608429]
+shape = SubResource("CircleShape2D_yah6s")

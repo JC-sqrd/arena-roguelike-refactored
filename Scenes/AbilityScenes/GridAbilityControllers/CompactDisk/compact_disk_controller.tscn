@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://buan0kvyaori2"]
 
-[ext_resource type="Script" uid="uid://da5is3ql2021w" path="res://Scripts/Ability/GridAbilityControllers/compact_disk_controller.gd" id="1_fiqe0"]
+[ext_resource type="Script" uid="uid://da5is3ql2021w" path="res://Scenes/AbilityScenes/GridAbilityControllers/CompactDisk/compact_disk_controller.gd" id="1_fiqe0"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="2_o6k3f"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="3_vq7gb"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_gwdak"]
@@ -49,4 +49,5 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 [node name="CompactDiskController" type="Node" unique_id=824935280]
 script = ExtResource("1_fiqe0")
 effect_templates = Array[ExtResource("2_o6k3f")]([SubResource("Resource_tf65g")])
+orbit_distance = 40.0
 metadata/_custom_type_script = "uid://ck2lns8ywy84t"

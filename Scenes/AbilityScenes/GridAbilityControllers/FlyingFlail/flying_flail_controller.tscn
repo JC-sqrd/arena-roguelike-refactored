@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dnt4edmv8gnam"]
+
+[ext_resource type="Script" uid="uid://bqrbx5v15ja4b" path="res://Scenes/AbilityScenes/GridAbilityControllers/FlyingFlail/flying_flail_controller.gd" id="1_ab7mh"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="2_vysl5"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="3_8di0g"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="4_8di0g"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="4_vi0ju"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="5_wc7ik"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="6_rxrc2"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="7_aia37"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="8_72vqn"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="9_7us5s"]
+[ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="9_vysl5"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_pn7b0"]
+
+[sub_resource type="Resource" id="Resource_vi0ju"]
+script = ExtResource("4_8di0g")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_8di0g"]
+script = ExtResource("9_7us5s")
+value = 600.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_wc7ik"]
+script = ExtResource("9_vysl5")
+magnitude = SubResource("Resource_8di0g")
+metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
+
+[sub_resource type="Resource" id="Resource_j72xk"]
+script = ExtResource("9_7us5s")
+value = 12.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_1oims"]
+script = ExtResource("5_wc7ik")
+mode = -1
+value_provider_template = SubResource("Resource_j72xk")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_yys2v"]
+script = ExtResource("10_pn7b0")
+flat_mutator_template = SubResource("Resource_1oims")
+effect_event_templates = Array[ExtResource("3_8di0g")]([SubResource("Resource_vi0ju"), SubResource("Resource_wc7ik")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="Curve" id="Curve_vysl5"]
+_data = [Vector2(0, 0.29990125), 0.0, 0.0, 0, 0, Vector2(0.49872124, 0.5054349), 1.1928973, 1.1928973, 0, 0, Vector2(0.99999994, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="FlyingFlailController" type="Node" unique_id=563221198]
+script = ExtResource("1_ab7mh")
+effect_templates = Array[ExtResource("2_vysl5")]([SubResource("Resource_yys2v")])
+distance_curve = SubResource("Curve_vysl5")
+metadata/_custom_type_script = "uid://ck2lns8ywy84t"

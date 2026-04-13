@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb6vxkpn71uew"]
 
-[ext_resource type="Script" uid="uid://blk3ubkmshgot" path="res://Scripts/Ability/GridAbilityControllers/wooden_axe_controller.gd" id="1_jptw7"]
+[ext_resource type="Script" uid="uid://blk3ubkmshgot" path="res://Scenes/AbilityScenes/GridAbilityControllers/WoodenAxe/wooden_axe_controller.gd" id="1_jptw7"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="2_4jmmr"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="3_ul8qv"]
 [ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_ea47o"]
