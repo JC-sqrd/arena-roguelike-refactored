@@ -6,6 +6,7 @@ class_name BaseAbilityGridUIController extends Control
 var player : PlayerController
 var _hovered_ui : AbilityGridUI = null
 var _held_tile : AbilityTile = null
+var _held_tile_rect : AbilityTileTextureRect
 var _original_grid : AbilityGrid
 var _original_pos : Vector2i
 var _original_rotation_idx : int = 0
@@ -47,6 +48,7 @@ func _pick_up_tile(slot_pos : Vector2i, grid : AbilityGrid):
 	
 	var tile_rect : AbilityTileTextureRect = _hovered_ui.pop_tile_rect(tile)
 	tile_rect.position = Vector2.ZERO - tile_rect.get_root_offset_position(tile.offsets)
+	_held_tile_rect = tile_rect
 	cursor_ui.add_child(tile_rect)
 	
 	var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = grid.get_adjacent_tiles(tile)
@@ -87,8 +89,15 @@ func _rollback_placement():
 	_clear_held_state()
 	pass
 
+func _rotate_held_tile():
+	if _held_tile != null:
+		_held_tile.rotate_clockwise()
+		_held_tile_rect.rotation_degrees = _held_tile.rotation_index * 90
+	pass
+
 func _clear_held_state():
 	_held_tile = null
+	_held_tile_rect = null
 	_original_grid = null
 	_original_pos = Vector2i(-1, -1)
 	cursor_ui.clear()

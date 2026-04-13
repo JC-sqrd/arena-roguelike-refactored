@@ -32,3 +32,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		ability_grid_ui.get_parent().update_minimum_size()
 		pass
 	
+	
+	if event is InputEventKey and event.keycode == KEY_R and event.pressed and _held_tile != null:
+		print("ROTATE CURSOR CHILDREN")
+		_rotate_held_tile()
+		pass
+	

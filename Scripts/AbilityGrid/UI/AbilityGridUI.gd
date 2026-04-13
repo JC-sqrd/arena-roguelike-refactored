@@ -187,6 +187,8 @@ func _on_grid_placed_tile(tile : AbilityTile, pos : Vector2i):
 		slot.ability_tile = tile
 		pass
 	
+	
+	
 	add_tile_rect(tile, pos)
 	pass
 

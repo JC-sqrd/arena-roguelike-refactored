@@ -2,6 +2,7 @@ extends BaseAbilityGridUIController
 
 @onready var ability_inventory_ui: AbilityGridUI = %AbilityInventoryUI
 @onready var shop_item_container: HBoxContainer = %ShopItemContainer
+@onready var reroll_shop_button: Button = %RerollShopButton
 const ABILITY_SHOP_ITEM_UI = preload("uid://dodmy7sq8plp1")
 
 var shop_item_pool : AbilityTileShopItemPool
@@ -17,6 +18,8 @@ func initialize_shop_ui(item_pool : AbilityTileShopItemPool):
 	
 	ability_inventory_ui.generate_grid_ui(player.ability_tile_inventory)
 	
+	reroll_shop_button.pressed.connect(_on_reroll_shop_button_pressed)
+	
 	for child in shop_item_container.get_children():
 		if child is AbilityShopItemUI:
 			child.initialize(child.item_data.ability_tile)
@@ -24,14 +27,7 @@ func initialize_shop_ui(item_pool : AbilityTileShopItemPool):
 		child.queue_free()
 		pass
 	
-	var shop_item_data : Array[AbilityTileShopItemData] = generate_item_data(8)
-	
-	for item in shop_item_data:
-		var item_ui : AbilityShopItemUI = ABILITY_SHOP_ITEM_UI.instantiate()
-		item_ui.item_data =  item.duplicate(true)
-		shop_item_container.add_child(item_ui)
-		item_ui.initialize(item_ui.item_data.ability_tile)
-		item_ui.item_clicked.connect(_on_item_clicked)
+	reroll_shop()
 	pass
 
 func generate_item_data(amount : int) -> Array[AbilityTileShopItemData]:
@@ -41,6 +37,23 @@ func generate_item_data(amount : int) -> Array[AbilityTileShopItemData]:
 		shop_items_data.append(rand_item)
 		pass
 	return shop_items_data
+
+func reroll_shop():
+	var shop_item_data : Array[AbilityTileShopItemData] = generate_item_data(8)
+	
+	for child in shop_item_container.get_children():
+		child.queue_free()
+	
+	for item in shop_item_data:
+		var item_ui : AbilityShopItemUI = ABILITY_SHOP_ITEM_UI.instantiate()
+		item_ui.item_data =  item.duplicate(true)
+		shop_item_container.add_child(item_ui)
+		item_ui.initialize(item_ui.item_data.ability_tile)
+		item_ui.item_clicked.connect(_on_item_clicked)
+	pass
+
+func _on_reroll_shop_button_pressed():
+	reroll_shop()
 
 func _on_visibility_changed():
 	if visible:

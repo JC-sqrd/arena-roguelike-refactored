@@ -119,8 +119,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 item_data = SubResource("Resource_grgy4")
 
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=280303912]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="RerollShopButton" type="Button" parent="VBoxContainer/MarginContainer" unique_id=1714681094]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 8
+text = "REROLL"
+
 [node name="CursorUI" parent="." unique_id=484285240 instance=ExtResource("12_tj7d1")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736711176]

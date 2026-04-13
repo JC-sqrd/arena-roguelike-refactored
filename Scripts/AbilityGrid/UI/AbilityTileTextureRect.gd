@@ -16,9 +16,10 @@ func initialize(ability_tile : AbilityTile, grid_pos : Vector2i):
 	
 	size = Vector2(width, height)
 	root_offset_pos = get_root_offset_position(ability_tile.offsets)
+	pivot_offset = root_offset_pos
+	rotation_degrees = ability_tile.rotation_index * 90
 	position = calculate_pos_relative_to_grid(ability_tile, grid_pos)
-
-
+	
 
 func calculate_pos_relative_to_grid(ability_tile : AbilityTile, grid_pos : Vector2i) -> Vector2:
 	var max_offset : Vector2i = calculate_max_offset(ability_tile.offsets)
