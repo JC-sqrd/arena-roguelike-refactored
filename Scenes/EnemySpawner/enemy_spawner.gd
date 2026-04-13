@@ -1,4 +1,4 @@
-class_name EnemySpawner extends AnimatedSprite2D
+class_name DelaySpawner extends AnimatedSprite2D
 
 var delay : float = 1
 var spawn : SpawnData

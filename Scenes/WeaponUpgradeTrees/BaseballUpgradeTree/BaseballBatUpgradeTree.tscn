@@ -31,6 +31,8 @@
 [ext_resource type="Script" uid="uid://523f411dax1w" path="res://Scenes/WeaponUpgradeTrees/BaseballUpgradeTree/baseball_bat_3_5.gd" id="18_en07i"]
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="19_fqla7"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="20_pbxxe"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="27_pcm4l"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="28_kqqh5"]
 
 [sub_resource type="Resource" id="Resource_stgsi"]
 script = ExtResource("3_pr3v7")
@@ -106,8 +108,41 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 script = ExtResource("3_pr3v7")
 upgrade_details = "When this weapon kills an enemy spawn a sonic wave that deals 10 damage.
 
-When a wave kills an enemy, it spawns another wave."
+When a wave kills an enemy, it spawns another wave.
+The wave can trigger weapon hit effects."
 metadata/_custom_type_script = "uid://b3h4uvinr4wly"
+
+[sub_resource type="Resource" id="Resource_8eq0w"]
+script = ExtResource("27_pcm4l")
+radius = 360.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_fqla7"]
+script = ExtResource("28_kqqh5")
+area_shape = SubResource("Resource_8eq0w")
+area_coll_mask = 4
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[sub_resource type="Resource" id="Resource_vgg3q"]
+script = ExtResource("15_gcwu3")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_kqqh5"]
+script = ExtResource("19_fqla7")
+value = 10.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_pbxxe"]
+script = ExtResource("16_pcm4l")
+mode = -1
+value_provider_template = SubResource("Resource_kqqh5")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_ur6gj"]
+script = ExtResource("20_pbxxe")
+flat_mutator_template = SubResource("Resource_pbxxe")
+effect_event_templates = Array[ExtResource("14_gcwu3")]([SubResource("Resource_vgg3q")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [node name="BaseballBatUpgradeTree" type="Node" unique_id=771546205 node_paths=PackedStringArray("branches")]
 script = ExtResource("1_m86gm")
@@ -138,7 +173,6 @@ metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 [node name="BaseballBat-1-4" type="Node" parent="BaseballBat-1-1/BaseballBat-1-2/BaseballBat-1-3" unique_id=1064270675 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("5_pr3v7")
 bonus_knockback = 1000.0
-applied = true
 upgrade_data = SubResource("Resource_jxm63")
 next_nodes = [NodePath("BaseballBat-1-5")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
@@ -147,7 +181,6 @@ metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 script = ExtResource("6_1oh6c")
 smash_projectile = SubResource("Resource_0vjv2")
 projecile_effects = Array[ExtResource("13_tx8p5")]([SubResource("Resource_bvgkp")])
-applied = true
 upgrade_data = SubResource("Resource_gcwu3")
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
@@ -170,6 +203,9 @@ metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="BaseballBat-2-5" type="Node" parent="BaseballBat-2-1/BaseballBat-2-2/BaseballBat-2-3/BaseballBat-2-4" unique_id=1990509027]
 script = ExtResource("13_3tm8i")
+target_area_template = SubResource("Resource_fqla7")
+ball_effect_template = SubResource("Resource_ur6gj")
+applied = true
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="BaseballBat-3-1" type="Node" parent="." unique_id=966016517]

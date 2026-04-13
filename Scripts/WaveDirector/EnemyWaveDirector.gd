@@ -84,7 +84,7 @@ func spawn_wave():
 			var rand_offset : Vector2i = Vector2i(randi_range(0, tile_size.x), randi_range(0, tile_size.y))
 			var spawn_pos : Vector2 = (rand_cell * tile_size) + rand_offset 
 			
-			var spawner : EnemySpawner = ENEMY_SPAWNER.instantiate()
+			var spawner : DelaySpawner = ENEMY_SPAWNER.instantiate()
 			spawner.enemy_spawned.connect(_on_enemy_spawner_spawned)
 			spawner.spawn = pick
 			spawner.spawn_position = spawn_pos
