@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 			ball.queue_free()
 			data.clear()
 		else:
-			ball.global_position += dir * 300 * delta
+			ball.global_position += dir * 400 * delta
 			area.set_global_position(ball.global_position)
 			hitbox_hit(ball, ball.query_hits(), active_balls[ball])
 		pass
