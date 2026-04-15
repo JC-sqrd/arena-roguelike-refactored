@@ -105,6 +105,7 @@ position = Vector2(-337, -128)
 script = ExtResource("1_0b76d")
 
 [node name="SmallEnemy" parent="." unique_id=1231003198 instance=ExtResource("10_73tfi")]
+position = Vector2(109, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1664295696]
 environment = SubResource("Environment_73tfi")

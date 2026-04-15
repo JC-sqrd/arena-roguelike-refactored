@@ -15,11 +15,14 @@ func _init(mutator : StatMutator, effect_id : StringName = "periodic_effect"):
 
 func apply_effect(entity : Entity):
 	if entity.stats.has(mutator.stat_id):
-		mutator.apply_mutator(entity.stats.get_stat(mutator.stat_id))
+		mutator.apply_mutator(entity.stats.get_stat(mutator.stat_id), effect_context)
 		#mutator.apply_modifier(stats.get_stat(modifier.stat_id))
 		pass
 	_target_entity = entity
 	applied_effect.emit(self)
+	pass
+
+func remove_effect(entity : Entity):
 	pass
 
 func update(delta : float):

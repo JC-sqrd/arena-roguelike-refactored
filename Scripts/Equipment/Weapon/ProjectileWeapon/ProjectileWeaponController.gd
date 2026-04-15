@@ -59,10 +59,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	pass
 
-func send_effects_to_hit(hit : RID, effects : Array[Effect]):
+func send_effects_to_hit(hit : RID, effects : Array[Effect], context : Dictionary[StringName, Variant]):
 	for effect in effects:
-		EffectServer.receive_effect(hit, effect, controller_context)
-		EventServer.effect_hit.emit(hit, effect, controller_context)
+		EffectServer.receive_effect(hit, effect, context)
+		EventServer.effect_hit.emit(hit, effect, context)
 	pass
 
 func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect]:
@@ -74,8 +74,10 @@ func generate_effects(context : Dictionary[StringName, Variant]) -> Array[Effect
 
 func _on_projectile_hit(hit : RID):
 	var projectile_effects : Array[Effect] = generate_effects(controller_context)
-	EventServer.weapon_hit.emit(hit, projectile_effects, generate_controller_context())
-	weapon_hit.emit(hit, controller_context)
-	send_effects_to_hit(hit, projectile_effects)
+	var context : Dictionary[StringName, Variant] = generate_controller_context()
+	print("PROECTILE CONTEXT: ", str(context))
+	EventServer.weapon_hit.emit(hit, projectile_effects, context)
+	weapon_hit.emit(hit, context)
+	send_effects_to_hit(hit, projectile_effects, context)
 	effects.clear()
 	pass
