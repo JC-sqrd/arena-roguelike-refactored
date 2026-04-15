@@ -16,7 +16,7 @@ var _freed : bool = false
 signal applied_effect(effect : Effect)
 signal invoked_effect_events()
 
-func apply_effect(stats : Stats):
+func apply_effect(entity : Entity):
 	pass
 
 func add_modifier(modifier : StatModifier):

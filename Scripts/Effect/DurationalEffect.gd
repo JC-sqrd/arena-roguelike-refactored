@@ -17,21 +17,22 @@ func _init(modifier : StatModifier, effect_id : StringName = "durational_effect"
 	self.effect_id = effect_id
 	pass
 
-func apply_effect(stats : Stats):
-	if stats.has(modifier.stat_id):
+
+
+func apply_effect(entity : Entity):
+	if entity.stats.has(modifier.stat_id):
 		effect_context.effect_stack = stack
-		modifier.apply_modifier(stats.get_stat(modifier.stat_id))
+		modifier.apply_modifier(entity.stats.get_stat(modifier.stat_id))
 		pass
 	applied_effect.emit(self)
 	pass
 
-func remove_effect(stats : Stats):
-	if stats.has(modifier.stat_id):
-		effect_context.effect_stack = stack
-		modifier.remove_modifier(stats.get_stat(modifier.stat_id))
-		pass
+func remove_effect(entity : Entity):
+	#if entity.stats.has(mutator.stat_id):
+		#effect_context.effect_stack = stack
+		#modifier.remove_modifier(entity.stats.get_stat(modifier.stat_id))
+		#pass
 	pass
-
 
 
 func update(delta : float):

@@ -147,7 +147,7 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 [sub_resource type="Resource" id="Resource_vl8oj"]
 script = ExtResource("3_pr3v7")
 upgrade_name = "Spirit Ball"
-upgrade_details = "Upon knocking back a target with the Baseball Bat, spawn a spirit ball that travels toward the struck enemy, when a spirit ball hits an enemy, it deals 10 DAMAGE and bounces.
+upgrade_details = "Upon knocking back a target with the Baseball Bat, spawn a spirit ball that travels toward the struck enemy, when a spirit ball hits an enemy, it deals 10 DAMAGE and bounces toward another enemy.
 
 A Spirit Ball lasts 10s."
 metadata/_custom_type_script = "uid://b3h4uvinr4wly"

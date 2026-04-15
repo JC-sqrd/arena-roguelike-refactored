@@ -14,17 +14,16 @@ func _init(entity : Entity):
 
 func receive_effect(effect : Effect):
 	if effect is InstantEffect:
-		effect.apply_effect(stats)
+		effect.apply_effect(entity)
 		effect.invoke_effect_events()
 		EventServer.effect_applied.emit(entity.entity_rid, effect, effect.effect_context)
 		effect.cleanup()
 	elif effect is DurationalEffect:
-		print("DURATIONAL EFFECT RECEIVED")
 		effect.effect_expired.connect(_on_durational_effect_expired)
 		if effect.stackable and durational_effects.has(effect.effect_id):
 			effect.stack += 1
-		elif !durational_effects.has(effect.effect_id):
-			effect.apply_effect(stats)
+		elif !durational_effects.has(effect.effect_id) and is_instance_valid(entity):
+			effect.apply_effect(entity)
 			effect.invoke_effect_events()
 			durational_effects[effect.effect_id] = effect 
 		EventServer.effect_applied.emit(entity.entity_rid, effect, effect.effect_context)
@@ -36,11 +35,10 @@ func update_durational_effects(delta : float):
 	
 	for effect in durational_effects:
 		durational_effects[effect].update(delta)
-		print("UPDATING DURATION EFFECTS")
 	pass
 
 func _on_durational_effect_expired(effect : DurationalEffect):
-	effect.remove_effect(stats)
+	effect.remove_effect(entity)
 	effect.cleanup()
 	durational_effects.erase(effect.effect_id)
 	pass
