@@ -47,7 +47,8 @@ func _on_wave_timeout():
 	var _leftover_spread : float = (_leftover_budget / _curr_wave_data.wave_duration)
 	var budget_gain : float = ((_curr_wave_data.budget_gain) + _leftover_spread) * intensity 
 	_curr_wave_data.curr_budget += budget_gain
-	spawn_wave()
+	if _curr_wave_data.current_wave_time > 0:
+		spawn_wave()
 	
 	if _curr_wave_data.current_wave_time <= 0:
 		_leftover_budget = calculate_leftover_budget()

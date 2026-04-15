@@ -2,6 +2,7 @@ class_name HitBox extends Area2D
 
 
 @export var anim_player : AnimationPlayer
+@export var node_components : Dictionary[StringName, Node]
 var context : Dictionary[StringName, Variant]
 
 

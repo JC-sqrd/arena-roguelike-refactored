@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dyr121in3iib7"]
+
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_fjf8x"]
+[ext_resource type="Texture2D" uid="uid://diq4p7ib8ub1f" path="res://Sprites/Weapons/Baseball Bat/SpiritBallBounceAnim.png" id="2_g27nt"]
+[ext_resource type="Texture2D" uid="uid://bjhrfrecoxe78" path="res://Sprites/Weapons/Baseball Bat/SpiritBall.png" id="2_n781r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n781r"]
+atlas = ExtResource("2_g27nt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g27nt"]
+atlas = ExtResource("2_g27nt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13aox"]
+atlas = ExtResource("2_g27nt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qijn"]
+atlas = ExtResource("2_g27nt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjf8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n781r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g27nt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13aox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qijn")
+}],
+"loop": false,
+"name": &"bounce",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n781r")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7om6d"]
+radius = 14.0
+
+[node name="SpiritHitbox" type="Area2D" unique_id=1008783973 node_paths=PackedStringArray("node_components")]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_fjf8x")
+node_components = {
+&"spiritball_anim_sprite": NodePath("SpiritBall")
+}
+metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
+
+[node name="SpiritBall" type="AnimatedSprite2D" parent="." unique_id=1107403585]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_fjf8x")
+animation = &"bounce"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=283530387]
+shape = SubResource("CircleShape2D_7om6d")
