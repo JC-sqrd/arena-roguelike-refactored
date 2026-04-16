@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bbp1ge4ph6joi"]
+
+[ext_resource type="Script" uid="uid://cn2eohbo1v7um" path="res://Scripts/WeaponUpgrade/WeaponUpgradeTree.gd" id="1_o7kv3"]
+[ext_resource type="Script" uid="uid://du11yoqo4pw27" path="res://Scenes/WeaponUpgradeTrees/UziUpgradeTree/uzi_1_5.gd" id="2_p787t"]
+[ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="3_73y1t"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="3_rue41"]
+[ext_resource type="Script" uid="uid://cgop8ka8hdjmu" path="res://Scripts/Utility/Area/AreaTemplate.gd" id="4_gte33"]
+[ext_resource type="Script" uid="uid://cuuicijbtm5ky" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/DamageEffectEventTemplate.gd" id="4_hax8d"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="5_8v064"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="6_hax8d"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="7_5uqge"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="8_cn65h"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="9_ne101"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_8v064"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="10_356xx"]
+
+[sub_resource type="Resource" id="Resource_ne101"]
+script = ExtResource("4_hax8d")
+metadata/_custom_type_script = "uid://cuuicijbtm5ky"
+
+[sub_resource type="Resource" id="Resource_hax8d"]
+script = ExtResource("10_356xx")
+value = 2.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_5uqge"]
+script = ExtResource("6_hax8d")
+mode = -1
+value_provider_template = SubResource("Resource_hax8d")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_cn65h"]
+script = ExtResource("10_8v064")
+flat_mutator_template = SubResource("Resource_5uqge")
+effect_event_templates = Array[ExtResource("3_rue41")]([SubResource("Resource_ne101")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[sub_resource type="Resource" id="Resource_rue41"]
+script = ExtResource("3_73y1t")
+radius = 128.0
+metadata/_custom_type_script = "uid://ul86s2dhadfg"
+
+[sub_resource type="Resource" id="Resource_47qn4"]
+script = ExtResource("4_gte33")
+area_shape = SubResource("Resource_rue41")
+area_coll_mask = 4
+metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
+
+[node name="UziUpgradeTree" type="Node" unique_id=620391114 node_paths=PackedStringArray("branches")]
+script = ExtResource("1_o7kv3")
+branches = [NodePath("Uzi-1-5")]
+metadata/_custom_type_script = "uid://cn2eohbo1v7um"
+
+[node name="Uzi-1-5" type="Node" parent="." unique_id=895989351]
+script = ExtResource("2_p787t")
+hit_threshold = 5
+effect_template = SubResource("Resource_cn65h")
+area_template = SubResource("Resource_47qn4")
+applied = true
+metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"

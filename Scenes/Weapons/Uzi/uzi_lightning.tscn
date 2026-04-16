@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d1axywy6nx0hh"]
+
+[ext_resource type="Texture2D" uid="uid://d31hvmh8p4nfg" path="res://Textures/kenney_particle-pack/PNG (Transparent)/star_08.png" id="1_sep5w"]
+[ext_resource type="Texture2D" uid="uid://df8wxrk1dlhxa" path="res://Textures/kenney_particle-pack/PNG (Transparent)/spark_06.png" id="2_c4kga"]
+
+[node name="UziLightning" type="Line2D" unique_id=1134869509]
+
+[node name="Star08" type="Sprite2D" parent="." unique_id=456628401]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_sep5w")
+
+[node name="Spark06" type="Sprite2D" parent="." unique_id=1890778868]
+position = Vector2(0, -51)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_c4kga")

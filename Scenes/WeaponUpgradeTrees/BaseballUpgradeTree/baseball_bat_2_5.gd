@@ -20,7 +20,7 @@ func remove_upgrade():
 	EventServer.knockback_applied.disconnect(_on_knockback_applied)
 	pass
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if !applied:
 		return
 	
@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 		data[2] -= delta
 		if data[2] <= 0:
 			active_balls.erase(ball)
+			area.free_area()
 			ball.queue_free()
 			data.clear()
 		else:

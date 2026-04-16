@@ -25,13 +25,6 @@ stat_id = &"weapon_damage"
 value = 5.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
-[sub_resource type="Resource" id="Resource_q1qjq"]
-script = ExtResource("2_m5255")
-name = "Weapon Knockback"
-stat_id = &"weapon_knockback"
-value = 50.0
-metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
-
 [sub_resource type="Resource" id="Resource_im2xt"]
 script = ExtResource("5_20e3m")
 metadata/_custom_type_script = "uid://p4wchjgkrolx"
@@ -55,7 +48,6 @@ weapon_scene = ExtResource("5_ysrop")
 projectile_template = SubResource("Resource_20e3m")
 damage_stat = SubResource("Resource_pyv20")
 attack_speed_stat = SubResource("Resource_m5255")
-knockback_stat = SubResource("Resource_q1qjq")
 action_time_ratio = 0.2
 effect_templates = Array[ExtResource("2_jpwde")]([ExtResource("4_20e3m")])
 metadata/_custom_type_script = "uid://cvps4oja0ggr3"

@@ -98,7 +98,7 @@ func _ready() -> void:
 
 
 func _on_health_depleted(context : Dictionary[StringName, Variant]):
-	if _dead : return
+	if _dead or _freed : return
 	velocity = Vector2.ZERO
 	enemy_movement.active = false
 	area_controller.area.set_coll_mask(0)

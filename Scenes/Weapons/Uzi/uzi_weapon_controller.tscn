@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://4pdjveo6qn8t" path="res://Scripts/AnimationPlayer/ProjectileAnimationPlayer.gd" id="6_jklx7"]
 [ext_resource type="Script" uid="uid://bca1ct66vxgs8" path="res://Scripts/Equipment/Weapon/ProjectileWeapon/ProjectileWeaponMuzzleParticle2D.gd" id="6_qqxkq"]
 [ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="6_uub4g"]
+[ext_resource type="PackedScene" uid="uid://bbp1ge4ph6joi" path="res://Scenes/WeaponUpgradeTrees/UziUpgradeTree/UziUpgradeTree.tscn" id="8_uub4g"]
 
 [sub_resource type="Resource" id="Resource_o50pe"]
 script = ExtResource("2_s3t5p")
@@ -49,13 +50,14 @@ gravity = Vector3(100, 0, 0)
 scale_curve = SubResource("CurveXYZTexture_wkfe5")
 color_ramp = SubResource("GradientTexture1D_uub4g")
 
-[node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("muzzle_particle", "projectile_animation_player", "projectile_attack_execute", "action_point")]
+[node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("muzzle_particle", "projectile_animation_player", "projectile_attack_execute", "action_point", "upgrade_tree")]
 script = ExtResource("1_t076g")
 muzzle_particle = NodePath("ProjectileWeaponMuzzleParticle2D")
 projectile_animation_player = NodePath("ProjectileAnimationPlayer")
 projectile_attack_execute = NodePath("ProjectileAttackExecute")
 action_point = NodePath("Marker2D")
 weapon_input = SubResource("Resource_o50pe")
+upgrade_tree = NodePath("UziUpgradeTree")
 metadata/_custom_type_script = "uid://caa13wedfq6w6"
 
 [node name="Uzi" type="Sprite2D" parent="." unique_id=2121141959]
@@ -87,3 +89,5 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_jklx7")
 script = ExtResource("6_qqxkq")
 metadata/_custom_type_script = "uid://bca1ct66vxgs8"
+
+[node name="UziUpgradeTree" parent="." unique_id=620391114 instance=ExtResource("8_uub4g")]

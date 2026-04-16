@@ -1,6 +1,7 @@
 extends WeaponUpgradeNode
 
 
+
 func apply_upgrade():
 	pass
 
