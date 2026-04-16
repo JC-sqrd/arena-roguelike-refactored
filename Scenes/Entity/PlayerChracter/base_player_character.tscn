@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://dmq3shquqsewu" path="res://Scripts/ActionPoint/WeaponActionPoint.gd" id="13_7xakc"]
 [ext_resource type="Resource" uid="uid://bflrqwxd7bi6m" path="res://Resources/WeaponData/BaseballBat.tres" id="14_c44xl"]
 [ext_resource type="Script" uid="uid://chi8el32v5eh0" path="res://Scripts/Stat/StatsNode.gd" id="14_xpoel"]
-[ext_resource type="Resource" uid="uid://bsw31yagq8jay" path="res://Resources/WeaponData/Projectile/Uzi.tres" id="19_b2ade"]
+[ext_resource type="Resource" uid="uid://bsw31yagq8jay" path="res://Resources/WeaponData/Projectile/Uzi/Uzi.tres" id="19_b2ade"]
 [ext_resource type="Script" uid="uid://bc6u0xacwhuly" path="res://Scripts/Interactable/InteractableDetector.gd" id="22_62e6c"]
 [ext_resource type="Script" uid="uid://ul86s2dhadfg" path="res://Scripts/Utility/AreaShape/CircleAreaShape.gd" id="23_5pv1g"]
 [ext_resource type="Script" uid="uid://dqdesfdfx12xh" path="res://Scripts/Ability/GridAbilityControllerManager.gd" id="23_uj7x4"]

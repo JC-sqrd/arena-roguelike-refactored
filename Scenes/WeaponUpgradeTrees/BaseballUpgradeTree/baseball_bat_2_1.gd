@@ -6,5 +6,5 @@ func apply_upgrade():
 	pass
 
 func remove_upgrade():
-	upgrade_tree.weapon_controller.weapon_stats.get_stat("attack_speed").add_bonus_value(-11)
+	upgrade_tree.weapon_controller.weapon_stats.get_stat("attack_speed").add_bonus_value(-1)
 	pass

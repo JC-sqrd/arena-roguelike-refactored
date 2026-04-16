@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ProjectileWeapon" format=3 uid="uid://bsw31yagq8jay"]
+
+[ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_ghty8"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="2_227bh"]
+[ext_resource type="Resource" uid="uid://dpt3ykbpulkmw" path="res://Resources/WeaponData/Projectile/Uzi/UziStatTemplates/uzi_attack_speed_stat_template.tres" id="2_lottk"]
+[ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="3_lottk"]
+[ext_resource type="Resource" uid="uid://crb0opuuj8bic" path="res://Resources/EffectTemplate/uzi_damage_effect.tres" id="4_w8omb"]
+[ext_resource type="Script" uid="uid://p4wchjgkrolx" path="res://Scripts/Projectile/ProjectileMovement/ProjectileMovement.gd" id="5_avmjt"]
+[ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="6_jkrox"]
+[ext_resource type="Texture2D" uid="uid://bp0fimggsu26v" path="res://Sprites/Weapons/Uzi/Uzi Bullet.png" id="7_2giu8"]
+[ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="8_xoptw"]
+[ext_resource type="Script" uid="uid://cvps4oja0ggr3" path="res://Scripts/Resources/ProjectileWeapon.gd" id="9_c5y51"]
+[ext_resource type="PackedScene" uid="uid://vwlisr7budn7" path="res://Scenes/Weapons/Uzi/uzi_weapon_controller.tscn" id="10_f01p4"]
+
+[sub_resource type="Resource" id="Resource_pyv20"]
+script = ExtResource("2_227bh")
+name = "Weapon Damage"
+stat_id = &"weapon_damage"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_227bh"]
+script = ExtResource("2_227bh")
+name = "Knockback"
+stat_id = &"knockback"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_im2xt"]
+script = ExtResource("5_avmjt")
+metadata/_custom_type_script = "uid://p4wchjgkrolx"
+
+[sub_resource type="Resource" id="Resource_03p31"]
+script = ExtResource("6_jkrox")
+radius = 6
+metadata/_custom_type_script = "uid://swufoypqyj1x"
+
+[sub_resource type="Resource" id="Resource_20e3m"]
+script = ExtResource("8_xoptw")
+projectile_shape = SubResource("Resource_03p31")
+projectile_movement = SubResource("Resource_im2xt")
+projectile_texture = ExtResource("7_2giu8")
+projectile_coll_mask = 4
+metadata/_custom_type_script = "uid://ck45nau7el76p"
+
+[resource]
+script = ExtResource("9_c5y51")
+weapon_scene = ExtResource("10_f01p4")
+projectile_template = SubResource("Resource_20e3m")
+damage_stat = SubResource("Resource_pyv20")
+attack_speed_stat = ExtResource("2_lottk")
+knockback_stat = SubResource("Resource_227bh")
+action_time_ratio = 0.2
+effect_templates = Array[ExtResource("3_lottk")]([ExtResource("4_w8omb")])
+metadata/_custom_type_script = "uid://cvps4oja0ggr3"

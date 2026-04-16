@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bc5wco30mvxoq"]
+
+[ext_resource type="Script" uid="uid://cony1534py5j7" path="res://Scenes/UI/WeaponUpgradeUI/WeaponUpgradeContainer.gd" id="1_6k6yt"]
+
+[node name="WeaponUpgradeContainer" type="VBoxContainer" unique_id=595139476]
+script = ExtResource("1_6k6yt")

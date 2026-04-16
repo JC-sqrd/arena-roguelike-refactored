@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://cm2wepytkbf72"]
 
-[ext_resource type="Script" uid="uid://baipg8ldxtsst" path="res://Scripts/UI/WeaponUpgradeUI.gd" id="1_35efv"]
+[ext_resource type="Script" uid="uid://baipg8ldxtsst" path="res://Scripts/UI/WeaponUpgradeUIPanel.gd" id="1_35efv"]
+[ext_resource type="PackedScene" uid="uid://bc5wco30mvxoq" path="res://Scenes/UI/WeaponUpgradeUI/weapon_upgrade_container.tscn" id="2_tu3xc"]
 
 [node name="WeaponUpgradePanel" type="PanelContainer" unique_id=1182034905]
 custom_minimum_size = Vector2(32, 64)
 script = ExtResource("1_35efv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1798797407]
+layout_mode = 2
+
+[node name="LeftWeaponUpgradeContainer" parent="HBoxContainer" unique_id=595139476 instance=ExtResource("2_tu3xc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightWeaponUpgradeContainer" parent="HBoxContainer" unique_id=1433681104 instance=ExtResource("2_tu3xc")]
+unique_name_in_owner = true
+layout_mode = 2

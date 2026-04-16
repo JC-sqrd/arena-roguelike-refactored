@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="9_ne101"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_8v064"]
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="10_356xx"]
+[ext_resource type="Script" uid="uid://b3h4uvinr4wly" path="res://Scripts/WeaponUpgrade/WeaponUpgradeData.gd" id="14_5uqge"]
 
 [sub_resource type="Resource" id="Resource_ne101"]
 script = ExtResource("4_hax8d")
@@ -46,6 +47,12 @@ area_shape = SubResource("Resource_rue41")
 area_coll_mask = 4
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
+[sub_resource type="Resource" id="Resource_356xx"]
+script = ExtResource("14_5uqge")
+upgrade_name = "Lightning Bullets"
+upgrade_details = "On Hit: +1 stack. Upon reaching 5 stacks, consume all stacks and manifest a lightning that can chain to near enemies 5 times."
+metadata/_custom_type_script = "uid://b3h4uvinr4wly"
+
 [node name="UziUpgradeTree" type="Node" unique_id=620391114 node_paths=PackedStringArray("branches")]
 script = ExtResource("1_o7kv3")
 branches = [NodePath("Uzi-1-5")]
@@ -56,5 +63,5 @@ script = ExtResource("2_p787t")
 hit_threshold = 5
 effect_template = SubResource("Resource_cn65h")
 area_template = SubResource("Resource_47qn4")
-applied = true
+upgrade_data = SubResource("Resource_356xx")
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"

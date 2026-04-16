@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatTemplate" format=3 uid="uid://dpt3ykbpulkmw"]
+
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="1_fwsid"]
+
+[resource]
+script = ExtResource("1_fwsid")
+name = "Attack Speed"
+stat_id = &"attack_speed"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"

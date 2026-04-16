@@ -6,7 +6,7 @@ class_name ArenaUI extends Control
 @onready var hidden_layer: Control = $HiddenLayer
 @onready var player_character_ui: PlayerCharacterUI = $PlayerUI/MarginContainer/PlayerCharacterUi
 @onready var ui_ability_grid: AbilityGridUIController = %UiAbilityGrid
-@onready var weapon_upgrade_panel: WeaponUpgradeUI = %WeaponUpgradePanel
+@onready var weapon_upgrade_panel: WeaponUpgradeUIPanel = %WeaponUpgradePanel
 @onready var ability_grid_shop_panel: BaseAbilityGridUIController = %AbilityGridShopPanel
 
 @onready var crosshair_ui: CrosshairUI = %CrosshairUI

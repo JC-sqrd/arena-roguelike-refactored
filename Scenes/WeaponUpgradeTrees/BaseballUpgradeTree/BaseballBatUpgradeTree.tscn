@@ -53,6 +53,7 @@ metadata/_custom_type_script = "uid://whdynsblqt1m"
 
 [sub_resource type="Resource" id="Resource_5bmp5"]
 script = ExtResource("3_pr3v7")
+upgrade_name = "Sweet Spot"
 upgrade_details = "Deal 150% bonus damage to enemies that are hit farther. "
 metadata/_custom_type_script = "uid://b3h4uvinr4wly"
 
@@ -106,10 +107,17 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 
 [sub_resource type="Resource" id="Resource_gcwu3"]
 script = ExtResource("3_pr3v7")
+upgrade_name = "Wave Strike"
 upgrade_details = "When this weapon kills an enemy spawn a sonic wave that deals 10 damage.
 
 When a wave kills an enemy, it spawns another wave.
 The wave can trigger weapon hit effects."
+metadata/_custom_type_script = "uid://b3h4uvinr4wly"
+
+[sub_resource type="Resource" id="Resource_uebsv"]
+script = ExtResource("3_pr3v7")
+upgrade_name = "Faster Swing"
+upgrade_details = "+1 Weapon Attack Speed"
 metadata/_custom_type_script = "uid://b3h4uvinr4wly"
 
 [sub_resource type="Resource" id="Resource_8eq0w"]
@@ -158,14 +166,12 @@ branches = [NodePath("BaseballBat-1-1")]
 
 [node name="BaseballBat-1-1" type="Node" parent="." unique_id=689559271 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("2_jptoa")
-applied = true
 upgrade_data = SubResource("Resource_stgsi")
 next_nodes = [NodePath("BaseballBat-1-2")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="BaseballBat-1-2" type="Node" parent="BaseballBat-1-1" unique_id=39704309 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("3_fwhsc")
-applied = true
 upgrade_data = SubResource("Resource_pr3v7")
 next_nodes = [NodePath("BaseballBat-1-3")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
@@ -173,7 +179,6 @@ metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 [node name="BaseballBat-1-3" type="Node" parent="BaseballBat-1-1/BaseballBat-1-2" unique_id=776873163 node_paths=PackedStringArray("next_nodes")]
 script = ExtResource("4_ygdon")
 damage_multiplier = SubResource("Resource_pcm4l")
-applied = true
 upgrade_data = SubResource("Resource_5bmp5")
 next_nodes = [NodePath("BaseballBat-1-4")]
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
@@ -194,7 +199,7 @@ metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="BaseballBat-2-1" type="Node" parent="." unique_id=1252372079]
 script = ExtResource("9_ctc4f")
-applied = true
+upgrade_data = SubResource("Resource_uebsv")
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
 [node name="BaseballBat-2-2" type="Node" parent="BaseballBat-2-1" unique_id=1267185623]
@@ -213,7 +218,6 @@ metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 script = ExtResource("13_3tm8i")
 target_area_template = SubResource("Resource_fqla7")
 ball_effect_template = SubResource("Resource_ur6gj")
-applied = true
 upgrade_data = SubResource("Resource_vl8oj")
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 

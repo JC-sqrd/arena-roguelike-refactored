@@ -9,6 +9,7 @@ var knockback_magnitude_adder : ValueAdder
 func apply_upgrade():
 	_old_weapon_input = upgrade_tree.weapon_controller.weapon_input
 	charge_input = ChargeWeaponInput.new()
+	charge_input.initialize(upgrade_tree.weapon_controller)
 	upgrade_tree.weapon_controller.weapon_input = charge_input
 	upgrade_tree.weapon_controller.weapon_to_hit.connect(_on_weapon_to_hit)
 	pass

@@ -43,6 +43,7 @@ func _on_start():
 		effects = generate_effects(effect_context)
 		effect_context.queries = queries
 		effect_context.weapon_stats = weapon_stats
+		print("WEAPON STATS: ", str(weapon_stats.stat_dict))
 		effect_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
 		effect_context.action_time_ratio = action_time_ratio
 		effect_context.weapon_controller = self
