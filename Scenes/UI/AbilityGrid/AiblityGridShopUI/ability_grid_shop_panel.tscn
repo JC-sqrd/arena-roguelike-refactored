@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://co023jmwyyttu" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_grid_shop_panel.gd" id="1_diqma"]
 [ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_i1l14"]
+[ext_resource type="FontFile" uid="uid://dedbmks47l4gc" path="res://Resources/Fonts/upheaval_font_file.tres" id="2_mymt3"]
 [ext_resource type="PackedScene" uid="uid://dodmy7sq8plp1" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_shop_item_ui.tscn" id="3_fbs0u"]
 [ext_resource type="PackedScene" uid="uid://b1k2qgud53n82" path="res://Scenes/AbilityScenes/GridAbilityControllers/BloodstainedKatana/bloodstained_katana_controller.tscn" id="4_tj7d1"]
 [ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="5_mttew"]
@@ -12,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cb6vxkpn71uew" path="res://Scenes/AbilityScenes/GridAbilityControllers/WoodenAxe/wooden_axe_controller.tscn" id="10_kmbx3"]
 [ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/AbilityTiles/Wooden Axe/Wooden Axe Tile.png" id="11_3sfd6"]
 [ext_resource type="PackedScene" uid="uid://dntk7n6vl7dj7" path="res://Scenes/UI/AbilityGrid/cursor_ui.tscn" id="12_tj7d1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x3daa"]
+font = ExtResource("2_mymt3")
 
 [sub_resource type="Resource" id="Resource_oga0t"]
 script = ExtResource("5_mymt3")
@@ -82,6 +86,7 @@ layout_mode = 2
 [node name="ShopLabel" type="Label" parent="VBoxContainer" unique_id=2132519883]
 layout_mode = 2
 text = "Shop"
+label_settings = SubResource("LabelSettings_x3daa")
 horizontal_alignment = 1
 
 [node name="AbilityInventoryUI" parent="VBoxContainer" unique_id=468543042 instance=ExtResource("2_i1l14")]

@@ -9,10 +9,21 @@
 [ext_resource type="Resource" uid="uid://h0fjl8pue2rx" path="res://Resources/ShopItemPool/ability_tile_shop_item_pool.tres" id="5_73tfi"]
 [ext_resource type="Texture2D" uid="uid://cjbu6u74aipkj" path="res://Textures/CheckeredTile2.png" id="7_73tfi"]
 [ext_resource type="Texture2D" uid="uid://sfgpfo0be7re" path="res://Textures/kenney_particle-pack/BlackTile.png" id="7_en7hp"]
+[ext_resource type="FontFile" uid="uid://dedbmks47l4gc" path="res://Resources/Fonts/upheaval_font_file.tres" id="8_dygxk"]
 [ext_resource type="Texture2D" uid="uid://fnawebxu8j1g" path="res://Textures/CheckeredTile.png" id="8_v23vg"]
 [ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="10_73tfi"]
 [ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_wave_spawner.tscn" id="10_hq5rx"]
 [ext_resource type="Texture2D" uid="uid://b5ydp7fsxrr15" path="res://Textures/kenney_particle-pack/PNG (Transparent)/circle_05.png" id="12_v23vg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dygxk"]
+font = ExtResource("8_dygxk")
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2c0am"]
+font = ExtResource("8_dygxk")
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gmq7"]
 texture = ExtResource("7_en7hp")
@@ -88,6 +99,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "GOLD:"
+label_settings = SubResource("LabelSettings_dygxk")
 
 [node name="ActiveEntitiesLabel" type="Label" parent="GameUI/DebugGoldUI" unique_id=861374249]
 unique_name_in_owner = true
@@ -98,7 +110,8 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
-text = "ACTIVE ENTITIESa"
+text = "ACTIVE ENTITIES"
+label_settings = SubResource("LabelSettings_2c0am")
 horizontal_alignment = 2
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=334346189]
@@ -463,7 +476,7 @@ texture = ExtResource("12_v23vg")
 texture_scale = 16.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1374433784]
-position = Vector2(661, 23)
+position = Vector2(561, 13)
 color = Color(0.84313726, 0.42745098, 0.47843137, 1)
 energy = 0.75
 texture = ExtResource("12_v23vg")

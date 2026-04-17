@@ -15,8 +15,8 @@ var _action_time : float
 var active_hit : bool = false
 
 signal to_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
-signal hit(hits : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
-
+signal hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
+signal hits(hits : Array[RID], weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
 signal finished_executing()
 
 func initialize():
@@ -50,13 +50,14 @@ func _process(delta: float) -> void:
 			_curr_anim_pos = melee_anim_player.current_animation_position
 			_action_time = _curr_anim_length * action_time_ratio
 			if _curr_anim_pos >= _action_time:
-				var hits : Array[RID] = melee_hitbox.query_hits(false)
-				for queried_hit in hits:
+				var queried_hits : Array[RID] = melee_hitbox.query_hits(false)
+				for queried_hit in queried_hits:
 					var effects : Array[Effect] = melee_controller.generate_effects(melee_context)
 					to_hit.emit(queried_hit, effects, melee_context)
 					hit.emit(queried_hit, effects, melee_context)
 					pass
-				active_hit = false
+				#hits.emit(queried_hits, effects, melee_context)
+				active_hit = false	
 			pass
 
 func finish_execute():

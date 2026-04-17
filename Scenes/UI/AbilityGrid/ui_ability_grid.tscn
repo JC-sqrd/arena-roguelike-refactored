@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" uid="uid://byhkpl77h30kg" path="res://Scripts/AbilityGrid/UI/AbilityGridUIController.gd" id="1_s7agp"]
 [ext_resource type="PackedScene" uid="uid://dpvsfunc5ynbi" path="res://Scenes/UI/AbilityGrid/ability_grid_panel.tscn" id="2_c1r0r"]
+[ext_resource type="FontFile" uid="uid://dedbmks47l4gc" path="res://Resources/Fonts/upheaval_font_file.tres" id="2_jtagy"]
 [ext_resource type="PackedScene" uid="uid://dntk7n6vl7dj7" path="res://Scenes/UI/AbilityGrid/cursor_ui.tscn" id="3_afqde"]
 [ext_resource type="Script" uid="uid://fxe70e5ucsga" path="res://Scripts/AbilityGrid/UI/AbilityGraphUIFSM/AbilityGridUIFSM.gd" id="4_y4sfo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_afqde"]
+font = ExtResource("2_jtagy")
 font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_jtagy"]
+font = ExtResource("2_jtagy")
 font_size = 8
 
 [node name="UiAbilityGrid" type="PanelContainer" unique_id=1912909464 node_paths=PackedStringArray("ability_grid_ui", "ability_inventory_ui")]

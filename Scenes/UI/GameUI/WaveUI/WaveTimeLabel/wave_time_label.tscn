@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bncnt7no84t74"]
+
+[ext_resource type="Script" uid="uid://y67lcdd0ibg7" path="res://Scenes/UI/GameUI/WaveUI/WaveTimeLabel/WaveTimeLabel.gd" id="1_bhpih"]
+
+[node name="WaveTimeLabel" type="RichTextLabel" unique_id=1570125989]
+script = ExtResource("1_bhpih")

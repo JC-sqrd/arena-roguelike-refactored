@@ -24,3 +24,9 @@ signal effect_applied(rid : RID, effect : Effect, context : Dictionary[StringNam
 signal weapon_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
 
 signal ability_start(ability_controller : AbilityController, context : Dictionary[StringName, Variant])
+
+signal cuurrent_wave_started()
+
+signal current_wave_ended()
+
+signal current_wave_time(time : float)

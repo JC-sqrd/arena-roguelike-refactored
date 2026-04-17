@@ -27,6 +27,7 @@
 [ext_resource type="Material" uid="uid://kq7aylhbtm15" path="res://Resources/ParticleProcessMaterial/enemy_hit_particle_process_material.tres" id="16_fvne2"]
 [ext_resource type="Script" uid="uid://3qp0ggpyep3b" path="res://Scripts/RenderItem/HealthBar.gd" id="16_owhfj"]
 [ext_resource type="Script" uid="uid://em1gs1v5i405" path="res://Scripts/Miscs/EntityDamageNumberSpawner.gd" id="18_44u58"]
+[ext_resource type="FontFile" uid="uid://dedbmks47l4gc" path="res://Resources/Fonts/upheaval_font_file.tres" id="28_5cjsa"]
 
 [sub_resource type="Resource" id="Resource_482uc"]
 script = ExtResource("3_5cjsa")
@@ -95,6 +96,7 @@ area_coll_mask = 2
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
 [sub_resource type="LabelSettings" id="LabelSettings_44u58"]
+font = ExtResource("28_5cjsa")
 font_size = 8
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)

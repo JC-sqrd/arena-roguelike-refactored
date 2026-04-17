@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://2qb53arovk2u"]
 
 [ext_resource type="Script" uid="uid://dxhb556s4svew" path="res://Scripts/UI/arena_ui.gd" id="1_yd7mu"]
+[ext_resource type="PackedScene" uid="uid://bncnt7no84t74" path="res://Scenes/UI/GameUI/WaveUI/WaveTimeLabel/wave_time_label.tscn" id="2_5drit"]
 [ext_resource type="PackedScene" uid="uid://bat7m2g4maub7" path="res://Scenes/UI/AbilityGrid/ui_ability_grid.tscn" id="2_jtl6x"]
 [ext_resource type="PackedScene" uid="uid://6neyt6gw61d4" path="res://Scenes/UI/CharacterUI/PlayerCharacterUI.tscn" id="2_puehs"]
+[ext_resource type="FontFile" uid="uid://dedbmks47l4gc" path="res://Resources/Fonts/upheaval_font_file.tres" id="3_imhk2"]
 [ext_resource type="PackedScene" uid="uid://cm2wepytkbf72" path="res://Scenes/UI/WeaponUpgradeUI/weapon_upgrade_panel.tscn" id="3_rtivg"]
 [ext_resource type="PackedScene" uid="uid://ce01040y5fnqf" path="res://Scenes/UI/GameUI/crosshair_ui.tscn" id="5_laec8"]
 [ext_resource type="PackedScene" uid="uid://bqd4pcpe8o05h" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_grid_shop_panel.tscn" id="5_s6je5"]
@@ -16,6 +18,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yd7mu")
+
+[node name="WaveTimeLabel" parent="." unique_id=1570125989 instance=ExtResource("2_5drit")]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("3_imhk2")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "WAVE TIME "
+horizontal_alignment = 1
 
 [node name="PlayerUI" type="Control" parent="." unique_id=853957942]
 unique_name_in_owner = true

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvrrngafl1dt2" path="res://Scenes/UI/WeaponUpgradeUI/weapon_upgrade_ui.gd" id="1_m8sp6"]
 [ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_pdh6y"]
+[ext_resource type="FontFile" uid="uid://dedbmks47l4gc" path="res://Resources/Fonts/upheaval_font_file.tres" id="2_773lt"]
 
 [node name="WeaponUpgradeUi" type="PanelContainer" unique_id=1474700840]
 custom_minimum_size = Vector2(128, 0)
@@ -21,11 +22,14 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 4
-theme_override_font_sizes/bold_font_size = 4
-theme_override_font_sizes/bold_italics_font_size = 4
-theme_override_font_sizes/italics_font_size = 4
-theme_override_font_sizes/mono_font_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_773lt")
+theme_override_font_sizes/normal_font_size = 6
+theme_override_font_sizes/bold_font_size = 6
+theme_override_font_sizes/bold_italics_font_size = 6
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 6
 text = "Upgrade Name"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1037411592]
@@ -35,11 +39,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 4
-theme_override_font_sizes/bold_font_size = 4
-theme_override_font_sizes/bold_italics_font_size = 4
-theme_override_font_sizes/italics_font_size = 4
-theme_override_font_sizes/mono_font_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_773lt")
+theme_override_font_sizes/normal_font_size = 6
+theme_override_font_sizes/bold_font_size = 6
+theme_override_font_sizes/bold_italics_font_size = 6
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 6
 bbcode_enabled = true
 text = "Upgrade Description"
 

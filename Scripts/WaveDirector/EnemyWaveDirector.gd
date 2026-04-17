@@ -18,6 +18,7 @@ const ENEMY_SPAWNER = preload("uid://s82um7w1jiuq")
 func start_wave(wave_data : EnemyWaveData):
 	
 	print("STARTED WAVE")
+	EventServer.cuurrent_wave_started.emit()
 	_curr_wave_data = wave_data
 	_total_wave_weight = calculate_wave_weight(wave_data)
 	_curr_wave_data.curr_budget = _curr_wave_data.wave_budget
@@ -34,6 +35,7 @@ func _on_wave_timeout():
 	print("ARENA CENTER: " + str(arena_center))
 	
 	print("SPAWN WAVE: " + str(_curr_wave_data.current_wave_time))
+	EventServer.current_wave_time.emit(_curr_wave_data.current_wave_time)
 	_curr_wave_data.current_wave_time -= 1
 
 	var wave_time : float = _curr_wave_data.wave_duration - _curr_wave_data.current_wave_time
@@ -56,6 +58,7 @@ func _on_wave_timeout():
 		_curr_wave_data.curr_budget = 0
 		free_wave_enemies()
 		wave_timer.stop()
+		EventServer.current_wave_ended.emit()
 		wave_end.emit()
 	pass
 
