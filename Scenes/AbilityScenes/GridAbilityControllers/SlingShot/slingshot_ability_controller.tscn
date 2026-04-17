@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://swufoypqyj1x" path="res://Scripts/Projectile/CircleProjectileShape.gd" id="4_0jiis"]
 [ext_resource type="Script" uid="uid://ck45nau7el76p" path="res://Scripts/Projectile/ProjectileTemplate.gd" id="5_hgb5k"]
 [ext_resource type="Script" uid="uid://rq6t2ktj4pbf" path="res://Scripts/Effect/Templates/EffectTemplate.gd" id="6_1oj8p"]
+[ext_resource type="Script" uid="uid://p4wchjgkrolx" path="res://Scripts/Projectile/ProjectileMovement/ProjectileMovement.gd" id="6_cf61o"]
 [ext_resource type="Texture2D" uid="uid://0gqkfipwchig" path="res://Sprites/AbilityTiles/Rock/Rock.png" id="7_10yn3"]
 [ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="7_ai62m"]
 [ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="9_6c3l1"]
@@ -29,6 +30,10 @@ script = ExtResource("3_0oi36")
 area_shape = SubResource("Resource_ba4gs")
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
+[sub_resource type="Resource" id="Resource_4wf7d"]
+script = ExtResource("6_cf61o")
+metadata/_custom_type_script = "uid://p4wchjgkrolx"
+
 [sub_resource type="Resource" id="Resource_0jiis"]
 script = ExtResource("4_0jiis")
 metadata/_custom_type_script = "uid://swufoypqyj1x"
@@ -36,6 +41,7 @@ metadata/_custom_type_script = "uid://swufoypqyj1x"
 [sub_resource type="Resource" id="Resource_hgb5k"]
 script = ExtResource("5_hgb5k")
 projectile_shape = SubResource("Resource_0jiis")
+projectile_movement = SubResource("Resource_4wf7d")
 projectile_texture = ExtResource("7_10yn3")
 projectile_coll_mask = 4
 metadata/_custom_type_script = "uid://ck45nau7el76p"
