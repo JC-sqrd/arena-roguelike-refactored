@@ -16,14 +16,6 @@
 _data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.5117494, 0.11842108), 0.0, 2.3330894, 0, 0, Vector2(0.616188, 0.42105263), 1.2598684, 4.157565, 0, 0, Vector2(1, 0.4868421), -3.3596513, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="Curve" id="Curve_gak5u"]
-_data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.25066668, 0.11842108), 0.0, 0.14459716, 0, 0, Vector2(0.58666664, 0.5684647), 1.8310016, 0.75172466, 0, 0, Vector2(1, 0.4868421), -1.6102716, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Curve" id="Curve_cud1e"]
-_data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.25066668, 0.11842108), 0.0, 0.14459716, 0, 0, Vector2(0.58666664, 0.5684647), 1.8310016, 0.75172466, 0, 0, Vector2(1, 0.4868421), -1.6102716, 0.0, 0, 0]
-point_count = 4
-
 [sub_resource type="Curve" id="Curve_aphbl"]
 _data = [Vector2(0, 0.5077801), 0.0, -3.306534, 0, 0, Vector2(0.50399995, 0.5145228), 1.3545684, 1.3545684, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -36,6 +28,31 @@ wave_budget = 1200.0
 budget_gain = 600.0
 wave_duration = 45.0
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
+
+[sub_resource type="Resource" id="Resource_cud1e"]
+script = ExtResource("3_2nq7f")
+enemy_scene = ExtResource("6_6elf5")
+weight = 10.0
+spawn_cost = 10.0
+metadata/_custom_type_script = "uid://8eg0pmyahc6u"
+
+[sub_resource type="Resource" id="Resource_nfwfb"]
+script = ExtResource("2_x7pkk")
+wave_spawns = Array[ExtResource("3_2nq7f")]([SubResource("Resource_cud1e")])
+intensity_curve = SubResource("Curve_6q7kt")
+wave_budget = 250.0
+budget_gain = 150.0
+wave_duration = 30.0
+next_wave = SubResource("Resource_x7pkk")
+metadata/_custom_type_script = "uid://d3cfwnt62d3li"
+
+[sub_resource type="Curve" id="Curve_gak5u"]
+_data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.25066668, 0.11842108), 0.0, 0.14459716, 0, 0, Vector2(0.58666664, 0.5684647), 1.8310016, 0.75172466, 0, 0, Vector2(1, 0.4868421), -1.6102716, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_cud1e"]
+_data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.25066668, 0.11842108), 0.0, 0.14459716, 0, 0, Vector2(0.58666664, 0.5684647), 1.8310016, 0.75172466, 0, 0, Vector2(1, 0.4868421), -1.6102716, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Resource" id="Resource_gak5u"]
 script = ExtResource("2_x7pkk")
@@ -55,23 +72,6 @@ wave_budget = 300.0
 budget_gain = 175.0
 wave_duration = 30.0
 next_wave = SubResource("Resource_gak5u")
-metadata/_custom_type_script = "uid://d3cfwnt62d3li"
-
-[sub_resource type="Resource" id="Resource_cud1e"]
-script = ExtResource("3_2nq7f")
-enemy_scene = ExtResource("6_6elf5")
-weight = 10.0
-spawn_cost = 10.0
-metadata/_custom_type_script = "uid://8eg0pmyahc6u"
-
-[sub_resource type="Resource" id="Resource_nfwfb"]
-script = ExtResource("2_x7pkk")
-wave_spawns = Array[ExtResource("3_2nq7f")]([SubResource("Resource_cud1e")])
-intensity_curve = SubResource("Curve_6q7kt")
-wave_budget = 250.0
-budget_gain = 150.0
-wave_duration = 30.0
-next_wave = SubResource("Resource_15e5t")
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
 
 [sub_resource type="Resource" id="Resource_vmsas"]

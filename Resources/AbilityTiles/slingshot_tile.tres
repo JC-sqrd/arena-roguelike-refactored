@@ -8,6 +8,7 @@
 resource_local_to_scene = true
 script = ExtResource("2_spl42")
 name = "Slingshot"
+string_id = &"slingshot"
 texture = ExtResource("3_iebb1")
 ability_controller_scene = ExtResource("1_w8ahi")
 ability_details = "ABILITY - Stone Shot (1s CD): Sling a stone towards the mouse, dealing 5 DAMAGE and SLOWING the target hit by 25%."

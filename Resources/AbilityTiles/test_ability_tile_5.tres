@@ -7,5 +7,6 @@
 script = ExtResource("1_yla7r")
 offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
 name = "Test Ability 5"
+string_id = &"test_ability_5"
 texture = ExtResource("2_hby40")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

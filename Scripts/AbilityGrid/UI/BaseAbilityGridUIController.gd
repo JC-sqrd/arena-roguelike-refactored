@@ -63,7 +63,17 @@ func _pick_up_tile(slot_pos : Vector2i, grid : AbilityGrid):
 	pass
 
 func _attempt_placement(slot_pos : Vector2i, grid : AbilityGrid):
-	if can_place_tile(_held_tile, grid, slot_pos):
+	if grid.occupied_slots.has(slot_pos):
+		var slot : AbilityGridSlot = grid.occupied_slots.get(slot_pos)
+		var ability_tile : AbilityTile = slot.occupied_by
+		if _held_tile.string_id == ability_tile.string_id:
+			if ability_tile.increase_level():
+				_clear_held_state()
+			else:
+				_rollback_placement()
+		else:
+			_rollback_placement()
+	elif can_place_tile(_held_tile, grid, slot_pos):
 		_confirm_placement(slot_pos, grid)
 		pass
 	else:

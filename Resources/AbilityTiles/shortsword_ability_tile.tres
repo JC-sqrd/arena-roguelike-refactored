@@ -8,6 +8,7 @@
 script = ExtResource("1_qyo16")
 offsets = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 name = "Shortsword"
+string_id = &"shortsword"
 texture = ExtResource("3_d6jpl")
 ability_controller_scene = ExtResource("1_euk76")
 ability_details = "ABILITY - Sword Strike: Every 5th weapon attack, manifest a sword that strikes towards the mouse dealing 5 DAMAGE."

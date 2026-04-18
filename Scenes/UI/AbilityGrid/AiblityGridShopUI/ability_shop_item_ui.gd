@@ -90,5 +90,6 @@ func _get_tooltip(at_position: Vector2) -> String:
 
 func _make_custom_tooltip(for_text: String) -> Object:
 	var tooltip : GridAbilityTooltipUI = GRID_ABILITY_TOOLTIP_UI.instantiate() as GridAbilityTooltipUI
+	print("CUSTOM TOOLTIP CREATED")
 	tooltip.ability_tile = item_data.ability_tile
 	return tooltip

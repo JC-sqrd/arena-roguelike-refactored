@@ -1,11 +1,11 @@
 extends ActiveAbility
 
 
-@onready var spawn_projectile_ability_action: SpawnProjectileAbilityAction = %SpawnProjectileAbilityAction
+#@onready var spawn_projectile_ability_action: SpawnProjectileAbilityAction = %SpawnProjectileAbilityAction
 
 func initialize(caster : Entity):
 	super(caster)
-	spawn_projectile_ability_action.initialize(caster, ability_context)
+	#spawn_projectile_ability_action.initialize(caster, self)
 	pass
 
 func start_ability():
@@ -13,7 +13,7 @@ func start_ability():
 	pass
 
 func execute():
-	spawn_projectile_ability_action.do(caster, ability_context)
+	#spawn_projectile_ability_action.do(caster, ability_context)
 	end()
 	pass
 

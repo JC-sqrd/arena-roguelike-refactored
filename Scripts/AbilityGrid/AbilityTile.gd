@@ -4,8 +4,10 @@ class_name AbilityTile extends Resource
 @export var offsets : Array[Vector2i] = [Vector2i(0,0)]
 @export var adjacent_points : Array[Vector2i]
 @export var name : String
+@export var string_id : StringName
 @export var texture : Texture2D
 @export var ability_controller_scene : PackedScene
+@export_range(1, 5) var level : int = 1 : set = set_level
 @export_multiline() var ability_details : String
 @export_multiline() var ability_description : String
 
@@ -72,6 +74,21 @@ func get_active_controller() -> GridAbilityController:
 
 func build_ability_controller() -> GridAbilityController:
 	var controller : GridAbilityController = ability_controller_scene.instantiate() as GridAbilityController
+	controller.level = level
 	_active_controller = controller
 	return controller
-	
+
+func increase_level(amount : int = 1) -> bool:
+	var new_level : int = level + amount
+	if new_level <= 5:
+		level = new_level
+		if _active_controller != null:
+			_active_controller.level = level
+		return true
+	return false
+
+func set_level(new_level : int):
+	if _active_controller!= null:
+		_active_controller.level = new_level
+	level = new_level
+	pass

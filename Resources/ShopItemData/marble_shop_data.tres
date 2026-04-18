@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityTileShopItemData" format=3 uid="uid://bi2yv86j2oqm"]
+
+[ext_resource type="Resource" uid="uid://cn7dwcibuuyoa" path="res://Resources/AbilityTiles/marble_tile.tres" id="1_ecog4"]
+[ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="1_o4gpp"]
+
+[resource]
+script = ExtResource("1_o4gpp")
+ability_tile = ExtResource("1_ecog4")
+metadata/_custom_type_script = "uid://dklu5y62oe8s4"
