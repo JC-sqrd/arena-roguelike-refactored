@@ -8,7 +8,7 @@ var effect_queue : Array[Dictionary]
 var service_arr : Array[Dictionary]
 
 var start_time : float
-var frame_budget : float = 50000 # 50 ms
+var frame_budget : float = 5000 # 5 ms
 
 func register_effect_listener(rid : RID, effect_listener : EffectListener):
 	effect_listeners[rid] = effect_listener
@@ -34,15 +34,17 @@ func _process(delta: float) -> void:
 		#if Time.get_ticks_usec()- start_time > frame_budget:
 		#	return
 		#var effect : Effect = hit_queue[hit][0] 
-		var context : Dictionary[StringName, Variant] = hit_queue[hit][1]
+		var data : Array = hit_queue[hit].pop_front()
+		var context : Dictionary[StringName, Variant] = data[1]#hit_queue[hit][1]
 		var effect_listener : EffectListener = effect_listeners.get(hit)
 		if effect_listener != null:
-			hit_queue[hit][0].effect_context = context
-			hit_queue[hit][0].effect_context.target_rid = hit
-			effect_listener.receive_effect(hit_queue[hit][0])
+			data[0].effect_context = context
+			data[0].effect_context.target_rid = hit
+			effect_listener.receive_effect(data[0])
 		#free_queue.append(hit)
 	
 	hit_queue.clear()
+	
 	#if effect_queue.is_empty():
 		#return
 	#
@@ -112,11 +114,11 @@ func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,
 	
 	var hit_data : Array[Variant] = [effect, context]
 	if hit_queue.has(rid):
-		#hit_queue[rid].append(hit_data)
-		return
+		hit_queue[rid].append(hit_data)
+		#return
 	else:
-		hit_queue[rid] = hit_data
-		#hit_queue[rid].append(hit_data)
+		hit_queue[rid] = []
+		hit_queue[rid].append(hit_data)
 	return
 	
 	var effect_listener : EffectListener = effect_listeners.get(rid)

@@ -82,13 +82,9 @@ func increase_level(amount : int = 1) -> bool:
 	var new_level : int = level + amount
 	if new_level <= 5:
 		level = new_level
-		if _active_controller != null:
-			_active_controller.level = level
 		return true
 	return false
 
 func set_level(new_level : int):
-	if _active_controller!= null:
-		_active_controller.level = new_level
 	level = new_level
 	pass

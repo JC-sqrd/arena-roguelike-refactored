@@ -1,32 +1,41 @@
 [gd_resource type="Resource" script_class="EnemyWaveData" format=3 uid="uid://c3mqgbtr1u33v"]
 
-[ext_resource type="Script" uid="uid://d3cfwnt62d3li" path="res://Scripts/WaveData/EnemyWaveData.gd" id="1_53dcx"]
-[ext_resource type="Script" uid="uid://8eg0pmyahc6u" path="res://Scripts/WaveData/EnemyWaveSpawn.gd" id="2_t2l2e"]
-[ext_resource type="Resource" uid="uid://bhi7i5h5yq7dg" path="res://Resources/EnemyData/WaveSpawnData/small_enemy_wave_spawn_data.tres" id="3_fxp4d"]
-[ext_resource type="Resource" uid="uid://sksfvyj3sp13" path="res://Resources/EnemyData/WaveSpawnData/normal_enemy_wave_spawn_data.tres" id="4_yl2ho"]
+[ext_resource type="Script" uid="uid://d3cfwnt62d3li" path="res://Scripts/WaveData/EnemyWaveData.gd" id="1_t2l2e"]
+[ext_resource type="Script" uid="uid://8eg0pmyahc6u" path="res://Scripts/WaveData/EnemyWaveSpawn.gd" id="2_fxp4d"]
+[ext_resource type="Resource" uid="uid://sksfvyj3sp13" path="res://Resources/EnemyData/WaveSpawnData/normal_enemy_wave_spawn_data.tres" id="3_yl2ho"]
+[ext_resource type="Resource" uid="uid://bhi7i5h5yq7dg" path="res://Resources/EnemyData/WaveSpawnData/small_enemy_wave_spawn_data.tres" id="4_w4jlx"]
+[ext_resource type="PackedScene" uid="uid://b00aqxyistgiy" path="res://Scenes/Entity/Enemies/small_enemy.tscn" id="5_bpwfw"]
 
-[sub_resource type="Resource" id="Resource_gak5u"]
-script = ExtResource("1_53dcx")
-wave_spawns = Array[ExtResource("2_t2l2e")]([ExtResource("3_fxp4d"), ExtResource("4_yl2ho")])
-wave_budget = 700.0
-budget_gain = 150.0
-wave_duration = 30.0
+[sub_resource type="Curve" id="Curve_6q7kt"]
+_data = [Vector2(0, 0.09210527), 0.0, 0.0, 0, 0, Vector2(0.5117494, 0.11842108), 0.0, 2.3330894, 0, 0, Vector2(0.616188, 0.42105263), 1.2598684, 4.157565, 0, 0, Vector2(1, 0.4868421), -3.3596513, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_aphbl"]
+_data = [Vector2(0, 0.5077801), 0.0, -3.306534, 0, 0, Vector2(0.50399995, 0.5145228), 1.3545684, 1.3545684, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_x7pkk"]
+script = ExtResource("1_t2l2e")
+wave_spawns = Array[ExtResource("2_fxp4d")]([ExtResource("3_yl2ho"), ExtResource("4_w4jlx")])
+intensity_curve = SubResource("Curve_aphbl")
+wave_budget = 1200.0
+budget_gain = 600.0
+wave_duration = 45.0
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"
 
-[sub_resource type="Resource" id="Resource_15e5t"]
-script = ExtResource("1_53dcx")
-wave_spawns = Array[ExtResource("2_t2l2e")]([ExtResource("3_fxp4d")])
-wave_budget = 600.0
-budget_gain = 150.0
-wave_duration = 30.0
-next_wave = SubResource("Resource_gak5u")
-metadata/_custom_type_script = "uid://d3cfwnt62d3li"
+[sub_resource type="Resource" id="Resource_cud1e"]
+script = ExtResource("2_fxp4d")
+enemy_scene = ExtResource("5_bpwfw")
+weight = 10.0
+spawn_cost = 10.0
+metadata/_custom_type_script = "uid://8eg0pmyahc6u"
 
 [resource]
-script = ExtResource("1_53dcx")
-wave_spawns = Array[ExtResource("2_t2l2e")]([ExtResource("3_fxp4d")])
-wave_budget = 500.0
+script = ExtResource("1_t2l2e")
+wave_spawns = Array[ExtResource("2_fxp4d")]([SubResource("Resource_cud1e")])
+intensity_curve = SubResource("Curve_6q7kt")
+wave_budget = 250.0
 budget_gain = 150.0
 wave_duration = 30.0
-next_wave = SubResource("Resource_15e5t")
+next_wave = SubResource("Resource_x7pkk")
 metadata/_custom_type_script = "uid://d3cfwnt62d3li"

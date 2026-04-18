@@ -42,10 +42,6 @@ func _pick_up_tile(slot_pos : Vector2i, grid : AbilityGrid):
 	var tile : AbilityTile = grid.get_tile_on_slot(slot_pos)
 	if tile == null : return
 	
-	var active_controller : GridAbilityController = tile.get_active_controller()
-	if active_controller != null:
-		active_controller.queue_free()
-	
 	var tile_rect : AbilityTileTextureRect = _hovered_ui.pop_tile_rect(tile)
 	tile_rect.position = Vector2.ZERO - tile_rect.get_root_offset_position(tile.offsets)
 	_held_tile_rect = tile_rect
@@ -66,8 +62,11 @@ func _attempt_placement(slot_pos : Vector2i, grid : AbilityGrid):
 	if grid.occupied_slots.has(slot_pos):
 		var slot : AbilityGridSlot = grid.occupied_slots.get(slot_pos)
 		var ability_tile : AbilityTile = slot.occupied_by
+		var tile_slot : Vector2i = grid.ability_tiles.get(ability_tile)
 		if _held_tile.string_id == ability_tile.string_id:
-			if ability_tile.increase_level():
+			if ability_tile.increase_level(_held_tile.level):
+				grid.remove_tile_on_slot(tile_slot)
+				grid.place_tile_on_slot(ability_tile, tile_slot)
 				_clear_held_state()
 			else:
 				_rollback_placement()

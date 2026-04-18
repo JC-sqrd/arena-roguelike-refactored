@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyWaveData" format=3 uid="uid://cm6uh4n8rxyh0"]
+
+[ext_resource type="Script" uid="uid://d3cfwnt62d3li" path="res://Scripts/WaveData/EnemyWaveData.gd" id="1_6y18f"]
+[ext_resource type="Script" uid="uid://8eg0pmyahc6u" path="res://Scripts/WaveData/EnemyWaveSpawn.gd" id="2_8buuw"]
+[ext_resource type="Resource" uid="uid://sksfvyj3sp13" path="res://Resources/EnemyData/WaveSpawnData/normal_enemy_wave_spawn_data.tres" id="3_47un5"]
+[ext_resource type="Resource" uid="uid://bhi7i5h5yq7dg" path="res://Resources/EnemyData/WaveSpawnData/small_enemy_wave_spawn_data.tres" id="4_8tnwb"]
+
+[sub_resource type="Curve" id="Curve_aphbl"]
+_data = [Vector2(0, 0.5077801), 0.0, -3.306534, 0, 0, Vector2(0.50399995, 0.5145228), 1.3545684, 1.3545684, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_6y18f")
+wave_spawns = Array[ExtResource("2_8buuw")]([ExtResource("3_47un5"), ExtResource("4_8tnwb")])
+intensity_curve = SubResource("Curve_aphbl")
+wave_budget = 1200.0
+budget_gain = 600.0
+wave_duration = 45.0
+metadata/_custom_type_script = "uid://d3cfwnt62d3li"

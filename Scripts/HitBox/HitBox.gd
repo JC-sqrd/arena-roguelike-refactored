@@ -80,7 +80,7 @@ func query_hits(log_hit : bool = false) -> Array[RID]:
 			query.collision_mask = collision_mask
 			query.collide_with_areas = true
 			
-			results = space_state.intersect_shape(query, 500)
+			results = space_state.intersect_shape(query, 60)
 			
 			for result in results:
 				var result_rid : RID = result.rid

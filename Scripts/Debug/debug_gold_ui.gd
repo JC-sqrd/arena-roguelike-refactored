@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	active_entities_label.text = str(EntityServer.active_entities.size())
-	effect_queue_label.text = str(EffectServer.effect_queue.size())
+	effect_queue_label.text = str(EffectServer.hit_queue.size())
 
 func _on_gold_added(added : float):
 	gold_label.text = "GOLD: " + str(CurrencyServer.current_gold)

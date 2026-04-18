@@ -72,7 +72,7 @@ func spawn_wave():
 		
 		var pick : EnemyWaveSpawn = weighted_pick(_curr_wave_data.wave_spawns)
 		
-		if EnemyServer.active_enemies.size() >= 1000:
+		if EnemyServer.active_enemies.size() >= 600:
 			break
 		
 		var min_cost : float = get_min_spawn_cost(_curr_wave_data.wave_spawns)
