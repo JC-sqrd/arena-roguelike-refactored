@@ -23,12 +23,12 @@ func _process(delta: float) -> void:
 		return
 	
 	
-	for hit in free_queue:
-		hit_queue.erase(hit)
+	#for hit in free_queue:
+	#	hit_queue.erase(hit)
 	
-	free_queue.clear()
+	#free_queue.clear()
 	
-	start_time = Time.get_ticks_usec()
+	#start_time = Time.get_ticks_usec()
 	
 	for hit in hit_queue:
 		#if Time.get_ticks_usec()- start_time > frame_budget:
@@ -82,6 +82,7 @@ func _process(delta: float) -> void:
 			##effect_queue.remove_at(i)
 		#pass
 	pass
+
 func free_rid(rid : RID):
 	effect_listeners.erase(rid)
 	pass
