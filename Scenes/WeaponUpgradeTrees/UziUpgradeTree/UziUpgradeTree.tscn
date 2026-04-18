@@ -11,23 +11,44 @@
 [ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="7_5uqge"]
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="8_cn65h"]
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="9_ne101"]
+[ext_resource type="Script" uid="uid://dydu23koa8oxk" path="res://Scripts/StatModifiers/ValueProvider/Templates/ContextStatsValueProviderTemplate.gd" id="10_5uqge"]
 [ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="10_8v064"]
-[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="10_356xx"]
+[ext_resource type="Script" uid="uid://dou0wul2vu5jy" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/ContextStatBonusValue.gd" id="10_cn65h"]
 [ext_resource type="Script" uid="uid://b3h4uvinr4wly" path="res://Scripts/WeaponUpgrade/WeaponUpgradeData.gd" id="14_5uqge"]
 
 [sub_resource type="Resource" id="Resource_ne101"]
 script = ExtResource("4_hax8d")
 metadata/_custom_type_script = "uid://cuuicijbtm5ky"
 
-[sub_resource type="Resource" id="Resource_hax8d"]
-script = ExtResource("10_356xx")
-value = 2.0
-metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+[sub_resource type="Resource" id="Resource_n24yl"]
+script = ExtResource("9_ne101")
+value = -0.5
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_38tpm"]
+script = ExtResource("10_cn65h")
+context_stats = &"wielder_stats"
+stat_id = &"lethality"
+multipliers = Array[ExtResource("9_ne101")]([SubResource("Resource_n24yl")])
+metadata/_custom_type_script = "uid://dou0wul2vu5jy"
+
+[sub_resource type="Resource" id="Resource_vu0qo"]
+script = ExtResource("9_ne101")
+value = -0.5
+metadata/_custom_type_script = "uid://whdynsblqt1m"
+
+[sub_resource type="Resource" id="Resource_4u82s"]
+script = ExtResource("10_5uqge")
+context_stats_id = &"weapon_stats"
+stat_id = &"weapon_damage"
+bonus_values = Array[ExtResource("8_cn65h")]([SubResource("Resource_38tpm")])
+multipliers = Array[ExtResource("9_ne101")]([SubResource("Resource_vu0qo")])
+metadata/_custom_type_script = "uid://dydu23koa8oxk"
 
 [sub_resource type="Resource" id="Resource_5uqge"]
 script = ExtResource("6_hax8d")
 mode = -1
-value_provider_template = SubResource("Resource_hax8d")
+value_provider_template = SubResource("Resource_4u82s")
 metadata/_custom_type_script = "uid://c58d5uuvecjfb"
 
 [sub_resource type="Resource" id="Resource_cn65h"]

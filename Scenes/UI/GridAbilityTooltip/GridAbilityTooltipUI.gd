@@ -1,8 +1,8 @@
 class_name GridAbilityTooltipUI extends PanelContainer
 
 @onready var ability_tile_texture_rect: AbilityTileTextureRect = %AbilityTileTextureRect
-@onready var name_label: Label = %NameLabel
-@onready var detail_label: Label = %DetailLabel
+@onready var name_label: RichTextLabel = %NameLabel
+@onready var detail_label: RichTextLabel = %DetailLabel
 
 var ability_tile : AbilityTile
 

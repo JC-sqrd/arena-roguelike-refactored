@@ -4,3 +4,4 @@
 
 [node name="MarbleController" type="Node" unique_id=410668855]
 script = ExtResource("1_o15qi")
+bonus_lethality = 50.0
