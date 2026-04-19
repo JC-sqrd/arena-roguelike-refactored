@@ -7,5 +7,5 @@
 script = ExtResource("1_05gto")
 enemy_scene = ExtResource("1_tsjo6")
 weight = 50.0
-spawn_cost = 10.0
+spawn_cost = 20.0
 metadata/_custom_type_script = "uid://8eg0pmyahc6u"

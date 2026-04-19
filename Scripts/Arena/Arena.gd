@@ -1,6 +1,7 @@
 class_name Arena extends Node2D
 
 @export var main_tilemap_layer : TileMapLayer
+@export var spawn_tilemap_layer : TileMapLayer
 @export var arena_ui : ArenaUI
 @export var player_scene : PackedScene
 

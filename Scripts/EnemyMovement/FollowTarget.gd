@@ -10,9 +10,23 @@ var _separation_force : float = 30
 var _is_on_screen : bool = false
 
 var target : Vector2 
+var aggrod : bool = false
+var aggresor : Entity
 
 func set_target(target : Vector2):
 	self.target = target
+
+func initialize(entity : Entity, controller : EnemyController):
+	super(entity, controller)
+	EventServer.effect_hit.connect(_on_effect_hit)
+	pass
+
+func _on_effect_hit(rid : RID, effect : Effect, context : Dictionary[StringName, Variant]):
+	if rid == enemy_entity.entity_rid:
+		aggrod = true
+		aggresor = context.source
+		pass
+	pass
 
 func update_position(delta : float) -> Vector2: 
 	#global_position = enemy_entity.entity.global_position
@@ -34,7 +48,11 @@ func update_position(delta : float) -> Vector2:
 		
 		if PlayerServer.main_player == null:
 			return Vector2.ZERO
-		target = PlayerServer.main_player.global_position
+		if aggrod:
+			target = aggresor.global_position
+		else:
+			target = Vector2.ZERO
+		#target = PlayerServer.main_player.global_position
 		
 		#Update velocity and push vector
 		_dir_to_target = (target - enemy_entity.global_position).normalized()

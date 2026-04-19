@@ -7,7 +7,7 @@
 script = ExtResource("2_iuupi")
 name = "Max Health"
 stat_id = &"max_health"
-value = 25.0
+value = 20.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="Resource" id="Resource_wq74i"]
@@ -34,7 +34,7 @@ metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 script = ExtResource("2_iuupi")
 name = "Move Speed"
 stat_id = &"move_speed"
-value = 80.0
+value = 30.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [resource]

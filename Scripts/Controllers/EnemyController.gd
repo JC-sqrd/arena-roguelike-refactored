@@ -76,7 +76,6 @@ func _ready() -> void:
 	
 	
 	
-	
 	for listener in death_listeners:
 		unique_death_listeners.append(listener.duplicate(true))
 		pass
