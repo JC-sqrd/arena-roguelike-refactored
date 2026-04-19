@@ -14,6 +14,8 @@ const SPIRITBALL_HITBOX = preload("uid://dyr121in3iib7")
 var active_balls : Array[Array]
 var free_queue : Array[Array]
 
+#var _last_frame_called : int = -1
+
 func apply_upgrade():
 	target_area = target_area_template.build_area()
 	EventServer.knockback_applied.connect(_on_knockback_applied)
@@ -49,11 +51,18 @@ func _physics_process(delta: float) -> void:
 		else:
 			ball.global_position += dir * 400 * delta
 			area.set_global_position(ball.global_position)
-			hitbox_hit(ball, ball.query_hits(), data, i)
+			hitbox_hit(ball, ball.query_hits(false, 1), data, i)
 		pass
 	
 
 func _on_knockback_applied(data : Dictionary[StringName, Variant], context : Dictionary[StringName, Variant]):
+	#var curr_frame : int = Engine.get_process_frames()
+	
+	#if _last_frame_called == curr_frame:
+		#return
+	
+	#_last_frame_called = curr_frame
+	
 	if active_balls.size() >= max_ball_count:
 		free_queue.append(active_balls.pop_back())
 	

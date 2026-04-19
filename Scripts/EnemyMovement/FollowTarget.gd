@@ -7,6 +7,7 @@ var _curr_cell_coords : Vector2i = Vector2i.ZERO
 var _new_cell_coords : Vector2i = Vector2i.ZERO
 var _separation_radius : float = 32
 var _separation_force : float = 30
+var _is_on_screen : bool = false
 
 var target : Vector2 
 
@@ -16,23 +17,35 @@ func set_target(target : Vector2):
 func update_position(delta : float) -> Vector2: 
 	#global_position = enemy_entity.entity.global_position
 	
-	if _distance_to_target <= target_distance_threshold:
-		enemy_entity.velocity = Vector2.ZERO
+	#_is_on_screen = enemy_controller.get_viewport_rect().has_point(enemy_controller.get_global_transform_with_canvas().origin)
+	
+	
+	#if (_distance_to_target < 255):
+		#_update_threshold = 1
+	#elif (_distance_to_target > 255):
+		#_update_threshold = 2
+	#else:
+		#_update_threshold = 5
+	
+	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
+		if _distance_to_target <= target_distance_threshold:
+			enemy_entity.velocity = Vector2.ZERO
+			pass
+		
+		if PlayerServer.main_player == null:
+			return Vector2.ZERO
+		target = PlayerServer.main_player.global_position
+		
+		#Update velocity and push vector
+		_dir_to_target = (target - enemy_entity.global_position).normalized()
+		_distance_to_target = (target - enemy_entity.global_position).length()
+		#enemy_entity.velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
+		if active:
+			enemy_entity.velocity = _dir_to_target * move_speed_stat.get_value() 
+		
+		enemy_entity.velocity *= delta
+		enemy_entity.global_position += enemy_entity.velocity
 		pass
-	
-	if PlayerServer.main_player == null:
-		return Vector2.ZERO
-	target = PlayerServer.main_player.global_position
-	
-	#Update velocity and push vector
-	_dir_to_target = (target - enemy_entity.global_position).normalized()
-	_distance_to_target = (target - enemy_entity.global_position).length()
-	#enemy_entity.velocity = (_dir_to_target + _calculate_soft_collisions()) * move_speed_stat.get_value() * delta
-	if active:
-		enemy_entity.velocity = _dir_to_target * move_speed_stat.get_value() 
-	
-	enemy_entity.velocity *= delta
-	enemy_entity.global_position += enemy_entity.velocity
 	return enemy_entity.global_position
 
 

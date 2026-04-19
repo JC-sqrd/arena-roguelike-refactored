@@ -114,29 +114,8 @@ func _physics_process(delta: float) -> void:
 	if !active : 
 		return
 	
-	_is_on_screen = get_viewport_rect().has_point(get_global_transform_with_canvas().origin)
+	#_is_on_screen = get_viewport_rect().has_point(get_global_transform_with_canvas().origin)
 	
-	
-	if (_is_on_screen):
-		_update_threshold = 5
-		#monitoring = true
-		#collision_mask = _initial_coll_mask
-	elif (!_is_on_screen and _distance_to_target > 1200 and EnemyServer.get_active_enemies() > 800):
-		_update_threshold = 30
-		#monitoring = false
-		#collision_mask = _zero_coll_mask
-	elif (!_is_on_screen and _distance_to_target > 1500 and EnemyServer.get_active_enemies() > 800):
-		_update_threshold = 60
-		#monitoring = false
-		#collision_mask = _zero_coll_mask
-	else:
-		_update_threshold = 10
-		#monitoring = false
-		#collision_mask = _zero_coll_mask
-	#
-	#update_cell_coords(delta)
-	#update_position(delta)
-	#
 	pass
 
 func update_position(delta : float):

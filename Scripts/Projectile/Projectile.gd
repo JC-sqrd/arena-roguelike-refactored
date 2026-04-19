@@ -41,7 +41,6 @@ signal initialized()
 func process_projectile(delta : float):
 	if active:
 		movement.update_movement(delta)
-	
 	update_render()
 	pass
 

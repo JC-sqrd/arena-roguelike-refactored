@@ -9,6 +9,8 @@ var _hit_counter : int = 0
 var active_lightnings : Dictionary[Line2D, Array]
 var to_free : Array[Line2D]
 
+
+
 const UZI_LIGHTNING = preload("uid://d1axywy6nx0hh")
 
 func apply_upgrade():
@@ -75,6 +77,8 @@ func apply_effect_to_target(target_id : RID):
 	pass
 
 func _on_weapon_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant]):
+	
+
 	
 	if context.has("weapon_id"):
 		if context.weapon_id == upgrade_tree.weapon_controller.weapon_id:

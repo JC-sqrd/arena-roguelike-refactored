@@ -31,6 +31,9 @@ func start_wave(wave_data : EnemyWaveData):
 
 func _on_wave_timeout():
 	
+	if EnemyServer.active_enemies.size() >= 500:
+		return
+	
 	var arena_center : Vector2i = ArenaServer.active_arena.main_tilemap_layer.get_used_rect().get_center() *  ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size 
 	print("ARENA CENTER: " + str(arena_center))
 	
@@ -66,13 +69,11 @@ func spawn_wave():
 	
 	print("ACTIVE ENEMIES: " + str(EnemyServer.active_enemies.size()))
 	
-	
-	
 	while _curr_wave_data.curr_budget > 0:
 		
 		var pick : EnemyWaveSpawn = weighted_pick(_curr_wave_data.wave_spawns)
 		
-		if EnemyServer.active_enemies.size() >= 600:
+		if EnemyServer.active_enemies.size() >= 500:
 			break
 		
 		var min_cost : float = get_min_spawn_cost(_curr_wave_data.wave_spawns)

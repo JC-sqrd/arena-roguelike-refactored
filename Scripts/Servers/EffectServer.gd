@@ -34,13 +34,16 @@ func _process(delta: float) -> void:
 		#if Time.get_ticks_usec()- start_time > frame_budget:
 		#	return
 		#var effect : Effect = hit_queue[hit][0] 
-		var data : Array = hit_queue[hit].pop_front()
-		var context : Dictionary[StringName, Variant] = data[1]#hit_queue[hit][1]
 		var effect_listener : EffectListener = effect_listeners.get(hit)
-		if effect_listener != null:
-			data[0].effect_context = context
-			data[0].effect_context.target_rid = hit
-			effect_listener.receive_effect(data[0])
+		for i in range(hit_queue[hit].size()):
+			if i >= 32:
+				break
+			var data : Array = hit_queue[hit][i]
+			var context : Dictionary[StringName, Variant] = data[1]#hit_queue[hit][1]
+			if effect_listener != null:
+				data[0].effect_context = context
+				data[0].effect_context.target_rid = hit
+				effect_listener.receive_effect(data[0])
 		#free_queue.append(hit)
 	
 	hit_queue.clear()
@@ -89,15 +92,6 @@ func free_rid(rid : RID):
 	effect_listeners.erase(rid)
 	pass
 
-func receive_effect_batched(rids : Array[RID], effect : Effect, context : Dictionary[StringName, Variant]):
-	var data : Dictionary[StringName, Variant]
-	data["rids"] = rids
-	data["effect"] = effect
-	data["context"] = context
-	data["batched"] = true
-	
-	effect_queue.append(data)
-	pass
 
 func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,Variant]):
 	
@@ -111,14 +105,19 @@ func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,
 	#data["context"] = context
 	#
 	#effect_queue.append(data)
+	if hit_queue.size() >= 100:
+		hit_queue.erase(hit_queue.keys().pop_back()) 
+		#return
 	
 	var hit_data : Array[Variant] = [effect, context]
 	if hit_queue.has(rid):
 		hit_queue[rid].append(hit_data)
+		print("EFFECT ADDED TO QUEUE")
 		#return
 	else:
 		hit_queue[rid] = []
 		hit_queue[rid].append(hit_data)
+		print("NEW EFFECT QUEUE INSTANCE")
 	return
 	
 	var effect_listener : EffectListener = effect_listeners.get(rid)

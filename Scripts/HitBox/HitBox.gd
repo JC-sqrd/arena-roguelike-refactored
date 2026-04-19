@@ -63,7 +63,7 @@ func initialize():
 	#hits_out = new_hits
 	#return new_hits
 
-func query_hits(log_hit : bool = false) -> Array[RID]:
+func query_hits(log_hit : bool = false, max_results : int = 32) -> Array[RID]:
 	var space_state : = get_world_2d().direct_space_state
 	
 	var hits : Array[RID]
@@ -80,7 +80,7 @@ func query_hits(log_hit : bool = false) -> Array[RID]:
 			query.collision_mask = collision_mask
 			query.collide_with_areas = true
 			
-			results = space_state.intersect_shape(query, 60)
+			results = space_state.intersect_shape(query, max_results)
 			
 			for result in results:
 				var result_rid : RID = result.rid

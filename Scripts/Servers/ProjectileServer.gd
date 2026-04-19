@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 			active_projectiles[key].process_projectile(delta)
 			pass
 		pass
-	var after = Performance.get_monitor(Performance.OBJECT_COUNT)
 	pass
 
 
