@@ -13,6 +13,9 @@ var target : Vector2
 var aggrod : bool = false
 var aggresor : Entity
 
+var _push_vector : Vector2
+var _push_delta : float = 0
+
 func set_target(target : Vector2):
 	self.target = target
 
@@ -43,6 +46,12 @@ func update_position(delta : float) -> Vector2:
 	
 	update_cell_coords(delta)
 	
+	
+	_push_delta += delta
+	if (Engine.get_frames_drawn()) % 5 == 0:
+		_push_vector = _calculate_soft_collisions() * _push_delta
+		_push_delta = 0
+	
 	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
 		if _distance_to_target <= target_distance_threshold:
 			enemy_entity.velocity = Vector2.ZERO
@@ -64,7 +73,7 @@ func update_position(delta : float) -> Vector2:
 			enemy_entity.velocity = _dir_to_target * move_speed_stat.get_value() 
 		
 		enemy_entity.velocity *= delta
-		enemy_entity.global_position += enemy_entity.velocity + _calculate_soft_collisions()
+		enemy_entity.global_position += enemy_entity.velocity + _push_vector
 		pass
 	return enemy_entity.global_position
 

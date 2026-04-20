@@ -34,6 +34,7 @@ func _on_initialized():
 	for template in effect_templates:
 		effects.append(template.build_effect(controller_context))
 		pass
+	duration += 0.5 * level
 	cooling_down = true
 	pass
 
