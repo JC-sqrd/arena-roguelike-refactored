@@ -18,6 +18,7 @@ var _weapon_hit_context : Dictionary[StringName, Variant]
 
 func _on_initialized():
 	EventServer.weapon_hit.connect(_on_weapon_hit)
+	hit_threshold -= level if level < 5 else level * 2 
 	pass
 
 func _on_weapon_equipped(weapon : Weapon):

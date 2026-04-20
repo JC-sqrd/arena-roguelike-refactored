@@ -24,6 +24,8 @@ var orbit_offset : Vector2
 var orbit_angle : float = 0
 var _chain : Line2D
 
+var _orbit_speed : float = 10
+
 var start : bool = false
 
 func _on_initialized():
@@ -65,11 +67,11 @@ func _process(delta: float) -> void:
 		
 		_curr_dur += delta
 		
-		orbit_angle += (10 * delta)
+		orbit_angle += (_orbit_speed * delta)
 		
 		orbit_angle = fposmod(orbit_angle, (2 * PI))
 		
-		orbit_offset = (Vector2.UP * 16) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * (orbit_distance * (distance_curve.sample(_curr_dur / duration)))) 
+		orbit_offset = (Vector2.UP * 16) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * ((orbit_distance + (level * 10)) * (distance_curve.sample(_curr_dur / duration)))) 
 		
 		var hits : Array[RID] = hitbox.query_hits(true)
 		var context : Dictionary[StringName, Variant] = generate_controller_context()

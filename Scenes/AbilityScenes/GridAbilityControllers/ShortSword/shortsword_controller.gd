@@ -9,6 +9,7 @@ var _hit_counter : int = 0
 
 func _on_initialized():
 	EventServer.weapon_attack_started.connect(_on_weapon_attack_started)
+	hit_threshold -= min(level, hit_threshold)
 	pass
 
 func _on_weapon_attack_started(weapon_controller : WeaponController):

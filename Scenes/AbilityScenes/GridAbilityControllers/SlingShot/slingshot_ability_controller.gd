@@ -20,6 +20,7 @@ func _on_initialized():
 	if projectile_count_stat != null:
 		_bonus_projectile_count = int(projectile_count_stat.get_value())
 		pass
+	projectilie_count += level
 	_timer = Timer.new()
 	add_child(_timer)
 	pass
