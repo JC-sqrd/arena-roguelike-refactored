@@ -20,6 +20,8 @@ var orbit_angle : float = 0
 
 var start : bool = false
 
+var active_hitboxes : Array[HitBox]
+
 func _on_initialized():
 	#cd_hitbox = COMPACT_DISK_HITBOX.instantiate()
 	#get_tree().root.add_child(cd_hitbox)
@@ -55,34 +57,47 @@ func _process(delta: float) -> void:
 			_curr_dur = 0
 			cooling_down = true
 			orbiting = false
+			for hitbox in active_hitboxes:
+				hitbox.queue_free()
+			active_hitboxes.clear()
 		
 		_curr_dur += delta
 		
+		orbit_angle = fposmod(orbit_angle, (2 * PI))
 		orbit_angle += (5 * delta)
 		
-		orbit_angle = fposmod(orbit_angle, (2 * PI))
-		
-		orbit_offset = (Vector2.UP * 16) + caster.global_position + (Vector2.from_angle(orbit_angle).normalized() * orbit_distance) 
-		
-		var hits : Array[RID] = cd_hitbox.query_hits(true)
-		var context : Dictionary[StringName, Variant] = generate_controller_context()
-		for hit in hits:
-			for template in effect_templates:
-				EffectServer.receive_effect(hit, template.build_effect(context), context)
-		
-		cd_hitbox.global_position = orbit_offset
+		for i in range(active_hitboxes.size()):
+			var hitbox : HitBox = active_hitboxes[i]
+			
+			var spacing_offset : float = i * (2 * PI / active_hitboxes.size())
+			var i_angle : float = orbit_angle + spacing_offset
+			
+			orbit_offset = (Vector2.UP * 16) + caster.global_position + (Vector2.from_angle(i_angle).normalized() * orbit_distance) 
+				
+			var hits : Array[RID] = hitbox.query_hits(true, 1)
+			var context : Dictionary[StringName, Variant] = generate_controller_context()
+			for hit in hits:
+				for template in effect_templates:
+					EffectServer.receive_effect(hit, template.build_effect(context), context)
+			
+			hitbox.global_position = orbit_offset
 		pass
 	pass
 
 func start_ability():
-	cd_hitbox = COMPACT_DISK_HITBOX.instantiate()
-	cd_hitbox.context = controller_context
-	#cd_hitbox.effects = effects
-	get_tree().root.add_child(cd_hitbox)
+	for i in range(level):
+		cd_hitbox = COMPACT_DISK_HITBOX.instantiate()
+		cd_hitbox.context = controller_context
+		active_hitboxes.append(cd_hitbox)
+		#cd_hitbox.effects = effects
+		get_tree().root.add_child(cd_hitbox)
 	orbiting = true
 	pass
 
 func _exit_tree() -> void:
+	for hitbox in active_hitboxes:
+		hitbox.queue_free()
+	active_hitboxes.clear()
 	if cd_hitbox != null:
 		cd_hitbox.queue_free()
 	pass

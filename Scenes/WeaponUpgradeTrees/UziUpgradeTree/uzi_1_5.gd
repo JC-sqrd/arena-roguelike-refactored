@@ -86,7 +86,7 @@ func _on_weapon_hit(hit : RID, weapon_effects : Array[Effect], context : Diction
 	
 	if _hit_counter >= hit_threshold:
 		var lightning : Line2D = UZI_LIGHTNING.instantiate() as Line2D
-		var jump_count : int = 5
+		var jump_count : int = 10
 		var jump_delay : float = jump_delay
 		var area : Area = area_template.build_area()
 		var target : Entity = EntityServer.active_entities[hit]
