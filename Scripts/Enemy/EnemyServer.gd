@@ -1,7 +1,7 @@
 extends Node
 
 
-const tile_size : Vector2i = Vector2i(300, 300)
+const tile_size : Vector2i = Vector2i(32, 32)
 
 var active_enemies : Dictionary[int, EnemyController]
 

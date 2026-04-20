@@ -5,7 +5,7 @@ var _distance_to_target : float
 var _dir_to_target : Vector2
 var _curr_cell_coords : Vector2i = Vector2i.ZERO
 var _new_cell_coords : Vector2i = Vector2i.ZERO
-var _separation_radius : float = 32
+var _separation_radius : float = 16
 var _separation_force : float = 30
 var _is_on_screen : bool = false
 
@@ -41,6 +41,8 @@ func update_position(delta : float) -> Vector2:
 	#else:
 		#_update_threshold = 5
 	
+	update_cell_coords(delta)
+	
 	if (Engine.get_frames_drawn() + _update_offset) % _update_threshold == 0:
 		if _distance_to_target <= target_distance_threshold:
 			enemy_entity.velocity = Vector2.ZERO
@@ -62,7 +64,7 @@ func update_position(delta : float) -> Vector2:
 			enemy_entity.velocity = _dir_to_target * move_speed_stat.get_value() 
 		
 		enemy_entity.velocity *= delta
-		enemy_entity.global_position += enemy_entity.velocity
+		enemy_entity.global_position += enemy_entity.velocity + _calculate_soft_collisions()
 		pass
 	return enemy_entity.global_position
 
@@ -89,7 +91,7 @@ func _calculate_soft_collisions() -> Vector2:
 	var neighbors : Array[EnemyController] = EnemyServer.get_nearby_enemies(curr_cell)
 	
 	for neighbor in neighbors:
-		if neighbor == self:
+		if neighbor == self or !is_instance_valid(neighbor):
 			continue
 		
 		var dist_sq : float = enemy_entity.global_position.distance_squared_to(neighbor.global_position)

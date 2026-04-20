@@ -25,11 +25,16 @@ func _on_initialized():
 	attack_execute.hit.connect(_on_hit)
 	attack_execute.to_hit.connect(_on_to_hit)
 	
+	
 	listen_for_input = true
 	
 	attack_execute.set_melee_anim_player(melee_animation_player)
 	attack_execute.set_melee_hitbox(melee_hitbox)
 	attack_execute.finished_executing.connect(_on_attack_finished_executing)
+	
+	effects = generate_effects(effect_context)
+	effect_context = generate_controller_context()
+	
 	
 	_cooldown = 1 / (weapon_stats.get_stat("attack_speed").get_value() * wielder_stats.get_stat("attack_speed_mult").get_value())
 	pass
@@ -37,10 +42,11 @@ func _on_initialized():
 func _on_start():
 	if !on_cooldown:
 		
-		effect_context = generate_controller_context()
+		#effect_context = generate_controller_context()
+		effect_context.source = wielder
 		effect_context.wielder_stats = wielder_stats
-		effects.clear()
-		effects = generate_effects(effect_context)
+		#effects.clear()
+		#effects = generate_effects(effect_context)
 		effect_context.queries = queries
 		effect_context.weapon_stats = weapon_stats
 		print("WEAPON STATS: ", str(weapon_stats.stat_dict))
