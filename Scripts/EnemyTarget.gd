@@ -4,7 +4,6 @@ class_name EnemyTarget extends Area2D
 
 func _physics_process(delta: float) -> void:
 	var enemies : Array[RID] = query_enemies()
-	print("ENEMY DETECTED AT TARGET: ", enemies)
 	for enemy_id in enemies:
 		var enemy_entity : Entity = EntityServer.active_entities[enemy_id]
 		var enemy : EnemyController = EnemyServer.active_enemies[enemy_entity.get_instance_id()]
