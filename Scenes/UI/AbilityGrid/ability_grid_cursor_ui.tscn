@@ -3,32 +3,110 @@
 [ext_resource type="PackedScene" uid="uid://dntk7n6vl7dj7" path="res://Scenes/UI/AbilityGrid/cursor_ui.tscn" id="1_7nc83"]
 [ext_resource type="Script" uid="uid://benxfoargjkp3" path="res://Scripts/AbilityGrid/UI/AbilityGridCursorUI.gd" id="2_yyr54"]
 [ext_resource type="Texture2D" uid="uid://yhjnm83gb2k4" path="res://Textures/Sparkle.png" id="3_thpch"]
+[ext_resource type="Texture2D" uid="uid://dul0gr0l8lmou" path="res://Textures/Particle_Circle_512x512.png" id="4_410ay"]
+[ext_resource type="Texture2D" uid="uid://ddokdaifwka7d" path="res://Textures/Particle_Circle_Hollow_Thick_512x512.png" id="5_410ay"]
 
 [sub_resource type="Gradient" id="Gradient_0nwf5"]
-offsets = PackedFloat32Array(0.16287878, 0.39772728, 0.5265151, 0.84090906)
-colors = PackedColorArray(0.11372549, 0.09019608, 0.16862746, 1, 0.9843137, 0.9490196, 0.21176471, 1, 0.4627451, 0.25882354, 0.5411765, 1, 0.11372549, 0.09019608, 0.16862746, 1)
+offsets = PackedFloat32Array(0, 0.76744187)
+colors = PackedColorArray(0.9843137, 0.9490196, 0.21176471, 1, 0.4627451, 0.25882354, 0.5411765, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_tw6bo"]
 gradient = SubResource("Gradient_0nwf5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_410ay"]
-particle_flag_disable_z = true
-radial_velocity_min = 199.99997
-radial_velocity_max = 299.99997
-gravity = Vector3(0, 300, 0)
+radial_velocity_min = 49.999977
+radial_velocity_max = 199.99997
+gravity = Vector3(0, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.25
 color_ramp = SubResource("GradientTexture1D_tw6bo")
 
+[sub_resource type="Gradient" id="Gradient_725f8"]
+offsets = PackedFloat32Array(0.16287878, 0.39772728, 0.5265151, 0.84090906)
+colors = PackedColorArray(0.11372549, 0.09019608, 0.16862746, 1, 0.9843137, 0.9490196, 0.21176471, 1, 0.4627451, 0.25882354, 0.5411765, 1, 0.11372549, 0.09019608, 0.16862746, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ibo0m"]
+gradient = SubResource("Gradient_725f8")
+
+[sub_resource type="Curve" id="Curve_8xosw"]
+_data = [Vector2(0, 0.5005569), 0.0, 0.0, 0, 0, Vector2(0.9734513, 0.21826291), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_u3lku"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49852508, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_k18ja"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_gfl2j"]
+curve_x = SubResource("Curve_8xosw")
+curve_y = SubResource("Curve_u3lku")
+curve_z = SubResource("Curve_k18ja")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l3wdu"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+radial_velocity_min = 199.99997
+radial_velocity_max = 299.99997
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.049999997
+scale_curve = SubResource("CurveXYZTexture_gfl2j")
+color_ramp = SubResource("GradientTexture1D_ibo0m")
+
+[sub_resource type="Gradient" id="Gradient_410ay"]
+colors = PackedColorArray(0.9843137, 0.9490196, 0.21176471, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_725f8"]
+gradient = SubResource("Gradient_410ay")
+
+[sub_resource type="Curve" id="Curve_0nwf5"]
+_data = [Vector2(0, 0), 0.0, 4.5252924, 0, 0, Vector2(0.9908257, 1), -0.6480189, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_410ay"]
+curve = SubResource("Curve_0nwf5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_725f8"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.049999997
+scale_curve = SubResource("CurveTexture_410ay")
+color_ramp = SubResource("GradientTexture1D_725f8")
+
 [node name="AbilityGridCursorUI" unique_id=484285240 node_paths=PackedStringArray("exempted_children") instance=ExtResource("1_7nc83")]
 script = ExtResource("2_yyr54")
-exempted_children = [NodePath("UpgradeParticles")]
+exempted_children = [NodePath("SparkParticles"), NodePath("CircleParticle"), NodePath("SparkParticles2")]
 
-[node name="UpgradeParticles" type="GPUParticles2D" parent="." index="0" unique_id=1729442989]
+[node name="SparkParticles" type="GPUParticles2D" parent="." index="0" unique_id=1729442989]
+unique_name_in_owner = true
 emitting = false
 amount = 16
 texture = ExtResource("3_thpch")
-lifetime = 0.35000000000000003
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_410ay")
+
+[node name="SparkParticles2" type="GPUParticles2D" parent="." index="1" unique_id=1215893667]
+unique_name_in_owner = true
+visible = false
+emitting = false
+texture = ExtResource("4_410ay")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_l3wdu")
+
+[node name="CircleParticle" type="GPUParticles2D" parent="." index="2" unique_id=106406220]
+unique_name_in_owner = true
+emitting = false
+amount = 1
+texture = ExtResource("5_410ay")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_725f8")
