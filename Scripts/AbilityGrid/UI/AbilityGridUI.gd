@@ -139,6 +139,7 @@ func add_tile_rect(tile : AbilityTile, grid_pos : Vector2i):
 	tile_rects[tile] = tile_rect
 	tile_rect.initialize(tile, grid_pos)
 	texture_layer.add_child(tile_rect)
+	tile_rect.play_place_anim()
 	pass
 
 func remove_tile_rect(tile : AbilityTile):

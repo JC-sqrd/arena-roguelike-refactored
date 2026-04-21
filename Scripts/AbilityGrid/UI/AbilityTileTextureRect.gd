@@ -3,6 +3,7 @@ class_name AbilityTileTextureRect extends TextureRect
 var slot_size : float = 16
 var ability_tile : AbilityTile
 var root_offset_pos : Vector2
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 func initialize(ability_tile : AbilityTile, grid_pos : Vector2i):
 	self.ability_tile = ability_tile
@@ -19,7 +20,10 @@ func initialize(ability_tile : AbilityTile, grid_pos : Vector2i):
 	pivot_offset = root_offset_pos
 	rotation_degrees = ability_tile.rotation_index * 90
 	position = calculate_pos_relative_to_grid(ability_tile, grid_pos)
-	
+
+func play_place_anim():
+	animation_player.play("place")
+	pass
 
 func calculate_pos_relative_to_grid(ability_tile : AbilityTile, grid_pos : Vector2i) -> Vector2:
 	var max_offset : Vector2i = calculate_max_offset(ability_tile.offsets)
