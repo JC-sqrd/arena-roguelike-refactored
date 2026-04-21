@@ -29,7 +29,7 @@ var _id : int
 var _separation_radius : float = 32
 var _separation_force : float = 30
 
-var _target : Node2D
+var _target : Vector2
 
 var _dir_to_target : Vector2 
 var _distance_to_target : float
@@ -48,7 +48,6 @@ var _death_delay : float = 0.5
 
 func _ready() -> void:
 	
-	_id = get_instance_id()
 	_update_offset = randi_range(0, 10)
 	_curr_cell_coords = _calculate_new_cell_coords()
 	
@@ -60,6 +59,7 @@ func _ready() -> void:
 	
 	enemy_movement.initialize(enemy_entity.entity, self)
 	
+	_id = enemy_entity.entity.get_instance_id()
 	EnemyServer.register_enemy(_id, self)
 	enemy_entity.entity.global_position = global_position
 	#EnemyServer.update_cell_coords(_curr_cell_coords, self)
@@ -72,7 +72,6 @@ func _ready() -> void:
 	if health_bar_renderer != null:
 		health_bar_renderer.initialize(enemy_entity.entity.health_manager, self)
 	
-	_target = PlayerServer.main_player
 	
 	
 	

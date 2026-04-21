@@ -91,8 +91,8 @@ func duplicate_derived_effect(derived_effect : Effect):
 func _on_hit_queried(hits : Array[RID]):
 	for hit in hits:
 		EffectServer.receive_effect(hit, duplicate_derived_effect(_ability_effect), controller_context)
-	_weapon_effects.clear()
-	_weapon_hit_context.clear()
+	#_weapon_effects.clear()
+	#_weapon_hit_context.clear()
 	#controller_context.clear()
 	pass
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/AbilityTiles/Wooden Axe/Wooden Axe Tile.png" id="1_kihc1"]
 [ext_resource type="Script" uid="uid://df0a3ldeiackx" path="res://Scripts/AbilityGrid/UI/AbilityTileTextureRect.gd" id="2_01m6s"]
 [ext_resource type="FontFile" uid="uid://dedbmks47l4gc" path="res://Resources/Fonts/upheaval_font_file.tres" id="4_u7e2r"]
+[ext_resource type="FontFile" uid="uid://bluqi42qljnfk" path="res://Fonts/press_start_2p/PressStart2P.ttf" id="5_vm3wd"]
 
 [node name="GridAbilityTooltipUi" type="PanelContainer" unique_id=774267832]
 custom_minimum_size = Vector2(64, 32)
@@ -77,14 +78,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 8)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/normal_font = ExtResource("4_u7e2r")
-theme_override_font_sizes/normal_font_size = 6
-theme_override_font_sizes/bold_font_size = 6
-theme_override_font_sizes/bold_italics_font_size = 6
-theme_override_font_sizes/italics_font_size = 6
-theme_override_font_sizes/mono_font_size = 6
+theme_override_fonts/normal_font = ExtResource("5_vm3wd")
+theme_override_font_sizes/normal_font_size = 4
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 4
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
 bbcode_enabled = true
-text = "Ability Details"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in finibus nibh. Nulla quis lacus volutpat, vestibulum sapien nec, placerat ante. Nam ipsum ex, suscipit nec suscipit ut, finibus et erat. Sed eget tristique risus. Etiam a dignissim odio. In hac habitasse platea dictumst. Nam ac luctus massa. Etiam nec pharetra ante. Phasellus semper, ante quis efficitur porta, neque eros dapibus lectus, in accumsan mauris lectus sit amet augue. Nam egestas libero et luctus suscipit. Nunc condimentum fringilla ex non posuere. Sed sem nulla, tristique vel nisi nec, efficitur finibus dolor. Morbi aliquet, nunc eget faucibus mattis, justo sapien dapibus quam, eget eleifend ipsum magna eget nisi. Integer fermentum, augue vel venenatis vehicula, tellus eros scelerisque purus, a pharetra dui magna eu erat.  "
 fit_content = true
 autowrap_mode = 2

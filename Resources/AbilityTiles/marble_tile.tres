@@ -12,5 +12,7 @@ name = "Marble"
 string_id = &"marble"
 texture = ExtResource("2_lmkpg")
 ability_controller_scene = ExtResource("1_gogsh")
-ability_details = "+10(x LEVEL) Lethality"
+ability_details = "[color=green]+5[/color] x [color=cyan]LEVEL[/color] [color=crimson]LETHALITY[/color]"
+formatted_ability_details = "+10 x {level} LETHALITY"
+formatted_keys = Array[StringName]([&"level"])
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

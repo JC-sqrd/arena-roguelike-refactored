@@ -44,6 +44,8 @@ func _process(delta: float) -> void:
 				data[0].effect_context = context
 				data[0].effect_context.target_rid = hit
 				effect_listener.receive_effect(data[0])
+				EventServer.effect_hit.emit(hit, data[0], context)
+				
 		#free_queue.append(hit)
 	
 	hit_queue.clear()
@@ -112,12 +114,10 @@ func receive_effect(rid : RID, effect : Effect, context : Dictionary[StringName,
 	var hit_data : Array[Variant] = [effect, context]
 	if hit_queue.has(rid):
 		hit_queue[rid].append(hit_data)
-		print("EFFECT ADDED TO QUEUE")
 		#return
 	else:
 		hit_queue[rid] = []
 		hit_queue[rid].append(hit_data)
-		print("NEW EFFECT QUEUE INSTANCE")
 	return
 	
 	var effect_listener : EffectListener = effect_listeners.get(rid)

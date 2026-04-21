@@ -21,6 +21,7 @@ func set_target(target : Vector2):
 
 func initialize(entity : Entity, controller : EnemyController):
 	super(entity, controller)
+	target = controller._target
 	EventServer.effect_hit.connect(_on_effect_hit)
 	pass
 
@@ -62,7 +63,7 @@ func update_position(delta : float) -> Vector2:
 		if aggrod:
 			target = aggresor.global_position
 		else:
-			target = Vector2.ZERO
+			target = target
 		#target = PlayerServer.main_player.global_position
 		
 		#Update velocity and push vector

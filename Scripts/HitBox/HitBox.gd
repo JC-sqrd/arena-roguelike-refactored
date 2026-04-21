@@ -64,7 +64,7 @@ func initialize():
 	#return new_hits
 
 func query_hits(log_hit : bool = false, max_results : int = 32) -> Array[RID]:
-	var space_state : = get_world_2d().direct_space_state
+	var space_state : PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
 	
 	var hits : Array[RID]
 	

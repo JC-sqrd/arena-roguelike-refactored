@@ -9,6 +9,9 @@ class_name AbilityTile extends Resource
 @export var ability_controller_scene : PackedScene
 @export_range(1, 5) var level : int = 1 : set = set_level
 @export_multiline() var ability_details : String
+@export_group("Formatted Ability Details", "formatted")
+@export_multiline() var formatted_ability_details : String
+@export var formatted_keys : Array[StringName]
 @export_multiline() var ability_description : String
 
 var adjacent_tiles : Dictionary[Vector2i, AbilityTile]
@@ -87,4 +90,40 @@ func increase_level(amount : int = 1) -> bool:
 
 func set_level(new_level : int):
 	level = new_level
+	pass
+
+func get_formatted_detail() -> String:
+	var data : Dictionary[StringName, Variant] = {"level":level, "num":10, "add": add}
+	var output : String = "Formatted String : LEVEL: {level} NUM: {add} CALLABLE:"
+	print(str(get_format_keys(output)))
+	return formatted_ability_details.format(data)
+
+func add() -> float:
+	return 20
+
+func get_format_keys(string : String) -> Array[String]:
+	var delimiter : Array[String] = ["{","}"]
+	var keys : Array[String]
+	var record : bool = false
+	var key : String
+	for i in range(string.length()):
+		print(string[i])
+		
+		if string[i] == "}":
+			record = false
+			var new_key : String = key
+			key = ""
+			keys.append(new_key)
+			pass
+		elif record:
+			key += string[i]
+		elif string[i] == "{":
+			record = true
+			pass
+		
+		pass
+	return keys
+
+func format_detail(data : Dictionary[StringName, Variant]):
+	
 	pass

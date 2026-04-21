@@ -13,6 +13,9 @@ var wave_enemies : Array[EnemyController]
 
 var cost_dict : Dictionary[EnemyController, float]
 
+var _target_cells : Array[Vector2i]
+var cells : Array[Vector2i]
+
 const ENEMY_SPAWNER = preload("uid://s82um7w1jiuq")
 
 func start_wave(wave_data : EnemyWaveData):
@@ -37,29 +40,25 @@ func _on_wave_timeout():
 		return
 	
 	var arena_center : Vector2i = ArenaServer.active_arena.main_tilemap_layer.get_used_rect().get_center() *  ArenaServer.active_arena.main_tilemap_layer.tile_set.tile_size 
-	print("ARENA CENTER: " + str(arena_center))
 	
-	print("SPAWN WAVE: " + str(_curr_wave_data.current_wave_time))
 	EventServer.current_wave_time.emit(_curr_wave_data.current_wave_time)
 	_curr_wave_data.current_wave_time -= 1
-
+	
+	#Budget scaling
 	var wave_time : float = _curr_wave_data.wave_duration - _curr_wave_data.current_wave_time
 	var normalized_duration : float = wave_time / _curr_wave_data.wave_duration 
 	var intensity : float = _curr_wave_data.intensity_curve.sample(normalized_duration)
 	
-	print("SCALED BUDGET: " + str(intensity)+ " " + str(_curr_wave_data.wave_duration))
-	
-	
-	
+	#leftover budget calculation
 	var _leftover_spread : float = (_leftover_budget / _curr_wave_data.wave_duration)
 	var budget_gain : float = ((_curr_wave_data.budget_gain) + _leftover_spread) * intensity 
 	_curr_wave_data.curr_budget += budget_gain
+	
 	if _curr_wave_data.current_wave_time > 0:
 		spawn_wave()
 	
 	if _curr_wave_data.current_wave_time <= 0:
 		_leftover_budget = calculate_leftover_budget()
-		print("LEFTOVER BUDGET: " + str(_leftover_budget))
 		_curr_wave_data.curr_budget = 0
 		free_wave_enemies()
 		wave_timer.stop()
@@ -69,7 +68,11 @@ func _on_wave_timeout():
 
 func spawn_wave():
 	
-	print("ACTIVE ENEMIES: " + str(EnemyServer.active_enemies.size()))
+	
+	
+	_target_cells = ArenaServer.active_arena.target_tilemap_layer.get_used_cells()
+	var used_cells : Array[Vector2i] = ArenaServer.active_arena.spawn_tilemap_layer.get_used_cells()
+	var tile_size : Vector2i = ArenaServer.active_arena.spawn_tilemap_layer.tile_set.tile_size
 	
 	while _curr_wave_data.curr_budget > 0:
 		
@@ -85,14 +88,16 @@ func spawn_wave():
 		elif _curr_wave_data.curr_budget >= pick.spawn_cost:
 			_curr_wave_data.curr_budget -= pick.spawn_cost
 			#var enemy : EnemyController = pick.instantiate_spawn()
-			var tile_size : Vector2i = ArenaServer.active_arena.spawn_tilemap_layer.tile_set.tile_size
-			var used_cells : Array[Vector2i] = ArenaServer.active_arena.spawn_tilemap_layer.get_used_cells()
+			var rand_target : Vector2i = _target_cells[randi_range(0, _target_cells.size()-1)]
+			
 			var rand_cell : Vector2i = used_cells[randi_range(0, used_cells.size()-1)] 
 			var rand_offset : Vector2i = Vector2i(randi_range(0, tile_size.x), randi_range(0, tile_size.y))
 			var spawn_pos : Vector2 = (rand_cell * tile_size) + rand_offset 
 			
+			
 			var spawner : DelaySpawner = ENEMY_SPAWNER.instantiate()
 			spawner.enemy_spawned.connect(_on_enemy_spawner_spawned)
+			spawner.target = Vector2(rand_target * tile_size * 0.5)
 			spawner.spawn = pick
 			spawner.spawn_position = spawn_pos
 			spawner.global_position = spawn_pos
