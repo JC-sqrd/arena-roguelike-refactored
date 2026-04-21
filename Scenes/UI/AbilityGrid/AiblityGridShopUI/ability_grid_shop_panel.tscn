@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://t5ul0geah7ea" path="res://Placeholders/Marble.png" id="9_uar3j"]
 [ext_resource type="PackedScene" uid="uid://cb6vxkpn71uew" path="res://Scenes/AbilityScenes/GridAbilityControllers/WoodenAxe/wooden_axe_controller.tscn" id="10_kmbx3"]
 [ext_resource type="Texture2D" uid="uid://m22m3kwqjh1f" path="res://Sprites/AbilityTiles/Wooden Axe/Wooden Axe Tile.png" id="11_3sfd6"]
-[ext_resource type="PackedScene" uid="uid://dntk7n6vl7dj7" path="res://Scenes/UI/AbilityGrid/cursor_ui.tscn" id="12_tj7d1"]
+[ext_resource type="PackedScene" uid="uid://bpwr7i3cuyik7" path="res://Scenes/UI/AbilityGrid/ability_grid_cursor_ui.tscn" id="13_mymt3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3daa"]
 font = ExtResource("2_mymt3")
@@ -140,6 +140,6 @@ focus_mode = 1
 theme_override_font_sizes/font_size = 8
 text = "REROLL"
 
-[node name="CursorUI" parent="." unique_id=484285240 instance=ExtResource("12_tj7d1")]
+[node name="CursorUI" parent="." unique_id=484285240 instance=ExtResource("13_mymt3")]
 unique_name_in_owner = true
 layout_mode = 2

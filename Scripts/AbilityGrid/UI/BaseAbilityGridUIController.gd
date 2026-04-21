@@ -1,7 +1,7 @@
 class_name BaseAbilityGridUIController extends Control
 
 
-@onready var cursor_ui: CursorUI = %CursorUI
+@onready var cursor_ui: AbilityGridCursorUI = %CursorUI
 
 var player : PlayerController
 var _hovered_ui : AbilityGridUI = null
@@ -65,6 +65,7 @@ func _attempt_placement(slot_pos : Vector2i, grid : AbilityGrid):
 		var tile_slot : Vector2i = grid.ability_tiles.get(ability_tile)
 		if _held_tile.string_id == ability_tile.string_id:
 			if ability_tile.increase_level(_held_tile.level):
+				cursor_ui.emit_upgrade_particles()
 				grid.remove_tile_on_slot(tile_slot)
 				grid.place_tile_on_slot(ability_tile, tile_slot)
 				_clear_held_state()

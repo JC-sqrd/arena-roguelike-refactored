@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bpwr7i3cuyik7"]
+
+[ext_resource type="PackedScene" uid="uid://dntk7n6vl7dj7" path="res://Scenes/UI/AbilityGrid/cursor_ui.tscn" id="1_7nc83"]
+[ext_resource type="Script" uid="uid://benxfoargjkp3" path="res://Scripts/AbilityGrid/UI/AbilityGridCursorUI.gd" id="2_yyr54"]
+[ext_resource type="Texture2D" uid="uid://yhjnm83gb2k4" path="res://Textures/Sparkle.png" id="3_thpch"]
+
+[sub_resource type="Gradient" id="Gradient_0nwf5"]
+offsets = PackedFloat32Array(0.16287878, 0.39772728, 0.5265151, 0.84090906)
+colors = PackedColorArray(0.11372549, 0.09019608, 0.16862746, 1, 0.9843137, 0.9490196, 0.21176471, 1, 0.4627451, 0.25882354, 0.5411765, 1, 0.11372549, 0.09019608, 0.16862746, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tw6bo"]
+gradient = SubResource("Gradient_0nwf5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_410ay"]
+particle_flag_disable_z = true
+radial_velocity_min = 199.99997
+radial_velocity_max = 299.99997
+gravity = Vector3(0, 300, 0)
+scale_min = 0.099999994
+scale_max = 0.25
+color_ramp = SubResource("GradientTexture1D_tw6bo")
+
+[node name="AbilityGridCursorUI" unique_id=484285240 node_paths=PackedStringArray("exempted_children") instance=ExtResource("1_7nc83")]
+script = ExtResource("2_yyr54")
+exempted_children = [NodePath("UpgradeParticles")]
+
+[node name="UpgradeParticles" type="GPUParticles2D" parent="." index="0" unique_id=1729442989]
+emitting = false
+amount = 16
+texture = ExtResource("3_thpch")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_410ay")
