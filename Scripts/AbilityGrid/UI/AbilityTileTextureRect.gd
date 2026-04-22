@@ -25,6 +25,9 @@ func play_place_anim():
 	animation_player.play("place")
 	pass
 
+func play_pickup_anim():
+	animation_player.play("pickup")
+
 func calculate_pos_relative_to_grid(ability_tile : AbilityTile, grid_pos : Vector2i) -> Vector2:
 	var max_offset : Vector2i = calculate_max_offset(ability_tile.offsets)
 	var min_offset : Vector2i = calculate_min_offset(ability_tile.offsets)

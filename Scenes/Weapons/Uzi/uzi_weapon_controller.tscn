@@ -5,54 +5,75 @@
 [ext_resource type="Script" uid="uid://k7uy7l3rc455" path="res://Scripts/WeponControllerInputStrategy/InstantWeaponInput.gd" id="2_s3t5p"]
 [ext_resource type="Script" uid="uid://cifhtxe1tjwrp" path="res://Scripts/Equipment/Weapon/AttackExecute/ProjectileAttackExecute.gd" id="5_ro1n7"]
 [ext_resource type="Script" uid="uid://4pdjveo6qn8t" path="res://Scripts/AnimationPlayer/ProjectileAnimationPlayer.gd" id="6_jklx7"]
-[ext_resource type="Script" uid="uid://bca1ct66vxgs8" path="res://Scripts/Equipment/Weapon/ProjectileWeapon/ProjectileWeaponMuzzleParticle2D.gd" id="6_qqxkq"]
-[ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="6_uub4g"]
+[ext_resource type="Script" uid="uid://bca1ct66vxgs8" path="res://Scripts/Equipment/Weapon/ProjectileWeapon/ProjectileWeaponMuzzleAnim2D.gd" id="6_qqxkq"]
+[ext_resource type="Texture2D" uid="uid://by3srrtvuboh7" path="res://Sprites/Weapons/Uzi/UziMuzzleParticle.png" id="7_uub4g"]
 [ext_resource type="PackedScene" uid="uid://bbp1ge4ph6joi" path="res://Scenes/WeaponUpgradeTrees/UziUpgradeTree/UziUpgradeTree.tscn" id="8_uub4g"]
 
 [sub_resource type="Resource" id="Resource_o50pe"]
 script = ExtResource("2_s3t5p")
 metadata/_custom_type_script = "uid://k7uy7l3rc455"
 
-[sub_resource type="Gradient" id="Gradient_qqxkq"]
-offsets = PackedFloat32Array(0, 0.1373802, 0.2428115, 0.26198083, 0.38658148, 0.46645367, 0.95527154)
-colors = PackedColorArray(1, 1, 0.34117648, 1, 1, 0.43373063, 0.09652697, 1, 1, 0.3372549, 0.02745098, 1, 1, 0.23196203, 0.13589646, 1, 1, 1, 1, 1, 1, 0.80784315, 0.023529412, 1, 1, 0.16470589, 0.14901961, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uub4g"]
+atlas = ExtResource("7_uub4g")
+region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uub4g"]
-gradient = SubResource("Gradient_qqxkq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2dhw"]
+atlas = ExtResource("7_uub4g")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="Curve" id="Curve_k2dhw"]
-_data = [Vector2(0, 0.468458), 0.0, 0.0, 0, 0, Vector2(0.50737464, 0.4532711), 0.0, 0.0, 0, 0, Vector2(0.75811213, 0.22546732), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="AtlasTexture" id="AtlasTexture_otfhb"]
+atlas = ExtResource("7_uub4g")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="Curve" id="Curve_otfhb"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7492626, 0.23306078), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_0etbl"]
+atlas = ExtResource("7_uub4g")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="Curve" id="Curve_0etbl"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkfe5"]
+atlas = ExtResource("7_uub4g")
+region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_wkfe5"]
-curve_x = SubResource("Curve_k2dhw")
-curve_y = SubResource("Curve_otfhb")
-curve_z = SubResource("Curve_0etbl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3t5p"]
+atlas = ExtResource("7_uub4g")
+region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jklx7"]
-particle_flag_align_y = true
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(3, 0, 0)
-angle_min = 1.0728835e-05
-angle_max = 1.0728835e-05
-spread = 60.0
-initial_velocity_min = 50.0
-initial_velocity_max = 50.0
-gravity = Vector3(100, 0, 0)
-scale_curve = SubResource("CurveXYZTexture_wkfe5")
-color_ramp = SubResource("GradientTexture1D_uub4g")
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqxkq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uub4g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2dhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otfhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0etbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkfe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3t5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uub4g")
+}],
+"loop": false,
+"name": &"muzzle",
+"speed": 12.0
+}]
 
 [node name="UziWeaponController" type="Node2D" unique_id=2068989776 node_paths=PackedStringArray("muzzle_particle", "projectile_animation_player", "projectile_attack_execute", "action_point", "upgrade_tree")]
 script = ExtResource("1_t076g")
-muzzle_particle = NodePath("ProjectileWeaponMuzzleParticle2D")
+muzzle_particle = NodePath("ProjectileWeaponMuzzleAnim2D")
 projectile_animation_player = NodePath("ProjectileAnimationPlayer")
 projectile_attack_execute = NodePath("ProjectileAttackExecute")
 action_point = NodePath("Marker2D")
@@ -76,18 +97,12 @@ metadata/_custom_type_script = "uid://4pdjveo6qn8t"
 script = ExtResource("5_ro1n7")
 metadata/_custom_type_script = "uid://cifhtxe1tjwrp"
 
-[node name="ProjectileWeaponMuzzleParticle2D" type="GPUParticles2D" parent="." unique_id=893034559]
-z_index = 20
+[node name="UziUpgradeTree" parent="." unique_id=620391114 instance=ExtResource("8_uub4g")]
+
+[node name="ProjectileWeaponMuzzleAnim2D" type="AnimatedSprite2D" parent="." unique_id=1511026713]
 position = Vector2(14, -5)
-scale = Vector2(2, 2)
-emitting = false
-texture = ExtResource("6_uub4g")
-lifetime = 0.2
-one_shot = true
-explosiveness = 1.0
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_jklx7")
+sprite_frames = SubResource("SpriteFrames_qqxkq")
+animation = &"muzzle"
+offset = Vector2(6, 0)
 script = ExtResource("6_qqxkq")
 metadata/_custom_type_script = "uid://bca1ct66vxgs8"
-
-[node name="UziUpgradeTree" parent="." unique_id=620391114 instance=ExtResource("8_uub4g")]

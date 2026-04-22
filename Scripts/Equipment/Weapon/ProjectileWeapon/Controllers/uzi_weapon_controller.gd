@@ -1,6 +1,6 @@
 extends ProjectileWeaponController
 
-@export var muzzle_particle : ProjectileWeaponMuzzleParticle2D
+@export var muzzle_particle : ProjectileWeaponMuzzleAnim2D
 
 func _on_initialized():
 	super()

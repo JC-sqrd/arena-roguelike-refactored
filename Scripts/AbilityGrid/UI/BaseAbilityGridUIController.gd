@@ -46,6 +46,7 @@ func _pick_up_tile(slot_pos : Vector2i, grid : AbilityGrid):
 	tile_rect.position = Vector2.ZERO - tile_rect.get_root_offset_position(tile.offsets)
 	_held_tile_rect = tile_rect
 	cursor_ui.add_child(tile_rect)
+	_held_tile_rect.play_pickup_anim()
 	
 	var adjacent_tiles : Dictionary[Vector2i, AbilityTile] = grid.get_adjacent_tiles(tile)
 	_held_tile = tile

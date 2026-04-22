@@ -11,6 +11,5 @@ name = "Bloodstained Katana"
 string_id = &"bloodstained_katana"
 texture = ExtResource("3_u670w")
 ability_controller_scene = ExtResource("1_sxuvy")
-level = 5
 ability_details = "ABILITY - Crimson Slash: Manifest a bloodstained sword that deals 150% LETHALITY damage and SLOWING targets by 50%."
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"
