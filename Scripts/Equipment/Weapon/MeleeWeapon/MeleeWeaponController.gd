@@ -107,3 +107,10 @@ func send_effects_to_hit(hit : RID, effects : Array[Effect]):
 	for effect in effects:
 		EffectServer.receive_effect(hit, effect, effect_context)
 	pass
+
+func set_attack_execute(atk_exec : AttackExecute):
+	attack_execute = atk_exec
+	pass
+
+func get_attack_execute() -> AttackExecute:
+	return attack_execute

@@ -50,12 +50,14 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="PunchHitbox" type="Area2D" unique_id=1422985037]
+[node name="PunchHitbox" type="Area2D" unique_id=1422985037 node_paths=PackedStringArray("free_timer", "delay_timer")]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("1_62hat")
 free_at = 0.75
+free_timer = NodePath("FreeTimer")
+delay_timer = NodePath("DelayTimer")
 delay = 0.05
 metadata/_custom_type_script = "uid://fkv1ury50md"
 
@@ -70,3 +72,9 @@ animation = &"punch"
 autoplay = "punch"
 frame = 4
 frame_progress = 1.0
+
+[node name="FreeTimer" type="Timer" parent="." unique_id=1726335204]
+wait_time = 0.75
+
+[node name="DelayTimer" type="Timer" parent="." unique_id=1334694341]
+wait_time = 0.05

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ActiveAbilityData" format=3 uid="uid://dltuy5kw6uh4c"]
 
-[ext_resource type="Texture2D" uid="uid://ch6uxcq7cfr8s" path="res://Placeholders/Not Available Icon.png" id="1_6ys8n"]
+[ext_resource type="Texture2D" uid="uid://bbae3nyjuxnvx" path="res://AbilityIcons/DashPunchIcon.png" id="1_6ys8n"]
 [ext_resource type="Script" uid="uid://dixh3jk1fs5ag" path="res://Scripts/Ability/ActiveAbilityData.gd" id="1_wd6xi"]
 [ext_resource type="PackedScene" uid="uid://bqtfjrqiquofa" path="res://Scenes/AbilityScenes/ActiveAbilities/dash_punch_abiltity_controller.tscn" id="2_lknps"]
 

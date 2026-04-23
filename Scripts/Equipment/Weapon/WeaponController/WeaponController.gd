@@ -116,3 +116,9 @@ func _exit_tree() -> void:
 		effect.cleanup()
 	effects.clear()
 	pass
+
+func set_attack_execute(atk_exec : AttackExecute):
+	pass
+
+func get_attack_execute() -> AttackExecute:
+	return null

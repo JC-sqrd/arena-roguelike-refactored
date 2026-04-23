@@ -1,7 +1,7 @@
 class_name DelayHitbox extends HitBox
 
-@export var free_at : float = 1
-@export var delay : float = 1
+@export var free_timer : Timer
+@export var delay_timer : Timer
 
 
 signal hits_queried(hits : Array[RID]) 
@@ -9,8 +9,10 @@ signal hits_queried(hits : Array[RID])
 signal to_be_freed()
 
 func _ready() -> void:
-	get_tree().create_timer(free_at).timeout.connect(remove_hitbox)
-	await get_tree().create_timer(delay).timeout
+	free_timer.timeout.connect(remove_hitbox)
+	free_timer.start()
+	delay_timer.start()
+	await delay_timer.timeout
 	
 	
 	hits_queried.emit(query_hits()) 

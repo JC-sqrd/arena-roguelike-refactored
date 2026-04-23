@@ -42,8 +42,8 @@ func _on_weapon_hit(hit : RID, effects : Array[Effect], context : Dictionary[Str
 	
 	if _hit_counter >= hit_threshold:
 		
-		_weapon_effects = effects
-		_weapon_hit_context = context
+		#_weapon_effects = effects
+		#_weapon_hit_context = context
 		
 		hitbox = TEST_ABILITY_HITBOX.instantiate() as DelayHitbox
 		hitbox.hits_queried.connect(_on_hit_queried)

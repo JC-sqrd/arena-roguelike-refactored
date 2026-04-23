@@ -3,6 +3,7 @@ class_name AttackExecute extends Node
 
 var active : bool = false
 var context : Dictionary[StringName, Variant]
+var executing : bool = false
 
 @abstract
 func initialize()

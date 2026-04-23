@@ -17,7 +17,7 @@ var _input_held : bool = false
 
 func _on_initialized():
 	_cooldown = 1 / (weapon_stats.get_stat("attack_speed").get_value() * wielder_stats.get_stat("attack_speed_mult").get_value())
-	projectile_attack_execute.projectile_hit.connect(_on_projectile_hit)
+	set_attack_execute(projectile_attack_execute)
 	pass
 
 func _on_start():
@@ -25,6 +25,8 @@ func _on_start():
 	pass
 
 func execute_attack():
+	if projectile_attack_execute.executing:
+		return
 	
 	controller_context = generate_controller_context()
 	var attack_effects : Array[Effect] = generate_effects(controller_context)
@@ -81,3 +83,11 @@ func _on_projectile_hit(hit : RID):
 	send_effects_to_hit(hit, projectile_effects, context)
 	effects.clear()
 	pass
+
+func set_attack_execute(atk_exec : AttackExecute):
+	projectile_attack_execute = atk_exec
+	projectile_attack_execute.projectile_hit.connect(_on_projectile_hit)
+	pass
+
+func get_attack_execute() -> ProjectileAttackExecute:
+	return projectile_attack_execute

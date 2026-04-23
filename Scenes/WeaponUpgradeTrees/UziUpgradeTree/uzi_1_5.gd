@@ -68,17 +68,24 @@ func _physics_process(delta: float) -> void:
 				to_free.append(lightning)
 				pass
 			data[3] = jump_delay
+		else:
+			to_free.append(lightning)
 		pass
 	pass
 
 func apply_effect_to_target(target_id : RID):
 	var context : Dictionary[StringName, Variant] = upgrade_tree.weapon_controller.generate_controller_context()
-	EffectServer.receive_effect(target_id, effect_template.build_effect(context), context)
+	var effect : Effect = effect_template.build_effect(context)
+	EffectServer.receive_effect(target_id, effect, context)
+	var effect_arr : Array[Effect] = [effect]
+	context["uzi-1-5"] = true
+	EventServer.weapon_hit.emit(target_id, effect_arr, context)
 	pass
 
 func _on_weapon_hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[StringName, Variant]):
 	
-
+	if context.has("uzi-1-5"):
+		return
 	
 	if context.has("weapon_id"):
 		if context.weapon_id == upgrade_tree.weapon_controller.weapon_id:
@@ -86,7 +93,7 @@ func _on_weapon_hit(hit : RID, weapon_effects : Array[Effect], context : Diction
 	
 	if _hit_counter >= hit_threshold:
 		var lightning : Line2D = UZI_LIGHTNING.instantiate() as Line2D
-		var jump_count : int = 10
+		var jump_count : int = 15
 		var jump_delay : float = jump_delay
 		var area : Area = area_template.build_area()
 		var target : Entity = EntityServer.active_entities[hit]

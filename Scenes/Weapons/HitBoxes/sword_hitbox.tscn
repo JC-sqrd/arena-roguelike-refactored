@@ -92,12 +92,14 @@ _data = {
 &"sword_strike": SubResource("Animation_a74lv")
 }
 
-[node name="SwordHitbox" type="Area2D" unique_id=1555240661]
+[node name="SwordHitbox" type="Area2D" unique_id=1555240661 node_paths=PackedStringArray("free_timer", "delay_timer")]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("1_qtsjv")
 free_at = 0.5
+free_timer = NodePath("FreeTimer")
+delay_timer = NodePath("DelayTimer")
 delay = 0.1
 metadata/_custom_type_script = "uid://fkv1ury50md"
 
@@ -114,3 +116,9 @@ texture = ExtResource("2_p72ch")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1033576460]
 libraries/ = SubResource("AnimationLibrary_f7tqj")
 autoplay = &"sword_strike"
+
+[node name="FreeTimer" type="Timer" parent="." unique_id=379900953]
+wait_time = 0.5
+
+[node name="DelayTimer" type="Timer" parent="." unique_id=2111576109]
+wait_time = 0.1
