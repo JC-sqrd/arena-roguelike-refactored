@@ -13,7 +13,7 @@ func remove_upgrade():
 
 func _on_entity_died(entity : Entity, context : Dictionary[StringName, Variant]):
 	
-	if !context.has("weapon_id"): return
+	if !context.has("weapon_id") or context.has("baseball-1-5"): return
 	
 	var weapon_id : StringName = context.get("weapon_id")
 	
@@ -31,10 +31,10 @@ func _on_entity_died(entity : Entity, context : Dictionary[StringName, Variant])
 
 func _on_projectile_hit(hit : RID):
 	var context : Dictionary[StringName, Variant] = upgrade_tree.weapon_controller.generate_controller_context()
+	context["baseball-1-5"] = true
 	for effect_template in projecile_effects:
 		var effect : Effect = effect_template.build_effect(context)
 		var effect_arr : Array[Effect] = [effect]
-		EventServer.weapon_hit.emit(hit, effect_arr, context)
 		EffectServer.receive_effect(hit, effect, context)
 		pass
 	pass

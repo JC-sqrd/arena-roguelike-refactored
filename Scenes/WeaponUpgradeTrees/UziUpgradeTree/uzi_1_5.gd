@@ -68,8 +68,6 @@ func _physics_process(delta: float) -> void:
 				to_free.append(lightning)
 				pass
 			data[3] = jump_delay
-		else:
-			to_free.append(lightning)
 		pass
 	pass
 

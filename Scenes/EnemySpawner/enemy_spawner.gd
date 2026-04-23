@@ -1,6 +1,7 @@
 class_name DelaySpawner extends AnimatedSprite2D
 
 var delay : float = 1
+@export var timer : Timer
 var target : Vector2
 var spawn : SpawnData
 var spawn_position : Vector2
@@ -8,8 +9,8 @@ var spawn_position : Vector2
 signal enemy_spawned(enemy : EnemyController, spawn_data : SpawnData)
 
 func _ready() -> void:
-	get_tree().create_timer(delay).timeout.connect(_on_timeout)
-	
+	timer.timeout.connect(_on_timeout)
+	timer.start(delay)
 	pass
 
 func _on_timeout():
