@@ -62,9 +62,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s3t5p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uub4g")
 }],
 "loop": false,
 "name": &"muzzle",
@@ -99,10 +96,13 @@ metadata/_custom_type_script = "uid://cifhtxe1tjwrp"
 
 [node name="UziUpgradeTree" parent="." unique_id=620391114 instance=ExtResource("8_uub4g")]
 
-[node name="ProjectileWeaponMuzzleAnim2D" type="AnimatedSprite2D" parent="." unique_id=1511026713]
+[node name="ProjectileWeaponMuzzleAnim2D" type="AnimatedSprite2D" parent="." unique_id=1511026713 node_paths=PackedStringArray("timer")]
 position = Vector2(14, -5)
 sprite_frames = SubResource("SpriteFrames_qqxkq")
 animation = &"muzzle"
 offset = Vector2(6, 0)
 script = ExtResource("6_qqxkq")
+timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://bca1ct66vxgs8"
+
+[node name="Timer" type="Timer" parent="ProjectileWeaponMuzzleAnim2D" unique_id=694487620]
