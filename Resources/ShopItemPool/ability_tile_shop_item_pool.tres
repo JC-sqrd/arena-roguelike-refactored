@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://c5r2sevgnbndo" path="res://Resources/ShopItemData/flying_flail_shop_item_data.tres" id="8_cm4e0"]
 [ext_resource type="Resource" uid="uid://bi2yv86j2oqm" path="res://Resources/ShopItemData/marble_shop_data.tres" id="9_47b1k"]
 [ext_resource type="Resource" uid="uid://dwb5650sworhr" path="res://Resources/ShopItemData/wooden_axe_shop_item_data.tres" id="9_406x0"]
+[ext_resource type="Resource" uid="uid://cngbq2ew1354d" path="res://Resources/ShopItemData/bomb_shop_item_data.tres" id="12_1e8m5"]
 
 [sub_resource type="Resource" id="Resource_a7daa"]
 script = ExtResource("1_arugh")
@@ -62,10 +63,16 @@ item_shop_data = ExtResource("9_406x0")
 weight = 10.0
 metadata/_custom_type_script = "uid://dfsa7i4fiit15"
 
+[sub_resource type="Resource" id="Resource_s1d6g"]
+script = ExtResource("1_arugh")
+item_shop_data = ExtResource("12_1e8m5")
+weight = 10.0
+metadata/_custom_type_script = "uid://dfsa7i4fiit15"
+
 [sub_resource type="Resource" id="Resource_1e8m5"]
 script = ExtResource("2_8m84c")
 tier_weight = 20.0
-data = Array[ExtResource("3_clldh")]([SubResource("Resource_47b1k"), SubResource("Resource_rkm50")])
+data = Array[ExtResource("3_clldh")]([SubResource("Resource_47b1k"), SubResource("Resource_rkm50"), SubResource("Resource_s1d6g")])
 metadata/_custom_type_script = "uid://dff87kt0tuhx0"
 
 [sub_resource type="Resource" id="Resource_8m84c"]

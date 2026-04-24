@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c1rvtco07n3rr"]
+
+[ext_resource type="Texture2D" uid="uid://73rqg8b5xgfj" path="res://Sprites/AbilityTiles/Bomb/Bomb-Projectile.png" id="1_34ner"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrx2d"]
+atlas = ExtResource("1_34ner")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw2lq"]
+atlas = ExtResource("1_34ner")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8nqa"]
+atlas = ExtResource("1_34ner")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pai52"]
+atlas = ExtResource("1_34ner")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjtfy"]
+atlas = ExtResource("1_34ner")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_alp1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrx2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw2lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8nqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pai52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjtfy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="BombProjectile" type="AnimatedSprite2D" unique_id=503417552]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_alp1x")
+frame_progress = 0.95318645

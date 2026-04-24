@@ -113,6 +113,7 @@ ability_tile_inventory = SubResource("Resource_8ud0v")
 interactable_detector = NodePath("InteractableDetector")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
+z_index = 5
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -32)

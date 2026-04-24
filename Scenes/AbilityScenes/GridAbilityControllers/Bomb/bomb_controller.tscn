@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://kdg4wi0p2jbe"]
+
+[ext_resource type="Script" uid="uid://uc4i5o2n0mps" path="res://Scenes/AbilityScenes/GridAbilityControllers/Bomb/bomb_controller.gd" id="1_khayn"]
+
+[node name="BombController" type="Node" unique_id=2085855551]
+script = ExtResource("1_khayn")
+metadata/_custom_type_script = "uid://ck2lns8ywy84t"

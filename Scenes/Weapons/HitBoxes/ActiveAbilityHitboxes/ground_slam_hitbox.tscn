@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://fkv1ury50md" path="res://Scripts/HitBox/DelayHitBox.gd" id="1_ep603"]
 [ext_resource type="Texture2D" uid="uid://cwk4yvt71phhi" path="res://Sprites/ActiveAbilities/GroundSlam/GroundSlam.png" id="2_dil48"]
+[ext_resource type="Texture2D" uid="uid://b2x1kbmnpy4kr" path="res://Textures/Particle_Rubble.png" id="3_egu3p"]
+[ext_resource type="Script" uid="uid://c30ylftxbqkfw" path="res://Scripts/ItemPool/AutoEmitGPUParticles2D.gd" id="3_lbjdm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ep603"]
 radius = 128.0
@@ -56,13 +58,33 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_egu3p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_caagf"]
+gradient = SubResource("Gradient_egu3p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_caagf"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 100.0
+angle_min = 1.0728835e-05
+angle_max = 180.00002
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 200, 0)
+scale_min = 0.25
+color = Color(0.51758355, 0.38531676, 0.19541866, 1)
+color_ramp = SubResource("GradientTexture1D_caagf")
+
 [node name="GroundSlamHitbox" type="Area2D" unique_id=1735966991 node_paths=PackedStringArray("free_timer", "delay_timer")]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_ep603")
 free_timer = NodePath("FreeTimer")
 delay_timer = NodePath("DelayTimer")
-delay = 0.2
 metadata/_custom_type_script = "uid://fkv1ury50md"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1474404876]
@@ -77,6 +99,22 @@ frame = 5
 frame_progress = 1.0
 
 [node name="FreeTimer" type="Timer" parent="." unique_id=1012412256]
+wait_time = 2.0
 
 [node name="DelayTimer" type="Timer" parent="." unique_id=495376012]
+wait_time = 0.2
+
+[node name="AutoEmitGPUParticles2D" type="GPUParticles2D" parent="." unique_id=1373439010 node_paths=PackedStringArray("delay_timer")]
+emitting = false
+amount = 16
+texture = ExtResource("3_egu3p")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_caagf")
+script = ExtResource("3_lbjdm")
+delay_timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://c30ylftxbqkfw"
+
+[node name="Timer" type="Timer" parent="AutoEmitGPUParticles2D" unique_id=82365780]
 wait_time = 0.2
