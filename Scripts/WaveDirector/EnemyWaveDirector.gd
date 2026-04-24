@@ -97,7 +97,7 @@ func spawn_wave():
 			
 			var spawner : DelaySpawner = ENEMY_SPAWNER.instantiate()
 			spawner.enemy_spawned.connect(_on_enemy_spawner_spawned)
-			spawner.target = Vector2(rand_target * tile_size * 0.5)
+			spawner.target = Vector2(rand_target * tile_size * 0.8)
 			spawner.spawn = pick
 			spawner.spawn_position = spawn_pos
 			spawner.global_position = spawn_pos
