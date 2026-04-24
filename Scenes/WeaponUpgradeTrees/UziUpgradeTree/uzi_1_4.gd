@@ -1,13 +1,13 @@
 extends WeaponUpgradeNode
-
 @export var burst_attack_execute : ProjectileAttackExecute
-var _old_attack_execute : ProjectileAttackExecute
+
+var _original_burst_count : int 
 
 func apply_upgrade():
-	_old_attack_execute = upgrade_tree.weapon_controller.get_attack_execute()
-	upgrade_tree.weapon_controller.set_attack_execute(burst_attack_execute)
+	_original_burst_count = burst_attack_execute.burst_count
+	burst_attack_execute.burst_count = 5
 	pass
 
 func remove_upgrade():
-	upgrade_tree.weapon_controller.set_attack_execute(_old_attack_execute)
+	burst_attack_execute.burst_count = _original_burst_count
 	pass
