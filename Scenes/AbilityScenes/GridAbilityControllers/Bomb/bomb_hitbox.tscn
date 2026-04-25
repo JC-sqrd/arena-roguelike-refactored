@@ -1,25 +1,74 @@
 [gd_scene format=3 uid="uid://chx03c8o6ei7w"]
 
 [ext_resource type="Script" uid="uid://fkv1ury50md" path="res://Scripts/HitBox/DelayHitBox.gd" id="1_q2gwc"]
-[ext_resource type="Texture2D" uid="uid://3xdcclvcat3k" path="res://Textures/Particle_Circle.png" id="2_dh2wa"]
-[ext_resource type="Script" uid="uid://c30ylftxbqkfw" path="res://Scripts/ItemPool/AutoEmitGPUParticles2D.gd" id="3_f4tjd"]
+[ext_resource type="Texture2D" uid="uid://ban84niawedku" path="res://Sprites/AbilityTiles/Bomb/Bomb-Explosion.png" id="4_kbja3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2gwc"]
 radius = 64.0
 
-[sub_resource type="Curve" id="Curve_dh2wa"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.32621956), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a35p"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="CurveTexture" id="CurveTexture_f4tjd"]
-curve = SubResource("Curve_dh2wa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3blce"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f4tjd"]
-particle_flag_disable_z = true
-radial_velocity_min = 199.99997
-radial_velocity_max = 299.99997
-radial_velocity_curve = SubResource("CurveTexture_f4tjd")
-gravity = Vector3(0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5ale"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxf5d"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knb8h"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c6qi"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grnqg"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y02yg"]
+atlas = ExtResource("4_kbja3")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5of2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a35p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3blce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5ale")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxf5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knb8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c6qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grnqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y02yg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="BombHitbox" type="Area2D" unique_id=60809593 node_paths=PackedStringArray("free_timer", "delay_timer")]
 collision_layer = 0
@@ -33,22 +82,14 @@ metadata/_custom_type_script = "uid://fkv1ury50md"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506599398]
 shape = SubResource("CircleShape2D_q2gwc")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=324250598 node_paths=PackedStringArray("delay_timer")]
-emitting = false
-amount = 16
-texture = ExtResource("2_dh2wa")
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_f4tjd")
-script = ExtResource("3_f4tjd")
-delay_timer = NodePath("Timer")
-metadata/_custom_type_script = "uid://c30ylftxbqkfw"
-
-[node name="Timer" type="Timer" parent="GPUParticles2D" unique_id=1842155748]
-wait_time = 0.1
-
 [node name="DelayTimer" type="Timer" parent="." unique_id=2011183547]
 wait_time = 0.1
 
 [node name="FreeTimer" type="Timer" parent="." unique_id=1039872427]
 wait_time = 1.0999999999999999
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=644654709]
+sprite_frames = SubResource("SpriteFrames_t5of2")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
