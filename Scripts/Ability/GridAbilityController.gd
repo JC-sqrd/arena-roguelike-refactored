@@ -44,3 +44,9 @@ func generate_controller_context() -> Dictionary[StringName, Variant]:
 	context["caster_stats"] = caster.stats
 	context["controller"] = self
 	return context
+
+func get_current_cooldown() -> float:
+	return 0
+
+func set_current_cooldown(cd : float):
+	pass

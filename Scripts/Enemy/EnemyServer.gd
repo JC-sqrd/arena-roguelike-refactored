@@ -42,6 +42,8 @@ func update_cell_coords(cell_coords : Vector2i, enemy_controller : EnemyControll
 	var bucket : EnemyCellBucket = active_cells.get(cell_coords)
 	
 	if bucket != null:
+		if bucket.has(enemy_controller):
+			return
 		bucket.append(enemy_controller)
 	else:
 		bucket = EnemyCellBucket.new()

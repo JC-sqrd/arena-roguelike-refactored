@@ -1,7 +1,48 @@
 [gd_scene format=3 uid="uid://kdg4wi0p2jbe"]
 
 [ext_resource type="Script" uid="uid://uc4i5o2n0mps" path="res://Scenes/AbilityScenes/GridAbilityControllers/Bomb/bomb_controller.gd" id="1_khayn"]
+[ext_resource type="Script" uid="uid://whh2ptlwd73u" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/EffectEventTemplate.gd" id="2_tt56o"]
+[ext_resource type="Script" uid="uid://ett7q7dk3f8l" path="res://Scripts/Effect/Templates/InstantEffectTemplate.gd" id="3_gae1b"]
+[ext_resource type="Script" uid="uid://bvlmo7eyi5nvi" path="res://Scripts/ContextTag/ContextTag.gd" id="3_yffnl"]
+[ext_resource type="Script" uid="uid://c58d5uuvecjfb" path="res://Scripts/StatMutators/Templates/FlatStatMutatorTemplate.gd" id="4_vh881"]
+[ext_resource type="Script" uid="uid://q0p164tbugxe" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderAdder.gd" id="5_o1lfp"]
+[ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="6_6un8k"]
+[ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="7_3eqis"]
+[ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="7_vh881"]
+[ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="8_ocry8"]
 
-[node name="BombController" type="Node" unique_id=2085855551]
+[sub_resource type="Resource" id="Resource_o1lfp"]
+script = ExtResource("8_ocry8")
+value = 500.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_6un8k"]
+script = ExtResource("7_vh881")
+magnitude = SubResource("Resource_o1lfp")
+metadata/_custom_type_script = "uid://dcme5xtj1ckdw"
+
+[sub_resource type="Resource" id="Resource_fd1sa"]
+script = ExtResource("8_ocry8")
+value = 10.0
+metadata/_custom_type_script = "uid://mmh4xrgdtb6d"
+
+[sub_resource type="Resource" id="Resource_u15ru"]
+script = ExtResource("4_vh881")
+mode = -1
+value_provider_template = SubResource("Resource_fd1sa")
+metadata/_custom_type_script = "uid://c58d5uuvecjfb"
+
+[sub_resource type="Resource" id="Resource_0fr6i"]
+script = ExtResource("3_gae1b")
+effect_id = &"damage_effect"
+flat_mutator_template = SubResource("Resource_u15ru")
+effect_event_templates = Array[ExtResource("2_tt56o")]([SubResource("Resource_6un8k")])
+metadata/_custom_type_script = "uid://ett7q7dk3f8l"
+
+[node name="BombController" type="Node" unique_id=2085855551 node_paths=PackedStringArray("cooldown_timer")]
 script = ExtResource("1_khayn")
+cooldown_timer = NodePath("CooldownTimer")
+effect_temp = SubResource("Resource_0fr6i")
 metadata/_custom_type_script = "uid://ck2lns8ywy84t"
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=981318796]

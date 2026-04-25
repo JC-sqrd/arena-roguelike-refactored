@@ -11,6 +11,9 @@ var active : bool = false
 var _update_offset : int = 0
 var _update_threshold : int = 1
 
+var _curr_cell_coords : Vector2i = Vector2i.ZERO
+var _new_cell_coords : Vector2i = Vector2i.ZERO
+
 func initialize(entity : Entity, controller : EnemyController):
 	enemy_entity = entity
 	move_speed_stat = enemy_entity.stats.get_stat("move_speed")

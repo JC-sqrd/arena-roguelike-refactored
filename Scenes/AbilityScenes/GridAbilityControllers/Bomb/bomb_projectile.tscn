@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1rvtco07n3rr"]
 
 [ext_resource type="Texture2D" uid="uid://73rqg8b5xgfj" path="res://Sprites/AbilityTiles/Bomb/Bomb-Projectile.png" id="1_34ner"]
+[ext_resource type="Script" uid="uid://bdxjmb75w5aw8" path="res://Scenes/AbilityScenes/GridAbilityControllers/Bomb/bomb_projectile.gd" id="2_hrx2d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrx2d"]
 atlas = ExtResource("1_34ner")
@@ -48,4 +49,6 @@ animations = [{
 [node name="BombProjectile" type="AnimatedSprite2D" unique_id=503417552]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_alp1x")
+autoplay = "default"
 frame_progress = 0.95318645
+script = ExtResource("2_hrx2d")

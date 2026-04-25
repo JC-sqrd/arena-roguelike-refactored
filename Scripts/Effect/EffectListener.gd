@@ -17,7 +17,7 @@ func receive_effect(effect : Effect):
 		effect.apply_effect(entity)
 		effect.invoke_effect_events()
 		EventServer.effect_applied.emit(entity.entity_rid, effect, effect.effect_context)
-		#effect.cleanup()
+		effect.cleanup()
 	elif effect is DurationalEffect:
 		effect.effect_expired.connect(_on_durational_effect_expired)
 		if effect.stackable and durational_effects.has(effect.effect_id):
@@ -39,12 +39,11 @@ func update_durational_effects(delta : float):
 
 func _on_durational_effect_expired(effect : DurationalEffect):
 	effect.remove_effect(entity)
-	#effect.cleanup()
+	effect.cleanup()
 	durational_effects.erase(effect.effect_id)
 	pass
 
 func cleanup():
-	stats.cleanup()
 	stats = null
 	entity = null
 	pass

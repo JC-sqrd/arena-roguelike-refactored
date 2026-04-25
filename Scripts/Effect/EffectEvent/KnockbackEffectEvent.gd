@@ -5,10 +5,15 @@ var direction : Vector2
 var force : Vector2
 
 func invoke_event(context : Dictionary[StringName, Variant] = {}):
-	var source : Entity = context.source
+	var source_vector : Vector2
+	if context.has("knockback_source"):
+		source_vector = context["knockback_source"]
+		pass
+	else:
+		source_vector = context["source"].global_position
 	var target : Entity = EntityServer.active_entities.get(context.target_rid)
 	
-	var direction = (target.global_position - source.global_position).normalized()
+	var direction = (target.global_position - source_vector).normalized()
 	
 	force = direction * magnitude
 	

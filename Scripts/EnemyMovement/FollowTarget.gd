@@ -3,8 +3,7 @@ class_name FollowTarget extends EnemyMovement
 @export var target_distance_threshold : float = 30
 var _distance_to_target : float
 var _dir_to_target : Vector2
-var _curr_cell_coords : Vector2i = Vector2i.ZERO
-var _new_cell_coords : Vector2i = Vector2i.ZERO
+
 var _separation_radius : float = 16
 var _separation_force : float = 30
 var _is_on_screen : bool = false

@@ -1,6 +1,6 @@
 class_name CooldownTimer extends Resource
 
-@export var cooldown : float = 0
+@export var cooldown : float = 1
 
 var active : bool = false
 
@@ -31,4 +31,3 @@ func _update(delta : float):
 		timeout.emit()
 	else:
 		return
-	pass

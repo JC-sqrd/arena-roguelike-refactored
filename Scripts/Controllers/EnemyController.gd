@@ -244,11 +244,12 @@ func _exit_tree() -> void:
 func free_controller():
 	if _freed:
 		return
+	print("FREE ENEMY FROM CELL: ", enemy_movement._new_cell_coords)
+	EnemyServer.free_from_cell(enemy_movement._new_cell_coords, self)
 	active = false
 	_freed = true
 	overlapped_areas.clear()
 	overlapped_bodies.clear()
 	area_controller.free_area()
 	EnemyServer.to_free(_id)
-	EnemyServer.free_from_cell(_curr_cell_coords, self)
 	pass
