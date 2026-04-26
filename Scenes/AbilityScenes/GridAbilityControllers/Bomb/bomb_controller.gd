@@ -2,10 +2,12 @@
 extends GridAbilityController
 
 @export var cooldown_timer : Timer
-
+@export var path_curve : Curve
 @export var effect_temp : EffectTemplate
 
 var active_bombs : Array[Array]
+var bomb_speed : float = 150
+
 
 const BOMB_PROJECTILE = preload("uid://c1rvtco07n3rr")
 const BOMB_HITBOX = preload("uid://chx03c8o6ei7w")
@@ -14,19 +16,29 @@ var _knockback_source : Vector2
 
 func _on_initialized():
 	cooldown_timer.timeout.connect(_on_cooldown_timeout)
+	cooldown_timer.wait_time = cooldown_timer.wait_time - (level - 1)
 	cooldown_timer.start()
+	pass
+
+func _physics_process(delta: float) -> void:
+	for data in active_bombs:
+		data[0].global_position = lerp(data[0].global_position, data[3], delta)
+		pass
+	
 	pass
 
 func _on_start_ability():
 	var bomb : AnimatedSprite2D = BOMB_PROJECTILE.instantiate()
 	var fuse_timer : Timer = Timer.new() 
-	var bomb_data : Array[Variant] = [bomb, fuse_timer]
+	var dir : Vector2 = (ArenaServer.active_arena.get_global_mouse_position() - caster.global_position).normalized()
+	var target_pos : Vector2 = caster.global_position + (dir * bomb_speed)
+	var bomb_data : Array[Variant] = [bomb, fuse_timer, dir, target_pos]
 	fuse_timer.timeout.connect(_on_fuse_timeout)
 	bomb.global_position = caster.global_position
 	active_bombs.append(bomb_data)
 	
 	add_child(fuse_timer)
-	fuse_timer.start(3)
+	fuse_timer.start(1.5)
 	ArenaServer.active_arena.add_child(bomb)
 	pass
 
