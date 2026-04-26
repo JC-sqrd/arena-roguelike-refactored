@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 
 func _on_start_ability():
 	var hitbox : HitBox = CALTROPS_HITBOX.instantiate() as HitBox
-	var hits : int = 3
+	var hits : int = 2 + level
 	hitbox.global_position = caster.global_position
 	ArenaServer.active_arena.add_child(hitbox)
 	var data : Array[Variant] = [hitbox, hits]
@@ -70,3 +70,8 @@ func apply_effect_to_hits(hits : Array[RID]):
 			EffectServer.receive_effect(hit, effect_temp.build_effect(context), context)
 		pass
 	pass
+
+func _exit_tree() -> void:
+	for data in active_caltrops:
+		data[0].queue_free()
+	active_caltrops.clear()
