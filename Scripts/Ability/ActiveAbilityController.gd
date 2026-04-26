@@ -43,6 +43,7 @@ func _on_initialized():
 func start_ability():
 	if cooldown_timer.active:
 		return
+	EventServer.ability_start.emit(self, generate_controller_context())
 	ability_to_start.emit()
 	_on_start()
 	ability_started.emit()
@@ -79,6 +80,7 @@ func generate_controller_context() -> Dictionary[StringName, Variant]:
 	context["source"] = caster
 	context["caster"] = caster
 	context["caster_stats"] = caster.stats
+	context["active_ability"] = true
 	context["ability_id"] = ability_id
 	context["controller"] = self
 	return context

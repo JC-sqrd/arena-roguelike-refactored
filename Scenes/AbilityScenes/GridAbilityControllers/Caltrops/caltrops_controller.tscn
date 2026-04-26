@@ -65,4 +65,4 @@ metadata/_custom_type_script = "uid://ck2lns8ywy84t"
 wait_time = 3.0
 
 [node name="LifetimeTimer" type="Timer" parent="." unique_id=1203460304]
-wait_time = 5.0
+wait_time = 10.0
