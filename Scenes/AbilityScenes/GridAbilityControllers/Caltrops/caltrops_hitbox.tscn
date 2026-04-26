@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://biqsn0i6kju33"]
+
+[ext_resource type="Script" uid="uid://b7mpysoi5fdaw" path="res://Scripts/HitBox/HitBox.gd" id="1_j01ub"]
+[ext_resource type="Texture2D" uid="uid://6uwatvtb78in" path="res://Sprites/AbilityTiles/Caltrops/Caltrop-Prop.png" id="2_kn4l2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j01ub"]
+radius = 8.0
+
+[node name="CaltropsHitbox" type="Area2D" unique_id=1353935611]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_j01ub")
+metadata/_custom_type_script = "uid://b7mpysoi5fdaw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1129754593]
+shape = SubResource("CircleShape2D_j01ub")
+
+[node name="CaltropProp" type="Sprite2D" parent="." unique_id=529410794]
+texture_filter = 1
+texture = ExtResource("2_kn4l2")

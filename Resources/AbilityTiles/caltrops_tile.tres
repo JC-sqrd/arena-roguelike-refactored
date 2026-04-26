@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityTile" format=3 uid="uid://bwjlgvi6gp7j6"]
+
+[ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_k0j8a"]
+[ext_resource type="PackedScene" uid="uid://c2ivt7brxy61l" path="res://Scenes/AbilityScenes/GridAbilityControllers/Caltrops/caltrops_controller.tscn" id="1_wq4fh"]
+[ext_resource type="Texture2D" uid="uid://u6m7my78cane" path="res://Sprites/AbilityTiles/Caltrops/Caltrops.png" id="2_d1leq"]
+
+[resource]
+script = ExtResource("1_k0j8a")
+name = "Caltrops"
+string_id = &"caltrops"
+texture = ExtResource("2_d1leq")
+ability_controller_scene = ExtResource("1_wq4fh")
+metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

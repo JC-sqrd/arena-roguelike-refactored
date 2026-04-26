@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityTileShopItemData" format=3 uid="uid://0hb7g2pyynmf"]
+
+[ext_resource type="Resource" uid="uid://bwjlgvi6gp7j6" path="res://Resources/AbilityTiles/caltrops_tile.tres" id="1_dbcc6"]
+[ext_resource type="Script" uid="uid://dklu5y62oe8s4" path="res://Scripts/ShopItem/AbilityTileShopItemData.gd" id="2_kuh2c"]
+
+[resource]
+script = ExtResource("2_kuh2c")
+ability_tile = ExtResource("1_dbcc6")
+metadata/_custom_type_script = "uid://dklu5y62oe8s4"

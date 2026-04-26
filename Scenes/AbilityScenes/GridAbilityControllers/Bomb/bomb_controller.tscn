@@ -11,10 +11,6 @@
 [ext_resource type="Script" uid="uid://dcme5xtj1ckdw" path="res://Scripts/Effect/EffectEvent/EffectEventTemplate/KnockbackEffectEventTemplate.gd" id="7_vh881"]
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="8_ocry8"]
 
-[sub_resource type="Curve" id="Curve_vh881"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49076512, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="Resource" id="Resource_o1lfp"]
 script = ExtResource("8_ocry8")
 value = 500.0
@@ -46,7 +42,6 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 [node name="BombController" type="Node" unique_id=2085855551 node_paths=PackedStringArray("cooldown_timer")]
 script = ExtResource("1_khayn")
 cooldown_timer = NodePath("CooldownTimer")
-path_curve = SubResource("Curve_vh881")
 effect_temp = SubResource("Resource_0fr6i")
 metadata/_custom_type_script = "uid://ck2lns8ywy84t"
 

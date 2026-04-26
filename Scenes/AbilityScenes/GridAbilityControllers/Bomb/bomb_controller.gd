@@ -2,7 +2,6 @@
 extends GridAbilityController
 
 @export var cooldown_timer : Timer
-@export var path_curve : Curve
 @export var effect_temp : EffectTemplate
 
 var active_bombs : Array[Array]
