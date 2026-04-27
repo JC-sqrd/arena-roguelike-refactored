@@ -6,6 +6,7 @@ extends GridAbilityController
 
 var active_bombs : Array[Array]
 var bomb_speed : float = 150
+var on_cooldown : bool = false
 
 
 const BOMB_PROJECTILE = preload("uid://c1rvtco07n3rr")
@@ -14,9 +15,9 @@ const BOMB_HITBOX = preload("uid://chx03c8o6ei7w")
 var _knockback_source : Vector2
 
 func _on_initialized():
+	EventServer.knockback_applied.connect(_on_knockback_applied)
 	cooldown_timer.timeout.connect(_on_cooldown_timeout)
 	cooldown_timer.wait_time = ability_stats.get_stat("cooldown").get_value() - (level - 1)
-	cooldown_timer.start()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -24,6 +25,15 @@ func _physics_process(delta: float) -> void:
 		data[0].global_position = lerp(data[0].global_position, data[3], delta)
 		pass
 	
+	pass
+
+func _on_knockback_applied(data : Dictionary[StringName, Variant], context : Dictionary[StringName, Variant]):
+	if on_cooldown:
+		return
+	start_ability()
+	cooldown_timer.wait_time = ability_stats.get_stat("cooldown").get_value() - (level - 1)
+	cooldown_timer.start()
+	on_cooldown = true
 	pass
 
 func _on_start_ability():
@@ -65,9 +75,10 @@ func receive_hits(hits : Array[RID]):
 	pass
 
 func _on_cooldown_timeout():
-	start_ability()
-	cooldown_timer.wait_time = ability_stats.get_stat("cooldown").get_value() - (level - 1)
-	cooldown_timer.start()
+	#start_ability()
+	on_cooldown = false
+	#cooldown_timer.wait_time = ability_stats.get_stat("cooldown").get_value() - (level - 1)
+	#cooldown_timer.start()
 	pass
 
 func get_current_cooldown() -> float:
@@ -86,4 +97,6 @@ func _on_exit_tree() -> void:
 		data[0].queue_free()
 		data[1].queue_free()
 	active_bombs.clear()
+	EventServer.knockback_applied.disconnect(_on_knockback_applied)
+	cooldown_timer.timeout.disconnect(_on_cooldown_timeout)
 	pass
