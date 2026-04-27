@@ -16,6 +16,7 @@ var queries : Array[RID]
 var _input_held : bool = false
 
 func _on_initialized():
+	projectile_attack_execute.initialize(self)
 	_cooldown = 1 / (weapon_stats.get_stat("attack_speed").get_value() * wielder_stats.get_stat("attack_speed_mult").get_value())
 	set_attack_execute(projectile_attack_execute)
 	pass
@@ -28,21 +29,7 @@ func execute_attack():
 	if projectile_attack_execute.executing:
 		return
 	
-	controller_context = generate_controller_context()
-	var attack_effects : Array[Effect] = generate_effects(controller_context)
-	
-	controller_context.wielder_stats = wielder_stats
-	effects.clear()
-	effects = attack_effects
-	controller_context.effects_context = controller_context
-	controller_context.queries = queries
-	controller_context.weapon_stats = weapon_stats
-	controller_context.anim_speed = weapon_stats.get_stat("attack_speed").get_value()
-	controller_context.action_time_ratio = action_time_ratio
-	controller_context.projectile_template = projectile_template
-	controller_context.controller = self
-	
-	projectile_attack_execute.execute(controller_context)
+	projectile_attack_execute.execute()
 	end_attack()
 
 func _on_process(delta : float):
@@ -87,6 +74,7 @@ func _on_projectile_hit(hit : RID):
 func set_attack_execute(atk_exec : AttackExecute):
 	projectile_attack_execute = atk_exec
 	projectile_attack_execute.projectile_hit.connect(_on_projectile_hit)
+	projectile_attack_execute.initialize(self)
 	pass
 
 func get_attack_execute() -> ProjectileAttackExecute:

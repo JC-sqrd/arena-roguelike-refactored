@@ -3,7 +3,9 @@ extends ProjectileAttackExecute
 @export var burst_count: int = 3
 @export var delay_timer : Timer
 
-func execute(context : Dictionary[StringName, Variant]):
+func execute():
+	generate_execute_context()
+	var context : Dictionary[StringName, Variant] = controller.controller_context
 	executing = true
 	for i in range(burst_count):
 		delay_timer.start()

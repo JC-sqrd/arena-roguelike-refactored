@@ -1,15 +1,22 @@
 @abstract
 class_name AttackExecute extends Node
 
+var controller : WeaponController
 var active : bool = false
-var context : Dictionary[StringName, Variant]
 var executing : bool = false
 
-@abstract
-func initialize()
+
+func initialize(controller : WeaponController):
+	self.controller = controller
+	pass
 
 @abstract
-func execute(context : Dictionary[StringName, Variant])
+func execute()
 
 @abstract
 func finish_execute()
+
+
+func generate_execute_context():
+	
+	pass

@@ -15,3 +15,6 @@ func update(delta : float):
 	if held:
 		controller.start_attack()
 	pass
+
+func is_input_held() -> bool:
+	return held

@@ -17,3 +17,6 @@ func handle_input_released()
 
 @abstract
 func update(delta : float)
+
+func is_input_held() -> bool:
+	return false

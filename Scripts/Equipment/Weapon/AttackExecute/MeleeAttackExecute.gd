@@ -19,16 +19,18 @@ signal hit(hit : RID, weapon_effects : Array[Effect], context : Dictionary[Strin
 signal hits(hits : Array[RID], weapon_effects : Array[Effect], context : Dictionary[StringName, Variant])
 signal finished_executing()
 
-func initialize():
+func initialize(controller : WeaponController):
+	super(controller)
+	melee_controller = controller
 	pass
 
 
-func execute(context : Dictionary[StringName, Variant]):
+func execute():
+	generate_execute_context()
+	var context : Dictionary[StringName, Variant] = controller.controller_context
 	if (melee_anim_player and melee_hitbox) == null:
 		printerr("Melee Execute not initialized(MeleeAnimationPlayer and MeleeHitbox needed)")
 		return
-	
-	self.context = context
 	
 	melee_context = context
 	melee_controller = context.weapon_controller
@@ -39,6 +41,19 @@ func execute(context : Dictionary[StringName, Variant]):
 	active = true
 	active_hit = true
 	pass
+
+func generate_execute_context():
+	controller.controller_context = controller.generate_controller_context()
+	controller.controller_context.source = controller.wielder
+	controller.controller_context.wielder_stats = controller.wielder_stats
+	controller.effects.clear()
+	controller.effects = controller.generate_effects(controller.controller_context)
+	controller.controller_context.queries = controller.queries
+	controller.controller_context.weapon_stats = controller.weapon_stats
+	#print("WEAPON STATS: ", str(weapon_stats.stat_dict))
+	controller.controller_context.anim_speed = controller.weapon_stats.get_stat("attack_speed").get_value()
+	controller.controller_context.action_time_ratio = controller.action_time_ratio
+	controller.controller_context.weapon_controller = controller
 
 func _process(delta: float) -> void:
 	if !active:
