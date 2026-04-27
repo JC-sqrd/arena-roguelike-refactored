@@ -104,6 +104,9 @@ script = ExtResource("14_5uqge")
 upgrade_name = "Supercritical Flow"
 metadata/_custom_type_script = "uid://b3h4uvinr4wly"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38tpm"]
+size = Vector2(128, 20)
+
 [node name="UziUpgradeTree" type="Node" unique_id=620391114 node_paths=PackedStringArray("branches")]
 script = ExtResource("1_o7kv3")
 branches = [NodePath("Uzi-1-3/Uzi-1-4/Uzi-1-5")]
@@ -142,11 +145,21 @@ script = ExtResource("19_4u82s")
 upgrade_data = SubResource("Resource_nps1s")
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
-[node name="Uzi-2-5" type="Node" parent="Uzi-2-1" unique_id=560037896]
+[node name="Uzi-2-5" type="Node" parent="Uzi-2-1" unique_id=560037896 node_paths=PackedStringArray("lazer_attack_execute")]
 script = ExtResource("20_38tpm")
+lazer_attack_execute = NodePath("LazerAttackExecute")
 upgrade_data = SubResource("Resource_5h1xg")
 metadata/_custom_type_script = "uid://cqxdy0tkgcmjo"
 
-[node name="LazerAttackExecute" type="Node" parent="Uzi-2-1/Uzi-2-5" unique_id=1483913626]
+[node name="LazerAttackExecute" type="Node" parent="Uzi-2-1/Uzi-2-5" unique_id=1483913626 node_paths=PackedStringArray("off_timer", "rate_timer")]
 script = ExtResource("21_38tpm")
+off_timer = NodePath("OffTimer")
+rate_timer = NodePath("RateTimer")
+shape = SubResource("RectangleShape2D_38tpm")
+coll_mask = 4
 metadata/_custom_type_script = "uid://cifhtxe1tjwrp"
+
+[node name="OffTimer" type="Timer" parent="Uzi-2-1/Uzi-2-5/LazerAttackExecute" unique_id=1012273252]
+
+[node name="RateTimer" type="Timer" parent="Uzi-2-1/Uzi-2-5/LazerAttackExecute" unique_id=1193960263]
+one_shot = true

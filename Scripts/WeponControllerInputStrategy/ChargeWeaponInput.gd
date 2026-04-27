@@ -34,3 +34,6 @@ func reset_charge():
 	input_modifier = 1
 	charge_time = 0
 	pass
+
+func is_input_held() -> bool:
+	return charging

@@ -47,7 +47,11 @@ func _on_attempt_to_buy_upgrade(upgrade_ui : WeaponUpgradeUI, container : Weapon
 	var upgrade_node : WeaponUpgradeNode = upgrade_ui.upgrade_node
 	upgrade_node.apply_upgrade()
 	upgrade_node.applied = true
-	var next_upgrades : Array[Node] = upgrade_node.get_children()
+	var upgrade_children : Array[Node] = upgrade_node.get_children()
+	var next_upgrades : Array[Node]
+	for child in upgrade_children:
+		if child is WeaponUpgradeNode:
+			next_upgrades.append(child) 
 	if !next_upgrades.is_empty():
 		var next_upgrade : WeaponUpgradeNode = upgrade_node.get_child(0)
 		if next_upgrade.upgrade_data != null:

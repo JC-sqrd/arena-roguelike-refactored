@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://785xe88m6cnm"]
+
+[ext_resource type="Texture2D" uid="uid://cs8hux2x3m7ia" path="res://Sprites/Weapons/Uzi/Uzi Lightning Texture.png" id="1_pshal"]
+
+[node name="UziLazer" type="Line2D" unique_id=295592589]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 128, 0)
+width = 64.0
+texture = ExtResource("1_pshal")
+texture_mode = 1
