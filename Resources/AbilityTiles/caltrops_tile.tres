@@ -3,6 +3,20 @@
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_k0j8a"]
 [ext_resource type="PackedScene" uid="uid://c2ivt7brxy61l" path="res://Scenes/AbilityScenes/GridAbilityControllers/Caltrops/caltrops_controller.tscn" id="1_wq4fh"]
 [ext_resource type="Texture2D" uid="uid://u6m7my78cane" path="res://Sprites/AbilityTiles/Caltrops/Caltrops.png" id="2_d1leq"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="3_3opwu"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="4_plht2"]
+
+[sub_resource type="Resource" id="Resource_y8vmv"]
+script = ExtResource("4_plht2")
+name = "Damage"
+stat_id = &"damage"
+value = 2.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_llet0"]
+script = ExtResource("3_3opwu")
+stat_templates = Array[ExtResource("4_plht2")]([SubResource("Resource_y8vmv")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
 [resource]
 script = ExtResource("1_k0j8a")
@@ -10,4 +24,5 @@ name = "Caltrops"
 string_id = &"caltrops"
 texture = ExtResource("2_d1leq")
 ability_controller_scene = ExtResource("1_wq4fh")
+stats_template = SubResource("Resource_llet0")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

@@ -32,6 +32,6 @@ func _on_initialized():
 func _physics_process(delta: float) -> void:
 	c_float_around_target.float_around_target(caster.global_position, delta)
 
-func _exit_tree() -> void:
+func _on_exit_tree() -> void:
 	hitbox.queue_free()
 	pass

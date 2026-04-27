@@ -34,6 +34,7 @@ func _on_initialized():
 	for template in effect_templates:
 		effects.append(template.build_effect(controller_context))
 		pass
+	duration = ability_stats.get_stat("duration").get_value()
 	duration += 0.5 * level
 	cooling_down = true
 	pass
@@ -63,6 +64,7 @@ func _process(delta: float) -> void:
 			hitbox.queue_free()
 			_chain.queue_free()
 			_curr_dur = 0
+			cooldown = ability_stats.get_stat("cooldown").get_value()
 			cooling_down = true
 			orbiting = false
 		
@@ -97,7 +99,7 @@ func start_ability():
 	pass
 
 
-func _exit_tree() -> void:
+func _on_exit_tree() -> void:
 	if hitbox != null:
 		hitbox.queue_free()
 	if _chain != null:

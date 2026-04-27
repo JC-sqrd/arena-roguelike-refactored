@@ -3,6 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://kdg4wi0p2jbe" path="res://Scenes/AbilityScenes/GridAbilityControllers/Bomb/bomb_controller.tscn" id="1_iff86"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_jrnl8"]
 [ext_resource type="Texture2D" uid="uid://dl1okjml5iibr" path="res://Sprites/AbilityTiles/Bomb/Bomb.png" id="2_atjan"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="3_fhhsi"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="4_syfa5"]
+
+[sub_resource type="Resource" id="Resource_rshrw"]
+script = ExtResource("4_syfa5")
+name = "Damage"
+stat_id = &"damage"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_fhhsi"]
+script = ExtResource("4_syfa5")
+name = "Cooldown"
+stat_id = &"cooldown"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_mejsu"]
+script = ExtResource("3_fhhsi")
+stat_templates = Array[ExtResource("4_syfa5")]([SubResource("Resource_rshrw"), SubResource("Resource_fhhsi")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
 [resource]
 script = ExtResource("1_jrnl8")
@@ -11,4 +32,5 @@ name = "Bomb"
 string_id = &"bomb"
 texture = ExtResource("2_atjan")
 ability_controller_scene = ExtResource("1_iff86")
+stats_template = SubResource("Resource_mejsu")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

@@ -73,6 +73,7 @@ func _on_ability_start(controller : AbilityController, context : Dictionary[Stri
 	var active_ability_tag : bool = context.get("active_ability")
 	if !active_ability_tag:
 		return
+	print("CAST CALTROPS")
 	start_ability()
 	pass
 
@@ -80,16 +81,20 @@ func _on_start_ability():
 	if on_cooldown:
 		return
 	
-	for i in range(3 + (level - 1)):
+	var amount : int = 3 + (level - 1)
+	print("CALTROPS AMOUNT: ", amount)
+	var angle_deg : float = 360 / amount
+	for i in range(amount):
 		var hitbox : HitBox = CALTROPS_HITBOX.instantiate() as HitBox
-		var hits : int = 2 + level
-		var dir : Vector2 = Vector2.from_angle(deg_to_rad(360 / (i+1))).normalized()
+		var hits : int = 1 
+		var dir : Vector2 = Vector2.from_angle(deg_to_rad(angle_deg * i)).normalized()
 		var target_pos : Vector2 = caster.global_position + (dir * travel_distance)
 		hitbox.global_position = caster.global_position
 		ArenaServer.active_arena.add_child(hitbox)
 		var data : Array[Variant] = [hitbox, hits, dir, target_pos]
 		moving_caltrops.append(data)
 		active_caltrops.append(data)
+	
 	lifetime_timer.start()
 	cooldown_timer.start()
 	on_cooldown = true
@@ -98,13 +103,20 @@ func _on_start_ability():
 func _on_lifetime_timeout():
 	for data in active_caltrops:
 		data[0].queue_free()
+	for data in moving_caltrops:
+		data[0].queue_free()
+	for data in free_queue:
+		data[0].queue_free()
+	for data in stop_queue:
+		data[0].queue_free()
 	moving_caltrops.clear()
 	active_caltrops.clear()
+	free_queue.clear()
+	stop_queue.clear()
 	pass
 
 func _on_cooldown_timeout():
 	on_cooldown = false
-	#start_ability()
 	pass
 
 func apply_effect_to_hits(hits : Array[RID]):
@@ -117,7 +129,18 @@ func apply_effect_to_hits(hits : Array[RID]):
 		pass
 	pass
 
-func _exit_tree() -> void:
+func _on_exit_tree():
 	for data in active_caltrops:
 		data[0].queue_free()
+	for data in moving_caltrops:
+		data[0].queue_free()
+	for data in free_queue:
+		data[0].queue_free()
+	for data in stop_queue:
+		data[0].queue_free()
+	
 	active_caltrops.clear()
+	moving_caltrops.clear()
+	free_queue.clear()
+	stop_queue.clear()
+	EventServer.ability_start.disconnect(_on_ability_start)

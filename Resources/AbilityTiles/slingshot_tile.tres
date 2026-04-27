@@ -3,6 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://cfttnkrwve3ct" path="res://Scenes/AbilityScenes/GridAbilityControllers/SlingShot/slingshot_ability_controller.tscn" id="1_w8ahi"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="2_spl42"]
 [ext_resource type="Texture2D" uid="uid://57pxo6pqa70y" path="res://Sprites/AbilityTiles/Slingshot/Slingshot.png" id="3_iebb1"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="3_smbs1"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="4_xemkv"]
+
+[sub_resource type="Resource" id="Resource_1pa34"]
+script = ExtResource("4_xemkv")
+name = "Damage"
+stat_id = &"damage"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_ntmfv"]
+script = ExtResource("3_smbs1")
+stat_templates = Array[ExtResource("4_xemkv")]([SubResource("Resource_1pa34")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
 [resource]
 resource_local_to_scene = true
@@ -11,5 +25,6 @@ name = "Slingshot"
 string_id = &"slingshot"
 texture = ExtResource("3_iebb1")
 ability_controller_scene = ExtResource("1_w8ahi")
+stats_template = SubResource("Resource_ntmfv")
 ability_details = "ABILITY - Stone Shot (1s CD): Sling a stone towards the mouse, dealing 5 DAMAGE and SLOWING the target hit by 25%."
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

@@ -97,7 +97,7 @@ func _on_hit_queried(hits : Array[RID]):
 	pass
 
 
-func _exit_tree() -> void:
+func _on_exit_tree() -> void:
 	EventServer.weapon_hit.disconnect(_on_weapon_hit)
 	if _ability_effect != null:
 		_ability_effect.cleanup()

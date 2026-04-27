@@ -8,11 +8,13 @@ class_name AbilityTile extends Resource
 @export var texture : Texture2D
 @export var ability_controller_scene : PackedScene
 @export_range(1, 5) var level : int = 1 : set = set_level
+@export var stats_template : StatsTemplate
 @export_multiline() var ability_details : String
 @export_group("Formatted Ability Details", "formatted")
 @export_multiline() var formatted_ability_details : String
 @export var formatted_keys : Array[StringName]
 @export_multiline() var ability_description : String
+
 
 var adjacent_tiles : Dictionary[Vector2i, AbilityTile]
 
@@ -78,6 +80,7 @@ func get_active_controller() -> GridAbilityController:
 func build_ability_controller() -> GridAbilityController:
 	var controller : GridAbilityController = ability_controller_scene.instantiate() as GridAbilityController
 	controller.level = level
+	controller.stats_template = stats_template
 	_active_controller = controller
 	return controller
 

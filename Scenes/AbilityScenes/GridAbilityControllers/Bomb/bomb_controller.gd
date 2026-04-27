@@ -15,7 +15,7 @@ var _knockback_source : Vector2
 
 func _on_initialized():
 	cooldown_timer.timeout.connect(_on_cooldown_timeout)
-	cooldown_timer.wait_time = cooldown_timer.wait_time - (level - 1)
+	cooldown_timer.wait_time = ability_stats.get_stat("cooldown").get_value() - (level - 1)
 	cooldown_timer.start()
 	pass
 
@@ -66,6 +66,7 @@ func receive_hits(hits : Array[RID]):
 
 func _on_cooldown_timeout():
 	start_ability()
+	cooldown_timer.wait_time = ability_stats.get_stat("cooldown").get_value() - (level - 1)
 	cooldown_timer.start()
 	pass
 
@@ -80,7 +81,7 @@ func set_current_cooldown(cd : float):
 		cooldown_timer.start(cd)
 
 
-func _exit_tree() -> void:
+func _on_exit_tree() -> void:
 	for data in active_bombs:
 		data[0].queue_free()
 		data[1].queue_free()

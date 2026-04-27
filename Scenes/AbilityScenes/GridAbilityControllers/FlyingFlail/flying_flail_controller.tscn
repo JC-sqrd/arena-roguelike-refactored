@@ -49,5 +49,4 @@ metadata/_custom_type_script = "uid://ett7q7dk3f8l"
 script = ExtResource("1_ab7mh")
 effect_templates = Array[ExtResource("2_vysl5")]([SubResource("Resource_yys2v")])
 distance_curve = ExtResource("13_8di0g")
-orbit_distance = null
 metadata/_custom_type_script = "uid://ck2lns8ywy84t"

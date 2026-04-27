@@ -3,6 +3,34 @@
 [ext_resource type="PackedScene" uid="uid://dnt4edmv8gnam" path="res://Scenes/AbilityScenes/GridAbilityControllers/FlyingFlail/flying_flail_controller.tscn" id="1_o21c2"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_uoq06"]
 [ext_resource type="Texture2D" uid="uid://du38m6x6gyg5b" path="res://Sprites/AbilityTiles/Flying Flail/Flying Flail.png" id="2_o21c2"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="3_kn06p"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="4_1ki86"]
+
+[sub_resource type="Resource" id="Resource_rqqpk"]
+script = ExtResource("4_1ki86")
+name = "Damage"
+stat_id = &"damage"
+value = 12.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_kn06p"]
+script = ExtResource("4_1ki86")
+name = "Duration"
+stat_id = &"duration"
+value = 8.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_1ki86"]
+script = ExtResource("4_1ki86")
+name = "Cooldown"
+stat_id = &"cooldown"
+value = 6.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_tfk3l"]
+script = ExtResource("3_kn06p")
+stat_templates = Array[ExtResource("4_1ki86")]([SubResource("Resource_rqqpk"), SubResource("Resource_kn06p"), SubResource("Resource_1ki86")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
 [resource]
 script = ExtResource("1_uoq06")
@@ -11,4 +39,5 @@ name = "Flying Flail"
 string_id = &"flying_flail"
 texture = ExtResource("2_o21c2")
 ability_controller_scene = ExtResource("1_o21c2")
+stats_template = SubResource("Resource_tfk3l")
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

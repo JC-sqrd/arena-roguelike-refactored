@@ -102,6 +102,7 @@ area_coll_mask = 1
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
 [node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller_manager", "grid_ability_controller_manager", "interactable_detector")]
+y_sort_enabled = true
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_vvirn")
@@ -143,7 +144,9 @@ visible = false
 texture = SubResource("GradientTexture2D_1dleg")
 
 [node name="WeaponActionPoint" type="Node2D" parent="." unique_id=1029839739 node_paths=PackedStringArray("pivot_node")]
+z_index = 10
 y_sort_enabled = true
+position = Vector2(0, 1)
 script = ExtResource("13_7xakc")
 pivot_node = NodePath("../Marker2D")
 metadata/_custom_type_script = "uid://dmq3shquqsewu"

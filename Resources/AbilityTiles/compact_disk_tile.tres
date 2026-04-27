@@ -3,6 +3,27 @@
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_m7sg2"]
 [ext_resource type="PackedScene" uid="uid://buan0kvyaori2" path="res://Scenes/AbilityScenes/GridAbilityControllers/CompactDisk/compact_disk_controller.tscn" id="1_se5wl"]
 [ext_resource type="Texture2D" uid="uid://ch3m80htlg2eg" path="res://Sprites/AbilityTiles/Compact Disk/Compact Disk Tile.png" id="2_007ra"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="3_2bhub"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="4_0v8hw"]
+
+[sub_resource type="Resource" id="Resource_3axpl"]
+script = ExtResource("4_0v8hw")
+name = "Cooldown"
+stat_id = &"cooldown"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_2bhub"]
+script = ExtResource("4_0v8hw")
+name = "Duration"
+stat_id = &"duration"
+value = 10.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_vliqf"]
+script = ExtResource("3_2bhub")
+stat_templates = Array[ExtResource("4_0v8hw")]([SubResource("Resource_3axpl"), SubResource("Resource_2bhub")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
 [resource]
 script = ExtResource("1_m7sg2")
@@ -10,6 +31,7 @@ name = "Compact Disk"
 string_id = &"compact_disk"
 texture = ExtResource("2_007ra")
 ability_controller_scene = ExtResource("1_se5wl")
+stats_template = SubResource("Resource_vliqf")
 ability_details = "[color=cyan]ABILITY[/color] - Compact Disk(6s CD): Manifest a deadly compact disk that revolves around the caster, dealing 10% [color=crimson]LETHALITY[/color] damage.
 
 DURATION : 3s"

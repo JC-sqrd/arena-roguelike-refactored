@@ -3,6 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://bb87hc3wsslfk" path="res://Scenes/AbilityScenes/GridAbilityControllers/ShortSword/shortsword_controller.tscn" id="1_euk76"]
 [ext_resource type="Script" uid="uid://cl1f5s8u6mhxd" path="res://Scripts/AbilityGrid/AbilityTile.gd" id="1_qyo16"]
 [ext_resource type="Texture2D" uid="uid://bfayysirsrkn6" path="res://Sprites/AbilityTiles/Sword/ShortSwordTile.png" id="3_d6jpl"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="3_flarw"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="4_v56xd"]
+
+[sub_resource type="Resource" id="Resource_bo66g"]
+script = ExtResource("4_v56xd")
+name = "Damage"
+stat_id = &"damage"
+value = 5.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_6f4as"]
+script = ExtResource("3_flarw")
+stat_templates = Array[ExtResource("4_v56xd")]([SubResource("Resource_bo66g")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
 
 [resource]
 script = ExtResource("1_qyo16")
@@ -11,5 +25,6 @@ name = "Shortsword"
 string_id = &"shortsword"
 texture = ExtResource("3_d6jpl")
 ability_controller_scene = ExtResource("1_euk76")
+stats_template = SubResource("Resource_6f4as")
 ability_details = "ABILITY - Sword Strike: Every 5th weapon attack, manifest a sword that strikes towards the mouse dealing 5 DAMAGE."
 metadata/_custom_type_script = "uid://cl1f5s8u6mhxd"

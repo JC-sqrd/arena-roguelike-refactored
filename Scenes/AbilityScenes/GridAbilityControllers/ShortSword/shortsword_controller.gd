@@ -32,3 +32,7 @@ func _on_hitbox_hits_queried(hits : Array[RID]):
 		EffectServer.receive_effect(hit, effect_template.build_effect(context), context)
 		pass
 	pass
+
+func _on_exit_tree():
+	EventServer.weapon_attack_started.disconnect(_on_weapon_attack_started)
+	

@@ -30,3 +30,7 @@ func _on_projectile_hit(hit : RID):
 	for template in projectile_effect_templates:
 		EffectServer.receive_effect(hit, template.build_effect(context), context)
 	pass
+
+func _on_exit_tree():
+	EventServer.weapon_attack_started.disconnect(_on_weapon_attack_started)
+	

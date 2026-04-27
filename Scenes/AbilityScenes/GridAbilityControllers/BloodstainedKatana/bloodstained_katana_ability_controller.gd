@@ -110,10 +110,10 @@ func _physics_process(delta: float) -> void:
 	c_float_around_target.float_around_target(caster.global_position, delta)
 	pass
 
-func _exit_tree() -> void:
+func _on_exit_tree():
 	hitbox.queue_free()
 	c_target_detector.area.free_area()
-	pass
+
 
 
 func rads_to_deg(rad : float) -> float:

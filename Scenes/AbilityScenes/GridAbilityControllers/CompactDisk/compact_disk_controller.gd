@@ -56,6 +56,7 @@ func _process(delta: float) -> void:
 			cd_hitbox.queue_free()
 			_curr_dur = 0
 			cooling_down = true
+			cooldown = ability_stats.get_stat("cooldown").get_value()
 			orbiting = false
 			for hitbox in active_hitboxes:
 				hitbox.queue_free()
@@ -91,10 +92,11 @@ func start_ability():
 		active_hitboxes.append(cd_hitbox)
 		#cd_hitbox.effects = effects
 		get_tree().root.add_child(cd_hitbox)
+	duration = ability_stats.get_stat("duration").get_value()
 	orbiting = true
 	pass
 
-func _exit_tree() -> void:
+func _on_exit_tree() -> void:
 	for hitbox in active_hitboxes:
 		hitbox.queue_free()
 	active_hitboxes.clear()

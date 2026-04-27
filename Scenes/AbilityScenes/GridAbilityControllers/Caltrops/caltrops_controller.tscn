@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://h5q0xghe0ry1" path="res://Scripts/StatModifiers/ValueProvider/BonusValue/BonusValue.gd" id="8_wro2x"]
 [ext_resource type="Script" uid="uid://whdynsblqt1m" path="res://Scripts/StatModifiers/ValueProvider/ValueProviderModifier/ValueProviderMultiplier.gd" id="9_4ecb1"]
 [ext_resource type="Script" uid="uid://mmh4xrgdtb6d" path="res://Scripts/StatModifiers/ValueProvider/Templates/FlatValueProviderTemplate.gd" id="10_pw5nx"]
+[ext_resource type="Script" uid="uid://cdquhx3qorgp1" path="res://Scripts/Stat/StatsTemplate.gd" id="14_4ecb1"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="15_pw5nx"]
 
 [sub_resource type="Resource" id="Resource_4ecb1"]
 script = ExtResource("4_0sids")
@@ -54,11 +56,23 @@ duration = 3.0
 modifier = SubResource("Resource_xsrk6")
 metadata/_custom_type_script = "uid://ugmjlr3iycc8"
 
+[sub_resource type="Resource" id="Resource_amp8w"]
+script = ExtResource("15_pw5nx")
+name = "Damage"
+stat_id = &"damage"
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
+[sub_resource type="Resource" id="Resource_5p0n2"]
+script = ExtResource("14_4ecb1")
+stat_templates = Array[ExtResource("15_pw5nx")]([SubResource("Resource_amp8w")])
+metadata/_custom_type_script = "uid://cdquhx3qorgp1"
+
 [node name="CaltropsController" type="Node" unique_id=1691241773 node_paths=PackedStringArray("lifetime_timer", "cooldown_timer")]
 script = ExtResource("1_88hai")
 lifetime_timer = NodePath("LifetimeTimer")
 cooldown_timer = NodePath("CooldownTimer")
 effect_temps = Array[ExtResource("2_1fpl4")]([SubResource("Resource_1fpl4"), SubResource("Resource_u3atq")])
+stats_template = SubResource("Resource_5p0n2")
 metadata/_custom_type_script = "uid://ck2lns8ywy84t"
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1550246820]
