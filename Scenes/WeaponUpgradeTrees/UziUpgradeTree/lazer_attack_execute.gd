@@ -6,7 +6,9 @@ extends ProjectileAttackExecute
 @export_flags_2d_physics var coll_mask : int
 var laser_on : bool = false
 const UZI_LAZER = preload("uid://785xe88m6cnm")
-var lazer : Line2D
+const UZI_LASER_RAYCAST = preload("uid://d21c7e041j08w")
+
+var lazer : LaserRayCast
 
 func initialize(controller : WeaponController):
 	super(controller)
@@ -24,35 +26,16 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	print("LAZER QUERYING")
-	var space_state = lazer.get_world_2d().direct_space_state
-	var mouse_pos : Vector2 = lazer.get_global_mouse_position()
-	var dir : Vector2 = (mouse_pos - controller.action_point.global_position).normalized()
-	var target_pos : Vector2 = controller.action_point.global_position + (dir * 128)
-	
-	#var query = PhysicsRayQueryParameters2D.create(controller.action_point.global_position, target_pos)
-	var query : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
-	var offset : Vector2 = Vector2((shape.size.x / 2), 0)
-	var xForm : Transform2D = Transform2D(lazer.rotation, lazer.global_position)
-	query.shape = shape
-	query.transform = xForm.translated(offset) 
-	
-	
-	query.collision_mask = coll_mask
-	query.collide_with_areas = true
-	
-	var results = space_state.intersect_shape(query)
-	for hit in results:
-		projectile_hit.emit(hit.rid)
-	#if result:
-		#projectile_hit.emit(result.rid)
-	
+	if lazer.is_colliding():
+		var hit : RID = lazer.get_collider_rid()
+		projectile_hit.emit(hit)
 	rate_timer.start(0.1)
 	pass
 
 func execute():
 	if !active:
 		generate_execute_context()
-		lazer = UZI_LAZER.instantiate() as Line2D
+		lazer = UZI_LASER_RAYCAST.instantiate() as LaserRayCast
 		controller.action_point.add_child(lazer)
 	
 	laser_on = true

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d21c7e041j08w"]
+
+[ext_resource type="Script" uid="uid://s8cftwvsy42n" path="res://Scripts/HitBox/LaserRayCast.gd" id="1_60vhe"]
+[ext_resource type="PackedScene" uid="uid://785xe88m6cnm" path="res://Scenes/WeaponUpgradeTrees/UziUpgradeTree/uzi_lazer.tscn" id="2_dhg0a"]
+
+[node name="UziLaserRaycast" type="RayCast2D" unique_id=1250385040]
+target_position = Vector2(128, 0)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("1_60vhe")
+metadata/_custom_type_script = "uid://s8cftwvsy42n"
+
+[node name="UziLazer" parent="." unique_id=295592589 instance=ExtResource("2_dhg0a")]
+end_cap_mode = 2
