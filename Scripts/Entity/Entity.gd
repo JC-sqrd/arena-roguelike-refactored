@@ -8,7 +8,7 @@ var health_manager : HealthManager
 var equipment_manager : EquipmentManager
 
 var can_move : bool = true
-var can_atack : bool = true
+var can_attack : bool = true
 var can_cast : bool = true
 
 var entity_rid : RID

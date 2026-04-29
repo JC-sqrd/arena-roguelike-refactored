@@ -32,6 +32,9 @@ func evaluate_health():
 	if current_health.get_derived_value() <= 0:
 		health_depleted.emit()
 
+func restore_health():
+	current_health.set_value(max_health.get_value())
+	pass
 
 func get_health() -> float:
 	return current_health.get_derived_value()

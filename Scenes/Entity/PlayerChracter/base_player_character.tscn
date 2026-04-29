@@ -101,7 +101,7 @@ area_shape = SubResource("Resource_jq2g3")
 area_coll_mask = 1
 metadata/_custom_type_script = "uid://cgop8ka8hdjmu"
 
-[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller_manager", "grid_ability_controller_manager", "interactable_detector")]
+[node name="BasePlayerCharacter" type="CharacterBody2D" unique_id=1699560143 node_paths=PackedStringArray("player_entity", "active_ability_controller_manager", "grid_ability_controller_manager", "interactable_detector", "stun_timer")]
 y_sort_enabled = true
 collision_layer = 2
 motion_mode = 1
@@ -112,6 +112,7 @@ grid_ability_controller_manager = NodePath("GridAbilityControllerManager")
 ability_grid = SubResource("Resource_l0a5t")
 ability_tile_inventory = SubResource("Resource_8ud0v")
 interactable_detector = NodePath("InteractableDetector")
+stun_timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1450328753]
 z_index = 5
@@ -195,3 +196,5 @@ ability_one = ExtResource("26_jq2g3")
 ability_two = ExtResource("27_b2ade")
 ability_three = ExtResource("28_pf1fh")
 metadata/_custom_type_script = "uid://dhhynaisfxsr3"
+
+[node name="Timer" type="Timer" parent="." unique_id=2088835971]
