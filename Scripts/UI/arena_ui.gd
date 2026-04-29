@@ -8,6 +8,7 @@ class_name ArenaUI extends Control
 @onready var ui_ability_grid: AbilityGridUIController = %UiAbilityGrid
 @onready var weapon_upgrade_panel: WeaponUpgradeUIPanel = %WeaponUpgradePanel
 @onready var ability_grid_shop_panel: BaseAbilityGridUIController = %AbilityGridShopPanel
+@onready var target_health_bar: TextureProgressBar = %TargetHealthBar
 
 @onready var crosshair_ui: CrosshairUI = %CrosshairUI
 

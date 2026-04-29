@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bpfc7ucfjbicr" path="res://Scripts/Debug/debug.gd" id="1_0b76d"]
 [ext_resource type="Script" uid="uid://babhl38fqi7ie" path="res://Scripts/Arena/Arena.gd" id="1_73tfi"]
 [ext_resource type="PackedScene" uid="uid://cqs1kw7bq805n" path="res://Scenes/UI/GameUI/game_ui.tscn" id="2_dhtwe"]
+[ext_resource type="Script" uid="uid://cbxu2cfwgpjwg" path="res://Scripts/Stat/StatTemplate.gd" id="3_3gmq7"]
 [ext_resource type="PackedScene" uid="uid://2qb53arovk2u" path="res://Scenes/UI/GameUI/arena_ui.tscn" id="3_hq5rx"]
 [ext_resource type="PackedScene" uid="uid://bs7cobx06wp4e" path="res://Scenes/Entity/PlayerChracter/base_player_character.tscn" id="3_mjg4v"]
 [ext_resource type="Script" uid="uid://bv0b6cknh28xe" path="res://Scripts/Debug/debug_gold_ui.gd" id="4_en7hp"]
@@ -15,6 +16,13 @@
 [ext_resource type="Script" uid="uid://3ehiwo2fwxqe" path="res://Scripts/EnemyTarget.gd" id="9_dygxk"]
 [ext_resource type="PackedScene" uid="uid://dvp134exe010y" path="res://Scenes/Interactables/enemy_wave_spawner.tscn" id="10_hq5rx"]
 [ext_resource type="Texture2D" uid="uid://b5ydp7fsxrr15" path="res://Textures/kenney_particle-pack/PNG (Transparent)/circle_05.png" id="12_v23vg"]
+
+[sub_resource type="Resource" id="Resource_2c0am"]
+script = ExtResource("3_3gmq7")
+name = "Target Health"
+stat_id = &"target_health"
+value = 100.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
 [sub_resource type="LabelSettings" id="LabelSettings_dygxk"]
 font = ExtResource("8_dygxk")
@@ -121,13 +129,15 @@ fill_from = Vector2(0.5, 0.5)
 background_mode = 1
 background_color = Color(0.3254902, 0.36078432, 0.7137255, 1)
 
-[node name="TestArena" type="Node2D" unique_id=452003229 node_paths=PackedStringArray("main_tilemap_layer", "target_tilemap_layer", "spawn_tilemap_layer", "arena_ui")]
+[node name="TestArena" type="Node2D" unique_id=452003229 node_paths=PackedStringArray("main_tilemap_layer", "target_tilemap_layer", "spawn_tilemap_layer", "arena_ui", "targets")]
 script = ExtResource("1_73tfi")
 main_tilemap_layer = NodePath("MainTileMapLayer")
 target_tilemap_layer = NodePath("TargetTileMapLayer")
 spawn_tilemap_layer = NodePath("SpawnTileMapLayer")
 arena_ui = NodePath("GameUI/ArenaUi")
 player_scene = ExtResource("3_mjg4v")
+target_health_stat_template = SubResource("Resource_2c0am")
+targets = [NodePath("TargetTileMapLayer/EnemyTarget")]
 metadata/_custom_type_script = "uid://babhl38fqi7ie"
 
 [node name="GameUI" parent="." unique_id=1935258993 instance=ExtResource("2_dhtwe")]

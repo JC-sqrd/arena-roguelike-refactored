@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://ce01040y5fnqf" path="res://Scenes/UI/GameUI/crosshair_ui.tscn" id="5_laec8"]
 [ext_resource type="PackedScene" uid="uid://bqd4pcpe8o05h" path="res://Scenes/UI/AbilityGrid/AiblityGridShopUI/ability_grid_shop_panel.tscn" id="5_s6je5"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_urrof"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_imhk2"]
+
 [node name="ArenaUi" type="Control" unique_id=1446304066]
 layout_mode = 3
 anchors_preset = 15
@@ -19,15 +23,19 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yd7mu")
 
-[node name="WaveTimeLabel" parent="." unique_id=1570125989 instance=ExtResource("2_5drit")]
-custom_minimum_size = Vector2(128, 32)
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=133171652]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -0.5
-offset_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
 grow_horizontal = 2
+
+[node name="WaveTimeLabel" parent="VBoxContainer" unique_id=1570125989 instance=ExtResource("2_5drit")]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("3_imhk2")
@@ -38,6 +46,17 @@ theme_override_font_sizes/italics_font_size = 16
 theme_override_font_sizes/mono_font_size = 16
 text = "WAVE TIME "
 horizontal_alignment = 1
+
+[node name="TargetHealthBar" type="TextureProgressBar" parent="VBoxContainer" unique_id=174473045]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_urrof")
+texture_progress = SubResource("CanvasTexture_imhk2")
+tint_under = Color(0.6872149, 0.68721503, 0.6872149, 1)
+tint_progress = Color(0, 0.7176471, 0.3019608, 1)
 
 [node name="PlayerUI" type="Control" parent="." unique_id=853957942]
 unique_name_in_owner = true

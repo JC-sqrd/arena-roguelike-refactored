@@ -1,12 +1,15 @@
 class_name EnemyTarget extends Area2D
 
 
+signal target_hit(entity : Entity, data:Dictionary[StringName, Variant])
 
 func _physics_process(delta: float) -> void:
 	var enemies : Array[RID] = query_enemies()
 	for enemy_id in enemies:
 		var enemy_entity : Entity = EntityServer.active_entities[enemy_id]
 		var enemy : EnemyController = EnemyServer.active_enemies[enemy_entity.get_instance_id()]
+		var hit_data : Dictionary[StringName, Variant] = {"enemy_controller":enemy}
+		target_hit.emit(enemy_entity, hit_data)
 		enemy.area_controller.free_area()
 		enemy.active = false
 		enemy.free_controller()

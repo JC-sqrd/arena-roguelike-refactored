@@ -37,7 +37,14 @@ stat_id = &"move_speed"
 value = 80.0
 metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
 
+[sub_resource type="Resource" id="Resource_wpcxo"]
+script = ExtResource("2_iuupi")
+name = "Target Damage"
+stat_id = &"target_damage"
+value = 2.0
+metadata/_custom_type_script = "uid://cbxu2cfwgpjwg"
+
 [resource]
 script = ExtResource("1_wpcxo")
-stat_templates = Array[ExtResource("2_iuupi")]([SubResource("Resource_thqdd"), SubResource("Resource_wq74i"), SubResource("Resource_p51cc"), SubResource("Resource_ukqmv"), SubResource("Resource_ldo6u")])
+stat_templates = Array[ExtResource("2_iuupi")]([SubResource("Resource_thqdd"), SubResource("Resource_wq74i"), SubResource("Resource_p51cc"), SubResource("Resource_ukqmv"), SubResource("Resource_ldo6u"), SubResource("Resource_wpcxo")])
 metadata/_custom_type_script = "uid://cdquhx3qorgp1"
